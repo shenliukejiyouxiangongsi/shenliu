@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html  lang="zh" xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="white-bg">
+<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+    <form class="form-horizontal m" id="form-product-add" >
+        <div class="form-group">
+            <label class="col-sm-3 control-label">产品名称：</label>
+            <div class="col-sm-8">
+            	<select id="pId" name="pId"  class="form-control m-b">
+
+            		<span th:if="${products.size()>=1}" th:each="item:${products}">
+            			<option th:value="${item.pId}" th:text="${item.pName}"></option>
+            		</span>
+            	</select>    
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">产品类型：</label>
+            <div class="col-sm-8">
+                <select id="rType" name="rType"  class="form-control m-b">
+               		<option value="1"   >最热</option>
+               		<option value="2"  >最新</option>
+               	</select>
+            </div>
+        </div>
+         <div class="form-group">
+            <label class="col-sm-3 control-label">产品排序：</label>
+            <div class="col-sm-8">
+
+               <input id="rSort" name="rSort"  placeholder="请输入整数：例如：2"  class="form-control" type="text">
+               	
+            </div>
+        </div>
+    </form>
+</div>
+<div th:include="include::footer"></div>
+<script th:src="@{/ajax/libs/select/select2.js}"></script>
+<script type="text/javascript">
+    var prefix = ctx + "product/recommend"
+    $("#form-product-add").validate({
+        rules:{
+            rSort:{
+                required:true,
+            }, 
+            pId:{
+                required:true,
+            },                      
+        },
+    });
+    
+    
+	function submitHandler() {
+	        if ($.validate.form()) {
+	            $.operate.save(prefix + "/add", $('#form-product-add').serialize());
+	        }
+	    }
+		
+
+  
+</script>
+</body>
+</html>

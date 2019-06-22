@@ -1,0 +1,5 @@
+#配置文件转换配置
+spring:
+  profiles:
+    active: test
+

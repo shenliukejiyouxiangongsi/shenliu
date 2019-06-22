@@ -1,0 +1,121 @@
+<!DOCTYPE HTML>
+<html  lang="zh" xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="white-bg">
+<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+    <form class="form-horizontal m" id="form-appSwitch-edit" th:object="${appSwitch}">
+        <input id="id" name="id"  th:field="*{id}" style="display:none"  type="text" >
+        <div class="form-group">
+            <label class="col-sm-3 control-label">App类型：</label>
+            <div class="col-sm-8">
+                <input id="appType" name="appType" class="form-control"  th:value="*{appType == 0 ? 'IOS':'Android'}" readonly type="text" >
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">版本号：</label>
+            <div class="col-sm-8">
+                <input id="appVersion" name="appVersion" class="form-control"  th:field="*{appVersion}" readonly type="text" >
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">状态：</label>
+            <div class="col-sm-8">
+                <input id="status" name="status" class="form-control"  th:value="*{status == 0 ? '等待审核':'正式运营'}" readonly type="text" >
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">市场渠道：</label>
+            <div class="col-sm-8">
+                <select id="marketId" name="marketId" class="form-control m-b">
+
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">备注：</label>
+            <div class="col-sm-8">
+                <input id="remark" name="remark" class="form-control" th:field="*{remark}"  type="text" >
+            </div>
+        </div>
+    </form>
+</div>
+<div th:include="include::footer"></div>
+<script th:src="@{/ajax/libs/select/select2.js}"></script>
+<script th:inline="javascript">
+    var marketChannels=[[${marketChannels}]];
+    $(function(){
+        //console.log(marketChannels);
+        showMarket();
+    })
+    //市场渠道数据显示根据选择市场
+    function showMarket(){
+        var appSwitch=[[${appSwitch}]];
+        var ios="";
+        var android="";
+        $.each(marketChannels,function(index,item){
+            var op="";
+            if(appSwitch.marketId==item.marketId){
+                op="<option value="+item.marketId+" selected='selected' >"+item.marketName+"</option>";
+            }else{
+                op="<option value="+item.marketId+" >"+item.marketName+"</option>"
+            }
+
+            if(item.marketType==0){
+                ios  = ios+op;
+            }else if(item.marketType==1){
+                android  =android+op;
+            }
+        })
+        if(appSwitch.appType==0){
+            $("#marketId").append(ios);
+        }else if(appSwitch.appType==1){
+            $("#marketId").append(android);
+        }
+        //console.log(ios);
+        //console.log(android);
+    }
+
+    var prefix = ctx + "appSwitch"
+    $("#form-appSwitch-edit").validate({
+        rules:{
+            proName:{
+                required:true,
+            },
+        },
+    });
+
+    function submitHandler() {
+        if ($.validate.form()) {
+            edit();
+        }
+    }
+
+    function edit() {
+        var id = $("input[name='id']").val();
+        var remark = $("input[name='remark']").val();
+        var marketId=$("#marketId option:selected").val();
+        $.ajax({
+            cache : true,
+            type : "POST",
+            url : prefix + "/edit",
+            data : {
+                "id": id,
+                "remark": remark,
+                "marketId":marketId,
+            },
+            async : false,
+            error : function(request) {
+                $.modal.alertError("系统错误");
+            },
+            success : function(data) {
+                $.operate.successCallback(data);
+            }
+        });
+    }
+
+
+
+</script>
+</body>
+</html>

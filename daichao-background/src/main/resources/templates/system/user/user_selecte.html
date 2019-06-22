@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org"
+	xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<link th:href="@{/ajax/libs/jquery-layout/jquery.layout-latest.css}" rel="stylesheet"/>
+<link th:href="@{/ajax/libs/jquery-ztree/3.5/css/metro/zTreeStyle.css}" rel="stylesheet"/>
+
+<body class="gray-bg">
+
+	
+	<div class="container-div ui-layout-center">
+		<div class="row">
+			<div class="col-sm-12 search-collapse">
+				<form id="user-form">
+
+					<div class="select-list">
+						<ul>
+							<li>
+								<input type="hidden" th:value="${deptId}" name="deptId">
+								姓名：<input type="text" name="userName"/>
+							</li>
+							<li>
+								手机号码：<input type="text" name="phonenumber"/>
+							</li>
+
+							<li>
+								<a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+							    <a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
+							</li>
+						</ul>
+					</div>
+				</form>
+			</div>
+
+			<input type="hidden"  id="selectUserId">
+	        <div class="col-sm-12 select-table table-striped">
+			    <table id="bootstrap-table" data-mobile-responsive="true"></table>
+			</div>
+		</div>
+	</div>
+	<div th:include="include :: footer"></div>
+	<script th:src="@{/ajax/libs/jquery-layout/jquery.layout-latest.js}"></script>
+	<script th:src="@{/ajax/libs/jquery-ztree/3.5/js/jquery.ztree.all-3.5.js}"></script>
+	<script th:inline="javascript">
+
+		var prefix = ctx + "system/user";
+
+		$(function() {
+			$('body').layout({ west__size: 185 });
+			var param =queryParams();
+			queryUserList(param);
+		});
+		function queryParams() {
+			var search = {};
+			$.each($("#user-form").serializeArray(), function(i, field) {
+				search[field.name] = field.value;
+			});
+			return search;
+		}
+
+		function queryUserList(param) {
+
+
+            var columns = [{
+                checkbox: true
+            },{
+                field : 'userId',
+                title : '编号'
+            },
+            {
+                field: 'userName',
+                title: '用户名称'
+            },{
+                field: 'dept.deptName',
+                title: '部门'
+            },
+            ];
+
+
+            $('#bootstrap-table').bootstrapTable({
+                url: prefix + "/list",                                   // 请求后台的URL（*）
+                contentType: "application/x-www-form-urlencoded",   // 编码类型
+                method: 'post',                                     // 请求方式（*）
+                cache: false,                                       // 是否使用缓存
+
+
+
+                pagination: true,   // 是否显示分页（*）
+                pageNumber: 1,                                      // 初始化加载第一页，默认第一页
+                pageSize: 10,                                       // 每页的记录行数（*）
+                pageList: [10, 25, 50],                             // 可供选择的每页的行数（*）
+
+                singleSelect:true,								//只允许选中一行
+                onCheck:function(row,$element){
+                    $("#selectUserId").val(row.userId);
+				},
+                sidePagination: "server",                           // 启用服务端分页
+
+
+                queryParams: param,                       // 传递参数（*）
+                columns:  columns,                           // 显示列信息（*）
+
+            });
+		}
+
+
+
+
+	</script>
+</body>
+</html>

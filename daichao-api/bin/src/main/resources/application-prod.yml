@@ -1,0 +1,42 @@
+#数据源配置
+spring:
+  datasource:
+    url: jdbc:mysql://111.231.94.161:3306/daichao?useUnicode=true&characterEncoding=utf8
+    username: root
+    password: Zk6253367
+    driver-class-name: com.mysql.jdbc.Driver
+  redis:
+    host: 47.96.70.228
+    database: 1
+    password: FTCJk^xMJy#RsLAR
+    port: 6379
+    enabled: true
+
+
+#赛邮短信
+saiyou:
+  account: hangzhouyoudai@foxmail.com
+  password: nbly1216@
+  templateId:
+    #注册模板
+    registerMsgId: Jfotf2
+    #拒绝模板
+    refuseMsgId: SoElO1
+    #放款短信提醒
+    payMoneyMsgId: FYTLL1
+    #用户还款成功短信
+    repaySuccessMsgId: ZfWzi1
+    #提额提醒
+    addMoneyMsgId: T8NVA3
+    #还款时间前6小时提醒
+    repayDay6HoureMsgId: X80oW
+    #还款日前1天提醒
+    repay1DayMsgId: 0vzWL
+    #还款日前2天提醒
+    repay2DayMsgId: Melbc4
+    #还款日当天提醒
+    repayDayMsgId: hfGw71
+    #逾期提醒
+    overdueMsgId: 2im7X4
+
+product_folder: daichaoApi/userOption

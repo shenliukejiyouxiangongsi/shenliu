@@ -1,0 +1,14 @@
+com\youdai\daichao\shiro\RedisSessionDao.class
+com\youdai\daichao\api\ProductController.class
+com\youdai\daichao\api\UserOpinionController.class
+com\youdai\daichao\api\UserController.class
+com\youdai\daichao\shiro\ShiroConfiguration.class
+com\youdai\daichao\DaichaoApiApplication.class
+com\youdai\daichao\api\TextTemplateController.class
+com\youdai\daichao\api\DictionariesController.class
+com\youdai\daichao\api\ProjectController.class
+com\youdai\daichao\config\ApiInterceptor.class
+com\youdai\daichao\shiro\PasswordRealm.class
+com\youdai\daichao\api\LoginController.class
+com\youdai\daichao\shiro\ShiroConfiguration$AuthRealm.class
+com\youdai\daichao\config\ApiMvcConfig.class

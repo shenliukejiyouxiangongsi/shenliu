@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.youdai.daichao.mapper.RecommendMapper">
+
+    <!-- 开启二级缓存 -->
+    <!-- <cache type="org.mybatis.caches.ehcache.LoggingEhcache"/> -->
+
+	<select id="selectRecommendList" parameterType="string" resultType="pdRecommend">
+		SELECT  
+			r.r_id as rId,
+			r.r_type as rType,
+			r.r_sort as rSort,
+			p.p_id as pId,
+			p.p_name as pName
+		FROM 
+		recommend r LEFT JOIN product p ON  r.p_id=p.p_id
+		<where>
+			<if test="pName!=null and pName !=''">
+				p.p_name=#{pName}
+			</if>
+		</where>
+	</select>
+	
+	<select id="selectOneByRid" parameterType="int" resultType="pdRecommend">
+		SELECT  
+			r.r_id as rId,
+			r.r_type as rType,
+			r.r_sort as rSort,
+			p.p_id as pId,
+			p.p_name as pName
+		FROM 
+		recommend r LEFT JOIN product p ON  r.p_id=p.p_id
+		where
+		r.r_id=#{rId}
+	
+	</select>
+	
+	<delete id="deleteReByIds" parameterType="String">
+		delete from recommend 
+		where r_id in
+		<foreach item="rId" collection="array" open="(" close=")" separator=",">
+			#{rId}
+		</foreach>
+	</delete>
+</mapper>

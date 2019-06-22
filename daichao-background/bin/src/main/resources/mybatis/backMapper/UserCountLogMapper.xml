@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.youdai.daichao.mapper.UserCountLogMapper">
+
+    <!-- 开启二级缓存 -->
+    <!--<cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>-->
+	<resultMap type="userCountLog" id="selectResoult" autoMapping="true">
+		
+	</resultMap>
+	
+	<sql id="entity">
+		select id,register_num as registerNum,
+		login_num as loginNum ,view_product_num as viewProductNum,
+		create_time as createTime ,phone
+		from user_count_log
+	</sql>
+	
+	<select id="selectUserCountList" parameterType="map" resultMap="selectResoult">
+		select 
+		DATE_FORMAT(create_time,'%Y-%m-%d') as createTime,
+		SUM(CASE when register_num=1 THEN 1 ELSE 0 END) as registerNum,
+		SUM(CASE when login_num=1 THEN 1 ELSE 0 END) as loginNum,
+		SUM(CASE when view_product_num=1 THEN 1 ELSE 0 END) as viewProductNum
+		from 
+		user_count_log
+		<where>
+			<if test="createTime !=null and createTime != ''">
+				DATE_FORMAT(create_time,'%Y-%m-%d')=#{createTime}
+			</if>
+			<if test="startTime !=null and startTime != ''">
+			and datediff(DATE_FORMAT(create_time,'%Y-%m-%d'),#{startTime}) &gt;=0
+			</if>
+			<if test="endTime !=null and endTime != ''">
+			and datediff(DATE_FORMAT(create_time,'%Y-%m-%d'),#{endTime}) &lt;=0			
+			</if>
+		</where>
+		GROUP BY  DATE_FORMAT(create_time,'%Y-%m-%d')
+		order by  DATE_FORMAT(create_time,'%Y-%m-%d') desc
+	</select>
+</mapper>

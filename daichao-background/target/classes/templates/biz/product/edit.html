@@ -1,0 +1,367 @@
+<!DOCTYPE HTML>
+<html  lang="zh" xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="white-bg">
+<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+    <form class="form-horizontal m" id="form-product-edit" th:object="${product}">
+        <input id="pId" name="pId" class="form-control" th:field="*{pId}" type="text" style="display: none;">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">产品名称：</label>
+            <div class="col-sm-8">
+                <input id="pName" name="pName" th:field="*{pName}" class="form-control" type="text">
+            </div>
+            <input id="beforePName" name="beforePName" th:field="*{pName}" class="form-control" style="display:none" type="text">
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">产品描述：</label>
+            <div class="col-sm-8">
+                <input id="describation" name="describation" th:field="*{describation}" class="form-control" type="text">
+            </div>
+            <div class="col-sm-2" >
+                <label for="describation" class="error"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">产品标签：</label>
+            <div class="col-sm-8">
+                <select  multiple="multiple" class="form-control m-b" name="hasTags" id="hasTags">
+                    <option th:each="item:${tags}" th:value="${item.tagName}" th:text="${item.tagName}">
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group" >
+            <label class="col-sm-2 control-label">产品LOGO预览：</label>
+            <div class="col-sm-8" id="show">
+                <img th:src="@{*{logoUrl}}" width="100">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">产品LOGO：</label>
+            <div class="col-sm-8">
+
+                <input type="button" value="重新上传" onclick="img.click()" class="btn_mouseout"/><br>
+                <input type="file" id="img" name="img" accept="image/*" onchange="sc(this);" style="display:none"/>
+                <input type="text" id="logoUrl" name="logoUrl"  th:field="*{logoUrl}"  style="display:none"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">最低额度（元）：</label>
+            <div class="col-sm-5">
+                <input id="minMoney" name="minMoney" th:field="*{minMoney}" class="form-control" type="text">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">最高额度（元）：</label>
+            <div class="col-sm-5">
+                <input id="maxMoney" name="maxMoney" th:field="*{maxMoney}" class="form-control" type="text">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">最低还款时间（天）：</label>
+            <div class="col-sm-5">
+                <input id="outtimeBegin" name="outtimeBegin" th:field="*{outtimeBegin}" class="form-control" type="text">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">最晚还款时间（天）：</label>
+            <div class="col-sm-5">
+                <input id="outtimeEnd" name="outtimeEnd" th:field="*{outtimeEnd}" class="form-control" type="text">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">利率（%）：</label>
+            <div class="col-sm-5">
+                <input id="rate" name="rate" th:field="*{rate}" placeholder="请输入0-1的小数，例如0.03" class="form-control" type="text">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">申请条件：</label>
+            <div class="col-sm-8">
+                <input id="accessCondition" name="accessCondition" th:field="*{accessCondition}" class="form-control" type="text">
+            </div>
+            <div class="col-sm-2" >
+                <label for="accessCondition" class="error"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">申请材料：</label>
+            <div class="col-sm-8">
+                <input id="materials" name="materials" th:field="*{materials}" class="form-control" type="text">
+            </div>
+            <div class="col-sm-2" >
+                <label for="materials" class="error"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">说明：</label>
+            <div class="col-sm-8">
+                <textarea rows="4" cols="3" id="explaintion" name="explaintion" th:field="*{explaintion}" class="form-control"  style="resize:none" ></textarea>
+            </div>
+            <div class="col-sm-2" >
+                <label for="explaintion" class="error"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">产品链接：</label>
+            <div class="col-sm-8">
+                <input id="linkUrl" name="linkUrl" th:field="*{linkUrl}" class="form-control" type="text">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">产品排序：</label>
+            <div class="col-sm-3">
+                <input id="sort" name="sort" th:field="*{sort}" class="form-control" type="text">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">申请人数：</label>
+            <div class="col-sm-3">
+                <input id="showNum" name="showNum" th:field="*{showNum}" class="form-control" placeholder="页面显示使用" type="text">
+            </div>
+        </div>
+
+<!--        <div class="form-group">-->
+<!--            <label class="col-sm-2 control-label">是否上线：</label>-->
+<!--            <div class="col-sm-3">-->
+<!--                <select id="status" name="status" class="form-control m-b">-->
+<!--                    <option value="1" th:selected="*{status}==1">上线</option>-->
+<!--                    <option value="2" th:selected="*{status}==2">下线</option>-->
+<!--                </select>-->
+<!--            </div>-->
+<!--        </div>-->
+        <div class="form-group">
+            <label class="col-sm-2 control-label">结算方式：</label>
+            <div class="col-sm-3">
+                <select id="clearForm" name="clearForm" class="form-control m-b">
+                    <option  value="CPA" th:selected="*{clearForm}=='CPA'">CPA</option>
+                    <option  value="CPS" th:selected="*{clearForm}=='CPS'">CPS</option>
+                    <option value="UV" th:selected="*{clearForm}=='UV'">UV</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">单价（元）：</label>
+            <div class="col-sm-3">
+                <input id="price" name="price" th:field="*{price}" class="form-control" type="text">
+            </div>
+        </div>
+
+    </form>
+</div>
+<div th:include="include::footer"></div>
+<script th:src="@{/ajax/libs/select/select2.js}"></script>
+<script type="text/javascript">
+    $(function(){
+        var hasTags="[[${product.hasTags}]]";
+        var arr = hasTags.split(',');
+        $("#hasTags").val(arr).trigger("change");
+        $(function(){
+            $("#hasTags").select2({
+                language : "zh-CN",
+                minimumSelectionLength : 0,
+                maximumSelectionLength : 3,
+                placeholder:"可多选",//默认值
+            })
+        })
+    })
+
+
+    var prefix = ctx + "product"
+    $("#form-product-edit").validate({
+        focusCleanup:true,
+        rules:{
+            pName:{
+                required:true,
+                isPname:true,
+                checkName:true,
+            },
+            minMoney:{
+                required:true,
+                isMoney:true,
+
+            },
+            maxMoney:{
+                required:true,
+                isMoney:true,
+                isMaxMoney:true,
+            },
+            outtimeBegin:{
+                required:true,
+                isNumber:true,
+
+            },
+            outtimeEnd:{
+                required:true,
+                isNumber:true,
+                isMaxTime:true,
+            },
+            rate:{
+                required:true,
+                isRate:true,
+            },
+            linkUrl:{
+                required:true,
+            },
+            describation:{
+                required:true,
+                isDescribation:true,
+            },
+            accessCondition:{
+                required:true,
+                isChar:true,
+            },
+            materials:{
+                required:true,
+                isChar:true,
+            },
+            explaintion:{
+                isChar:true,
+            },
+            sort:{
+                isNumber:true,
+
+            },
+            showNum:{
+                required:true,
+                isNumber:true,
+
+            },
+        },
+    });
+
+    function submitHandler() {
+        if ($.validate.form()) {
+            add();
+        }
+    }
+
+    function add() {
+        var pId = $("input[name='pId']").val();
+        var pName = $("input[name='pName']").val();
+        var describation = $("input[name='describation']").val();
+        var minMoney = $("input[name='minMoney']").val();
+        var maxMoney = $("input[name='maxMoney']").val();
+        var outtimeBegin = $("input[name='outtimeBegin']").val();
+        var outtimeEnd = $("input[name='outtimeEnd']").val();
+        var rate = $("input[name='rate']").val();
+        var accessCondition = $("input[name='accessCondition']").val();
+        var materials = $("input[name='materials']").val();
+        var merchantId= $("input[name='merchantId']").val();
+        var explaintion = $("input[name='explaintion']").val();
+        var status = $("#status option:selected").val();
+        var linkUrl = $("input[name='linkUrl']").val();
+//        var pType = $("input[name='pType']").val();
+        var clearForm = $("#clearForm option:selected").val();
+        var price = $("input[name='price']").val();
+        var sort = $("input[name='sort']").val();
+        var showNum = $("input[name='showNum']").val();
+        var logoUrl =$("input[name='logoUrl']").val();
+
+        var hasTags=  $.map($("#hasTags" ).select2('data'), function(value) {
+            return value.id}).join(",")
+
+        var logoBefore="[[${product.logoUrl}]]";
+
+        if(logoUrl==logoBefore){
+            logoUrl=null;
+        }
+
+
+        $.ajax({
+            cache : true,
+            type : "POST",
+            url : prefix + "/edit",
+            data : {
+                "pId":pId,
+                "pName": pName,
+                "describation": describation,
+                "minMoney": minMoney,
+                "maxMoney": maxMoney,
+                "outtimeBegin": outtimeBegin,
+                "outtimeEnd": outtimeEnd,
+                "rate": rate,
+                "accessCondition": accessCondition,
+                "materials": materials,
+                "explaintion": explaintion,
+                "status": status,
+                "linkUrl": linkUrl,
+                "logoUrl":logoUrl,
+//                "pType": pType,
+                "clearForm": clearForm,
+                "merchantId":merchantId,
+                "price": price,
+                "sort": sort,
+                "showNum": showNum,
+                "hasTags":hasTags,
+            },
+            async : false,
+            error : function(request) {
+                $.modal.alertError("系统错误");
+            },
+            success : function(data) {
+                $.operate.successCallback(data);
+            }
+        });
+    }
+
+
+
+
+
+    //图片上传
+    function sc(){
+        var animateimg = $("#img").val(); //获取上传的图片名 带//
+        var imgarr=animateimg.split('\\'); //分割
+        var myimg=imgarr[imgarr.length-1]; //去掉 // 获取图片名
+        var houzui = myimg.lastIndexOf('.'); //获取 . 出现的位置
+        var ext = myimg.substring(houzui, myimg.length).toUpperCase();  //切割 . 获取文件后缀
+        var file = $('#img').get(0).files[0]; //获取上传的文件
+        var fileSize = file.size;           //获取上传的文件大小
+        var maxSize = 1048576;              //最大1MB
+
+
+
+        if(ext !='.PNG' && ext !='.GIF' && ext !='.JPG' && ext !='.JPEG' && ext !='.BMP'){
+            parent.layer.msg('文件类型错误,请上传图片类型');
+            return false;
+        }else if(parseInt(fileSize) >= parseInt(maxSize)){
+            parent.layer.msg('上传的文件不能超过1MB');
+            return false;
+        }else{
+            var data = new FormData($('#form-product-edit')[0]);
+            $.ajax({
+                url: prefix +"/upImg",
+                type: 'POST',
+                data: data,
+                dataType: 'JSON',
+                cache: false,
+                processData: false,
+                contentType: false
+            }).done(function(ret){
+                if(ret.code==0){
+                    var fileT=ret.data;
+                    var result = '';
+                    var result1 = '';
+                    // $("#show").attr('value',+ ret['f'] +);
+                    result += '<img src="'+fileT.filePath +'" width="100">';
+                    $("#logoUrl").val(fileT.filePath);
+                    $('#show').html(result);
+                    layer.msg('上传成功');
+                }else{
+                    layer.msg('上传失败');
+                }
+            });
+
+
+
+        }
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE HTML>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+
+<div class="container-div">
+	<div class="row">
+		<div class="col-sm-12 search-collapse">
+			<form id="formId">
+				<div class="select-list">
+					<ul>
+						<li>
+							产品名称：<input type="text" name="pName"/>
+						</li>
+						<!-- 							<li>
+                                                        展示页面：<input type="text" name="pName"/>
+                                                    </li> -->
+						<li>
+							上线状态：
+							<select id="status" name="status" >
+								<option value="0" selected="selected">全部</option>
+								<option value="1">上线</option>
+								<option value="2">下线</option>
+							</select>
+						</li>
+						<li>
+							<a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+							<a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
+						</li>
+					</ul>
+				</div>
+			</form>
+		</div>
+
+		<div class="btn-group-sm hidden-xs" id="toolbar" role="group">
+			<a class="btn btn-success" onclick="$.operate.add()" shiro:hasPermission="biz:product:add">
+				<i class="fa fa-plus"></i> 添加
+			</a>
+			<a class="btn btn-primary btn-edit disabled" onclick="$.operate.edit()" shiro:hasPermission="biz:product:edit">
+				<i class="fa fa-edit"></i> 修改
+			</a>
+			<!-- 				<a class="btn btn-danger btn-del btn-del disabled" onclick="$.operate.removeAll()" shiro:hasPermission="biz:channel:remove">
+                                <i class="fa fa-remove"></i> 删除
+                            </a> -->
+
+		</div>
+		<div class="col-sm-12 select-table table-striped">
+			<table id="bootstrap-table" data-mobile-responsive="true"></table>
+		</div>
+	</div>
+</div>
+<div th:include="include :: footer"></div>
+<script th:inline="javascript">
+	var editFlag = [[${@permission.hasPermi('biz:product:edit')}]];
+	var removeFlag = [[${@permission.hasPermi('biz:product:remove')}]];
+	var changeFlag = [[${@permission.hasPermi('biz:product:change')}]];
+
+	var prefix = ctx + "product";
+
+	$(function() {
+		var options = {
+			url: prefix + "/list",
+			createUrl: prefix + "/add",
+			updateUrl: prefix + "/edit/{id}",
+			removeUrl: prefix + "/remove",
+			exportUrl: prefix + "/export",
+			modalName: "产品",
+			sortName:"createTime",                                 // 排序列名称
+			sortOrder:"desc",
+			search: false,
+			showExport: true,
+			columns: [{
+				checkbox: true
+			},
+				{
+					field : 'pid',
+					title : 'id',
+					visible: false
+				},
+				{
+					field : 'pname',
+					title : '产品名称'
+				},
+				{
+					field : 'logoUrl',
+					title : '产品logo',
+					formatter: function(value, row, index) {
+						return "<img src='"+value +"'   width='40' height='40' alt='' onclick='showBigImg(\""+value+"\") '>";
+					}
+				},
+				{
+					field : 'status',
+					title : '上线状态',
+					formatter: function(value, row, index) {
+						if(value==1){
+							return "<span class='badge badge-primary'>上线</span>";
+						}else if(value==2){
+							return "<span class='badge badge-danger '>下线</span>";
+						}
+					}
+				},
+				{
+					field : 'clearForm',
+					title : '结算方式'
+				},
+				{
+					field : 'price',
+					title : '单价'
+				},
+				{
+					field : 'hasTags',
+					title : '标签'
+				},
+				{
+					field : 'createTime',
+					title : '创建时间'
+				},
+				{
+					title: '操作',
+					align: 'center',
+					formatter: function(value, row, index) {
+						var actions = [];
+						actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="#" onclick="$.operate.edit(\'' + row.pid + '\')"><i class="fa fa-edit"></i>编辑</a> ');
+						var text=row.status==1 ? "下线":"上线";
+                        actions.push('<a class="btn btn-danger btn-xs ' + changeFlag + '" href="#" onclick="changeStatus(\'' + row.pid +"','"+ row.status+ '\')"><i class="fa fa-remove"></i>'+text+'</a>');
+//                      actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="#" onclick="$.operate.remove(\'' + row.pId + '\')"><i class="fa fa-remove"></i>删除</a>');
+//						actions.push('<a class="btn btn-info btn-xs ' + resetPwdFlag + '" href="#" onclick="resetPwd(\'' + row.pId + '\')"><i class="fa fa-key"></i>重置</a>');
+						return actions.join('');
+					}
+				}]
+		};
+		$.table.init(options);
+	});
+
+
+
+	//显示大图
+	function showBigImg(config) {
+		var default_config = {title: "图片预览"};
+		var img = new Image();
+
+		img.onload = function() {//避免图片还未加载完成无法获取到图片的大小。
+			//避免图片太大，导致弹出展示超出了网页显示访问，所以图片大于浏览器时下窗口可视区域时，进行等比例缩小。
+			var max_height = $(window).height() - 100;
+			var max_width = $(window).width();
+			//rate1，rate2，rate3 三个比例中取最小的。
+			var rate1 = max_height/img.height;
+			var rate2 = max_width/img.width;
+			var rate3 = 1;
+			var rate = Math.min(rate1,rate2,rate3);
+			//等比例缩放
+			default_config.height = img.height * rate; //获取图片高度
+			default_config.width = img.width  * rate; //获取图片宽度
+
+			$.extend( default_config, config);
+			var imgHtml = "<img src='" + config + "' width='"+default_config.width+"px' height='"+default_config.height+"px'/>";
+			//弹出层
+			layer.open({
+				type: 1,
+				shade: 0.8,
+				offset: 'auto',
+				area: [default_config.width + 'px',default_config.height + 50 +'px'], ////宽，高
+				shadeClose:true,
+				scrollbar: false,
+				title: default_config.title, //不显示标题
+				content: imgHtml, //捕获的元素，注意：最好该指定的元素要存放在body最外层，否则可能被其它的相对元素所影响
+				cancel: function () {
+					//layer.msg('捕获就是从页面已经存在的元素上，包裹layer的结构', { time: 5000, icon: 6 });
+				}
+			});
+		}
+		img.src = config;
+	}
+
+    function changeStatus(id,status){
+        var tx='';
+        var setStatus;
+        if(status==1){
+            tx="下线";
+            setStatus=2;
+        }else{
+            tx="上线";
+            setStatus=1;
+        }
+        $.modal.confirm("确定要" + tx + id + "号产品吗？", function() {
+            var url=prefix+ "/change/"+id+"/"+setStatus;
+            var data = {
+                "pId": id ,
+            };
+            $.operate.submit(url, "post", "json", data);
+        });
+    }
+</script>
+</body>
+</html>

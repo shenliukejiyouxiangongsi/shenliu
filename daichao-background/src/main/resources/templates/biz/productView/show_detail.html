@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+
+<div class="container-div">
+    <div class="row">
+        <div class="col-sm-12 search-collapse">
+            <form id="formId">
+                <div class="select-list">
+                    <ul >
+                        <li hidden>
+                            <input type="text" th:value="${id}" name="id" >
+                            <input type="text" th:value="${udid}" name="udid" >
+                            <input type="text" th:value="${status}" name="status" >
+                        </li>
+                        <li>
+                            产品：
+                            <input type="text" name="pName">
+                        </li>
+                        <li>
+                            产品类型：
+                            <select name="type">
+                                <option value="">全部</option>
+                                <option value="0">其他</option>
+                                <option value="1">最热</option>
+                                <option value="2">最新</option>
+                                <option value="3">匹配</option>
+                            </select>
+                        </li>
+                        <li>
+                            <a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+                            <a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
+                        </li>
+                    </ul>
+                </div>
+            </form>
+        </div>
+
+        <div class="col-sm-12 select-table table-striped">
+            <table id="bootstrap-table" data-mobile-responsive="true"></table>
+        </div>
+    </div>
+</div>
+<div th:include="include :: footer"></div>
+<script th:inline="javascript">
+    var prefix = ctx + "productView/detail";
+    var status=[[${status}]];
+    var show="";
+    var title="";
+    if(status ==0){
+        show="浏览记录";
+        title="浏览时间";
+    }else if(status ==1){
+        show="申请记录";
+        title="申请时间";
+    }
+
+    $(function() {
+        var options = {
+
+            url: prefix + "/list",
+            modalName: show,
+            search: false,
+            showExport: true,
+
+            columns: [{
+                checkbox: true
+            },
+                {
+                    field : 'id',
+                    title : 'id',
+                    visible: false
+                },
+                {
+                    field : 'pname',
+                    title : '产品',
+                },
+                {
+                    field : 'type',
+                    title : '产品类型',
+                    formatter:function(value,row,index){
+                        if(value==0){
+                            return "其他";
+                        }else if(value==1){
+                            return "最热";
+                        }else if(value==2){
+                            return "最新";
+                        }else if(value==3){
+                            return "匹配";
+                        }else if(value==null){
+                            return "-";
+                        }
+                    }
+                },
+                {
+                    field : 'createTime',
+                    title : title,
+                },]
+        };
+        $.table.init(options);
+    });
+
+</script>
+</body>
+</html>

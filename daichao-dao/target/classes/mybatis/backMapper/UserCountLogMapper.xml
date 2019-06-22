@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.youdai.daichao.mapper.UserCountLogMapper">
+
+    <!-- 开启二级缓存 -->
+    <!--<cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>-->
+	<resultMap type="userCountLog" id="selectResoult" autoMapping="true">
+		
+	</resultMap>
+	
+	<sql id="entity">
+		select id,register_num as registerNum,
+		login_num as loginNum ,view_product_num as viewProductNum,
+		create_time as createTime ,phone
+		from user_count_log
+	</sql>
+	
+	<select id="selectUserCountList" parameterType="map" resultMap="selectResoult">
+		<!--select -->
+		<!--DATE_FORMAT(create_time,'%Y-%m-%d') as createTime,-->
+		<!--SUM(CASE when register_num=1 THEN 1 ELSE 0 END) as registerNum,-->
+		<!--SUM(CASE when login_num=1 THEN 1 ELSE 0 END) as loginNum,-->
+		<!--SUM(CASE when view_product_num=1 THEN 1 ELSE 0 END) as viewProductNum-->
+		<!--from -->
+		<!--user_count_log-->
+		<!--<where>-->
+			<!--<if test="createTime !=null and createTime != ''">-->
+				<!--DATE_FORMAT(create_time,'%Y-%m-%d')=#{createTime}-->
+			<!--</if>-->
+			<!--<if test="startTime !=null and startTime != ''">-->
+			<!--and datediff(DATE_FORMAT(create_time,'%Y-%m-%d'),#{startTime}) &gt;=0-->
+			<!--</if>-->
+			<!--<if test="endTime !=null and endTime != ''">-->
+			<!--and datediff(DATE_FORMAT(create_time,'%Y-%m-%d'),#{endTime}) &lt;=0			-->
+			<!--</if>-->
+		<!--</where>-->
+		<!--GROUP BY  DATE_FORMAT(create_time,'%Y-%m-%d')-->
+		<!--order by  DATE_FORMAT(create_time,'%Y-%m-%d') desc-->
+
+		SELECT
+		a.createTime,
+		a.registerNum,
+		f.loginNum,
+		ccl.viewProductNum,
+		c.channelRegisterNum,
+		ifnull(ccl.uv,0) as deviceFlag
+		FROM
+		(
+		SELECT
+		DATE_FORMAT( uc.create_time, '%Y-%m-%d' ) AS createTime,
+		SUM( CASE WHEN  uc.register_num = 1 THEN 1 ELSE 0 END ) AS registerNum
+		FROM
+		user_count_log uc
+
+		LEFT JOIN user_record ur ON uc.device_flag=ur.id
+		<where>
+			<if test="startTime !=null and startTime != ''">
+				and datediff(DATE_FORMAT(uc.create_time,'%Y-%m-%d'),#{startTime}) &gt;=0
+			</if>
+			<if test="endTime !=null and endTime != ''">
+				and datediff(DATE_FORMAT(uc.create_time,'%Y-%m-%d'),#{endTime}) &lt;=0
+			</if>
+		</where>
+
+		GROUP BY
+		createTime
+		) a
+		LEFT JOIN (
+		select
+			DATE_FORMAT( create_time, '%Y-%m-%d' ) AS createTime,
+			sum(load_page_num) AS viewProductNum,
+			count( DISTINCT(case when load_page_num=1 then  record_id end)) AS uv
+
+			from
+			channel_count_log
+
+			group by createTime
+		)ccl on	 ccl.createTime=a.createTime
+
+
+		LEFT JOIN (
+		SELECT
+		DATE_FORMAT( create_time, '%Y-%m-%d' ) AS createTime,
+		COUNT(0) as channelRegisterNum
+		FROM
+		app_user
+		where a_uphone is not NULL AND channel_id >0
+		GROUP BY
+		createTime
+		)c ON a.createTime =c.createTime
+
+		LEFT JOIN (
+
+
+		SELECT
+		e.createTime as createTime,
+		SUM(case WHEN e.login_num=1 AND e.register_num =1 THEN 1 else 0 END) AS loginNum
+
+		FROM
+		(SELECT
+		min(d.createTime) AS createTime,
+		d.login_num ,
+		d.register_num ,
+		d.phone
+		FROM
+		(SELECT
+		DATE_FORMAT( create_time, '%Y-%m-%d' ) AS createTime,
+		phone,
+		MAX(login_num) as login_num,
+		MAX(register_num) as  register_num
+
+		FROM
+		user_count_log
+
+		GROUP BY
+		createTime,phone)d
+		GROUP BY d.phone)e
+		GROUP BY e.createTime)f ON a.createTime =f.createTime
+		ORDER BY
+		a.createTime DESC
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--		SELECT-->
+<!--		a.createTime,-->
+<!--		a.registerNum,-->
+<!--		f.loginNum,-->
+<!--		a.viewProductNum,-->
+<!--		c.channelRegisterNum,-->
+<!--		ifnull(a.uv,0) as deviceFlag-->
+<!--		FROM-->
+<!--		(-->
+<!--		SELECT-->
+<!--		DATE_FORMAT( create_time, '%Y-%m-%d' ) AS createTime,-->
+<!--		SUM( CASE WHEN register_num = 1 THEN 1 ELSE 0 END ) AS registerNum,-->
+<!--		SUM( CASE WHEN view_product_num = 1 THEN 1 ELSE 0 END ) AS viewProductNum,-->
+<!--		count( distinct device_flag ) AS uv-->
+<!--		FROM-->
+<!--		user_count_log-->
+<!--		<where>-->
+<!--			<if test="startTime !=null and startTime != ''">-->
+<!--				and datediff(DATE_FORMAT(create_time,'%Y-%m-%d'),#{startTime}) &gt;=0-->
+<!--			</if>-->
+<!--			<if test="endTime !=null and endTime != ''">-->
+<!--				and datediff(DATE_FORMAT(create_time,'%Y-%m-%d'),#{endTime}) &lt;=0-->
+<!--			</if>-->
+<!--		</where>-->
+
+<!--		GROUP BY-->
+<!--		createTime-->
+<!--		) a-->
+<!--		LEFT JOIN (-->
+<!--		SELECT-->
+<!--		DATE_FORMAT( create_time, '%Y-%m-%d' ) AS createTime,-->
+<!--		COUNT(0) as channelRegisterNum-->
+<!--		FROM-->
+<!--		app_user-->
+<!--		where a_uphone is not NULL AND channel_id >0-->
+<!--		GROUP BY-->
+<!--		createTime-->
+<!--		)c ON a.createTime =c.createTime-->
+
+<!--		LEFT JOIN (-->
+
+
+<!--		SELECT-->
+<!--		e.createTime as createTime,-->
+<!--		SUM(case WHEN e.login_num=1 AND e.register_num =1 THEN 1 else 0 END) AS loginNum-->
+
+<!--		FROM-->
+<!--		(SELECT-->
+<!--		min(d.createTime) AS createTime,-->
+<!--		d.login_num ,-->
+<!--		d.register_num ,-->
+<!--		d.phone-->
+<!--		FROM-->
+<!--		(SELECT-->
+<!--		DATE_FORMAT( create_time, '%Y-%m-%d' ) AS createTime,-->
+<!--		phone,-->
+<!--		MAX(login_num) as login_num,-->
+<!--		MAX(register_num) as  register_num-->
+
+<!--		FROM-->
+<!--		user_count_log-->
+
+<!--		GROUP BY-->
+<!--		createTime,phone)d-->
+<!--		GROUP BY d.phone)e-->
+<!--		GROUP BY e.createTime)f ON a.createTime =f.createTime-->
+<!--		ORDER BY-->
+<!--		a.createTime DESC-->
+
+	</select>
+</mapper>

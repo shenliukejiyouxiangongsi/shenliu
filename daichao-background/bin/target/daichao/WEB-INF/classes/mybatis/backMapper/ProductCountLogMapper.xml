@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.youdai.daichao.mapper.ProductCountLogMapper">
+
+    <!-- 开启二级缓存 -->
+    <!--<cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>-->
+	
+	<select id="selectProdctCountList" parameterType="map" resultType="landingPage">
+		select 
+		pc.p_id as pId,
+		SUM(CASE WHEN pc.first_view_num=1 then 1 else 0 END) as firstViewNum,
+		SUM(CASE WHEN pc.second_view_num=1 then 1 else 0 END) as secondViewNum,
+		DATE_FORMAT(pc.create_time,'%Y-%m-%d')  as createTime,
+		p.p_name as pName
+		from 
+		product_count_log pc left join product p
+		on pc.p_id = p.p_id
+		<where>
+			<if test="createTime !=null and createTime != ''">
+				DATE_FORMAT(pc.create_time,'%Y-%m-%d')=#{createTime}
+			</if>
+			<if test="startTime !=null and startTime != ''">
+			 datediff(DATE_FORMAT(pc.create_time,'%Y-%m-%d'),#{startTime}) &gt;=0
+			</if>
+			<if test="endTime !=null and endTime != ''">
+			and datediff(DATE_FORMAT(pc.create_time,'%Y-%m-%d'),#{endTime}) &lt;=0			
+			</if>
+			<if test="pName !=null and pName !=''"> and p.p_name =#{pName} </if>
+		</where>
+		GROUP BY pc.p_id,	DATE_FORMAT(pc.create_time,'%Y-%m-%d')
+		ORDER BY createTime desc
+	</select>
+</mapper>

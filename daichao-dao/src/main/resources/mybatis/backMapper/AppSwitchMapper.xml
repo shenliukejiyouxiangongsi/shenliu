@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.youdai.daichao.mapper.AppSwitchMapper">
+
+
+    <update id="changeStatus" parameterType="appSwitch" >
+        update app_switch
+        <set>
+
+            <if test="status != null ">status = #{status}</if>
+        </set>
+        where id = #{id}
+
+    </update>
+
+    <delete id="deleteByMarketId" parameterType="int">
+        delete from app_switch
+        where market_id=#{marketId}
+    </delete>
+
+
+    <select id="selectAppSwitch" parameterType="appSwitch" resultType="appSwitchShow">
+        select
+        ap.id,
+        ap.app_type as appType,
+        ap.status,
+        ap.remark,
+        ap.app_version as appVersion,
+        ap.create_time as createTime,
+        ap.market_id as marketId,
+        ap.package_name as packageName,
+        mc.market_name as marketName,
+        s.shell_id as shellId,
+        s.shell_name as shellName
+        from
+        (app_switch  ap left join market_channel mc on ap.market_id=mc.market_id) left join shell s on ap.shell_id=s.shell_id
+        <where>
+            <if test="appType != null">
+                ap.app_type = #{appType}
+            </if>
+            <if test="marketId != null">
+                and ap.market_id =#{marketId}
+            </if>
+            <if test="appVersion != null and appVersion != ''">
+                and ap.app_Version =#{appVersion}
+            </if>
+        </where>
+        order by ap.app_type , ap.app_Version desc,ap.create_time desc
+    </select>
+</mapper>

@@ -1,0 +1,48 @@
+GET http://localhost:8381/api/project/list?pageNo=1&pageSize=30&minMoney=2000
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-06-22T011836.200.json
+
+###
+
+GET http://localhost:8381/api/project/list?pageNo=1&pageSize=10&minMoney=2000
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-06-22T011520.200.json
+
+###
+
+GET http://localhost:8381/api/project/list?pageNo=1&pageSize=10&minMoney=5000
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-06-22T011247.200.json
+
+###
+
+GET http://localhost:8381/api/project/list?pageNo=1&pageSize=10&minMoney=5000
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-06-22T113439.200.json
+
+###
+
+GET http://localhost:8381/api/project/list?pageNo=1&pageSize=10
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-06-22T113148.200.json
+
+###
+
+GET http://localhost:8381/api/project/list
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-06-22T113005.200.json
+
+###
+

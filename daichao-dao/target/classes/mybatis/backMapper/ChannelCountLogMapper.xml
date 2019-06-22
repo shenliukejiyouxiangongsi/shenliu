@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.youdai.daichao.mapper.ChannelCountLogMapper">
+
+    <!-- 开启二级缓存 -->
+    <!--<cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>-->
+	
+
+	<select id="selectChannelCountList" parameterType="map" resultType="channelCount">
+		SELECT
+		m.channelId,
+		m.viewPageNum,
+		m.loadPageNum,
+		m.registerNum,
+		m.discountNum,
+		m.createTime,
+		m.channelName,
+		m.everyViewPageNum,
+		IFNULL(n.login_num,0) as loginNum
+
+		FROM
+		(SELECT
+		cl.channel_id as channelId,
+		sum(case when cl.view_page_num =1 then 1  else 0 end) as viewPageNum,
+		sum(case when cl.load_page_num =1 then 1  else 0 end) as loadPageNum,
+		sum(case when cl.register_num =1 then 1  else 0 end) as registerNum,
+		sum(case when cl.every_view_page_num =1 then 1  else 0 end) as everyViewPageNum,
+		cast((c.proportion)*0.01*sum(case when cl.register_num =1 then 1  else 0 end) as decimal(9,1)) as discountNum,
+		DATE_FORMAT(cl.create_time,'%Y-%m-%d') as createTime,
+		c.channel_name as channelName
+		from channel_count_log cl
+		left join channel c on  cl.channel_id=c.channel_id
+		where  cl.channel_id is not null
+
+		<if test="channelName != null and channelName != ''">
+			and c.channel_name =#{channelName}
+		</if>
+		<if test="startTime =='' and endTime == ''">
+			and datediff(DATE_FORMAT(cl.create_time,'%Y-%m-%d'),SYSDATE()) =0
+		</if>
+		<if test="startTime !=null and startTime != ''">
+			and datediff(DATE_FORMAT(cl.create_time,'%Y-%m-%d'),#{startTime}) &gt;=0
+		</if>
+		<if test="endTime !=null and endTime != ''">
+			and datediff(DATE_FORMAT(cl.create_time,'%Y-%m-%d'),#{endTime}) &lt;=0
+		</if>
+
+
+		GROUP BY DATE_FORMAT(cl.create_time,'%Y-%m-%d'),cl.channel_id)m
+
+		LEFT JOIN
+
+		(
+		SELECT
+		c.create_time ,
+		c.channel_id,
+		SUM(c.login_num)as  login_num
+		FROM
+
+		(SELECT
+		min(b.time) as create_time,
+		b.channel_id,
+		max( b.login_num)as  login_num
+		FROM
+		(
+		SELECT
+		DATE_FORMAT(cl.create_time,'%Y-%m-%d') as time,
+		cl.channel_id,
+		cl.user_id,
+		max(cl.login_num)as  login_num
+		FROM
+		channel_count_log cl where  cl.channel_id is not null
+
+		GROUP BY time,cl.channel_id,cl.user_id)b
+
+		GROUP BY b.user_id)c
+
+		GROUP BY c.create_time,c.channel_id )n
+
+		ON m.createTime=n.create_time AND m.channelId=n.channel_id
+		order by  m.createTime desc
+	</select>
+</mapper>

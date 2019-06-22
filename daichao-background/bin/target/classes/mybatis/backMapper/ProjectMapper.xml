@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.youdai.daichao.mapper.ProjectMapper">
+
+    <!-- 开启二级缓存 -->
+     <!-- <cache type="org.mybatis.caches.ehcache.LoggingEhcache"/> -->
+
+    <!--<select id="selectAllList" parameterType="Project" resultMap="Product">-->
+        <!--select pro_id,pro_name,pro_key,create_time,description-->
+        <!--from project-->
+
+    <!--</select>-->
+</mapper>

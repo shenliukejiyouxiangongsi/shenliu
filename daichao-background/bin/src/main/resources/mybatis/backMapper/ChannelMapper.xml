@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.youdai.daichao.mapper.ChannelMapper">
+
+    <!-- 开启二级缓存 -->
+<!--     <cache type="org.mybatis.caches.ehcache.LoggingEhcache"/> -->
+<!--    <resultMap type="com.youdai.daichao.domain.Channel" id="ChannelResult" autoMapping="true">
+    </resultMap> -->
+
+    <resultMap type="Channel" id="ChannelShortResult">
+        <id     column="channel_id"       property="channelId"      />
+        <result column="channel_name"    property="channelName"   />
+        <result column="c_loginname"     property="cLoginname"    />
+        <result column="c_url"        property="cUrl"        />
+        <result column="proportion"  property="proportion"  />
+        <result column="c_password"          property="cPassword"/>
+        <result column="create_user"         property="createUser"         />
+        <result column="create_time"       property="createTime"       />
+        <result column="update_time"       property="updateTime"       />
+        <result column="status"      property="status"     />
+        <result column="clear_form"      property="clearForm"     />
+        <result column="price"      property="price"     />
+    </resultMap>
+
+    <sql id="selectChannelVo">
+        select channel_id, channel_name, 
+        c_loginname, c_url, proportion, 
+        c_password, create_user, create_time, 
+        update_time, status ,clear_form,price
+        from channel
+    </sql>
+
+    <select id="selectChannelList" parameterType="Channel" resultMap="ChannelShortResult">
+        <include refid="selectChannelVo"/>
+        <where>
+                        <if test="channelId != 0 "> and channel_id = #{channelId}</if>
+                        <if test="channelName != null  and channelName != '' "> and channel_name = #{channelName}</if>
+                        <if test="cLoginname != null  and cLoginname != '' "> and c_loginname = #{cLoginname}</if>
+                        <if test="cUrl != null  and cUrl != '' "> and c_url = #{cUrl}</if>
+                        <if test="proportion != null  and proportion != '' "> and proportion = #{proportion}</if>
+                        <if test="cPassword != null  and cPassword != '' "> and c_password = #{cPassword}</if>
+                        <if test="createUser != null  and createUser != '' "> and create_user = #{createUser}</if>
+                        <if test="createTime != null "> and create_time = #{createTime}</if>
+                        <if test="updateTime != null  and updateTime != '' "> and update_time = #{updateTime}</if>
+                    
+                    </where>
+    </select>
+
+    <update id="updateChannel" parameterType="Channel">
+        update channel
+        <set>
+
+            <if test="cLoginname != null and cLoginname != ''">c_loginname = #{cLoginname},</if>
+            <if test="channelName != null and channelName != ''">channel_name = #{channelName},</if>
+            <if test="cUrl != null and cUrl != ''">c_url = #{cUrl},</if>
+            <if test="proportion != null and proportion != ''">proportion = #{proportion},</if>
+            <if test="cPassword != null and cPassword != ''">c_password = #{cPassword},</if>
+			<if test="status != null ">status = #{status},</if>
+            <if test="clearForm != null and clearForm != ''">clear_form = #{clearForm},</if>
+			<if test="price != null ">price = #{price}</if>
+        </set>
+        where channel_id = #{channelId}
+
+    </update>
+
+    <delete id="deleteChannelByIds" parameterType="String">
+        delete from channel where channel_id in
+        <foreach item="channelId" collection="array" open="(" separator="," close=")">#{channelId}</foreach>
+    </delete>
+
+	<update id="changeStatus" parameterType="Channel">
+		update channel set status=#{status}
+		where channel_id=#{channelId}
+	</update>
+	
+	<select id="selectAllChannel" resultType="channel">
+		select channel_id as channelId ,channel_name as channelName from channel
+	</select>
+	
+	<insert id="addChannel" parameterType="channel"  useGeneratedKeys="true" keyProperty="channelId">
+
+		insert into 
+		channel(channel_name,c_loginname,proportion,c_password,create_user,status,clear_form,price)
+		values(#{channelName},#{cLoginname},#{proportion},#{cPassword},#{createUser},#{status},#{clearForm},#{price})
+	</insert>
+</mapper>

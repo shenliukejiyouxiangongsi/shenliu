@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<style>
+	tr[data-index="0"]{
+		font-weight: 900;
+		color: black;
+	}
+</style>
+<body class="gray-bg">
+
+<div class="container-div">
+	<div class="row">
+		<div class="col-sm-12 search-collapse">
+			<form id="formId">
+				<div class="select-list">
+					<ul>
+						<li class="select-time">
+							<label>创建时间： </label>
+							<input type="text" class="time-input" id="startTime" placeholder="开始时间" name="startTime"/>
+							<span>-</span>
+							<input type="text" class="time-input" id="endTime" placeholder="结束时间" name="endTime"/>
+						</li>
+						<li>
+							产品名称：<input type="text" name="pName"/>
+						</li>
+						<li>
+							<a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+							<a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
+						</li>
+					</ul>
+				</div>
+			</form>
+		</div>
+
+		<div class="col-sm-12 select-table table-striped">
+			<table id="bootstrap-table" data-mobile-responsive="true"></table>
+		</div>
+	</div>
+</div>
+<div th:include="include :: footer"></div>
+<script th:inline="javascript">
+	var prefix = ctx + "productCount";
+	var curDate= new Date();
+	$(function() {
+		var options = {
+			url: prefix + "/list",
+			modalName: "落地页统计",
+			search: false,
+			showExport: true,
+			columns: [{
+				checkbox: true
+			},
+				{
+					field : 'id',
+					title : 'id',
+					visible: false
+				},
+				{
+					field : 'createTime',
+					title : '日期'
+				},
+				{
+					field : 'pname',
+					title : '产品名称'
+				},
+				{
+					field : 'firstViewNum',
+					title : '一级页面PV',
+					formatter:function(value,row,index){
+						if(value==0){
+							return "-";
+						}
+						return  value;
+					}
+				},
+				{
+					field : 'secondViewNum',
+					title : '二级页面PV',
+					formatter:function(value,row,index){
+						if(value==0){
+							return "-";
+						}
+						return  value;
+					}
+				},{
+					field : 'firstUserNum',
+					title : '一级页面UV',
+					formatter:function(value,row,index){
+						if(value==0){
+							return "-";
+						}
+						return  value;
+					}
+				},{
+					field : 'secondUserNum',
+					title : '二级页面UV',
+					formatter:function(value,row,index){
+						if(value==0){
+							return "-";
+						}
+						return  value;
+					}
+				},]
+		};
+		$.table.init(options);
+	});
+
+</script>
+</body>
+</html>

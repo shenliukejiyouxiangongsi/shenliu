@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.youdai.daichao.mapper.ProductCountLogMapper">
+
+    <!-- 开启二级缓存 -->
+    <!--<cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>-->
+	<resultMap type="ProductCountLog" id="selectResoult" autoMapping="true">
+		
+	</resultMap>
+	
+	<select id="selectProductCountList" parameterType="map" resultType="landingPage">
+		select 
+		pcl.id as id,
+		pcl.first_view_num as firstViewNum,
+		pcl.second_view_num as secondViewNum,
+		p.p_id as pId,
+		p.p_name as pName				
+		from 
+		product p,product_count_log pcl
+		where p.p_id=pcl.p_id
+	</select>
+</mapper>

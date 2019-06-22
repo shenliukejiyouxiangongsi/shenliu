@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html  lang="zh" xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="white-bg">
+<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+	<form class="form-horizontal m" id="form-channel-add">
+		<div class="form-group">
+			<label class="col-sm-3 control-label">登录账号：</label>
+			<div class="col-sm-8">
+				<input id="cLoginname" name="cLoginname" class="form-control" type="text">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-3 control-label">渠道商名称：</label>
+			<div class="col-sm-8">
+				<input id="channelName" name="channelName" class="form-control" type="text">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="col-sm-3 control-label">扣量比例：</label>
+			<div class="col-sm-8">
+				<input id="proportion" name="proportion" class="form-control"  type="text" placeholder="整数(如输入90，意思是扣10%)">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-3 control-label">结算方式：</label>
+			<div class="col-sm-8">
+				<select id="clearForm" name="clearForm" class="form-control m-b">
+					<option  value="CPA">CPA</option>
+					<option  value="CPS" >CPS</option>
+					<option value="UV">UV</option>
+				</select>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-3 control-label">单价：</label>
+			<div class="col-sm-8">
+				<input id="price" name="price" class="form-control"  type="text" placeholder="单个注册金额">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-3 control-label">登录密码：</label>
+			<div class="col-sm-8">
+				<input id="cPassword" name="cPassword" class="form-control" type="text">
+			</div>
+		</div>
+
+	</form>
+</div>
+<div th:include="include::footer"></div>
+<script type="text/javascript">
+	var prefix = ctx + "channel"
+	$("#form-channel-add").validate({
+		rules:{
+			proportion:{
+				required:true,
+				isProportion:true
+			},
+			cLoginname:{
+				required:true,
+				isLoginName:true
+			},
+			channelName:{
+				required:true,
+			},
+		}
+	});
+
+	function submitHandler() {
+		if ($.validate.form()) {
+			add();
+		}
+	}
+
+	function add() {
+		$.ajax({
+			cache : true,
+			type : "POST",
+			url : prefix + "/add",
+			data :$("#form-channel-add").serialize() ,
+			async : false,
+			error : function(request) {
+				$.modal.alertError("系统错误");
+			},
+			success : function(data) {
+				$.operate.successCallback(data);
+			}
+		});
+	}
+</script>
+</body>
+</html>

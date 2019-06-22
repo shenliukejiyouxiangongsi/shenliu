@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html  lang="zh" xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="white-bg">
+<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+    <form class="form-horizontal m" id="form-question-edit" th:object="${question}">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">题目等级：</label>
+            <div class="col-sm-3">
+                <input type="text" th:field="*{degree}" readonly class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">状态：</label>
+            <div class="col-sm-3">
+                <input type="text" th:value="*{isDelete ==0 ? '启用':'停用'} " readonly class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">排序：</label>
+            <div class="col-sm-3">
+                <input type="text" th:value="*{questionSort} " readonly class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">问题描述:</label>
+            <div class="col-sm-8">
+                <textarea rows="3" cols="3" id="description" name="description" th:field="*{description}" readonly class="form-control"  style="resize:none" ></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">选项A:(<span th:text="*{scoreA}"></span>分)</label>
+            <div class="col-sm-5">
+                <textarea rows="2" cols="3" id="chooseAnswera" name="chooseAnswera" th:field="*{chooseAnswera}" readonly  class="form-control"  style="resize:none" ></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">选项B:(<span th:text="*{scoreB}"></span>分)</label>
+            <div class="col-sm-5">
+                <textarea rows="2" cols="3" id="chooseAnswerb" name="chooseAnswerb" th:field="*{chooseAnswerb}" readonly class="form-control"  style="resize:none" ></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">选项C:(<span th:text="*{scoreC}"></span>分)</label>
+            <div class="col-sm-5">
+                <textarea rows="2" cols="3" id="chooseAnswerc" name="chooseAnswerc" th:field="*{chooseAnswerc}" readonly class="form-control"  style="resize:none" ></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">选项D:(<span th:text="*{scoreD}"></span>分)</label>
+            <div class="col-sm-5">
+                <textarea rows="2" cols="3" id="chooseAnswerd" name="chooseAnswerd" th:field="*{chooseAnswerd}" readonly class="form-control"  style="resize:none" ></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">正确答案：</label>
+            <div class="col-sm-3">
+                <input type="text" th:field="*{realAnswer}" id="realAnswer" readonly class="form-control">
+            </div>
+        </div>
+    </form>
+</div>
+<div th:include="include::footer"></div>
+<script type="text/javascript">
+    $(function () {
+        var answer=$("#realAnswer").val();
+        if(answer==""){
+            $("#realAnswer").val("无");
+        }
+    })
+</script>
+</body>
+</html>

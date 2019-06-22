@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.youdai.daichao.mapper.ProjectMapper">
+
+    <!-- 开启二级缓存 -->
+     <!-- <cache type="org.mybatis.caches.ehcache.LoggingEhcache"/> -->
+    <resultMap type="Project" id="ProductResult">
+        <id     property="proId"       column="pro_id"      />
+        <result property="proName"    column="pro_name"   />
+        <result property="proKey"     column="pro_key"    />
+        <result property="createTime"         column="create_time"         />
+        <result property="description"      column="description"     />
+    </resultMap>
+
+
+    <select id="selectAllList" parameterType="Project" resultMap="ProductResult">
+        select pro_id,pro_name,pro_key,
+        DATE_FORMAT(create_time,'%Y-%m-%d') as create_time,description
+        from project
+        <where>
+            <if test="proName != null and proName != ''">
+                pro_name = #{proName}
+            </if>
+        </where>
+        order by create_time desc
+    </select>
+</mapper>

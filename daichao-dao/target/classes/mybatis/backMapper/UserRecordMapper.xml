@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.youdai.daichao.mapper.UserRecordMapper">
+
+    <!-- 开启二级缓存 -->
+<!--    <cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>-->
+    <resultMap id="UserRecordResult" type="UserRecord"  autoMapping="true"></resultMap>
+
+    <select id="selectUserRecords" resultMap="UserRecordResult" parameterType="java.util.Map">
+<!--        SELECT-->
+<!--            a.id,-->
+<!--            a.udid,-->
+<!--            a.ip,-->
+<!--            a.create_time AS createTime,-->
+<!--            a.user_phone AS userPhone,-->
+<!--            b.channel_name as channelName-->
+
+<!--        FROM-->
+<!--        `user_record` a-->
+<!--        LEFT JOIN channel b ON a.channel_id =b.channel_id-->
+<!--        <where>-->
+<!--            <if test="userPhone != null and userPhone !='' " >-->
+<!--             and  a.user_phone like concat(#{userPhone},"%")-->
+<!--            </if>-->
+<!--            <if test="startTime !=null and startTime != ''">-->
+<!--                and  DATEDIFF(DATE_FORMAT(a.create_time,'%Y-%m-%d'),#{startTime})&gt;=0-->
+<!--            </if>-->
+<!--            <if test="endTime !=null and endTime != ''">-->
+<!--                and  DATEDIFF(DATE_FORMAT(a.create_time,'%Y-%m-%d'),#{startTime})&lt;=0-->
+<!--            </if>-->
+<!--            <if test="channelId == 0">-->
+<!--                and  a.channel_Id is null-->
+<!--            </if>-->
+<!--            <if test="channelId != null and channelId != 0">-->
+<!--                and  a.channel_Id = #{channelId}-->
+<!--            </if>-->
+<!--        </where>-->
+<!--        order by createTime desc-->
+            SELECT
+            a.id ,
+            a.udid,
+            a.ip,
+            d.create_time AS createTime,
+            a.user_phone AS userPhone,
+            c.channel_name AS channelName,
+            e.viewCount,
+            e.applicationNumber,
+            e.openTime
+
+            FROM
+            `user_record` a
+            LEFT JOIN app_user d on	a.user_phone=d.a_uphone
+            LEFT JOIN
+            channel c on  a.channel_id =c.channel_id
+
+            LEFT JOIN (
+
+            SELECT
+            d.id,
+            d.udid,
+            SUM(d.first_view_num) AS viewCount,
+            SUM(d.second_view_num) AS applicationNumber,
+            MAX(d.create_time) AS openTime
+            FROM
+            (
+            SELECT
+            n.id,
+            n.udid,
+            MAX(m.first_view_num) as first_view_num,
+            max(m.second_view_num) as second_view_num,
+            MAX(m.create_time) as create_time
+
+            FROM
+            product_count_log m
+            LEFT JOIN user_record n ON m.device_flag=n.id
+            WHERE n.udid IS NOT NULL
+            GROUP BY n.udid,m.p_id,m.type
+            )d
+            GROUP BY d.udid
+            )e
+
+            ON a.udid =e.udid
+            WHERE a.udid IS NOT NULL
+            <if test="userPhone != null and userPhone !='' " >
+                    and  a.user_phone like concat(#{userPhone},"%")
+            </if>
+            <if test="udid != null and udid !='' " >
+                    and  a.udid like concat(#{udid},"%")
+            </if>
+            <if test="ip != null and ip !='' " >
+                    and  a.ip like concat(#{ip},"%")
+            </if>
+            <if test="startTime !=null and startTime != ''">
+                    and  DATEDIFF(DATE_FORMAT(e.openTime,'%Y-%m-%d'),#{startTime})&gt;=0
+            </if>
+            <if test="endTime !=null and endTime != ''">
+                    and  DATEDIFF(DATE_FORMAT(e.openTime,'%Y-%m-%d'),#{endTime})&lt;=0
+            </if>
+            <if test="channelId == 0">
+                    and  c.channel_Id is null
+            </if>
+            <if test="channelId != null and channelId != 0">
+                    and  c.channel_Id = #{channelId}
+            </if>
+
+            UNION ALL
+
+            SELECT
+            null as id ,
+            null as udid,
+            null as ip,
+            null AS createTime,
+            "合计" AS userPhone,
+            null AS channelName,
+            SUM(f.viewCount) AS viewCount,
+            SUM(f.applicationNumber) AS applicationNumber,
+            null as openTime
+            FROM
+            (
+            SELECT
+            e.viewCount,
+            e.applicationNumber
+            FROM
+            `user_record` a
+
+            LEFT JOIN
+            channel c on  a.channel_id =c.channel_id
+            LEFT JOIN (
+
+            SELECT
+            d.id,
+            d.udid,
+            SUM(d.first_view_num) AS viewCount,
+            SUM(d.second_view_num) AS applicationNumber,
+            MAX(d.create_time) AS openTime
+            FROM
+            (
+            SELECT
+            n.id,
+            n.udid,
+            MAX(m.first_view_num) as first_view_num,
+            max(m.second_view_num) as second_view_num,
+            MAX(m.create_time) as create_time
+
+            FROM
+            product_count_log m
+            LEFT JOIN user_record n ON m.device_flag=n.id
+            WHERE n.udid IS NOT NULL
+            GROUP BY n.udid,m.p_id,m.type
+            )d GROUP BY d.udid
+            )e
+
+            ON a.udid =e.udid
+            WHERE a.udid IS NOT NULL
+            <if test="userPhone != null and userPhone !='' " >
+                    and  a.user_phone like concat(#{userPhone},"%")
+            </if>
+            <if test="udid != null and udid !='' " >
+                    and  a.udid like concat(#{udid},"%")
+            </if>
+            <if test="ip != null and ip !='' " >
+                    and  a.ip like concat(#{ip},"%")
+            </if>
+            <if test="startTime !=null and startTime != ''">
+                    and  DATEDIFF(DATE_FORMAT(e.openTime,'%Y-%m-%d'),#{startTime})&gt;=0
+            </if>
+            <if test="endTime !=null and endTime != ''">
+                    and  DATEDIFF(DATE_FORMAT(e.openTime,'%Y-%m-%d'),#{endTime})&lt;=0
+            </if>
+            <if test="channelId == 0">
+                    and  c.channel_Id is null
+            </if>
+            <if test="channelId != null and channelId != 0">
+                    and  c.channel_Id = #{channelId}
+            </if>
+            GROUP BY a.udid
+            )f
+            ORDER BY CASE WHEN userPhone ='合计' THEN 1 ELSE 0 END DESC,createTime DESC
+    </select>
+
+        <select id="selectUserRecords_COUNT" parameterType="java.util.Map" resultType="Long">
+                SELECT
+                COUNT(0)+1
+                FROM
+                `user_record` a
+
+                LEFT JOIN
+                channel c on  a.channel_id =c.channel_id
+
+                LEFT JOIN (
+
+                SELECT
+                d.id,
+                d.udid,
+                MAX(d.create_time) AS openTime
+                FROM
+                (SELECT
+                n.id,
+                n.udid,
+                MAX(m.create_time) as create_time
+
+                FROM
+                product_count_log m
+                LEFT JOIN user_record n ON m.device_flag=n.id
+                WHERE n.udid IS NOT NULL
+                GROUP BY n.udid,m.p_id,m.type)d
+                GROUP BY d.udid)e
+
+                ON a.udid =e.udid
+                WHERE a.udid IS NOT NULL
+
+                <if test="userPhone != null and userPhone !='' " >
+                        and  a.user_phone like concat(#{userPhone},"%")
+                </if>
+                <if test="udid != null and udid !='' " >
+                        and  a.udid like concat(#{udid},"%")
+                </if>
+                <if test="ip != null and ip !='' " >
+                        and  a.ip like concat(#{ip},"%")
+                </if>
+                <if test="startTime !=null and startTime != ''">
+                        and  DATEDIFF(DATE_FORMAT(e.openTime,'%Y-%m-%d'),#{startTime})&gt;=0
+                </if>
+                <if test="endTime !=null and endTime != ''">
+                        and  DATEDIFF(DATE_FORMAT(e.openTime,'%Y-%m-%d'),#{endTime})&lt;=0
+                </if>
+                <if test="channelId == 0">
+                        and  c.channel_Id is null
+                </if>
+                <if test="channelId != null and channelId != 0">
+                        and  c.channel_Id = #{channelId}
+                </if>
+        </select>
+
+</mapper>

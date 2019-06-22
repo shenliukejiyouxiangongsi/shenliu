@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: daichao-background
+Implementation-Version: 1.0.0
+Built-By: Administrator
+Implementation-Vendor-Id: com.youdai.daichao
+Build-Jdk: 1.8.0_112
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/daichao/daichao-background
+Created-By: Maven Integration for Eclipse
+

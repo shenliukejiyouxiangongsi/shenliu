@@ -1,0 +1,36 @@
+package ${package}.service.impl;
+
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import ${package}.mapper.${className}Mapper;
+import ${package}.domain.${className};
+import ${package}.service.${className}Service;
+import com.youdai.kaxiaozhu.common.support.Convert;
+
+/**
+ * ${tableComment} 服务层实现
+ * 
+ * @author ${author}
+ * @date ${datetime}
+ */
+@Service
+public class ${className}ServiceImpl extends ServiceImpl<${className}Mapper, ${className}> implements ${className}Service
+{
+    @Autowired
+    ${className}Mapper ${classname}Mapper;;
+
+    @Override
+    public List<${className}> select${className}List(${className} ${classname})
+    {
+        return ${classname}Mapper.select${className}List(${classname});
+    }
+
+
+    @Override
+    public int delete${className}ByIds(String ids)
+    {
+        return ${classname}Mapper.delete${className}ByIds(Convert.toStrArray(ids));
+    }
+}

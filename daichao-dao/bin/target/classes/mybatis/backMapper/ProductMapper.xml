@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.youdai.daichao.mapper.ProductMapper">
+
+    <!-- 开启二级缓存 -->
+   <!--  <cache type="org.mybatis.caches.ehcache.LoggingEhcache"/> -->
+    <resultMap type="Product" id="ProductResult">
+        <id     property="pId"       column="p_id"      />
+        <result property="pName"    column="p_name"   />
+        <result property="describation"     column="describation"    />
+        <result property="minMoney"        column="min_money"        />
+        <result property="maxMoney"  column="max_money"  />
+        <result property="outtimeBegin"          column="outTime_begin"/>
+        <result property="outtimeEnd"         column="outTime_end"         />
+        <result property="accessCondition"       column="access_condition"       />
+        <result property="materials"      column="materials"     />
+        <result property="explaintion"          column="explaintion"/>
+        <result property="status"         column="status"         />
+        <result property="logoUrl"       column="logo_url"       />
+        <result property="linkUrl"      column="link_url"     />
+        <result property="merchantId"          column="merchant_id"/>
+        <result property="createTime"         column="create_time"         />
+        <result property="createUser"       column="create_user"       />
+        <result property="pType"      column="p_type"     />
+        <result property="updateTime"      column="update_time"     />
+        <result property="clearForm"      column="clear_form"     />
+        <result property="price"      column="price"     />        
+    </resultMap>
+
+    <resultMap type="com.youdai.daichao.common.vo.ProductVo" id="ProductVoResult">
+        <id     property="pId"       column="p_id"      />
+        <result property="pName"    column="p_name"   />
+        <result property="describation"     column="describation"    />
+        <result property="minMoney"        column="min_money"        />
+        <result property="maxMoney"  column="max_money"  />
+        <result property="outtimeBegin"          column="outTime_begin"/>
+        <result property="outtimeEnd"         column="outTime_end"         />
+        <result property="rate"         column="rate"         />
+        <result property="logoUrl"       column="logo_url"       />
+        <result property="linkUrl"       column="link_url"       />
+        <result property="status"       column="status"       />
+        <result property="sort"       column="r_sort"       />
+        <result property="orderNum"       column="order_num"       />
+    </resultMap>
+
+    <sql id="selectProductVo">
+        p_id,p_name,describation,min_money,max_money,outTime_begin,outTime_end,rate,access_condition,materials,explaintion,status,logo_url
+        ,link_url,merchant_id,create_time,create_user,p_type,update_time
+    </sql>
+
+    <sql id="selectProduct">
+        a.p_id,a.p_name,a.describation,a.min_money,a.max_money,a.outTime_begin,a.outTime_end,a.rate,a.logo_url,a.link_url,a.status,a.order_num
+        ,b.r_sort
+    </sql>
+
+    <select id="selectProductList"  parameterType="Product" resultMap="ProductResult">
+        select
+        <include refid="selectProductVo"/>
+        from   product
+        <where>
+            <if test="pId != null and pId!= 0 ">and p_id = #{pId}</if>
+            <if test="pName != null  and pName != '' ">and p_name = #{pName}</if>
+            <if test="describation != null  and describation != '' "> and describation = #{describation}</if>
+            <if test="minMoney != null  and minMoney != '' ">and min_money = #{minMoney}</if>
+            <if test="maxMoney != null  and maxMoney != '' ">and max_money = #{maxMoney}</if>
+        </where>
+    </select>
+
+    <select id="selectNewProduct"  resultMap="ProductVoResult">
+        select
+        <include refid="selectProduct"/>
+        from   product a,recommend b
+        where  a.p_id=b.p_id
+        and a.status=1
+        and b.r_type=2
+        order by b.r_sort
+    </select>
+
+    <select id="selectHotProduct"  resultMap="ProductVoResult">
+        select
+        <include refid="selectProduct"/>
+        from   product a,recommend b
+        where  a.p_id=b.p_id
+        and a.status=1
+        and b.r_type=1
+        order by b.r_sort
+    </select>
+
+    <update id="updateOrderNum" parameterType="java.lang.Integer">
+        update product set order_num=order_num+1
+        where p_id=#{pid}
+    </update>
+
+    <select id="selectProductShowList"  parameterType="Product" resultType="productShow">
+        select
+		p.p_id as pId,
+		p.p_name as pName,
+		p.describation,		
+		p.status,
+		p.logo_Url as logoUrl,		
+		p.link_Url as linkUrl,
+		p.create_Time as createTime,
+		p.update_Time as updateTime,
+		p.clear_form as clearForm,
+		p.price ,
+		r.r_Type as rType,
+		r.r_Sort as rSort
+        from   product p left join recommend r on p.p_id =r.p_id
+        <where>
+            <if test="pId != null and pId!= 0 ">and p_id = #{pId}</if>
+            <if test="pName != null  and pName != '' ">and p_name = #{pName}</if>
+            <if test="status != 0 ">and p.status = #{status}</if>
+        </where>
+        order by p.create_Time Desc
+    </select>
+    
+    <select id="selectAll" resultType="Product">
+    	select p_id as pId,
+    	p_name as pName
+    	from 
+    	product
+    </select>
+    
+    <select id="selectPdsNotInRec" resultType="Product">
+    	select  p_id as pId,
+    	p_name as pName
+     	from 
+    	product
+    	where p_id not in
+    	(select P_id from recommend )  	
+    </select>
+    
+    <select id="">
+    	select 
+    	p.p_id as pId,
+    	p.p_name as pName,
+    	p.describation ,
+    	p.status,
+    	p.logo_url as logoUrl,
+    	p.link_url as linkUrl,
+    	p.create_Time as createTime,
+    	p.update_Time as updateTime,
+    	r.r_Type as rType,
+    	r.r_Sort as rSort
+    	from product p left join recommend r on p.p_id =r.p_id
+    	<where>
+    		<if test="pName !=null and pName != ''">
+    			p.p_name =#{pName}
+    		</if>
+    		
+    		<if test="status != 0">
+    			p.status =#{status}
+    		</if>
+    	</where>
+    </select>
+    <update id="updateProduct" parameterType="product">
+    	update product 
+    	<set>
+            <if test="pName != null  and pName != '' "> p_name = #{pName}</if>
+            <if test="describation != null  and describation != '' "> describation = #{describation}</if>
+            <if test="minMoney != null  and minMoney != '' "> min_money = #{minMoney}</if>
+            <if test="maxMoney != null  and maxMoney != '' "> max_money = #{maxMoney}</if>
+            <if test="outtimeBegin != null  and outtimeBegin != '' "> outtime_Begin = #{outtimeBegin}</if>
+            <if test="outtimeEnd != null  and outtimeEnd != '' "> outtime_End = #{outtimeEnd}</if>
+           	<if test="rate != null and rate != ''"> rate = #{rate}</if>
+            <if test="accessCondition != null  and accessCondition != '' "> access_condition = #{accessCondition}</if>
+            <if test="materials != null  and materials != '' "> materials = #{materials}</if>
+            <if test="explaintion != null  and explaintion != '' "> explaintion = #{explaintion}</if>
+            <if test="status != 0 "> p.status = #{status}</if>
+            <if test="logoUrl != null and logoUrl != 0 "> logo_url = #{logoUrl}</if>
+            <if test="linkUrl != null and linkUrl != ''"> link_Url = #{linkUrl}</if>
+            <if test="merchantId != null and merchantId != ''"> merchant_id = #{merchantId}</if>
+            <if test="pType != null and pType != ''"> p_type = #{pType}</if>
+            <if test="clearForm != null and clearForm != ''"> clear_Form = #{clearForm}</if>
+            <if test="price != null and price != ''"> price = #{price}</if>    
+    	</set>
+    	where p_id = #{pId}
+    </update>
+</mapper>

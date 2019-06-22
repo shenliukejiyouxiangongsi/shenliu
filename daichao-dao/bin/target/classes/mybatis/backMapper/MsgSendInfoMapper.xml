@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rongke.mapper.MsgSendInfoMapper">
+
+    <resultMap type="com.youdai.daichao.domain.MsgSendInfo" id="mMsgSendInfo" autoMapping="true">
+    </resultMap>
+
+    <sql id="mColumnsSql">
+        id AS id,
+        tp_id AS tpId,
+        send_phone AS sendPhone,
+        send_content AS sendContent,
+        status AS status,
+        result_content AS resultContent
+    </sql>
+</mapper>

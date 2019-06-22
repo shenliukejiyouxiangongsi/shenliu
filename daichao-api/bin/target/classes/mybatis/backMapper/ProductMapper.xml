@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.youdai.daichao.mapper.ProductMapper">
+
+    <!-- 开启二级缓存 -->
+   <!--  <cache type="org.mybatis.caches.ehcache.LoggingEhcache"/> -->
+    <resultMap type="Product" id="ProductResult">
+        <id     property="pId"       column="p_id"      />
+        <result property="pName"    column="p_name"   />
+        <result property="describation"     column="describation"    />
+        <result property="minMoney"        column="min_money"        />
+        <result property="maxMoney"  column="max_money"  />
+        <result property="outtimeBegin"          column="outTime_begin"/>
+        <result property="outtimeEnd"         column="outTime_end"         />
+        <result property="rate"         column="rate"         />
+        <result property="accessCondition"       column="access_condition"       />
+        <result property="materials"      column="materials"     />
+        <result property="explaintion"          column="explaintion"/>
+        <result property="status"         column="status"         />
+        <result property="logoUrl"       column="logo_url"       />
+        <result property="linkUrl"      column="link_url"     />
+        <result property="merchantId"          column="merchant_id"/>
+        <result property="createTime"         column="create_time"         />
+        <result property="createUser"       column="create_user"       />
+        <result property="pType"      column="p_type"     />
+        <result property="updateTime"      column="update_time"     />
+    </resultMap>
+
+    <resultMap type="com.youdai.daichao.common.vo.ProductVo" id="ProductVoResult">
+        <id     property="pId"       column="p_id"      />
+        <result property="pName"    column="p_name"   />
+        <result property="describation"     column="describation"    />
+        <result property="minMoney"        column="min_money"        />
+        <result property="maxMoney"  column="max_money"  />
+        <result property="outtimeBegin"          column="outTime_begin"/>
+        <result property="outtimeEnd"         column="outTime_end"         />
+        <result property="rate"         column="rate"         />
+        <result property="logoUrl"       column="logo_url"       />
+        <result property="linkUrl"       column="link_url"       />
+        <result property="status"       column="status"       />
+        <result property="sort"       column="r_sort"       />
+        <result property="orderNum"       column="order_num"       />
+    </resultMap>
+
+    <sql id="selectProduct">
+        p_id,p_name,describation,min_money,max_money,outTime_begin,outTime_end,rate,access_condition,materials,explaintion,status,logo_url
+        ,link_url,merchant_id,create_time,create_user,p_type,update_time
+    </sql>
+
+    <sql id="selectProductVo">
+        a.p_id,a.p_name,a.describation,a.min_money,a.max_money,a.outTime_begin,a.outTime_end,a.rate,a.logo_url,a.link_url,a.status,a.order_num
+        ,b.r_sort
+    </sql>
+
+    <select id="selectProductList"  parameterType="Product" resultMap="ProductResult">
+        select
+        <include refid="selectProduct"/>
+        from   product
+        <where>
+            <if test="pId != null and pId!= 0 ">and p_id = #{pId}</if>
+            <if test="pName != null  and pName != '' ">and p_name = #{pName}</if>
+            <if test="describation != null  and describation != '' "> and describation = #{describation}</if>
+            <if test="minMoney != null  and minMoney != '' ">and min_money = #{minMoney}</if>
+            <if test="maxMoney != null  and maxMoney != '' ">and max_money = #{maxMoney}</if>
+        </where>
+    </select>
+
+    <select id="selectNewProduct"  resultMap="ProductVoResult">
+        select
+        <include refid="selectProductVo"/>
+        from   product a,recommend b
+        where  a.p_id=b.p_id
+        and a.status=1
+        and b.r_type=2
+        order by b.r_sort
+    </select>
+
+    <select id="selectHotProduct"  resultMap="ProductVoResult">
+        select
+        <include refid="selectProductVo"/>
+        from   product a,recommend b
+        where  a.p_id=b.p_id
+        and a.status=1
+        and b.r_type=1
+        order by b.r_sort
+    </select>
+
+    <update id="updateOrderNum" parameterType="java.lang.Integer">
+        update product set order_num=order_num+1
+        where p_id=#{pid}
+    </update>
+</mapper>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html  lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <title>贷超管理系统首页</title>
+    <meta name="keywords" content="贷超管理系统首页">
+    <meta name="description" content="贷超管理系统首页">
+    <!--[if lt IE 9]>
+    <meta http-equiv="refresh" content="0;ie.html"/>
+    <![endif]-->
+    <link th:href="@{favicon.ico}" rel="stylesheet"/>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{/css/font-awesome.min.css}" rel="stylesheet"/>
+    <link th:href="@{/css/animate.css}" rel="stylesheet"/>
+    <link th:href="@{/css/style.css}" rel="stylesheet"/>
+    <link th:href="@{/common/css/ry-ui.css?v=3.1.0}" rel="stylesheet"/>
+    <style type="text/css">
+        .nav > li:hover .dropdown-menu {display: block;}
+        #content-main.max { height: calc(100% - 110px); overflow: hidden; width: 100%; height: 100%; left: 0px; position: absolute; top: 0px; z-index: 9998; margin: 0; }
+        .layui-layer-page .layui-layer-content{
+            overflow: inherit;
+        }
+        .navbar-header>li>a {
+        color: #a7b1c2;
+        font-weight: 600;
+        padding: 14px 20px 14px 25px;
+        }
+        .navbar-header>li{
+            float: left;
+            height: 60px;
+            text-align: center;
+            line-height: 60px;
+        }
+        .navbar-header>li>a:hover, .navbar-header .nav>li>a:focus {
+            background-color: #293846;
+            color: #00D4AB;
+        }
+        .menusClickIoc{
+            background: #222222;
+        }
+        .menusClickIoc a{
+            color: #00D4AB !important;
+        }
+        .nav>li>a:hover{
+            text-decoration: none;
+            background-color: #222222;
+        }
+        .nav .open .block{
+            background-color: #222222;
+            color: #00D4AB
+        }
+    </style>
+</head>
+<body class="fixed-sidebar full-height-layout gray-bg" style="overflow: hidden" th:classappend="${@config.getKey('sys.index.skinName')}">
+<script type="text/javascript">
+    //刷新左上角头像
+function changeAvatar(){
+    $.ajax({
+        type:"get",
+        url:"system/user/getLogUser",
+        success:function(msg){
+        	$("#userAvatar").attr("src",msg.avatar);
+        }
+    })
+}
+</script>
+<div id="wrapper">
+
+    <!--左侧导航开始-->
+    <nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="nav-close">
+            <i class="fa fa-times"></i>
+        </div>
+        <div class="sidebar-collapse" style="background: rgb(55, 56, 55);">
+            <ul class="nav" id="side-menu">
+                <li class="nav-header" style="margin-bottom: 13px;">
+                    <div class="dropdown profile-element" style="background: #2D2D2D;"> <span>
+                         <img id="userAvatar" th:src="@{/img/logo.png}" alt="image" style="height: 32px;" /></span>
+<!--                        <span><img id="userAvatar" th:src="@{/img/logo.png}" alt="image" style="height: 32px;" /></span>-->
+                        <!-- <a data-toggle="dropdown" class="dropdown-toggle" href="#"></a>
+                          <span class="clear"><span class="block m-t-xs"><strong class="font-bold" th:text="${user.userName}">用户</strong></span>
+                         <span class="text-muted text-xs block"><span th:text="${user.dept?.deptName}">部门</span> <b class="caret"></b></span> </span> </a>
+                        <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                            <li><a class="menuItem" th:href="@{/system/user/profile}">个人信息</a></li>
+                            <li class="divider"></li>
+                            <li><a th:href="@{logout}">退出</a></li>
+                        </ul> -->
+                    </div>
+                </li>
+                <li th:each="menu : ${menus}" class="menuLi">
+
+                    <a href="#" style="display:none">
+                        <i class="fa fa fa-bar-chart-o" th:class="${menu.icon}"></i>
+                        <span class="nav-label" th:text="${menu.menuName}">一级菜单</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level collapse">
+                        <li th:each="cmenu : ${menu.children}">
+                            <a th:if="${#lists.isEmpty(cmenu.children)}" class="menuItem" th:utext="${cmenu.menuName}" th:href="@{${cmenu.url}}">二级菜单</a>
+                            <a th:if="${not #lists.isEmpty(cmenu.children)}" href="#">[[${cmenu.menuName}]]<span class="fa arrow"></span></a>
+                            <ul th:if="${not #lists.isEmpty(cmenu.children)}" class="nav nav-third-level">
+                                <li th:each="emenu : ${cmenu.children}">
+
+                                    <a th:if="${#lists.isEmpty(emenu.children)}" class="menuItem" th:utext="${emenu.menuName}" th:href="@{${emenu.url}}">三级菜单</a>
+                                    <a th:if="${not #lists.isEmpty(emenu.children)}" href="#">[[${emenu.menuName}]]<span class="fa arrow"></span></a>
+
+
+
+                                    <ul th:if="${not #lists.isEmpty(emenu.children)}" class="nav nav-four-level">
+                                        <li th:each="fmenu : ${emenu.children}">
+                                            <a class="menuItem" th:text="${fmenu.menuName}" th:href="@{${fmenu.url}}">四级菜单</a>
+                                        </li>
+
+                                    </ul>
+
+
+                                </li>
+
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+    
+               
+            </ul>
+        </div>
+    </nav>
+    <!--左侧导航结束-->
+
+    <!--右侧部分开始-->
+    <div id="page-wrapper" class="gray-bg dashbard-1">
+        <div class="row border-bottom">
+            <nav class="navbar navbar-static-top" role="navigation"
+                 style="margin-bottom: 0;background: #2D2D2D;">
+                <div class="navbar-header">
+                    <li th:each="menu : ${menus}" class="menusClick">
+
+                        <a href="#" >
+                            <span  th:text="${menu.menuName}">一级菜单</span>
+                        </a>
+                    </li>
+                    <!-- <a class="navbar-minimalize minimalize-styl-2 btn btn-default " href="#" title="收起菜单">
+                        <i class="fa fa-bars"></i>
+                    </a> -->
+                </div>
+
+                <ul class="nav navbar-top-links navbar-right welcome-message" id="newNavbar-right">
+                        <div class="dropdown profile-element" style="display: inline-block;" > 
+                            <span>
+                                <img id="userAvatar" th:src="(${user.avatar} == '') ? @{/img/profile.jpg} : @{${user.avatar}}" alt="image" class="img-circle" height="30" width="30"/>
+                                <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                       
+                                
+                            </span>
+                            <span class="clear" style="display: inline-block;display: inline-block;position: relative;top: 6px;color: #a7b1c2"><span class="block "><strong class="font-bold" th:text="${user.userName}">用户</strong></span>
+                            <span class="text-muted text-xs block">
+                                <!--<span th:text="${user.dept?.deptName}">部门</span> -->
+                            </span> </span> </a>
+                           <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                               <li><a class="menuItem" th:href="@{/system/user/profile}">个人信息</a></li>
+                               <li class="divider"></li>
+                               <li><a th:href="@{logout}">退出</a></li>
+                           </ul>
+                                 <!-- <span class="clear" style="display: inline-block;display: inline-block;position: relative;top: 6px;"><strong class="font-bold" th:text="${user.userName}">用户</strong></span>   -->
+                           </div>
+                    <li><a id="fullScreen" ><i class="fa fa-arrows-alt"></i>全屏</a></li>
+                    <!-- <li><a th:href="@{logout}"><i class="fa fa-sign-out"></i>退出</a></li> -->
+
+                </ul>
+            </nav>
+        </div>
+        <div class="row content-tabs">
+            <button class="roll-nav roll-left tabLeft">
+                <i class="fa fa-backward"></i>
+            </button>
+            <nav class="page-tabs menuTabs" style="margin-left: 40px;">
+                <div class="page-tabs-content">
+                    <a href="javascript:;" class="active menuTab" data-id="/system/main">首页</a>
+                </div>
+            </nav>
+            <button class="roll-nav roll-right tabRight">
+                <i class="fa fa-forward"></i>
+            </button>
+            <!-- <div class="btn-group roll-nav roll-right">
+                <button class="dropdown J_tabClose" data-toggle="dropdown">
+                    页签操作<span class="caret"></span>
+                </button>
+                <ul role="menu" class="dropdown-menu dropdown-menu-right">
+                    <li><a class="tabCloseCurrent" href="javascript:void();">关闭当前</a></li>
+                    <li><a class="tabCloseOther" href="javascript:void();">关闭其他</a></li>
+                    <li><a class="tabCloseAll" href="javascript:void();">全部关闭</a></li>
+                    <li><a class="tabMaxCurrent" href="javascript:void();">全屏显示</a></li>
+                </ul>
+            </div> -->
+            <a href="#" class="roll-nav roll-right tabReload"><i class="fa fa-refresh"></i> 刷新</a>
+        </div>
+
+        <a id="ax_close_max" class="ax_close_max" href="#" title="关闭全屏"> <i class="fa fa-times-circle-o"></i> </a>
+
+        <div class="row mainContent" id="content-main">
+            <iframe class="xiaodai_iframe" name="iframe0" width="100%" height="100%" data-id="/system/main"
+                    th:src="@{/system/main}" frameborder="0" seamless></iframe>
+        </div>
+        <div class="footer">
+            <div class="pull-right">© [[${copyrightYear}]] 贷超 Copyright </div>
+        </div>
+    </div>
+    <!--右侧部分结束-->
+
+
+    <!-- <li class="nav-header">
+            <div class="dropdown profile-element"> <span>
+                 <img id="userAvatar" th:src="(${user.avatar} == '') ? @{/img/profile.jpg} : @{${user.avatar}}" alt="image" class="img-circle" height="60" width="60"/></span>
+                <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                  <span class="clear"><span class="block m-t-xs"><strong class="font-bold" th:text="${user.userName}">用户</strong></span>
+                 <span class="text-muted text-xs block"><span th:text="${user.dept?.deptName}">部门</span> <b class="caret"></b></span> </span> </a>
+                <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                    <li><a class="menuItem" th:href="@{/system/user/profile}">个人信息</a></li>
+                    <li class="divider"></li>
+                    <li><a th:href="@{logout}">退出</a></li>
+                </ul>
+            </div>
+        </li> -->
+</div>
+<!--<div th:text="${menus}" id="data"></div>-->
+<!-- 全局js -->
+<script th:src="@{/js/jquery.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/plugins/metisMenu/jquery.metisMenu.js}"></script>
+<script th:src="@{/js/plugins/slimscroll/jquery.slimscroll.min.js}"></script>
+<script th:src="@{/ajax/libs/blockUI/jquery.blockUI.js}"></script>
+
+<script th:src="@{/common/js/xiaodai-ui.js}"></script>
+<script th:src="@{/common/index.js}"></script>
+<script th:src="@{/ajax/libs/fullscreen/jquery.fullscreen.js}"></script>
+</body>
+<script>
+    $($('.menuLi')[0]).addClass('active')
+    $($('.menuLi')[0]).children('ul').addClass('in')
+    $('.menusClick').click(function(){
+        var index = $(this).index();
+        $.each($('.menusClick'),function(){
+            if($('.menusClick').hasClass('menusClickIoc')){
+                $(this).removeClass('menusClickIoc')
+            }
+        })
+        $(this).addClass('menusClickIoc')
+        $.each($('.menuLi'),function(){
+            if($(this).hasClass('active')){
+                $(this).removeClass('active');
+                $(this).children('ul').removeClass('in')
+            }
+        })
+        $($('.menuLi')[index]).addClass('active');
+        $($('.menuLi')[index]).children('ul').addClass('in')
+    })
+</script>
+</html>

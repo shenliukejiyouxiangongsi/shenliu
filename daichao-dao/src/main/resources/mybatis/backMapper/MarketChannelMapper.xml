@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.youdai.daichao.mapper.MarketChannelMapper">
+
+    <!-- 开启二级缓存 -->
+    <!--<cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>-->
+    <delete id="deleteMarketByIds" parameterType="String">
+        delete from market_channel where market_id in
+        <foreach item="marketId" collection="array" open="(" separator="," close=")">#{marketId}</foreach>
+    </delete>
+</mapper>

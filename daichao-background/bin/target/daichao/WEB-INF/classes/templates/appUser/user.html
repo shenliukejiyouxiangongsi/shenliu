@@ -1,0 +1,215 @@
+<!DOCTYPE HTML>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+    
+     <div class="container-div">
+		<div class="row">
+			<div class="col-sm-12 search-collapse">
+				<form id="formId">
+					<div class="select-list">
+						<ul>
+
+
+							<li class="select-time">
+								<label>注册时间： </label>
+								<input type="text" class="time-input" id="needPayTimeStart" placeholder="开始时间" name="needPayTimeStart"/>
+								<span>-</span>
+								<input type="text" class="time-input" id="needPayTimeEnd" placeholder="结束时间" name="needPayTimeEnd"/>
+							</li>
+
+							<li>
+								<a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+								<a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
+							</li>
+						</ul>
+					</div>
+				</form>
+			</div>
+			
+
+			<div class="col-sm-12 select-table table-striped">
+				<table id="bootstrap-table" data-mobile-responsive="true"></table>
+			</div>
+		</div>
+	</div>
+    <div th:include="include :: footer"></div>
+    <script th:inline="javascript">
+/*         var editFlag = [[${@permission.hasPermi('biz:user:edit')}]];
+        var removeFlag = [[${@permission.hasPermi('biz:user:remove')}]]; */
+        var prefix = ctx + "biz/user";
+
+        $(function() {
+            var options = {
+                url: prefix + "/selectMemberInfo",
+
+                modalName: "注册统计列表",
+				search: false,
+		        showExport: true,
+                columns: [{
+		            checkbox: true
+		        },
+				{
+					field : 'id', 
+					title : '主键id',
+					visible: false
+				},
+
+				{
+					field : 'create_time', 
+					title : '日期'
+				},
+				{
+					field : 'registering', 
+					title : '注册数'
+				},
+				{
+					field : 'gmtDatetime', 
+					title : '登入app数'
+				},
+				{
+					field : 'status',
+					title : '状态',
+					formatter : function(value, row, index) {
+						if(value==1){
+							return "正常";
+						}else  if(value==2){
+							return "已禁用";
+						}else  if(value==3){
+							return "已删除";
+						}else  if(value==4){
+							return"已拒绝";
+						}else if(value==5){
+							return "已拉黑";
+						}
+					}
+				},
+					{
+						field : 'baiscAuth',
+						title : '基本信息认证',
+						formatter : function(value, row, index) {
+							if(value==1){
+								return  "认证成功" ;
+							}else  if(value ==2){
+								return "认证失败";
+							}
+							return "未认证";
+						}
+					},
+					{
+						field : 'bankAuth',
+						title : '银行卡认证',
+						formatter : function(value, row, index) {
+							if(value==1){
+								return  "认证成功" ;
+							}else  if(value ==2){
+								return "认证失败";
+							}
+							return "未认证";
+						}
+					},
+					{
+						field : 'phoneAuth',
+						title : '运营商认证',
+						formatter : function(value, row, index) {
+							if(value==1){
+								return  "认证成功" ;
+							}else  if(value ==2){
+								return "认证失败";
+							}
+							return "未认证";
+						}
+					},
+					{
+						field : 'identityAuth',
+						title : '身份证认证',
+						formatter : function(value, row, index) {
+							if(value==1){
+								return  "认证成功" ;
+							}else  if(value ==2){
+								return "认证失败";
+							}
+							return "未认证";
+						}
+					},
+
+
+
+
+
+				{
+					field : 'isLogin',
+					title : '是否登录过app',
+					formatter : function(value, row, index) {
+						if(value ==0){
+							return "未登录";
+						}
+						return "已登录";
+					}
+				},
+				{
+					field : 'isOrder', 
+					title : '是否下单',
+					formatter : function(value, row, index) {
+						if(value==1){
+							return "已下单";
+						}
+						return "未下单";
+
+					}
+				},
+					{
+						field : 'channelName',
+						title : '渠道名称'
+					},
+		        {
+		            title: '操作',
+		            align: 'center',
+		            formatter: function(value, row, index) {
+		            	var actions = [];
+		            	actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="#" onclick="changeBlack(\'' + row.id + '\')"><i class="fa fa-edit"></i>拉黑</a> ');
+                        actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="#" onclick="changeEnable(\'' + row.id + '\')"><i class="fa fa-remove"></i>禁用</a>');
+						return actions.join('');
+		            }
+		        }
+		        ]
+            };
+            $.table.init(options);
+        });
+
+        function changeBlack(id) {
+			$.modal.confirm("确定要拉黑用户吗？" , function() {
+				$.ajax({
+					type : 'post',
+					url: prefix + "/changeUserStatus/" + id+"/5",
+					success : function(result) {
+						if (result.code == web_status.SUCCESS) {
+							$.modal.msgSuccess(result.msg);
+							$.treeTable.refresh();
+						} else {
+							$.modal.msgError(result.msg);
+						}
+					}
+				});
+			});
+		}
+		function changeEnable(id) {
+			$.modal.confirm("确定要禁用用户吗？" , function() {
+				$.ajax({
+					type : 'post',
+					url: prefix + "/changeUserStatus/" + id+"/2",
+					success : function(result) {
+						if (result.code == web_status.SUCCESS) {
+							$.modal.msgSuccess(result.msg);
+							$.treeTable.refresh();
+						} else {
+							$.modal.msgError(result.msg);
+						}
+					}
+				});
+			});
+		}
+    </script>
+</body>
+</html>

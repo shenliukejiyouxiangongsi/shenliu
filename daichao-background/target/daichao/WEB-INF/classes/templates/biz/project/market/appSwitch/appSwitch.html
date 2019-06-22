@@ -1,0 +1,129 @@
+<!DOCTYPE HTML>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+
+<div class="btn-group-sm hidden-xs" id="toolbar" role="group">
+	<a class="btn btn-success" onclick="add()" shiro:hasPermission="biz:appSwitch:add">
+		<i class="fa fa-plus"></i> 添加
+	</a>
+	<!--	<a class="btn btn-primary btn-edit disabled" onclick="$.operate.edit()" shiro:hasPermission="biz:appSwitch:edit">
+            <i class="fa fa-edit"></i> 修改
+        </a>-->
+	<!--				<a class="btn btn-danger btn-del btn-del disabled" onclick="$.operate.removeAll()" shiro:hasPermission="biz:appSwitch:remove">
+                        <i class="fa fa-remove"></i> 删除
+                    </a>-->
+
+</div>
+<div class="container-div">
+	<div class="row">
+		<input type="hidden" id="marketId" th:value="${marketId}">
+		<div class="col-sm-12 select-table table-striped">
+			<table id="bootstrap-table" data-mobile-responsive="true"></table>
+		</div>
+	</div>
+</div>
+
+<div th:include="include :: footer"></div>
+<script th:inline="javascript">
+	var editFlag = [[${@permission.hasPermi('biz:appSwitch:edit')}]];
+	var removeFlag = [[${@permission.hasPermi('biz:appSwitch:remove')}]];
+	var changeFlag = [[${@permission.hasPermi('biz:appSwitch:change')}]];
+	var prefix = ctx + "appSwitch";
+	$(function() {
+		var options = {
+			url: prefix + "/list/"+$("#marketId").val(),
+			createUrl: prefix + "/add",
+			updateUrl: prefix + "/edit/{id}",
+			removeUrl: prefix + "/remove",
+			exportUrl: prefix + "/export",
+			changeUrl: prefix + "/change",
+			modalName: "app审核",
+			search: false,
+			showExport: true,
+			columns: [{
+				checkbox: true
+			},
+				{
+					field : 'id',
+					title : 'id',
+					visible: false
+				},
+				{
+					field : 'appType',
+					title : '类型',
+					formatter: function(value, row, index) {
+						if(value==0){
+							return "IOS";
+						}else if(value==1){
+							return "Android";
+						}
+					}
+				},
+				{
+					field : 'appVersion',
+					title : 'APP版本'
+				},
+				{
+					field : 'status',
+					title : '状态',
+					formatter: function(value, row, index) {
+						if(value==0){
+							return "等待审核";
+						}else if(value==1){
+							return "正式运营";
+						}
+					}
+				},
+				{
+					field : 'marketName',
+					title : '市场渠道'
+				},
+				{
+					field : 'packageName',
+					title : 'APP打包包名'
+				},
+				{
+					field : 'shellName',
+					title : 'APP壳',
+				},
+				{
+					field : 'remark',
+					title : '备注'
+				},
+				{
+					field : 'createTime',
+					title : '创建时间'
+				},
+				{
+					title: '操作',
+					align: 'center',
+					formatter: function(value, row, index) {
+						var actions = [];
+						var status=""
+						if(row.status==0){
+							status="切换运营"
+						}else if(row.status==1){
+							status="切换审核"
+						}
+						actions.push('<a class="btn btn-info btn-xs ' + changeFlag + '" href="#" onclick="$.operate.changeSwitch(' + row.id + ','+ row.status+')"><i class="fa fa-remove"></i>"'+status+'"</a>');
+						actions.push('<a class="btn btn-info btn-xs ' + removeFlag + '" href="#" onclick="$.operate.remove(\'' + row.id + '\')"><i class="fa fa-key"></i>删除</a>');
+						return actions.join('');
+					}
+				}]
+		};
+		$.table.init(options);
+	});
+
+
+
+	//app版本添加
+	function add(){
+		var marketId=$("#marketId").val();
+		var url=prefix+"/add/"+marketId;
+		$.modal.open("添加App审核", url);
+	}
+</script>
+</body>
+</html>

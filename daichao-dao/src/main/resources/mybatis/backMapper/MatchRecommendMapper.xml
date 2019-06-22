@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.youdai.daichao.mapper.MatchRecommendMapper">
+
+    <!-- 开启二级缓存 -->
+<!--    <cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>-->
+
+
+    <sql id="selectMr">
+        select
+        m.mr_id as rId,
+        p.p_id as pId,
+        m.mr_type as rType,
+        m.mr_sort as rSort,
+        p.p_name as pName,
+        p.`status` as pdStatus
+        from  match_recommend m,product p where  m.p_id=p.p_id
+    </sql>
+
+    <select id="selectMatchRecommendList" parameterType="string" resultType="pdRecommend">
+        <include refid="selectMr"></include>
+        <if test="pName != null and pName !=''">
+            and p.p_name =#{pName}
+        </if>
+    </select>
+
+    <delete id="deleteReByIds" parameterType="String">
+        delete from match_recommend
+        where mr_id in
+        <foreach item="mrId" collection="array" open="(" close=")" separator=",">
+            #{mrId}
+        </foreach>
+    </delete>
+    <select id="selectOneByMrid" parameterType="int" resultType="pdRecommend">
+        <include refid="selectMr"></include>
+		and m.mr_id=#{mrId}
+	</select>
+</mapper>

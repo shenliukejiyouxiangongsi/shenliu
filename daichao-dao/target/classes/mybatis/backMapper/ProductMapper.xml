@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.youdai.daichao.mapper.ProductMapper">
+
+    <!-- 开启二级缓存 -->
+   <!--  <cache type="org.mybatis.caches.ehcache.LoggingEhcache"/> -->
+    <resultMap type="Product" id="ProductResult">
+        <id     property="pId"       column="p_id"      />
+        <result property="pName"    column="p_name"   />
+        <result property="describation"     column="describation"    />
+        <result property="minMoney"        column="min_money"        />
+        <result property="maxMoney"  column="max_money"  />
+        <result property="outtimeBegin"          column="outTime_begin"/>
+        <result property="outtimeEnd"         column="outTime_end"         />
+        <result property="accessCondition"       column="access_condition"       />
+        <result property="materials"      column="materials"     />
+        <result property="explaintion"          column="explaintion"/>
+        <result property="status"         column="status"         />
+        <result property="logoUrl"       column="logo_url"       />
+        <result property="linkUrl"      column="link_url"     />
+        <result property="merchantId"          column="merchant_id"/>
+        <result property="createTime"         column="create_time"         />
+        <result property="createUser"       column="create_user"       />
+        <result property="pType"      column="p_type"     />
+        <result property="updateTime"      column="update_time"     />
+        <result property="clearForm"      column="clear_form"     />
+        <result property="price"      column="price"     />
+        <result property="sort"       column="sort"       />
+        <result property="orderNum"       column="order_num"       />
+        <result property="showNum"       column="show_num"       />
+        <result property="hasTags"       column="has_tags"       />
+    </resultMap>
+
+    <resultMap type="com.youdai.daichao.common.vo.ProductVo" id="ProductVoResult">
+        <id     property="pId"       column="p_id"      />
+        <result property="pName"    column="p_name"   />
+        <result property="describation"     column="describation"    />
+        <result property="minMoney"        column="min_money"        />
+        <result property="maxMoney"  column="max_money"  />
+        <result property="outtimeBegin"          column="outTime_begin"/>
+        <result property="outtimeEnd"         column="outTime_end"         />
+        <result property="rate"         column="rate"         />
+        <result property="logoUrl"       column="logo_url"       />
+        <result property="linkUrl"       column="link_url"       />
+        <result property="status"       column="status"       />
+        <result property="sort"       column="r_sort"       />
+        <result property="orderNum"       column="order_num"       />
+        <result property="hasTags"       column="has_tags"       />
+    </resultMap>
+
+    <sql id="selectProductVo">
+        p_id,p_name,describation,
+         (case WHEN LENGTH(min_money)>4 and LENGTH(substring_index(min_money,0,1))=1 THEN  CONCAT(round (min_money / 10000),'万')
+        WHEN LENGTH(min_money)>4 and LENGTH(substring_index(min_money,0,1))>1  THEN  CONCAT(round ((min_money / 10000),1),'万')
+        else min_money end) as min_money,
+        (case WHEN LENGTH(max_money)>4 and LENGTH(substring_index(max_money,0,1))=1 THEN  CONCAT(round (max_money / 10000),'万')
+        WHEN LENGTH(max_money)>4 and LENGTH(substring_index(max_money,0,1))>1  THEN  CONCAT(round ((max_money / 10000),1),'万')
+        else max_money end) as max_money,
+        outTime_begin,outTime_end,rate,access_condition,materials,explaintion,status,logo_url
+        ,link_url,merchant_id,create_time,create_user,p_type,update_time,show_num,price,sort,has_tags,price,clear_form
+    </sql>
+
+
+    <select id="selectProductShowList"  parameterType="Product" resultType="productShow">
+        select
+		p.p_id as pId,
+		p.p_name as pName,
+		p.describation,		
+		p.status,
+		p.logo_Url as logoUrl,		
+		p.link_Url as linkUrl,
+		p.create_Time as createTime,
+		p.update_Time as updateTime,
+		p.clear_form as clearForm,
+		p.price ,
+        p.show_num as showNum ,
+        p.sort,
+        p.has_tags as hasTags
+        from   product p
+        <where>
+            <if test="pId != null and pId!= 0 ">and p_id = #{pId}</if>
+            <if test="pName != null  and pName != '' ">and p_name = #{pName}</if>
+            <if test="status != 0 ">and p.status = #{status}</if>
+        </where>
+        order by p.create_Time Desc
+    </select>
+    
+    <select id="selectAll" resultType="Product">
+    	select p_id as pId,
+    	p_name as pName
+    	from 
+    	product
+    </select>
+    
+    <select id="selectPdsNotInRec" resultType="Product">
+        select  p_id as pId,
+        p_name as pName
+        from
+        product
+        where p_id not in
+        (select P_id from recommend group by p_id having count(p_id) =2 )
+        and `status` =1
+    </select>
+
+    <select id="selectPdsNotInMr" resultType="Product">
+        select  p_id as pId,
+        p_name as pName
+        from
+        product
+        where p_id not in
+        (select P_id from match_recommend  )
+        and `status` =1
+    </select>
+
+    <sql id="selectProduct">
+        a.p_id,a.p_name,a.describation,
+        (case WHEN LENGTH(min_money)>4 and LENGTH(substring_index(min_money,0,1))=1 THEN  CONCAT(round (min_money / 10000),'万')
+        WHEN LENGTH(min_money)>4 and LENGTH(substring_index(min_money,0,1))>1  THEN  CONCAT(round ((min_money / 10000),1),'万')
+        else min_money end) as min_money,
+        (case WHEN LENGTH(max_money)>4 and LENGTH(substring_index(max_money,0,1))=1 THEN  CONCAT(round (max_money / 10000),'万')
+        WHEN LENGTH(max_money)>4 and LENGTH(substring_index(max_money,0,1))>1  THEN  CONCAT(round ((max_money / 10000),1),'万')
+        else max_money end) as max_money,
+        a.outTime_begin,a.outTime_end,a.rate,a.logo_url,a.link_url,a.status,a.order_num,a.has_tags
+        ,b.r_sort
+    </sql>
+
+    <sql id="selectAllProduct">
+        a.p_id,a.p_name,a.describation,
+         (case WHEN LENGTH(min_money)>4 and LENGTH(substring_index(min_money,0,1))=1 THEN  CONCAT(round (min_money / 10000),'万')
+        WHEN LENGTH(min_money)>4 and LENGTH(substring_index(min_money,0,1))>1  THEN  CONCAT(round ((min_money / 10000),1),'万')
+        else min_money end) as min_money,
+        (case WHEN LENGTH(max_money)>4 and LENGTH(substring_index(max_money,0,1))=1 THEN  CONCAT(round (max_money / 10000),'万')
+        WHEN LENGTH(max_money)>4 and LENGTH(substring_index(max_money,0,1))>1  THEN  CONCAT(round ((max_money / 10000),1),'万')
+        else max_money end) as max_money,
+        a.outTime_begin,a.outTime_end,a.rate,a.logo_url,a.link_url,a.status,a.order_num,a.has_tags
+    </sql>
+
+    <sql id="selectProductMatch">
+       a.p_id,a.p_name,a.describation,a.min_money,a.max_money,a.outTime_begin,a.outTime_end,a.rate,a.logo_url,a.link_url,a.status,a.order_num
+        ,b.mr_sort
+    </sql>
+
+    <select id="selectProductList"  parameterType="Product" resultMap="ProductResult">
+        select
+        <include refid="selectProductVo"/>
+        from   product
+        <where>
+            <if test="pId != null and pId!= 0 ">and p_id = #{pId}</if>
+            <if test="pName != null  and pName != '' ">and p_name = #{pName}</if>
+            <if test="describation != null  and describation != '' "> and describation = #{describation}</if>
+            <if test="minMoney != null  and minMoney != '' ">and min_money = #{minMoney}</if>
+            <if test="maxMoney != null  and maxMoney != '' ">and max_money = #{maxMoney}</if>
+        </where>
+    </select>
+
+    <select id="selectAllProduct"  resultMap="ProductVoResult" parameterType="map">
+        select
+        <include refid="selectAllProduct"/>
+        from   product a
+        where 1=1
+        <if test="tags != null  and tags != '' ">and   has_tags like concat('%', #{tags}, '%')</if>
+        <if test="outTime != null "> and outTime_begin &lt;= #{outTime}</if>
+        <if test="outTime != null "> and outTime_end &gt;= #{outTime}</if>
+        <if test="moneyBegin != null and null==moneyEnd ">and min_money &gt;= #{moneyBegin}</if>
+        <if test="moneyEnd != null and null== moneyBegin ">and max_money &lt;= #{moneyEnd}</if>
+        <if test="moneyEnd != null and null!= moneyBegin ">and (max_money &lt;= #{moneyEnd}  and min_money &gt;= #{moneyBegin})</if>
+        and a.status=1
+        <if test="minMoney == null  and rate == null and  maxMoney==null"> order by a.sort ,a.show_num desc</if>
+        <if test="minMoney != null  and minMoney != '' "> order by a.outTime_begin+0, a.sort ,a.show_num desc</if>
+        <if test="rate != null  and rate != '' "> order by a.rate+0, a.sort ,a.show_num desc</if>
+        <if test="maxMoney != null  and maxMoney != '' "> order by a.max_money+0 desc, a.sort ,a.show_num desc </if>
+    </select>
+
+    <select id="selectNewProduct"  resultMap="ProductVoResult" parameterType="map">
+        select
+        <include refid="selectProduct"/>
+        from   product a,recommend b
+        where  a.p_id=b.p_id
+        <if test="tags != null  and tags != '' ">and   has_tags like concat('%', #{tags}, '%')</if>
+        <if test="outTime != null "> and outTime_begin &lt;= #{outTime}</if>
+        <if test="outTime != null "> and outTime_end &gt;= #{outTime}</if>
+        <if test="moneyBegin != null and null==moneyEnd ">and min_money &gt;= #{moneyBegin}</if>
+        <if test="moneyEnd != null and null== moneyBegin ">and max_money &lt;= #{moneyEnd}</if>
+        <if test="moneyEnd != null and null!= moneyBegin ">and (max_money &lt;= #{moneyEnd}  and min_money &gt;= #{moneyBegin})</if>
+        and a.status=1
+        and b.r_type=2
+        <if test="minMoney == null  and rate == null and  maxMoney==null"> order by b.r_sort ,a.show_num desc</if>
+        <if test="minMoney != null  and minMoney != '' "> order by a.outTime_begin+0,b.r_sort ,a.show_num desc</if>
+        <if test="rate != null  and rate != '' "> order by a.rate+0,b.r_sort ,a.show_num desc</if>
+        <if test="maxMoney != null  and maxMoney != '' "> order by a.max_money+0 desc,b.r_sort ,a.show_num desc </if>
+    </select>
+
+    <select id="selectHotProduct"  resultMap="ProductVoResult" parameterType="map">
+        select
+        <include refid="selectProduct"/>
+        from   product a,recommend b
+        where  a.p_id=b.p_id
+        <if test="tags != null  and tags != '' ">and has_tags like concat('%', #{tags}, '%')</if>
+        <if test="outTime != null "> and outTime_begin &lt;= #{outTime}</if>
+        <if test="outTime != null "> and outTime_end &gt;= #{outTime}</if>
+        <if test="moneyBegin != null and null==moneyEnd ">and min_money &gt;= #{moneyBegin}</if>
+        <if test="moneyEnd != null and null== moneyBegin ">and max_money &lt;= #{moneyEnd}</if>
+        <if test="moneyEnd != null and null!= moneyBegin ">and (max_money &lt;= #{moneyEnd}  and min_money &gt;= #{moneyBegin})</if>
+        and a.status=1
+        and b.r_type=1
+        <if test="minMoney == null  and rate == null and  maxMoney==null"> order by b.r_sort ,a.show_num desc</if>
+        <if test="minMoney != null  and minMoney != '' "> order by a.outTime_begin+0,b.r_sort ,a.show_num desc</if>
+        <if test="rate != null  and rate != '' "> order by a.rate+0,b.r_sort ,a.show_num desc</if>
+        <if test="maxMoney != null  and maxMoney != '' "> order by a.max_money+0 desc,b.r_sort ,a.show_num desc </if>
+    </select>
+
+    <select id="selectByPId" resultMap="ProductResult" parameterType="java.lang.Integer">
+        select
+        <include refid="selectProductVo"/>
+        from   product
+        where p_id=#{pid}
+    </select>
+
+    <update id="updateOrderNum" parameterType="java.lang.Integer">
+        update product set order_num=order_num+1
+        where p_id=#{pid}
+    </update>
+    
+    <select id="">
+    	select 
+    	p.p_id as pId,
+    	p.p_name as pName,
+    	p.describation ,
+    	p.status,
+    	p.logo_url as logoUrl,
+    	p.link_url as linkUrl,
+    	p.create_Time as createTime,
+    	p.update_Time as updateTime,
+        p.Order_num as orderNum,
+    	r.r_Type as rType,
+    	r.r_Sort as rSort
+    	from product p left join recommend r on p.p_id =r.p_id
+    	<where>
+    		<if test="pName !=null and pName != ''">
+    			p.p_name =#{pName}
+    		</if>
+    		
+    		<if test="status != 0">
+    			p.status =#{status}
+    		</if>
+    	</where>
+    </select>
+
+    <select id="selectCountByName" parameterType="string" resultType="int">
+        select count(p_id) from product where
+        p_name =#{pName}
+
+    </select>
+    <update id="updateProduct" parameterType="product">
+    	update product 
+    	<set>
+            <if test="pName != null  and pName != '' "> p_name = #{pName}</if>
+            <if test="describation != null  and describation != '' "> describation = #{describation}</if>
+            <if test="minMoney != null  and minMoney != '' "> min_money = #{minMoney}</if>
+            <if test="maxMoney != null  and maxMoney != '' "> max_money = #{maxMoney}</if>
+            <if test="outtimeBegin != null  and outtimeBegin != '' "> outtime_Begin = #{outtimeBegin}</if>
+            <if test="outtimeEnd != null  and outtimeEnd != '' "> outtime_End = #{outtimeEnd}</if>
+           	<if test="rate != null and rate != ''"> rate = #{rate}</if>
+            <if test="accessCondition != null  and accessCondition != '' "> access_condition = #{accessCondition}</if>
+            <if test="materials != null  and materials != '' "> materials = #{materials}</if>
+            <if test="explaintion != null  and explaintion != '' "> explaintion = #{explaintion}</if>
+            <if test="status != 0 "> p.status = #{status}</if>
+            <if test="logoUrl != null and logoUrl != 0 "> logo_url = #{logoUrl}</if>
+            <if test="linkUrl != null and linkUrl != ''"> link_Url = #{linkUrl}</if>
+            <if test="merchantId != null and merchantId != ''"> merchant_id = #{merchantId}</if>
+            <if test="pType != null and pType != ''"> p_type = #{pType}</if>
+            <if test="clearForm != null and clearForm != ''"> clear_Form = #{clearForm}</if>
+            <if test="price != null and price != ''"> price = #{price}</if>
+            <if test="sort != null "> sort = #{sort}</if>
+            <if test="showNum != null "> show_Num = #{showNum}</if>
+        </set>
+    	where p_id = #{pId}
+    </update>
+
+    <select id="getMinAndMax" resultType="map" parameterType="int">
+        SELECT
+        sum(a.minId) as minId,
+        sum(a.maxId) as maxId,
+        sum(a.lastId) as lastId,
+        sum(a.nextId) as nextId
+        FROM
+        (
+            select
+            min(p_id) as minId,
+            max(p_id) as maxId,
+            0 as lastId,
+            0 as nextId
+            from product
+            where status=1
+            union all
+            SELECT
+            0 as minId,
+            0 as maxId,
+            0 as lastId,
+            min(p_id) as nextId
+            from product where
+             status=1 and
+             p_id &gt;#{pId}
+
+            union all
+            SELECT
+            0 as minId,
+            0 as maxId,
+            max(p_id) as lastId,
+            0 as nextId
+            from product where
+             status=1 and
+            p_id &lt;#{pId}
+        ) a
+    </select>
+
+
+    <select id="selectMatchRecomList" resultMap="ProductVoResult">
+        select
+        <include refid="selectProductMatch"/>
+        from
+        match_recommend b
+        left join product a on b.p_id=a.p_id
+        where a.status=1
+        order by b.mr_sort desc
+    </select>
+
+    <update id="changePdStatusByIds" parameterType="java.util.Map">
+        update product
+        set    `status` = #{status}
+        where  p_id =#{pId}
+    </update>
+</mapper>

@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<html  lang="zh" xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="white-bg">
+<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+	<form class="form-horizontal m" id="form-appVersion-add">
+		<div class="form-group">
+			<label class="col-sm-3 control-label">App类型：</label>
+			<div class="col-sm-8">
+
+				<select id="appType" name="appType" class="form-control m-b">
+					<option value="0">IOS</option>
+					<option value="1">Android</option>
+				</select>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-3 control-label">app版本号：</label>
+			<div class="col-sm-8">
+				<input id="appVersion" name="appVersion" class="form-control" type="text">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="col-sm-3 control-label">更新类型：</label>
+			<div class="col-sm-8">
+				<select id="needUpdated" name="needUpdated" class="form-control m-b">
+					<option value="0">提示更新</option>
+					<option value="1">强制更新</option>
+				</select>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-3 control-label">更新内容：</label>
+			<div class="col-sm-8">
+				<textarea rows="4" cols="3" id="content" name="content" class="form-control"  style="resize:none" ></textarea>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-3 control-label">存放路径：</label>
+			<div class="col-sm-8">
+				<input id="appUrl" name="appUrl" class="form-control"  type="text" >
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-3 control-label">文件大小：</label>
+			<div class="col-sm-8">
+				<input id="size" name="size" class="form-control" type="text">
+			</div>
+		</div>
+
+	</form>
+</div>
+<div th:include="include::footer"></div>
+<script type="text/javascript">
+	var prefix = ctx + "appVersion"
+	$("#form-appVersion-add").validate({
+		rules:{
+			appVersion:{
+				required:true,
+
+			},
+		}
+	});
+
+	function submitHandler() {
+		if ($.validate.form()) {
+			add();
+		}
+	}
+
+	function add() {
+		var appType = $("#appType option:selected").val();
+		var appVersion = $("input[name='appVersion']").val();
+		var needUpdated = $("#needUpdated option:selected").val();
+		var content = $("#content").val();
+		var appUrl = $("input[name='appUrl']").val();
+		var size = $("input[name='size']").val();
+
+		$.ajax({
+			cache : true,
+			type : "POST",
+			url : prefix + "/add",
+			data : {
+				"appType": appType,
+				"appVersion": appVersion,
+				"needUpdated": needUpdated,
+				"content": content,
+				"appUrl": appUrl,
+				"size": size,
+			},
+			async : false,
+			error : function(request) {
+				$.modal.alertError("系统错误");
+			},
+			success : function(data) {
+				$.operate.successCallback(data);
+			}
+		});
+	}
+</script>
+</body>
+</html>

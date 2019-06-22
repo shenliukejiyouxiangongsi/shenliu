@@ -1,0 +1,28 @@
+#sql语句控制台打印输出
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath:mybatis/apiMapper/*Mapper.xml,mybatis/backMapper/*Mapper.xml
+  typeAliasesPackage: com.youdai.daichao.domain
+# 开发环境配置
+server:
+  # 服务端口
+  port: 8381
+  servlet:
+    # 项目contextPath
+    context-path: /
+  tomcat:
+    # tomcat的URI编码
+    uri-encoding: UTF-8
+    # tomcat最大线程数，默认为200
+    max-threads: 800
+    # Tomcat启动初始化的线程数，默认值25
+    min-spare-threads: 30
+    basedir: ${user.home}/tomcat/tmp
+
+#阿里云
+oss:
+  endpoint: oss-cn-hangzhou.aliyuncs.com
+  accessKeyId: LTAIbTprB9CrWD6r
+  accessKeySecret:  NVJo6kC8iv6y9RwicVY7VCYCL4NQkO
+  bucketName: shenliu-daichao

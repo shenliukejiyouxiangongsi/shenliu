@@ -1,0 +1,140 @@
+<!DOCTYPE HTML>
+<html  lang="zh" xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="white-bg">
+<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+    <form class="form-horizontal m" id="form-question-edit" th:object="${question}">
+        <input type="text" th:field="*{questionId}" hidden="hidden">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">问题描述:</label>
+            <div class="col-sm-8">
+                <textarea rows="4" cols="3" id="description" name="description" th:field="*{description}" class="form-control"  style="resize:none" ></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">选项A:</label>
+            <div class="col-sm-6">
+                <textarea rows="3" cols="3" id="chooseAnswera" name="chooseAnswera" th:field="*{chooseAnswera}" class="form-control"  style="resize:none" ></textarea>
+                <label ><input type="checkbox"  name="realAnswer"  value="A">设置为正确答案</label>
+            </div>
+            <div class="col-sm-2">
+                <input type="text" name="scoreA" th:field="*{scoreA}" class="form-control" placeholder="A项分值">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">选项B:</label>
+            <div class="col-sm-6">
+                <textarea rows="3" cols="3" id="chooseAnswerb" name="chooseAnswerb" th:field="*{chooseAnswerb}" class="form-control"  style="resize:none" ></textarea>
+                <label ><input type="checkbox"  name="realAnswer" value="B">设置为正确答案</label>
+            </div>
+            <div class="col-sm-2">
+                <input type="text" name="scoreB" th:field="*{scoreB}" class="form-control" placeholder="B项分值">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">选项C:</label>
+            <div class="col-sm-6">
+                <textarea rows="3" cols="3" id="chooseAnswerc" name="chooseAnswerc" th:field="*{chooseAnswerc}" class="form-control"  style="resize:none" ></textarea>
+                <label ><input type="checkbox"  name="realAnswer" value="C">设置为正确答案</label>
+            </div>
+            <div class="col-sm-2">
+                <input type="text" name="scoreC" th:field="*{scoreC}" class="form-control" placeholder="C项分值">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">选项D:</label>
+            <div class="col-sm-6">
+                <textarea rows="3" cols="3" id="chooseAnswerd" name="chooseAnswerd" th:field="*{chooseAnswerd}" class="form-control"  style="resize:none" ></textarea>
+                <label ><input type="checkbox"  name="realAnswer" value="D">设置为正确答案</label>
+            </div>
+            <div class="col-sm-2">
+                <input type="text" name="scoreD" th:field="*{scoreD}" class="form-control" placeholder="D项分值">
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">题目等级：</label>
+            <div class="col-sm-3">
+                <select id="degree" name="degree" class="form-control m-b">
+                    <option value="0" th:selected="*{degree}==0">等级0</option>
+                    <option value="1" th:selected="*{degree}==1">等级1</option>
+                    <option value="2" th:selected="*{degree}==2">等级2</option>
+                    <option value="3" th:selected="*{degree}==3">等级3</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">题目排序：</label>
+            <div class="col-sm-3">
+                <input type="text" name="questionSort" th:field="*{questionSort}"  class="form-control">
+            </div>
+        </div>
+<!--        <div class="form-group">-->
+<!--            <label class="col-sm-2 control-label">状态：</label>-->
+<!--            <div class="col-sm-3">-->
+<!--                <select id="isDelete" name="isDelete" class="form-control m-b">-->
+<!--                    <option value="0" th:selected="*{isDelete}==0">正常</option>-->
+<!--                    <option value="1" th:selected="*{isDelete}==1">停用</option>-->
+<!--                </select>-->
+<!--            </div>-->
+<!--        </div>-->
+    </form>
+</div>
+<div th:include="include::footer"></div>
+<script type="text/javascript">
+
+    $(function () {
+        var answer="[[${question.realAnswer}]]";
+        var arr=answer.split(",");
+        $.each(arr,function (index,value) {
+            $(":checkbox[value='"+value+"']").attr("checked",true);
+        })
+    })
+
+    var prefix = ctx + "question"
+    $("#form-question-edit").validate({
+        focusCleanup:true,
+        rules:{
+            description:{
+                required:true,
+            },
+            chooseAnswerA:{
+                required:true,
+            },
+            chooseAnswerB:{
+                required:true,
+            },
+            chooseAnswerC:{
+                required:true,
+            },
+        },
+    });
+
+
+
+    function submitHandler() {
+        if ($.validate.form()) {
+            add();
+        }
+    }
+
+    function add() {
+        $.ajax({
+            cache : true,
+            type : "POST",
+            url : prefix + "/edit",
+            data : $("#form-question-edit").serialize(),
+            async : false,
+            error : function(request) {
+                $.modal.alertError("系统错误");
+            },
+            success : function(data) {
+                $.operate.successCallback(data);
+            }
+        });
+    }
+</script>
+</body>
+</html>

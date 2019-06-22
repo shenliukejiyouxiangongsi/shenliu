@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.youdai.daichao.mapper.ChannelCountLogMapper">
+
+    <!-- 开启二级缓存 -->
+    <!--<cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>-->
+	
+
+	<select id="selectChannelCountList" parameterType="map" resultType="channelCount">
+		select 
+		cl.channel_id as channelId,
+		sum(case when cl.view_page_num =1 then 1  else 0 end) as viewPageNum,
+		sum(case when cl.register_num =1 then 1  else 0 end) as registerNum,
+		c.proportion*0.01*sum(case when cl.register_num =1 then 1  else 0 end) as discountNum,
+		sum(case when cl.login_num =1 then 1  else 0 end) as loginNum,	
+		DATE_FORMAT(cl.create_time,'%Y-%m-%d') as createTime,
+		c.channel_name as channelName	
+		from channel_count_log cl left join channel c on  cl.channel_id=c.channel_id
+		<where>
+			<if test="channelName != null and channelName != ''">
+				channel_name =#{channelName}
+			</if>
+			<if test="startTime !=null and startTime != ''">
+			and datediff(DATE_FORMAT(cl.create_time,'%Y-%m-%d'),#{startTime}) &gt;=0
+			</if>
+			<if test="endTime !=null and endTime != ''">
+			and datediff(DATE_FORMAT(cl.create_time,'%Y-%m-%d'),#{endTime}) &lt;=0			
+			</if>
+		</where>
+		GROUP BY DATE_FORMAT(cl.create_time,'%Y-%m-%d'),cl.channel_id
+	</select>
+</mapper>

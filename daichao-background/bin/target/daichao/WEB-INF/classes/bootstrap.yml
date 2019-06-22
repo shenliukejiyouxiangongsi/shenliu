@@ -1,0 +1,28 @@
+server:
+  # 服务端口
+  port: 80
+  servlet:
+    # 项目contextPath
+    context-path: /
+  tomcat:
+    # tomcat的URI编码
+    uri-encoding: UTF-8
+    # tomcat最大线程数，默认为200
+    max-threads: 800
+    # Tomcat启动初始化的线程数，默认值25
+    min-spare-threads: 30
+
+#sql语句控制台打印输出
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath:mybatis/**/*Mapper.xml
+  typeAliasesPackage: com.youdai.daichao.domain
+
+
+#阿里云
+oss:
+  endpoint: oss-cn-beijing.aliyuncs.com
+  accessKeyId: LTAI1LEdlOmiwxL0
+  accessKeySecret:  0PV9S5PvmEAtH1Oiby8e5LlO9VDo7i
+  bucketName: hzyoudai

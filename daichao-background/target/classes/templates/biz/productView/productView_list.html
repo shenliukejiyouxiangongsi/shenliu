@@ -1,0 +1,196 @@
+<!DOCTYPE HTML>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<style>
+    tr[data-index="0"]{
+        font-weight: 900;
+        color: black;
+    }
+</style>
+<body class="gray-bg">
+
+<div class="container-div">
+	<div class="row">
+		<div class="col-sm-12 search-collapse">
+			<form id="formId">
+				<div class="select-list">
+					<ul>
+						<li>
+							用户账号：
+							<input type="text" name="userPhone">
+						</li>
+						<li>
+							渠道：
+							<select name="channelId" >
+								<option value="">全部</option>
+								<option value="0">非渠道</option>
+								<span th:each="item:${channels}">
+									<option th:value="${item.channelId}" th:text="${item.channelName}"></option>
+								</span>
+							</select>
+						</li>
+						<li>
+							设备ID：
+							<input type="text" name="udid">
+						</li>
+						<li>
+							IP地址：
+							<input type="text" name="ip">
+						</li>
+						<li class="select-time">
+							<label>打开APP时间： </label>
+							<input type="text" class="time-input" id="startTime" placeholder="开始时间" name="startTime"/>
+							<span>-</span>
+							<input type="text" class="time-input" id="endTime" placeholder="结束时间" name="endTime"/>
+						</li>
+						<li>
+							<a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+							<a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
+						</li>
+					</ul>
+				</div>
+			</form>
+		</div>
+
+		<div class="col-sm-12 select-table table-striped">
+			<table id="bootstrap-table" data-mobile-responsive="true"></table>
+		</div>
+	</div>
+</div>
+<div th:include="include :: footer"></div>
+<script th:inline="javascript">
+	var prefix = ctx + "productView";
+	var browseFlag=[[${@permission.hasPermi('biz:productView:browse')}]];
+	var applyFlag=[[${@permission.hasPermi('biz:productView:apply')}]];
+	$(function() {
+		var options = {
+
+			url: prefix + "/list",
+			modalName: "产品查看记录",
+			search: false,
+			showExport: true,
+
+			columns: [{
+				checkbox: true
+			},
+				{
+					field : 'id',
+					title : 'id',
+					visible: false
+				},
+
+				{
+					field : 'userPhone',
+					title : '用户账号',
+					formatter:function(value,row,index){
+						if(value==null){
+							return "-";
+						}
+						return  value;
+					}
+				},
+				{
+					field : 'udid',
+					title : '设备ID',
+					formatter:function(value,row,index){
+						if(value==null){
+							return "-";
+						}
+						return  value;
+					}
+				},
+				{
+					field : 'ip',
+					title : 'ip地址',
+					formatter:function(value,row,index){
+						if(value==null){
+							return "-";
+						}
+						return  value;
+					}
+				},
+				{
+					field : 'channelName',
+					title : '渠道',
+					formatter:function(value,row,index){
+						if(value==null){
+							return "-";
+						}
+						return  value;
+					}
+				},
+
+				{
+					field : 'createTime',
+					title : '注册时间',
+				},
+				{
+					field : 'openTime',
+					title : '打开APP时间',
+				},
+				{
+					field : 'viewCount',
+					title : '浏览次数',
+					formatter:function(value,row,index){
+                        if(value == null){
+                            return "-";
+                        }else {
+                            if(row.id==null){
+                                return '<span style="color: red">'+value+'</span>'
+                            }else{
+                                return '<a  href="#" onclick="productShowDetail(\''  + row.id +"','"+ row.udid+"','0"+'\')" style="color: red">'+value+'</a>';
+                            }
+                        }
+o
+					}
+				},
+				{
+					field : 'applicationNumber',
+					title : '申请次数',
+					formatter:function(value,row,index){
+
+						if(value == null){
+							return "-";
+						}else {
+                            if(row.id==null){
+                                return '<span style="color: red">'+value+'</span>'
+                            }else{
+                                return '<a  href="#" onclick="productShowDetail(\''  + row.id +"','"+ row.udid+"','1"+'\')" style="color: red">'+value+'</a>';
+                            }
+						}
+					}
+				},]
+				// {
+				// 	//field : 'viewProductNum',
+				// 	title : '产品记录',
+				// 	formatter:function(value,row,index){
+				// 		var actions = [];
+				// 		actions.push('<a class="btn btn-success btn-xs ' + browseFlag + '" href="#" onclick="productShowDetail(\'' + row.id +"','"+ row.udid+"','0"+'\')"><i class="fa fa-edit"></i>浏览记录</a> ');
+				// 		actions.push('<a class="btn btn-danger btn-xs ' + applyFlag + '" href="#" onclick="productShowDetail(\''  + row.id +"','"+ row.udid+"','1"+'\')"><i class="fa fa-remove"></i>申请记录</a>');
+				// 		return actions.join('');
+				// 	}
+				// },]
+		};
+		$.table.init(options);
+	});
+
+	/**
+	 *
+	 * @param id
+	 * @param type 0:浏览记录 1：申请记录
+	 */
+	function productShowDetail(id,udid,status) {
+		var url=prefix+"/showDetail/"+id+"/"+status+"/"+udid;
+		var title='';
+		if(status==0){
+			title='浏览记录';
+		}else  if(status==1){
+			title='申请记录';
+		}
+		$.modal.openNoButton(title,url,1000,700);
+	}
+
+</script>
+</body>
+</html>

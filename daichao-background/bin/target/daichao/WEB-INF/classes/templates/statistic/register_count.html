@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+    
+     <div class="container-div">
+		<div class="row">
+			<div class="col-sm-12 search-collapse">
+				<form id="formId">
+					<div class="select-list">
+						<ul>
+							<li class="select-time">
+								<label>注册时间： </label>
+								<input type="text" class="time-input" id="startTime" placeholder="开始时间" name="startTime"/>
+								<span>-</span>
+								<input type="text" class="time-input" id="endTime" placeholder="结束时间" name="endTime"/>
+							</li>
+							<li>
+								<a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+								<a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
+							</li>
+						</ul>
+					</div>
+				</form>
+			</div>
+
+			<div class="col-sm-12 select-table table-striped">
+				<table id="bootstrap-table" data-mobile-responsive="true"></table>
+			</div>
+		</div>
+	</div>
+    <div th:include="include :: footer"></div>
+    <script th:inline="javascript">
+        var prefix = ctx + "statistic";
+        // var curDate= new Date();
+        $(function() {
+            var options = {
+				// queryParams:{
+				// 	createTime: new Date(curDate.getTime() - 24*60*60*1000).Format("yyyy-MM-dd")
+				// },
+                url: prefix + "/list",         
+                modalName: "注册数据",
+				search: false,
+		        showExport: true,
+                columns: [{
+		            checkbox: true
+		        },
+				{
+					field : 'id', 
+					title : 'id',
+					visible: false
+				},
+				{
+					field : 'createTime', 
+					title : '注册时间'
+				},
+				{
+					field : 'registerNum', 
+					title : '注册数'
+				},
+				{
+					field : 'loginNum', 
+					title : '登录APP数'
+				},
+				{
+					field : 'viewProductNum', 
+					title : 'UV总数'
+				},]
+            };
+            $.table.init(options);
+        });
+
+    </script>
+</body>
+</html>

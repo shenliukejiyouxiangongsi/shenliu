@@ -1,0 +1,47 @@
+package ${package}.domain;
+
+import com.baomidou.mybatisplus.annotations.TableName;
+import com.youdai.kaxiaozhu.framework.aspectj.lang.annotation.Excel;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+#foreach ($column in $columns)
+#if($column.attrType == 'Date')
+import java.util.Date;
+#break
+#end
+#if($column.attrType == 'decimal')
+import java.math.BigDecimal;
+#end
+#end
+
+/**
+ * ${tableComment}表 ${tableName}
+ * 
+ * @author ${author}
+ * @date ${datetime}
+ */
+@Getter
+@Setter
+@Data
+@ToString
+@TableName("${tableName}")
+public class ${className}
+{
+	private static final long serialVersionUID = 1L;
+	
+#foreach ($column in $columns)
+	/** $column.columnComment */
+	#if($column.columnName == $primaryKey.columnName)
+		#if($primaryKey.extra == 'auto_increment')
+			@TableId(type = IdType.AUTO)
+		#end
+	#end
+	@Excel(name="$column.columnComment")
+	private $column.attrType $column.attrname;
+#end
+
+
+}

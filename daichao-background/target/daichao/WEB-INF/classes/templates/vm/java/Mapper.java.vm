@@ -1,0 +1,25 @@
+package ${package}.mapper;
+
+import com.baomidou.mybatisplus.mapper.BaseMapper;
+import ${package}.domain.${className};
+import java.util.List;	
+
+/**
+ * ${tableComment} 数据层
+ * 
+ * @author ${author}
+ * @date ${datetime}
+ */
+public interface ${className}Mapper extends BaseMapper<${className}>
+{
+
+    List<${className}> select${className}List(${className} ${classname});
+
+    /**
+     * 批量删除${tableComment}
+     *
+     * @param ${primaryKey.attrname}s 需要删除的数据ID
+     * @return 结果
+     */
+     int delete${className}ByIds(String[] ${primaryKey.attrname}s);
+}

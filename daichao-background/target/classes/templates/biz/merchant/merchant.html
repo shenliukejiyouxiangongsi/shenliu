@@ -1,0 +1,146 @@
+<!DOCTYPE HTML>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+
+<div class="container-div">
+	<div class="row">
+		<div class="col-sm-12 search-collapse">
+			<form id="formId">
+				<div class="select-list">
+					<ul>
+						<li>
+							商品名称：<input type="text" name="mercName"/>
+						</li>
+						<!-- 							<li>
+                                                        展示页面：<input type="text" name="pName"/>
+                                                    </li> -->
+						<li>
+							状态：
+							<select id="status" name="status" >
+								<option value="" selected="selected">全部</option>
+								<option value="1">启用</option>
+								<option value="2">停用</option>
+							</select>
+						</li>
+						<li>
+							<a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+							<a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
+						</li>
+					</ul>
+				</div>
+			</form>
+		</div>
+
+		<div class="btn-group-sm hidden-xs" id="toolbar" role="group">
+			<a class="btn btn-success" onclick="$.operate.add()" shiro:hasPermission="biz:merchant:add">
+				<i class="fa fa-plus"></i> 添加
+			</a>
+			<a class="btn btn-primary btn-edit disabled" onclick="$.operate.edit()" shiro:hasPermission="biz:merchant:edit">
+				<i class="fa fa-edit"></i> 修改
+			</a>
+			<!-- 				<a class="btn btn-danger btn-del btn-del disabled" onclick="$.operate.removeAll()" shiro:hasPermission="biz:channel:remove">
+                                <i class="fa fa-remove"></i> 删除
+                            </a> -->
+
+		</div>
+		<div class="col-sm-12 select-table table-striped">
+			<table id="bootstrap-table" data-mobile-responsive="true"></table>
+		</div>
+	</div>
+</div>
+<div th:include="include :: footer"></div>
+<script th:inline="javascript">
+	var editFlag = [[${@permission.hasPermi('biz:merchant:edit')}]];
+	var changeFlag = [[${@permission.hasPermi('biz:merchant:change')}]];
+
+
+	var prefix = ctx + "merchant";
+
+	$(function() {
+		var options = {
+			url: prefix + "/list",
+			createUrl: prefix + "/add",
+			updateUrl: prefix + "/edit/{id}",
+			removeUrl: prefix + "/remove",
+			exportUrl: prefix + "/export",
+			modalName: "商品",
+			search: false,
+			showExport: true,
+			columns: [{
+				checkbox: true
+			},
+				{
+					field : 'id',
+					title : 'id',
+					visible: false
+				},
+				{
+					field : 'mercName',
+					title : '商品名称'
+				},
+				{
+					field : 'mercPrice',
+					title : '商品原价',
+				},
+				{
+					field : 'discountPrice',
+					title : '商品折扣价',
+				},
+				{
+					field : 'status',
+					title : '状态',
+					formatter: function(value, row, index) {
+						if(value==1){
+							return "<span class='badge badge-primary'>启用</span>";
+						}else if(value==2){
+							return "<span class='badge badge-danger '>停用</span>";
+						}
+					}
+				},
+				{
+					field : 'createTime',
+					title : '创建时间'
+				},
+				{
+					title: '操作',
+					align: 'center',
+					formatter: function(value, row, index) {
+						var actions = [];
+						actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="#" onclick="$.operate.edit(\'' + row.id + '\')"><i class="fa fa-edit"></i>编辑</a> ');
+                      	if(row.status==1){
+							actions.push('<a class="btn btn-danger btn-xs ' + changeFlag + '" href="#" onclick="changeStatus(\'' + row.id +"','"+ row.status+ '\')"><i class="fa fa-remove"></i>停用</a>');
+						}else{
+							actions.push('<a class="btn btn-danger btn-xs ' + changeFlag + '" href="#" onclick="changeStatus(\'' + row.id +"','"+ row.status+ '\')"><i class="fa fa-remove"></i>启用</a>');
+						}
+//						actions.push('<a class="btn btn-info btn-xs ' + resetPwdFlag + '" href="#" onclick="resetPwd(\'' + row.pId + '\')"><i class="fa fa-key"></i>重置</a>');
+						return actions.join('');
+					}
+				}]
+		};
+		$.table.init(options);
+	});
+
+	function changeStatus(id,status){
+		var tx='';
+		var setStatus;
+		if(status==1){
+			tx="停用";
+			setStatus=2;
+		}else{
+			tx="启用";
+			setStatus=1;
+		}
+		$.modal.confirm("确定要" + tx + id + "号商品吗？", function() {
+			var url=prefix+ "/change/"+id+"/"+setStatus;
+			var data = {
+				"id": id ,
+			};
+			$.operate.submit(url, "post", "json", data);
+		});
+	}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.youdai.daichao.mapper.AppVersionMapper">
+
+    <!-- 开启二级缓存 -->
+<!--     <cache type="org.mybatis.caches.ehcache.LoggingEhcache"/> -->
+	<resultMap type="advertisement" id="selecltResoult" autoMapping="true"></resultMap>
+	
+	<insert id="insertAppVerion" parameterType="appVersion" >
+		insert into app_version(app_type,app_version,need_updated,content,app_url,size,create_people,update_people,create_time)
+		values(#{appType},#{appVersion},#{needUpdated},#{content},#{appUrl},#{size},#{createPeople},#{updatePeople},SYSDATE())
+
+	</insert>
+	
+	<update id="updateAppVerionById" parameterType="appVersion">
+		update app_version 
+		<set>
+			<if test="appType != null and appType != ''"> app_Type= #{appType},</if>
+			<if test="appVersion !=null and appVersion != ''">app_version = #{appVersion},</if>
+			<if test="needUpdated != null and needUpdated != ''">need_updated = #{needUpdated},</if>
+			<if test="content !=null and content != ''">content = #{content},</if>
+			<if test="appUrl != null and appUrl !=''">app_url =#{appUrl},</if>
+			<if test="size !=null and size != ''">size=#{size},</if>
+			<if test="updatePeople != null and updatePeople !=''"> update_people =#{updatePeople},</if>
+			update_time =SYSDATE()
+		</set>
+		where id=#{id}
+	</update>
+
+	<select id="selectAppVersionList" parameterType="appVersion" resultType="appVersion">
+		select
+		id,
+		app_Type as appType,
+		app_version as appVersion,
+		need_updated as needUpdated,
+		content,
+		app_url as appUrl,
+		size,
+		update_people as updatePeople,
+		create_people as createPeople,
+		update_time as updateTime,
+		create_time as createTime
+
+		from app_version
+		<where>
+			<if test="appType != null "> and app_Type= #{appType}</if>
+			<if test="appVersion !=null and appVersion != ''">and app_version = #{appVersion}</if>
+			<if test="needUpdated != null and needUpdated != ''">and need_updated = #{needUpdated}</if>
+			<if test="content !=null and content != ''">and content = #{content}</if>
+			<if test="appUrl != null and appUrl !=''">and app_url =#{appUrl}</if>
+			<if test="size !=null and size != ''">and size=#{size}</if>
+		</where>
+	</select>
+
+
+	<select id="selectNewVersionList" parameterType="appVersion" resultType="appVersion">
+		select
+		id,
+		app_type as appType,
+		app_version as appVersion,
+		need_updated as needUpdated,
+		content,
+		app_url as appUrl,
+		size,
+		update_people as updatePeople,
+		create_people as createPeople,
+		update_time as updateTime,
+		create_time as createTime
+		from app_version
+		<where>
+			<if test="appVersion !=null and appVersion != ''"> app_version  >= #{appVersion}</if>
+			<if test="appType !=null "> and app_type  = #{appType}</if>
+		</where>
+		order by createTime desc
+	</select>
+</mapper>

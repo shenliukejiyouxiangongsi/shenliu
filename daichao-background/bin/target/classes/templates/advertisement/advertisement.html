@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+    
+     <div class="container-div">
+		<div class="row">
+
+			
+	        <div class="btn-group-sm hidden-xs" id="toolbar" role="group">
+				<a class="btn btn-success" onclick="$.operate.add()" shiro:hasPermission="biz:channel:add">
+					<i class="fa fa-plus"></i> 添加
+				</a>
+				<a class="btn btn-primary btn-edit disabled" onclick="$.operate.edit()" shiro:hasPermission="biz:channel:edit">
+					<i class="fa fa-edit"></i> 修改
+				</a>
+				<a class="btn btn-danger btn-del btn-del disabled" onclick="$.operate.removeAll()" shiro:hasPermission="biz:channel:remove">
+					<i class="fa fa-remove"></i> 删除
+				</a>
+
+			</div>
+			<div class="col-sm-12 select-table table-striped">
+				<table id="bootstrap-table" data-mobile-responsive="true"></table>
+			</div>
+		</div>
+	</div>
+    <div th:include="include :: footer"></div>
+    <script th:inline="javascript">
+		var editFlag = "";
+		var removeFlag = "";
+		var resetPwdFlag = "";
+
+        var prefix = ctx +"advertisement";
+
+        $(function() {
+            var options = {
+                url: prefix + "/list",
+                createUrl: prefix + "/add",
+                updateUrl: prefix + "/edit/{id}",
+                removeUrl: prefix + "/remove",
+				exportUrl: prefix + "/export",
+                modalName: "banner图",
+				search: false,
+		        showExport: true,
+                columns: [{
+		            checkbox: true
+		        },
+				{
+					field : 'adId',
+					title : 'id',
+					visible: false
+				},
+				{
+					field : 'adUrl',
+					title : '产品图',
+					formatter: function(value, row, index) {
+						var pathImg="";
+/* 						if(value.length==0){
+							return "";
+						} */
+						pathImg="<img width='40' height='40' src='"+value+"'   alt='' onclick='showBigImg(\""+value+"\") '>";
+						return pathImg;
+					}					
+				},
+				{
+					field : 'describation',
+					title : '产品描述'
+				},
+				{
+					field : 'sort',
+					title : '排序'
+				},
+				{
+					field : 'createTime',
+					title : '创建时间'
+				},
+				{
+					field : 'createUser',
+					title : '创建人'
+				},
+		        {
+		            title: '操作',
+		            align: 'center',
+		            formatter: function(value, row, index) {
+		            	var actions = [];
+		            	actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="#" onclick="$.operate.edit(\'' + row.adId + '\')"><i class="fa fa-edit"></i>编辑</a> ');
+                        actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="#" onclick="$.operate.remove(\'' + row.adId + '\')"><i class="fa fa-remove"></i>删除</a>');
+		//				actions.push('<a class="btn btn-info btn-xs ' + resetPwdFlag + '" href="#" onclick="resetPwd(\'' + row.adId + '\')"><i class="fa fa-key"></i>重置</a>');
+						return actions.join('');
+		            }
+		        }]
+            };
+            $.table.init(options);
+        });
+
+		//显示大图
+        function showBigImg(source) {
+			layer.open({
+				type: 1,
+				title: false,
+				closeBtn: 0,
+				area: ['800px', '800px'],
+				skin: 'layui-layer-nobg', //没有背景色
+				shadeClose: true,
+				content: '<img src="'+source+'"/>'
+			});
+		}
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="daichao-background:war">
+    <output-path>$PROJECT_DIR$/daichao-background/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>daichao-background</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="daichao.war">
+      <element id="artifact" artifact-name="daichao-background:war exploded" />
+    </root>
+  </artifact>
+</component>

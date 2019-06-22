@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.youdai.daichao.mapper.ProductCountLogMapper">
+
+    <!-- 开启二级缓存 -->
+    <!--<cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>-->
+	
+	<select id="selectProdctCountList" parameterType="map" resultType="landingPage">
+
+<!--		select -->
+<!--		pc.p_id as pId,-->
+<!--		SUM(CASE WHEN pc.first_view_num=1 then 1 else 0 END) as firstViewNum,-->
+<!--		SUM(CASE WHEN pc.second_view_num=1 then 1 else 0 END) as secondViewNum,-->
+<!--		SUM(CASE WHEN pc.first_user_num=1 then 1 else 0 END) as firstUserNum,-->
+<!--		SUM(CASE WHEN pc.second_user_num=1 then 1 else 0 END) as secondUserNum,-->
+<!--		DATE_FORMAT(pc.create_time,'%Y-%m-%d')  as createTime,-->
+<!--		p.p_name as pName-->
+<!--		from -->
+<!--		product_count_log pc left join product p-->
+<!--		on pc.p_id = p.p_id-->
+<!--		<where>-->
+<!--			<if test="createTime !=null and createTime != ''">-->
+<!--				DATE_FORMAT(pc.create_time,'%Y-%m-%d')=#{createTime}-->
+<!--			</if>-->
+<!--			<if test="startTime !=null and startTime != ''">-->
+<!--			 datediff(DATE_FORMAT(pc.create_time,'%Y-%m-%d'),#{startTime}) &gt;=0-->
+<!--			</if>-->
+<!--			<if test="endTime !=null and endTime != ''">-->
+<!--			and datediff(DATE_FORMAT(pc.create_time,'%Y-%m-%d'),#{endTime}) &lt;=0			-->
+<!--			</if>-->
+<!--			<if test="pName !=null and pName !=''"> and p.p_name =#{pName} </if>-->
+<!--		</where>-->
+<!--		GROUP BY pc.p_id,	DATE_FORMAT(pc.create_time,'%Y-%m-%d')-->
+<!--		ORDER BY createTime desc-->
+		select
+		pc.p_id as pId,
+		SUM(CASE WHEN pc.first_view_num=1 then 1 else 0 END) as firstViewNum,
+		SUM(CASE WHEN pc.second_view_num=1 then 1 else 0 END) as secondViewNum,
+		SUM(CASE WHEN pc.first_user_num=1 then 1 else 0 END) as firstUserNum,
+		SUM(CASE WHEN pc.second_user_num=1 then 1 else 0 END) as secondUserNum,
+		DATE_FORMAT(pc.create_time,'%Y-%m-%d')  as createTime,
+		p.p_name as pName
+		from
+		product_count_log pc left join product p
+		on pc.p_id = p.p_id
+		<where>
+			<if test="createTime !=null and createTime != ''">
+				DATE_FORMAT(pc.create_time,'%Y-%m-%d')=#{createTime}
+			</if>
+			<if test="startTime !=null and startTime != ''">
+				datediff(DATE_FORMAT(pc.create_time,'%Y-%m-%d'),#{startTime}) &gt;=0
+			</if>
+			<if test="endTime !=null and endTime != ''">
+				and datediff(DATE_FORMAT(pc.create_time,'%Y-%m-%d'),#{endTime}) &lt;=0
+			</if>
+			<if test="pName !=null and pName !=''"> and p.p_name =#{pName} </if>
+		</where>
+		GROUP BY pc.p_id,	DATE_FORMAT(pc.create_time,'%Y-%m-%d')
+
+
+		UNION ALL
+
+		SELECT
+		null as pId,
+		SUM(firstViewNum) as firstViewNum,
+		SUM(secondViewNum) as secondViewNum,
+		SUM(firstUserNum) as firstUserNum,
+		SUM(secondUserNum) as secondUserNum,
+		NULL  as createTime,
+		"合计" as pName
+
+		FROM
+		(select
+		pc.p_id as pId,
+		SUM(CASE WHEN pc.first_view_num=1 then 1 else 0 END) as firstViewNum,
+		SUM(CASE WHEN pc.second_view_num=1 then 1 else 0 END) as secondViewNum,
+		SUM(CASE WHEN pc.first_user_num=1 then 1 else 0 END) as firstUserNum,
+		SUM(CASE WHEN pc.second_user_num=1 then 1 else 0 END) as secondUserNum,
+		DATE_FORMAT(pc.create_time,'%Y-%m-%d')  as createTime,
+		p.p_name as pName
+		from
+		product_count_log pc left join product p
+		on pc.p_id = p.p_id
+		<where>
+			<if test="createTime !=null and createTime != ''">
+				DATE_FORMAT(pc.create_time,'%Y-%m-%d')=#{createTime}
+			</if>
+			<if test="startTime !=null and startTime != ''">
+				datediff(DATE_FORMAT(pc.create_time,'%Y-%m-%d'),#{startTime}) &gt;=0
+			</if>
+			<if test="endTime !=null and endTime != ''">
+				and datediff(DATE_FORMAT(pc.create_time,'%Y-%m-%d'),#{endTime}) &lt;=0
+			</if>
+			<if test="pName !=null and pName !=''"> and p.p_name =#{pName} </if>
+		</where>
+		GROUP BY pc.p_id,	DATE_FORMAT(pc.create_time,'%Y-%m-%d'))b
+
+		ORDER BY  CASE WHEN pName="合计" THEN 0 ELSE 1 END, createTime desc
+	</select>
+
+	<select id="selectListByDeviceFlag" parameterType="map" resultType="landingPage">
+		SELECT
+		a.id,
+		b.p_name as pName,
+		a.type,
+		max(a.create_time) as createTime
+		FROM
+		product_count_log a
+
+		LEFT JOIN product b ON a.p_id=b.p_id
+		where
+			<if test="deviceFlag != null and deviceFlag !=''">
+			a.device_flag in (
+			SELECT id from user_record where udid=#{deviceFlag}
+			)
+			</if>
+		<if test="pName !=null and pName != ''">
+				and b.p_name like concat("%",#{pName},"%")
+			</if>
+			<if test="type != null">
+				and a.type =#{type}
+			</if>
+			<!-- 浏览记录 -->
+			<if test="status == 0">
+				and	 a.first_view_num =1
+			</if>
+			<!-- 申请记录 -->
+			<if test="status == 1">
+				and	 a.second_view_num =1
+			</if>
+		group by a.p_id,a.type
+		order by createTime desc
+	</select>
+
+<!--	<select id="selectProductCountList" parameterType="map" resultType="landingPage">-->
+<!--		select-->
+<!--		pcl.id as id,-->
+<!--		pcl.first_view_num as firstViewNum,-->
+<!--		pcl.second_view_num as secondViewNum,-->
+<!--		p.p_id as pId,-->
+<!--		p.p_name as pName-->
+<!--		from-->
+<!--		product p,product_count_log pcl-->
+<!--		where p.p_id=pcl.p_id-->
+<!--	</select>-->
+</mapper>

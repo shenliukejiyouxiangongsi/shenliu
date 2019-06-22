@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html  lang="zh" xmlns:th="http://www.thymeleaf.org">
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="white-bg">
+<div class="wrapper wrapper-content animated fadeInRight ibox-content">
+    <form class="form-horizontal m" id="form-marketChannel-edit"  th:object="${marketChannel}">
+        <input type="text" style="display:none" id="marketId" th:field="*{marketId}">
+        <div class="form-group">
+            <label class="col-sm-3 control-label">市场渠道简称：</label>
+            <div class="col-sm-8">
+                <input id="marketCode" name="marketCode" th:field="*{marketCode}" class="form-control" readonly type="text" ></textarea>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">市场渠道名称：</label>
+            <div class="col-sm-8">
+                <input id="marketName" name="marketName" th:field="*{marketName}" class="form-control"  type="text" >
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-3 control-label">市场渠道类型：</label>
+            <div class="col-sm-8">
+                <input id="marketType" name="marketType" th:value="*{marketType==0?'IOS':'Android'}" class="form-control" readonly type="text" >
+            </div>
+        </div>
+    </form>
+</div>
+<div th:include="include::footer"></div>
+<script th:src="@{/ajax/libs/select/select2.js}"></script>
+<script type="text/javascript">
+    var prefix = ctx + "marketChannel"
+    $("#form-marketChannel-edit").validate({
+        rules:{
+
+            marketName:{
+                required:true,
+            },
+        },
+    });
+
+    function submitHandler() {
+        if ($.validate.form()) {
+            edit();
+        }
+    }
+
+    function edit() {
+        var marketId = $("input[name='marketId']").val();
+
+        var marketName = $("input[name='marketName']").val();
+        $.ajax({
+            cache : true,
+            type : "POST",
+            url : prefix + "/edit",
+            data : {
+                "marketId": marketId,
+                "marketName": marketName,
+
+            },
+            async : false,
+            error : function(request) {
+                $.modal.alertError("系统错误");
+            },
+            success : function(data) {
+                $.operate.successCallback(data);
+            }
+        });
+    }
+
+
+
+</script>
+</body>
+</html>
