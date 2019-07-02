@@ -169,6 +169,7 @@ com\youdai\daichao\project\monitor\logininfor\service\LogininforServiceImpl.clas
 com\youdai\daichao\DaichaoApplication.class
 com\youdai\daichao\project\system\role\mapper\RoleDeptMapper.class
 com\youdai\daichao\project\monitor\server\domain\Server.class
+com\youdai\daichao\admin_web\H5Controller.class
 com\youdai\daichao\project\monitor\operlog\service\OperLogServiceImpl.class
 com\youdai\daichao\project\system\user\mapper\SysUserMapper.class
 com\youdai\daichao\common\vo\JsonCodeEnum.class

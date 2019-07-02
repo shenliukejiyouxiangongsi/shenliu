@@ -20,13 +20,14 @@
         <result column="status"      property="status"     />
         <result column="clear_form"      property="clearForm"     />
         <result column="price"      property="price"     />
+        <result column="type"      property="type"     />
     </resultMap>
 
     <sql id="selectChannelVo">
         select channel_id, channel_name, 
         c_loginname, c_url, proportion, 
         c_password, create_user, create_time, 
-        update_time, status ,clear_form,price
+        update_time, status ,clear_form,price,type
         from channel
     </sql>
 
@@ -57,7 +58,8 @@
             <if test="cPassword != null and cPassword != ''">c_password = #{cPassword},</if>
 			<if test="status != null ">status = #{status},</if>
             <if test="clearForm != null and clearForm != ''">clear_form = #{clearForm},</if>
-			<if test="price != null ">price = #{price}</if>
+			<if test="price != null ">price = #{price},</if>
+            <if test="type != null ">type = #{type}</if>
         </set>
         where channel_id = #{channelId}
 
@@ -80,8 +82,8 @@
 	<insert id="addChannel" parameterType="channel"  useGeneratedKeys="true" keyProperty="channelId">
 
 		insert into 
-		channel(channel_name,c_loginname,proportion,c_password,create_user,status,clear_form,price)
-		values(#{channelName},#{cLoginname},#{proportion},#{cPassword},#{createUser},#{status},#{clearForm},#{price})
+		channel(channel_name,c_loginname,proportion,c_password,create_user,status,clear_form,price,type)
+		values(#{channelName},#{cLoginname},#{proportion},#{cPassword},#{createUser},#{status},#{clearForm},#{price},#{type})
 	</insert>
 
 <!--    <select id="selectChannelCountList" parameterType="map" resultType="channelCount">-->

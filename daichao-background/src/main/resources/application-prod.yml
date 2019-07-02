@@ -81,7 +81,7 @@ banner_folder:  daichao/banner
 #渠道域名前缀
 system:
   domain:
-    channalLinkBase:  http://dcapi.hzyoudai.com/share/index.html?channelName=
+    channalLinkBase:  https://qehh.drjjdh.cn/h5?channelName=
 
 #支付宝回调地址
 #ali_notify_url: http://2432j322y3.qicp.vip:58469/api/notify/aliNotify

@@ -48,6 +48,9 @@ public class Channel extends Model<Channel> {
     private String clearForm;
     @TableField("price")
     private BigDecimal price;
+    //链接的类型
+    @TableField("type")
+    private String type;
     @Override
     protected Serializable pkVal() {
         return this.channelId;

@@ -1,11 +1,15 @@
 package com.youdai.daichao.config;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.youdai.daichao.common.redis.RedisCache;
+import com.youdai.daichao.common.vo.JsonResp;
 import com.youdai.daichao.domain.AppUser;
 import com.youdai.daichao.domain.UserRecord;
 import com.youdai.daichao.service.IAppUserService;
 import com.youdai.daichao.service.IUserRecordService;
+import com.youdai.daichao.util.Md5;
 import com.youdai.daichao.util.RequestUtil;
 import com.youdai.daichao.util.StringUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -15,6 +19,9 @@ import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.PrintWriter;
+import java.util.Enumeration;
+import java.util.Map;
 
 /**
  * @Anthor: zhankui
@@ -49,6 +56,24 @@ public class ApiInterceptor implements HandlerInterceptor {
             String userAgent= request.getHeader("user-agent");
             insertWeb(userAgent,ip);
         }
+
+        //MD5
+        if(!getAllParams(request)) {
+            log.error("sign 检验失败！");
+            try {
+                response.setCharacterEncoding("utf-8");
+                response.setContentType("application/json; charset=utf-8");
+                JsonResp resp = JsonResp.fa("sign 检验失败！");
+                PrintWriter out = response.getWriter();
+                out.print(JSON.toJSONString(resp));
+                out.flush();
+                out.close();
+            } catch (Exception e) {
+                log.error("sign 检验异常",e);
+            }
+
+            return false;
+        };
         return true;
     }
 
@@ -104,5 +129,26 @@ public class ApiInterceptor implements HandlerInterceptor {
             userRecordService.insert(userRecord);
             redisCache.putCache(ip+userAgent,userRecord);
         }
+    }
+
+    public boolean getAllParams(HttpServletRequest request) throws Exception{
+        String uri = request.getRequestURI();
+        Map map =  request.getParameterMap();
+        Enumeration<String> parameterNames = request.getParameterNames();
+        StringBuilder sb = new StringBuilder();
+        String signValue = null;
+        if(parameterNames.hasMoreElements()) {
+            String paramName =  parameterNames.nextElement();
+            if("sign".equals(paramName)){
+                signValue = request.getParameter(paramName);
+            }
+            else {
+                String paramValue = request.getParameter(paramName);
+                sb.append(paramName).append("=").append(paramValue).append("&");
+            }
+        }
+        sb.append("serverAPI=qehh");
+        if(Md5.md5Encode(sb.toString()).equals(signValue)) return true;
+        return false;
     }
 }

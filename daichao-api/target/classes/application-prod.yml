@@ -50,6 +50,13 @@ spring:
     port: 6379
     password:
     timeout: 1000000
+  mvc:
+    view:
+      prefix: /static/
+      suffix: .html
+    static-path-pattern: /static/**
+
+
 
 logging:
   config: "classpath:logback-api.xml"

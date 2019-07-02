@@ -279,6 +279,8 @@ public class ShiroConfig
         filterChainDefinitionMap.put("/login", "anon,captchaValidate");
 
         filterChainDefinitionMap.put("/auth/great/greatBlackCallBack", "anon");
+        filterChainDefinitionMap.put("/hh/**", "anon");
+        filterChainDefinitionMap.put("/h5/**", "anon");
 
         // 系统权限列表
         // filterChainDefinitionMap.putAll(SpringUtils.getBean(IMenuService.class).selectPermsAll());

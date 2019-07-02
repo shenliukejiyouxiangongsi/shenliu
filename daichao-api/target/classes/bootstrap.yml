@@ -8,6 +8,8 @@ mybatis-plus:
 server:
   # 服务端口
   port: 8381
+  https:
+    port: 8382
   servlet:
     # 项目contextPath
     context-path: /
@@ -19,6 +21,11 @@ server:
     # Tomcat启动初始化的线程数，默认值25
     min-spare-threads: 30
     basedir: ${user.home}/tomcat/tmp
+
+#  ssl:
+#    key-store: classpath:cert/drjjdh.cn.pfx
+#    key-store-password: 0xGTACVW  #pfx-password.txt中复制出来的密码
+#    keyStoreType: PKCS12
 
 #阿里云
 oss:
