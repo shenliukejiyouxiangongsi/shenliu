@@ -1,6 +1,0 @@
-{
-  "code": "FAIL",
-  "data": null,
-  "msg": "Required request body is missing: public com.youdai.daichao.common.vo.JsonResp com.youdai.daichao.api.UserController.getPhoneCode(com.youdai.daichao.common.vo.CheckBody)",
-  "success": false
-}

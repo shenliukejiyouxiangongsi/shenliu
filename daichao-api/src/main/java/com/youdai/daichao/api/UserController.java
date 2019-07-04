@@ -101,12 +101,13 @@ public class UserController {
         entityWrapper.eq("a_uphone", phone);
         AppUser user = userService.selectOne(entityWrapper);
         if (user == null) {
-            user = new AppUser();
-            user.setAUphone(phone);
-            userService.insert(user);
-            user = userService.phoneCodeLogin(phone, code);
-            insertLog(user,phone,request,true);
-            return JsonResp.ok(user);
+            return JsonResp.fa("非法登录，请通过渠道登录！");
+//            user = new AppUser();
+//            user.setAUphone(phone);
+//            userService.insert(user);
+//            user = userService.phoneCodeLogin(phone, code);
+//            insertLog(user,phone,request,true);
+//            return JsonResp.ok(user);
         } else {
             user = userService.phoneCodeLogin(phone, code);
             insertLog(user,phone,request,false);
@@ -161,38 +162,43 @@ public class UserController {
         if(null!=appUser){
             return JsonResp.fa("该手机号已经注册过，请直接登录");
         }
+
+        //不是从渠道进来，防止撸贷
+        if(null ==channelName || "".equals(channelName) || "null".equals(channelName) || "undefined".equals(channelName)){
+            return JsonResp.fa("非法注册，请通过渠道注册！");
+        }
+
         AppUser user=new AppUser();
         user.setProKey(proKey);
         ChannelCountLog channelCountLog=new ChannelCountLog();
-        //判断是否从渠道商进来
-        if(null!=channelName && !"".equals(channelName)&&!"null".equals(channelName) && !"undefined".equals(channelName)){
-            EntityWrapper wrapper=new EntityWrapper();
-            wrapper.eq("c_loginname",channelName);
-            wrapper.eq("status",1);
-            Channel channel=channelService.selectOne(wrapper);
-            if(null==channel){
-                return JsonResp.fa("未找到相应的渠道商");
-            }
-            channelCountLog.setChannelId(channel.getChannelId());
-            user.setChannelId(channel.getChannelId());
+        // 判断是否合法渠道
+        EntityWrapper wrapper=new EntityWrapper();
+        wrapper.eq("c_loginname",channelName);
+        wrapper.eq("status",1);
+        Channel channel=channelService.selectOne(wrapper);
+        if(null==channel){
+            return JsonResp.fa("未找到相应的渠道商");
         }
+        channelCountLog.setChannelId(channel.getChannelId());
+        user.setChannelId(channel.getChannelId());
+
         if (StringUtils.length(password) < 6) {
             return JsonResp.fa("密码长度请限制在6位以上！");
         }
-            user.setAUphone(phone);
-            user.setEquipmentFlag(equipmentFlag);
-            user.setStatus(1);
-            user.setPassword(Md5.md5Encode(password));
-            userService.insert(user);
-            channelCountLog.setUserId(user.getAUid());
-            channelCountLog.setRegisterNum(1);
-            channelCountLogService.insert(channelCountLog);
-            //插入日志表
-            UserCountLog userCountLog=new UserCountLog();
-            userCountLog.setRegisterNum(1);
-            userCountLog.setDeviceFlag(getRecordId(request));
-            userCountLog.setPhone(phone);
-            userCountLogService.insert(userCountLog);
+        user.setAUphone(phone);
+        user.setEquipmentFlag(equipmentFlag);
+        user.setStatus(1);
+        user.setPassword(Md5.md5Encode(password));
+        userService.insert(user);
+        channelCountLog.setUserId(user.getAUid());
+        channelCountLog.setRegisterNum(1);
+        channelCountLogService.insert(channelCountLog);
+        //插入日志表
+        UserCountLog userCountLog=new UserCountLog();
+        userCountLog.setRegisterNum(1);
+        userCountLog.setDeviceFlag(getRecordId(request));
+        userCountLog.setPhone(phone);
+        userCountLogService.insert(userCountLog);
         return JsonResp.ok("注册成功!");
     }
 
@@ -225,6 +231,11 @@ public class UserController {
             user.setAUphone(phone);
             user.setEquipmentFlag(equipmentFlag);
             user.setStatus(1);
+
+            //不是从渠道进来，防止撸贷
+            if(null ==channelName || "".equals(channelName) || "null".equals(channelName) || "undefined".equals(channelName)){
+                return JsonResp.fa("非法注册，请通过渠道注册！");
+            }
             //判断是否是渠道商引流
             if (channelName != null && !"".equals(channelName) && !"null".equals(channelName) && !"undefined".equals(channelName)) {
                 log.debug("存在channelName==================================================================="+channelName);

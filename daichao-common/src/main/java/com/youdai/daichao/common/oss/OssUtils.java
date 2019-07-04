@@ -1,7 +1,6 @@
 package com.youdai.daichao.common.oss;
 
-import com.aliyun.oss.OSSBuilder;
-import com.aliyun.oss.OSSClient;
+import com.aliyun.oss.*;
 import com.aliyun.oss.model.ObjectMetadata;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +9,41 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
+
+import static com.aliyun.oss.common.utils.CodingUtils.assertParameterNotNull;
+import static com.aliyun.oss.common.utils.IOUtils.checkFile;
+import static com.aliyun.oss.common.utils.LogUtils.logException;
+import static com.aliyun.oss.internal.OSSConstants.DEFAULT_CHARSET_NAME;
+import static com.aliyun.oss.internal.OSSConstants.DEFAULT_OSS_ENDPOINT;
+import static com.aliyun.oss.internal.OSSUtils.OSS_RESOURCE_MANAGER;
+import static com.aliyun.oss.internal.OSSUtils.ensureBucketNameValid;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
+import java.net.InetAddress;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.net.UnknownHostException;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+
+import com.aliyun.oss.common.auth.Credentials;
+import com.aliyun.oss.common.auth.CredentialsProvider;
+import com.aliyun.oss.common.auth.DefaultCredentialProvider;
+import com.aliyun.oss.common.auth.ServiceSignature;
+import com.aliyun.oss.common.comm.*;
+import com.aliyun.oss.common.utils.BinaryUtil;
+import com.aliyun.oss.common.utils.DateUtil;
+import com.aliyun.oss.internal.*;
+import com.aliyun.oss.model.*;
+import com.aliyun.oss.model.SetBucketCORSRequest.CORSRule;
 
 /**
  * @Description 上传图片
@@ -91,4 +125,50 @@ public class OssUtils {
             System.out.println(e);
         }
     }
+
+
+    //用户签名访问
+    public URL generatePresignedUrl(String bucketName, String key, Date expiration) throws ClientException {
+        return generatePresignedUrl(bucketName, key, expiration, HttpMethod.GET);
+    }
+
+
+    public URL generatePresignedUrl(String bucketName, String key, Date expiration, HttpMethod method)
+            throws ClientException {
+        GeneratePresignedUrlRequest request = new GeneratePresignedUrlRequest(bucketName, key);
+        request.setExpiration(expiration);
+        request.setMethod(method);
+
+        return generatePresignedUrl(request);
+    }
+
+
+    public URL generatePresignedUrl(GeneratePresignedUrlRequest request) throws ClientException {
+
+        assertParameterNotNull(request, "request");
+
+        if (request.getBucketName() == null) {
+            throw new IllegalArgumentException(OSS_RESOURCE_MANAGER.getString("MustSetBucketName"));
+        }
+        ensureBucketNameValid(request.getBucketName());
+
+        if (request.getExpiration() == null) {
+            throw new IllegalArgumentException(OSS_RESOURCE_MANAGER.getString("MustSetExpiration"));
+        }
+        String url;
+
+//        if (client.getClientConfiguration() != null && client.getClientConfiguration().getSignatureVersion() == SignVersion.V2) {
+//            url = SignV2Utils.buildSignedURL(request, credsProvider.getCredentials(), serviceClient.getClientConfiguration(), endpoint);
+//        } else {
+//            url = SignUtils.buildSignedURL(request, credsProvider.getCredentials(), serviceClient.getClientConfiguration(), endpoint);
+//        }
+
+//        try {
+//            return new URL(url);
+//        } catch (MalformedURLException e) {
+//            throw new ClientException(e);
+//        }
+        return null;
+    }
+
 }

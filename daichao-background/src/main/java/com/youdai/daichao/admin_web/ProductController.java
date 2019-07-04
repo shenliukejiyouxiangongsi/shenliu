@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -228,5 +229,18 @@ public class ProductController extends BaseController {
         int result=productService.selectCountByName(pName);
         return toAjax(result);
     }
+
+    /**
+     * 删除渠道商
+     */
+    @RequiresPermissions("biz:product:remove")
+    @Log(title = "产品删除",businessType = BusinessType.DELETE )
+    @PostMapping( "/remove")
+    @ResponseBody
+    public AjaxResult remove(String ids)
+    {
+        return toAjax(productService.deleteBatchIds(Arrays.asList(ids.split(","))));
+    }
+
 
 }

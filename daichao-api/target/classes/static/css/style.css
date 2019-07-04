@@ -4,9 +4,11 @@ html,body{
     height: 100vh;
     background-color: #2558FF;
 }
+
 a[target="_blank"]{
     font-size: 0
 }
+
 .content{
     padding: 0 20px;
     min-height: 100vh;
@@ -15,6 +17,7 @@ a[target="_blank"]{
     background-size: 100%;
     padding-top: 100%;
     align-items: center;
+
 }
 .content>div>div{
     border-radius: 28px;
@@ -25,12 +28,15 @@ a[target="_blank"]{
     margin-bottom: 15px;
     background-color: #fff;
     color: #333;
+    /*background-color: blue;*/
+
+
 }
 input{
     border: 0;
     height: 100%;
     outline: none;
-    width: 100%; 
+    width: 100%;
 }
 .but{
     text-align: center;
@@ -38,22 +44,23 @@ input{
     color: #2558FF !important;
     font-weight: 900;
     height: 48px;
-    line-height:24px
+    line-height:22px
 
 }
 .codeBut{
     color: #2558FF;
     font-size: 15px;
     float: right;
-    text-align: center;
+    /*text-align: center;*/
     line-height:22px;
+    /*background-color: red;*/
+    margin-top: 2px;
 }
 #tiaoxiazai{
     display: block;
     text-align: center;
     margin-top: 50px;
     color: #FFFFFF;
-
 }
 
 
@@ -76,6 +83,9 @@ input{
         margin-bottom: 30px;
     }
 }
+
+
+
 @media ( max-width : 380px){
     .content>div{
         padding: 9px 20px 8px;

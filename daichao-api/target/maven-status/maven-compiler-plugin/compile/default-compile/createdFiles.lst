@@ -16,7 +16,6 @@ com\youdai\daichao\config\ApiInterceptor.class
 com\youdai\daichao\api\H5Controller.class
 com\youdai\daichao\api\OrderController.class
 com\youdai\daichao\api\QuestionController.class
-com\youdai\daichao\config\ApiMvcConfig$1.class
 com\youdai\daichao\shiro\PasswordRealm.class
 com\youdai\daichao\api\LoginController.class
 com\youdai\daichao\shiro\ShiroConfiguration$AuthRealm.class

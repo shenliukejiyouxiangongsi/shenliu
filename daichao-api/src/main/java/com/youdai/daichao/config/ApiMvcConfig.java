@@ -34,10 +34,10 @@ public class ApiMvcConfig extends WebMvcConfigurerAdapter {
          /*addPathPatterns 用于添加拦截规则
          excludePathPatterns 用户排除拦截*/
         registry.addInterceptor(getApiInterceptor()).addPathPatterns("/**")
-                .excludePathPatterns("/api/userRecord/put");
+                .excludePathPatterns("/api/userRecord/put","/h5","/static/**");
     }
 
-//
+
 //    @Bean
 //    public TomcatServletWebServerFactory tomcatServletWebServerFactory(Connector connector){
 //        TomcatServletWebServerFactory tomcat=new TomcatServletWebServerFactory(){

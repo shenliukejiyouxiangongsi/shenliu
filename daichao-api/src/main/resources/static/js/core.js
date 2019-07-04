@@ -1,13 +1,15 @@
 
 
 
-//https://fir.im/wh6t?utm_source=fir&utm_medium=qr&openId=oGB0Cj-qTbkAhNqK4j9bCj-wgO3s
-var urlcore = 'https://www.drjjdh.cn:8381';
-// var urlcore = 'http://dcapi.hzyoudai.com';
+
+var urlcore = 'https://qehh.drjjdh.cn';
+
 //苹果手机下载地址
 var ios = "https://fir.im/rk89"
 // 安卓下载地址
 var android = "https://fir.im/tfdq"
+
+var nature = "qehh"
 
 var urlhref = window.location.href;
 var channelName = getname(urlhref).channelName;
@@ -34,6 +36,7 @@ function getname (url) {
     }
     return o;
 }
+
 //图片验证码
 function picCode(){
     $.ajax({
@@ -49,6 +52,36 @@ function picCode(){
         }
     });
 }
+
+
+function setQueryConfig(queryConfig) {
+
+    var stringM = "";
+    for(var o in queryConfig){
+        stringM += o + "=" + queryConfig[o] + "&";
+    }
+    var stringM = stringM.substring(0, stringM.length-1);
+    return stringM;
+}
+
+
+
+function getJsonData(arr) {
+
+    var theRequest = new Object();
+
+    for (var i = 0; i < arr.length; i++) {
+
+        var kye = arr[i].split("=")[0];
+        var value = arr[i].split("=")[1];
+        // 给对象赋值
+        theRequest[kye] = value
+       }
+    return theRequest;
+
+}
+
+
 
 function is_weixn_qq(){
 	var ua = navigator.userAgent.toLowerCase();

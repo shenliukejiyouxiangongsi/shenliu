@@ -43,5 +43,6 @@ com\youdai\daichao\common\vo\JsonCodeEnum.class
 com\youdai\daichao\common\vo\CheckBody.class
 com\youdai\daichao\util\SerializerUtil.class
 com\youdai\daichao\common\vo\FailException.class
+com\youdai\daichao\util\CommonUtil.class
 com\youdai\daichao\util\HttpClientUtil$1.class
 com\youdai\daichao\common\vo\JsonException.class

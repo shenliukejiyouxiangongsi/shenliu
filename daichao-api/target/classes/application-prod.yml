@@ -5,7 +5,7 @@ spring:
     driverClassName: com.mysql.jdbc.Driver
       # 主库数据源
 #    url: jdbc:mysql://rm-bp1n39j0m0r785ei1.mysql.rds.aliyuncs.com:3306/daichao?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true
-    url: jdbc:mysql://www.drjjdh.cn:3306/daichao?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true
+    url: jdbc:mysql://127.0.0.1:3506/daichao?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true
     username: root
     #password: eSfPJPN09t2EVprj
     password: shen@liu
@@ -47,7 +47,7 @@ spring:
     # Redis服务器地址
     host: 127.0.0.1
     # Redis服务器连接端口
-    port: 6379
+    port: 6879
     password:
     timeout: 1000000
   mvc:

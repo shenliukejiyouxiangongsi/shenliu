@@ -22,6 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.PrintWriter;
 import java.util.Enumeration;
 import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * @Anthor: zhankui
@@ -56,7 +57,6 @@ public class ApiInterceptor implements HandlerInterceptor {
             String userAgent= request.getHeader("user-agent");
             insertWeb(userAgent,ip);
         }
-
         //MD5
         if(!getAllParams(request)) {
             log.error("sign 检验失败！");
@@ -132,22 +132,29 @@ public class ApiInterceptor implements HandlerInterceptor {
     }
 
     public boolean getAllParams(HttpServletRequest request) throws Exception{
-        String uri = request.getRequestURI();
-        Map map =  request.getParameterMap();
         Enumeration<String> parameterNames = request.getParameterNames();
+        //没有传参数放行
+        if(!parameterNames.hasMoreElements()) return true;
+
         StringBuilder sb = new StringBuilder();
         String signValue = null;
-        if(parameterNames.hasMoreElements()) {
+        Map<String,String> treemap = new TreeMap();
+        while(parameterNames.hasMoreElements()) {
             String paramName =  parameterNames.nextElement();
             if("sign".equals(paramName)){
                 signValue = request.getParameter(paramName);
             }
             else {
                 String paramValue = request.getParameter(paramName);
-                sb.append(paramName).append("=").append(paramValue).append("&");
+                treemap.put(paramName,paramValue);
             }
         }
+        for (Map.Entry<String,String> e:treemap.entrySet()){
+            sb.append(e.getKey()).append("=").append(e.getValue()).append("&");
+        }
         sb.append("serverAPI=qehh");
+        log.info("sign----------"+ signValue);
+        log.info("md5-----------"+Md5.md5Encode(sb.toString()));
         if(Md5.md5Encode(sb.toString()).equals(signValue)) return true;
         return false;
     }

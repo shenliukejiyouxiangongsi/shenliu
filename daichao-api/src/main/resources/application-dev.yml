@@ -1,0 +1,138 @@
+# 数据源配置
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.jdbc.Driver
+      # 主库数据源
+#    url: jdbc:mysql://rm-bp1n39j0m0r785ei1.mysql.rds.aliyuncs.com:3306/daichao?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true
+    url: jdbc:mysql://www.drjjdh.cn:3506/daichao?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true
+    username: root
+    #password: eSfPJPN09t2EVprj
+    password: shen@liu
+    # 初始连接数
+    initial-size: 10
+    # 最大连接池数量
+    max-active: 100
+    # 最小连接池数量
+    min-idle: 10
+    # 配置获取连接等待超时的时间
+    max-wait: 60000
+    # 打开PSCache，并且指定每个连接上PSCache的大小
+    pool-prepared-statements: true
+    max-pool-prepared-statement-per-connection-size: 20
+    # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+    timeBetweenEvictionRunsMillis: 60000
+    # 配置一个连接在池中最小生存的时间，单位是毫秒
+    min-evictable-idle-time-millis: 300000
+    validation-query: SELECT 1 FROM DUAL
+    test-while-idle: true
+    test-on-borrow: false
+    test-on-return: false
+    stat-view-servlet:
+      enabled: true
+      url-pattern: /monitor/druid/*
+    filter:
+      stat:
+        log-slow-sql: true
+        slow-sql-millis: 1000
+        merge-sql: false
+      wall:
+        config:
+          multi-statement-allow: true
+  redis:
+    # Redis开关/默认关闭
+    enabled: true
+    # Redis数据库索引（默认为0）
+    database: 1
+    # Redis服务器地址
+    host: 127.0.0.1
+    # Redis服务器连接端口
+    port: 6379
+    password:
+    timeout: 1000000
+  mvc:
+    view:
+      prefix: /static/
+      suffix: .html
+    static-path-pattern: /static/**
+
+
+
+logging:
+  config: "classpath:logback-api.xml"
+  console: "%d{yyyy-MM-dd HH:mm:ss.SSS} -%5p ${PID:-} [%15.15t] %-40.40logger{39} : %m%n"
+  level.root: debug
+
+#赛邮短信
+saiyou:
+  account: hangzhouyoudai@foxmail.com
+  password: nbly1216@
+  templateId:
+    #注册模板
+    registerMsgId: zcOWs2
+    #拒绝模板
+    refuseMsgId: SoElO1
+    #放款短信提醒
+    payMoneyMsgId: FYTLL1
+    #用户还款成功短信
+    repaySuccessMsgId: ZfWzi1
+    #提额提醒
+    addMoneyMsgId: T8NVA3
+    #还款时间前6小时提醒
+    repayDay6HoureMsgId: X80oW
+    #还款日前1天提醒
+    repay1DayMsgId: 0vzWL
+    #还款日前2天提醒
+    repay2DayMsgId: Melbc4
+    #还款日当天提醒
+    repayDayMsgId: hfGw71
+    #逾期提醒
+    overdueMsgId: 2im7X
+
+
+product_folder: daichaoApi/userOption
+
+#跳转H5地址
+jump_url: http://dcapi.hzyoudai.com/risk/index.html
+#黑网检测地址
+check_url: http://risk.hzyoudai.com/api/riskModule/check
+#请求认证报告地址
+select_report_url: http://risk.hzyoudai.com/api/riskModule/selectReport
+#查询检测记录
+select_check_record_url: http://risk.hzyoudai.com/api/riskModule/selectCheckRecord
+#支付宝回调地址
+#ali_notify_url: http://dcapi.hzyoudai.com/api/notify/aliNotify
+ali_notify_url: http://www.drjjdh.cn:8381/api/notify/aliNotify
+#微信回调地址
+#wx_notify_url: http://2432j322y3.qicp.vip:58469/api/notify/wxNotify
+wx_notify_url: http://www.drjjdh.cn:8381/api/notify/wxNotify
+
+
+#创蓝短信
+chuanglan:
+  sms_url: http://smssh1.253.com/msg/send/json
+  account: N7419788
+  password: 4cXwa27vV
+  templateId:
+    #注册模板
+    registerMsgId: zcOWs2
+    #拒绝模板
+    refuseMsgId: SoElO1
+    #放款短信提醒
+    payMoneyMsgId: FYTLL1
+    #用户还款成功短信
+    repaySuccessMsgId: ZfWzi1
+    #提额提醒
+    addMoneyMsgId: T8NVA3
+    #还款时间前6小时提醒
+    repayDay6HoureMsgId: X80oW
+    #还款日前1天提醒
+    repay1DayMsgId: 0vzWL
+    #还款日前2天提醒
+    repay2DayMsgId: Melbc4
+    #还款日当天提醒
+    repayDayMsgId: hfGw71
+    #逾期提醒
+    overdueMsgId: 2im7X
+
+

@@ -16,19 +16,30 @@
     fm.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'static.fraudmetrix.cn/v2/fm.js?ver=0.1&t=' + (new Date().getTime()/3600000).toFixed(0);
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(fm, s);
 
-   function codeBut(){
+
+
+
+    function codeBut(){
         var phone = $('#phone').val();
             // console.log(phone.length);
             // console.log(phone.length > 10);
-            if (phone.length==11){ 
+
+        if (phone.length==11){
+
                 var md5 = hex_md5(phone+"YDCODE9812#!1")
-                // var data = JSON.stringify({
-                //     phone:phone,
-                //     validateSign:md5
-                // })
+
+                var queryConfig = {
+                    phone:phone,
+                    validateSign:md5,
+                };
+
+            var arr = setQueryConfig(queryConfig).split('&')
+            let stringA =  setQueryConfig(getJsonData(arr.sort()))
+            var natureStr = hex_md5(stringA + "&serverAPI="+ nature);
+
                 $.ajax({
                     type:"get",
-                    url:urlcore+"/api/user/getRegisterCode?phone="+phone+"&validateSign="+md5,
+                    url:urlcore+"/api/user/getRegisterCode?phone="+phone+"&validateSign="+md5 +"&sign="+natureStr ,
                     // data:data,
                     // dataType: 'json',
                     contentType: "application/json;charset=utf-8",
@@ -54,7 +65,27 @@
                             },1000)
                             
                         }else{
-                            mui.alert(res.msg);
+
+                            if (res.msg == "该手机号已经注册过，请直接登录"){
+                                var u = navigator.userAgent;
+                                if (u.indexOf('Android') > -1 || u.indexOf('Linux') > -1) {
+                                    //安卓手机下载地址
+                                    location.href=android;
+                                }else  if (u.indexOf('iPhone') > -1) {//苹果手机
+                                    //苹果手机下载跳转地址
+                                    window.location.href = ios;
+
+                                }else{
+                                    //安卓手机下载地址
+                                    // location.href=android;
+                                    window.location.href = ios;
+                                }
+                            }else {
+                                mui.alert( res.msg);
+                            }
+
+                            // mui.alert(res.msg);
+
                         }
                     }
                 })
@@ -69,6 +100,8 @@ function tiaoxiazai(){
         //苹果手机下载跳转地址
         window.location.href = ios;
         // $(".yindao").css("display","block")
+
+
     }else{
         //安卓手机下载地址
         window.location.href = android;
@@ -80,15 +113,20 @@ function tiaoxiazai(){
 //点击注册
 
 function but(){
-    var code = $("#code").val()
+
     var phone = $('#phone').val();
-    var password = $("#password").val()
+    var code = $('#code').val();
+    var blackBox = _fmOpt.getinfo();
+    var password = $('#password').val();
+
+
     // console.log(code,codeMun)
     // console.log(password)
     // if(code==0||!code==codeMun){
     //     alert("验证码错误")
     //     return
     // }
+
     if(!phone){
         mui.alert( "请输入手机号");
         return
@@ -98,31 +136,41 @@ function but(){
         return
     }
 
-    var phone = $('#phone').val();
-var code = $('#code').val();
-var blackBox = _fmOpt.getinfo(); 
-var password = $('#password').val();
-var ua = navigator.userAgent.toLowerCase();//获取判断用的对象
-if (ua.match(/MicroMessenger/i) == "micromessenger") {
-    //在微信中打开
-    // $('#codeBtn').text('weixin')
-    var sourceBrowser = "wx_browser "
-}else if(ua.match(/QQ/i) == "qq"){
-    //QQ中打开
-    // $('#codeBtn').text('qq')
-    var sourceBrowser= "qq_browser"
-}else{
-    var sourceBrowser = ""
-}
+    let queryConfig = {
+        phone:phone,
+        code:code,
+        channelName:channelName,
+        equipmentFlag:2,
+    };
+
+    var arr = setQueryConfig(queryConfig).split('&')
+    let stringA =  setQueryConfig(getJsonData(arr.sort()))
+    var natureStr = hex_md5(stringA + "&serverAPI="+ nature);
+
+
+    // var ua = navigator.userAgent.toLowerCase();//获取判断用的对象
+// if (ua.match(/MicroMessenger/i) == "micromessenger") {
+//     //在微信中打开
+//     // $('#codeBtn').text('weixin')
+//     var sourceBrowser = "wx_browser "
+// }else if(ua.match(/QQ/i) == "qq"){
+//     //QQ中打开
+//     // $('#codeBtn').text('qq')
+//     var sourceBrowser= "qq_browser"
+// }else{
+//     var sourceBrowser = ""
+// }
     
 
 $.ajax({
-    url:  urlcore + "/api/user/registerPhoneCodeV2?phone="+phone+"&code="+code+"&channelName="+channelName+"&sourceBrowser="+sourceBrowser+"&equipmentFlag=2",
+    url:  urlcore + "/api/user/registerPhoneCodeV2?phone="+phone+"&code="+code+"&channelName="+channelName+"&equipmentFlag=2"+"&sign="+natureStr,
     type: "get",
     // dataType: 'json',
     contentType: "application/json;charset=utf-8",
     // xhrFields:{withCredentials:true},
     success:function(data){
+
+        //data.msg =  "该手机号已经注册过，请直接登录";
         if (data.success == true) {
             // document.getElementById("modal").style.visibility="visible";
             var u = navigator.userAgent;
@@ -132,7 +180,7 @@ $.ajax({
             }else  if (u.indexOf('iPhone') > -1) {//苹果手机
                 //苹果手机下载跳转地址
                 window.location.href = ios;
-                
+
             }else{
                 //安卓手机下载地址
                 // location.href=android;
@@ -141,7 +189,29 @@ $.ajax({
 
         } else {
     // $("#password").attr("placeholder",data.msg);
-            mui.alert( data.msg);
+            // 已经注册直接跳转
+
+            // mui.alert( data.msg);
+
+
+            if (data.msg == "该手机号已经注册过，请直接登录"){
+                var u = navigator.userAgent;
+                if (u.indexOf('Android') > -1 || u.indexOf('Linux') > -1) {
+                    //安卓手机下载地址
+                    location.href=android;
+                }else  if (u.indexOf('iPhone') > -1) {//苹果手机
+                    //苹果手机下载跳转地址
+                    window.location.href = ios;
+
+                }else{
+                    //安卓手机下载地址
+                    // location.href=android;
+                    window.location.href = ios;
+                }
+            }else {
+                mui.alert( data.msg);
+            }
+
         }
 
     },
@@ -151,6 +221,9 @@ $.ajax({
 
 });
 }
+
+
+
 $(function(){
     ip(0)
     // if(is_weixn_qq()=="QQ"){

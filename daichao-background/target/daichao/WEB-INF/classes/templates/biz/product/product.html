@@ -37,12 +37,12 @@
 			<a class="btn btn-success" onclick="$.operate.add()" shiro:hasPermission="biz:product:add">
 				<i class="fa fa-plus"></i> 添加
 			</a>
-			<a class="btn btn-primary btn-edit disabled" onclick="$.operate.edit()" shiro:hasPermission="biz:product:edit">
-				<i class="fa fa-edit"></i> 修改
+<!--			<a class="btn btn-primary btn-edit disabled" onclick="$.operate.edit()" shiro:hasPermission="biz:product:edit">-->
+<!--				<i class="fa fa-edit"></i> 修改-->
+<!--			</a>-->
+			<a class="btn btn-danger btn-del btn-del disabled" onclick="$.operate.removeAll()" shiro:hasPermission="biz:product:remove">
+				<i class="fa fa-remove"></i> 删除
 			</a>
-			<!-- 				<a class="btn btn-danger btn-del btn-del disabled" onclick="$.operate.removeAll()" shiro:hasPermission="biz:channel:remove">
-                                <i class="fa fa-remove"></i> 删除
-                            </a> -->
 
 		</div>
 		<div class="col-sm-12 select-table table-striped">
@@ -124,7 +124,7 @@
 						actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="#" onclick="$.operate.edit(\'' + row.pid + '\')"><i class="fa fa-edit"></i>编辑</a> ');
 						var text=row.status==1 ? "下线":"上线";
                         actions.push('<a class="btn btn-danger btn-xs ' + changeFlag + '" href="#" onclick="changeStatus(\'' + row.pid +"','"+ row.status+ '\')"><i class="fa fa-remove"></i>'+text+'</a>');
-//                      actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="#" onclick="$.operate.remove(\'' + row.pId + '\')"><i class="fa fa-remove"></i>删除</a>');
+                     	actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="#" onclick="$.operate.remove(\'' + row.pid + '\')"><i class="fa fa-remove"></i>删除</a>');
 //						actions.push('<a class="btn btn-info btn-xs ' + resetPwdFlag + '" href="#" onclick="resetPwd(\'' + row.pId + '\')"><i class="fa fa-key"></i>重置</a>');
 						return actions.join('');
 					}
