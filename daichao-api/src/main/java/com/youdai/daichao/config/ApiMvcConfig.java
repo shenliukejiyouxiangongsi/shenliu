@@ -34,7 +34,7 @@ public class ApiMvcConfig extends WebMvcConfigurerAdapter {
          /*addPathPatterns 用于添加拦截规则
          excludePathPatterns 用户排除拦截*/
         registry.addInterceptor(getApiInterceptor()).addPathPatterns("/**")
-                .excludePathPatterns("/api/userRecord/put","/h5","/static/**");
+                .excludePathPatterns("/api/userRecord/put","/static/**");
     }
 
 

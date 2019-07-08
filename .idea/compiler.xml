@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="daichao-common" />
+        <module name="daichao-channel" />
         <module name="daichao-dao" />
         <module name="daichao-background" />
         <module name="daichao-api" />
@@ -16,6 +17,7 @@
       <module name="daichao" target="1.8" />
       <module name="daichao-api" target="1.8" />
       <module name="daichao-background" target="1.8" />
+      <module name="daichao-channel" target="1.8" />
       <module name="daichao-common" target="1.8" />
       <module name="daichao-dao" target="1.8" />
     </bytecodeTargetLevel>
@@ -24,6 +26,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="daichao-api" options="-parameters" />
       <module name="daichao-background" options="-parameters" />
+      <module name="daichao-channel" options="-parameters" />
       <module name="daichao-common" options="-parameters" />
       <module name="daichao-dao" options="-parameters" />
     </option>

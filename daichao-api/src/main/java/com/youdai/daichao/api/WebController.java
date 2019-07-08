@@ -12,11 +12,14 @@ import com.youdai.daichao.sms.SmsAPI;
 import com.youdai.daichao.util.Base64Picture;
 import com.youdai.daichao.util.ImageUtil;
 import com.youdai.daichao.util.Md5;
+import com.youdai.daichao.util.RequestUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -102,6 +105,7 @@ public class WebController {
             ChannelCountLog channelCountLog=new ChannelCountLog();
             channelCountLog.setRegisterNum(1);
             channelCountLog.setChannelId(Integer.valueOf(channelId));
+            channelCountLog.setClientType(RequestUtil.getClientType(((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest()));
             channelCountLogService.insert(channelCountLog);
             user.setChannelId(Integer.valueOf(channelId));
         }

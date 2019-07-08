@@ -126,49 +126,4 @@ public class OssUtils {
         }
     }
 
-
-    //用户签名访问
-    public URL generatePresignedUrl(String bucketName, String key, Date expiration) throws ClientException {
-        return generatePresignedUrl(bucketName, key, expiration, HttpMethod.GET);
-    }
-
-
-    public URL generatePresignedUrl(String bucketName, String key, Date expiration, HttpMethod method)
-            throws ClientException {
-        GeneratePresignedUrlRequest request = new GeneratePresignedUrlRequest(bucketName, key);
-        request.setExpiration(expiration);
-        request.setMethod(method);
-
-        return generatePresignedUrl(request);
-    }
-
-
-    public URL generatePresignedUrl(GeneratePresignedUrlRequest request) throws ClientException {
-
-        assertParameterNotNull(request, "request");
-
-        if (request.getBucketName() == null) {
-            throw new IllegalArgumentException(OSS_RESOURCE_MANAGER.getString("MustSetBucketName"));
-        }
-        ensureBucketNameValid(request.getBucketName());
-
-        if (request.getExpiration() == null) {
-            throw new IllegalArgumentException(OSS_RESOURCE_MANAGER.getString("MustSetExpiration"));
-        }
-        String url;
-
-//        if (client.getClientConfiguration() != null && client.getClientConfiguration().getSignatureVersion() == SignVersion.V2) {
-//            url = SignV2Utils.buildSignedURL(request, credsProvider.getCredentials(), serviceClient.getClientConfiguration(), endpoint);
-//        } else {
-//            url = SignUtils.buildSignedURL(request, credsProvider.getCredentials(), serviceClient.getClientConfiguration(), endpoint);
-//        }
-
-//        try {
-//            return new URL(url);
-//        } catch (MalformedURLException e) {
-//            throw new ClientException(e);
-//        }
-        return null;
-    }
-
 }

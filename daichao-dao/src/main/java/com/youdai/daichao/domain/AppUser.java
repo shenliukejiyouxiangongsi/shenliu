@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
+import com.baomidou.mybatisplus.enums.FieldStrategy;
 import com.baomidou.mybatisplus.enums.IdType;
 import lombok.Data;
 import lombok.ToString;
@@ -29,12 +30,12 @@ public class AppUser extends Model<AppUser> implements Serializable{
 
     @TableId(value = "a_uid",type = IdType.AUTO)
     private Long aUid;
-    @TableField("a_uphone")
+    @TableField(value = "a_uphone",strategy = FieldStrategy.NOT_EMPTY)
     private String aUphone;
     private String password;
     @TableField("channel_id")
-    private int channelId;
-    private int status;
+    private Integer channelId;
+    private Integer status;
     @TableField("pro_key")
     private String proKey;
     private String token;
@@ -45,9 +46,13 @@ public class AppUser extends Model<AppUser> implements Serializable{
     @TableField("update_time")
     private String updateTime;
     @TableField("equipment_flag")
-    private int equipmentFlag;
+    private Integer equipmentFlag;
     @TableField("is_show")
-    private int isShow;
+    private Integer isShow;
+    @TableField(exist=false)
+    private String channelName;
+    @TableField("userRecord_id")
+    private Long userRecordId;
 
     @Override
     protected Serializable pkVal() {

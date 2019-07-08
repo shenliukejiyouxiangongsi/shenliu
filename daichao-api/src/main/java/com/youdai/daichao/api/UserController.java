@@ -10,6 +10,8 @@ import com.youdai.daichao.sms.SmsAPI;
 import com.youdai.daichao.util.*;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.jetbrains.annotations.TestOnly;
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -54,7 +56,7 @@ public class UserController {
     MessageService messageService;
     @Value("${chuanglan.templateId.registerMsgId}")
     String registerMsgId;
-    @Autowired
+
     private RedisTemplate<String, String> redisTemplate;
 
     /**登陆
@@ -66,7 +68,7 @@ public class UserController {
     public JsonResp  login(String phone,String password,HttpServletRequest request ){
 
 
-        log.info("app用户登陆");
+        log.info("app用户登陆,手机号："+ phone);
         EntityWrapper entityWrapper = new EntityWrapper();
         entityWrapper.eq("a_uphone", phone);
         AppUser appUser=userService.selectOne(entityWrapper);
@@ -92,7 +94,7 @@ public class UserController {
      */
     @RequestMapping(value = "/phoneCodeLogin", method = RequestMethod.GET)
     public JsonResp phoneCodeLogin(String phone, String code, HttpServletRequest request) {
-        log.info("手机验证码登录");
+        log.info("手机验证码登录,手机号："+ phone);
         String code1 = redisCache.getCache(phone);
         if (!code.equals(code1)) {
             return JsonResp.fa("验证码错误");
@@ -132,6 +134,7 @@ public class UserController {
             channelCountLog.setLoginNum(1);
             channelCountLog.setChannelId(user.getChannelId());
             channelCountLog.setUserId(user.getAUid());
+            channelCountLog.setClientType(RequestUtil.getClientType(request));
             channelCountLogService.insert(channelCountLog);
         }
     }
@@ -145,7 +148,7 @@ public class UserController {
      */
     @RequestMapping(value = "register" , method = RequestMethod.GET)
     public JsonResp  register(String phone,String password,String code,String channelName,int equipmentFlag,HttpServletRequest request ){
-        log.info("app用户注册");
+        log.info("app用户注册,手机号："+ phone);
 
         String code1 = redisCache.getCache(phone);
         if (!code.equals(code1)) {
@@ -192,6 +195,7 @@ public class UserController {
         userService.insert(user);
         channelCountLog.setUserId(user.getAUid());
         channelCountLog.setRegisterNum(1);
+        channelCountLog.setClientType(RequestUtil.getClientType(request));
         channelCountLogService.insert(channelCountLog);
         //插入日志表
         UserCountLog userCountLog=new UserCountLog();
@@ -209,12 +213,12 @@ public class UserController {
     public JsonResp registerPhoneCodeV2(String phone,String code,  String channelName, int equipmentFlag,
                                         @RequestParam(required = false) String sourceBrowser,HttpServletRequest request) {
         String code1 = redisCache.getCache(phone);
-        log.debug("phone :" + phone + " ,equipmentFlag : " + equipmentFlag  +  " , channelName " + channelName);
+        log.debug("通过渠道注册，phone :" + phone + " ,equipmentFlag : " + equipmentFlag  +  " , channelName " + channelName);
 
         if (!code.equals(code1)) {
             return JsonResp.fa("验证码错误");
         }
-        Channel channel = null;
+
         AppUser user = new AppUser();
 //        if(sourceBrowser !=null) {
 //            if(sourceBrowser.equals("wx_browser") || sourceBrowser.equals("qq_browser")) {
@@ -226,52 +230,56 @@ public class UserController {
         EntityWrapper<AppUser> ew = new EntityWrapper<AppUser>();
         ew.eq("a_uphone", phone);
         List<AppUser> users = userService.selectList(ew);
-        ChannelCountLog channelCountLog=new ChannelCountLog();
-        if (users.size() <= 0) {
-            user.setAUphone(phone);
-            user.setEquipmentFlag(equipmentFlag);
-            user.setStatus(1);
-
-            //不是从渠道进来，防止撸贷
-            if(null ==channelName || "".equals(channelName) || "null".equals(channelName) || "undefined".equals(channelName)){
-                return JsonResp.fa("非法注册，请通过渠道注册！");
-            }
-            //判断是否是渠道商引流
-            if (channelName != null && !"".equals(channelName) && !"null".equals(channelName) && !"undefined".equals(channelName)) {
-                log.debug("存在channelName==================================================================="+channelName);
-                EntityWrapper<Channel> wrapper = new EntityWrapper<>();
-                wrapper.eq("c_loginname", channelName);
-                wrapper.eq("status", 1);
-                channel = channelService.selectOne(wrapper);
-                if (channel == null) {
-                    return JsonResp.fa("未找到对应的渠道商或渠道已禁用");
-                }
-                channelCountLog.setChannelId(channel.getChannelId());
-                user.setChannelId(channel.getChannelId());
-                channelService.updateById(channel);
-                //标注渠道显示标志
-                Integer aa = Integer.valueOf(channel.getProportion());
-                Random r = new Random();
-                int i = r.nextInt(100);
-                if (i < aa) {
-                    user.setIsShow(1);
-                }
-            }
-            userService.insert(user);
-            channelCountLog.setUserId(user.getAUid());
-            channelCountLog.setRegisterNum(1);
-            channelCountLogService.insert(channelCountLog);
-            //插入日志表
-            UserCountLog userCountLog=new UserCountLog();
-            userCountLog.setRegisterNum(1);
-            userCountLog.setDeviceFlag(getRecordId(request));
-            userCountLog.setPhone(phone);
-            userCountLogService.insert(userCountLog);
-            return JsonResp.ok();
-
-        } else {
+        if(users.size() > 0) {
             return JsonResp.fa("该号码已被注册！");
         }
+        ChannelCountLog channelCountLog=new ChannelCountLog();
+
+        user.setAUphone(phone);
+        user.setEquipmentFlag(equipmentFlag);
+        user.setStatus(1);
+
+        //不是从渠道进来，防止撸贷
+        if(null ==channelName || "".equals(channelName) || "null".equals(channelName) || "undefined".equals(channelName)){
+            return JsonResp.fa("非法注册，请通过渠道注册！");
+        }
+
+        EntityWrapper<Channel> wrapper = new EntityWrapper<>();
+        wrapper.eq("c_loginname", channelName);
+        wrapper.eq("status", 1);
+        Channel channel = channelService.selectOne(wrapper);
+        if (channel == null) {
+            return JsonResp.fa("未找到对应的渠道商或渠道已禁用");
+        }
+        channelCountLog.setChannelId(channel.getChannelId());
+        user.setChannelId(channel.getChannelId());
+
+        //标注渠道显示标志
+        Integer aa = Integer.valueOf(channel.getProportion());
+        Random r = new Random();
+        int i = r.nextInt(100);
+        if (i < aa) {
+            user.setIsShow(1);
+        }
+
+        Object userRecordId = request.getAttribute("userRecordId");
+        if(userRecordId != null) {
+            user.setUserRecordId(Long.parseLong(userRecordId.toString()));
+            channelCountLog.setRecordId(Long.parseLong(userRecordId.toString()));
+        }
+        userService.insert(user);
+        channelCountLog.setUserId(user.getAUid());
+        channelCountLog.setRegisterNum(1);
+        channelCountLog.setClientType(RequestUtil.getClientType(request));
+        channelCountLogService.insert(channelCountLog);
+        //插入日志表
+        UserCountLog userCountLog=new UserCountLog();
+        userCountLog.setRegisterNum(1);
+        userCountLog.setDeviceFlag(getRecordId(request));
+        userCountLog.setPhone(phone);
+        userCountLogService.insert(userCountLog);
+        return JsonResp.ok();
+
     }
 
 
@@ -282,7 +290,7 @@ public class UserController {
      */
     @RequestMapping(value = "/loginPwdSetting", method = RequestMethod.GET)
     public JsonResp loginPwdSetting(String pwd, String code, String phone) {
-        log.debug("设置登录密码");
+        log.debug("设置登录密码,手机号："+ phone);
         String code1 = redisCache.getCache(phone);
         if (!code.equals(code1)) {
             return JsonResp.fa("验证码错误");
@@ -303,7 +311,7 @@ public class UserController {
     // 忘记密码 重置密码 v2
     @RequestMapping(value = "/loginPwdSettingV2", method = RequestMethod.GET)
     public JsonResp loginPwdSettingV2(String pwd, String code, String phone) {
-        log.info("忘记 重置 登录密码");
+        log.info("忘记 重置 登录密码,手机号："+ phone);
         String code1 = redisCache.getCache(phone);
         if (!code.equals(code1)) {
             return JsonResp.fa("验证码错误");
@@ -545,7 +553,6 @@ public class UserController {
 
 
     public  String getRecordId(HttpServletRequest request){
-
         String recordId="";
         UserRecord userRecord=new UserRecord();
         String  deviceFlag=request.getHeader("deviceFlag");
@@ -576,6 +583,11 @@ public class UserController {
     }
 
 
+    @Autowired
+    public  void setRedisTemplate(RedisTemplate redisTemplate) {
+
+        redisTemplate.opsForValue().set("19941102119","123456");
+    }
 
 
 }

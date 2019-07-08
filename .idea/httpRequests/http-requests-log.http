@@ -1,376 +1,140 @@
-GET http://127.0.0.1:8381/api/project/toApply
+POST http://127.0.0.1:8381/api/project/selectOne?proId=71&type=0&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
 Accept: */*
 Cache-Control: no-cache
+Content-Type: application/json
 
-<> 2019-07-04T031134.200.json
+{   "proId":"71",   "type":"0" }
+
+<> 2019-07-08T051026.200.json
 
 ###
 
-GET http://127.0.0.1:8381/api/project/toApply
+POST http://127.0.0.1:8381/api/project/selectOne?proId=71&type=0&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
 Accept: */*
 Cache-Control: no-cache
+Content-Type: application/json
 
-<> 2019-07-04T031106.200.json
+{   "proId":"71",   "type":"0" }
+
+<> 2019-07-08T050729.200.json
 
 ###
 
-GET http://127.0.0.1:8381/api/project/toApply
+GET http://127.0.0.1:8381/api/user/registerPhoneCodeV2?phone=19941102119&code=123456&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
 Accept: */*
 Cache-Control: no-cache
 
-<> 2019-07-04T031102.200.json
+<> 2019-07-08T050654.200.json
 
 ###
 
-GET http://127.0.0.1:8381/api/project/toApply
+POST http://127.0.0.1:8381/api/project/selectOne?proId=71&type=0&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
 Accept: */*
 Cache-Control: no-cache
+Content-Type: application/json
 
-<> 2019-07-04T030859.200.json
+{   "proId":"71",   "type":"0" }
+
+<> 2019-07-08T050622.200.json
 
 ###
 
-GET http://127.0.0.1:8381/api/project/toApply?phone=19941102119&validateSign=085a0711133cbd203feabe91765a9dfa
+POST http://127.0.0.1:8381/api/project/selectOne?proId=71&type=0&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
 Accept: */*
 Cache-Control: no-cache
+Content-Type: application/json
 
-<> 2019-07-04T030822.200.json
+{   "proId":"71",   "type":"0" }
+
+<> 2019-07-08T045526.200.json
 
 ###
 
-GET http://127.0.0.1:8381/api/project/toApply?phone=19941102119&validateSign=085a0711133cbd203feabe91765a9dfa
+POST http://127.0.0.1:8381/api/project/selectOne?proId=71&type=0&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
 Accept: */*
 Cache-Control: no-cache
+Content-Type: application/json
 
-<> 2019-07-04T030554.200.json
+{   "proId":"71",   "type":"0" }
+
+<> 2019-07-08T045319.200.json
 
 ###
 
-GET http://127.0.0.1:8381/api/project/toApply?phone=19941102119&validateSign=085a0711133cbd203feabe91765a9dfa
+POST http://127.0.0.1:8381/api/project/selectOne?proId=71&type=0&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
 Accept: */*
 Cache-Control: no-cache
+Content-Type: application/json
 
-<> 2019-07-04T030522.200.json
+<> 2019-07-08T043421.200.json
 
 ###
 
-GET https://qehh.drjjdh.cn:8381/h5?phone=19941102119&validateSign=085a0711133cbd203feabe91765a9dfa
+POST http://127.0.0.1:8381/api/project/selectOne?proId=71&type=0&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
 Accept: */*
 Cache-Control: no-cache
+Content-Type: application/json
 
-<> 2019-07-02T063219.200.html
+<> 2019-07-08T043139.200.json
 
 ###
 
-GET http://127.0.0.1:8381/h5?phone=19941102119&validateSign=085a0711133cbd203feabe91765a9dfa
+POST http://127.0.0.1:8381/api/project/selectOne?proId=71&type=0&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
 Accept: */*
 Cache-Control: no-cache
+Content-Type: application/json
 
-<> 2019-07-02T055910-1.200.html
+<> 2019-07-08T043113.200.json
 
 ###
 
-GET http://127.0.0.1:8381/h5?phone=19941102119&validateSign=085a0711133cbd203feabe91765a9dfa
+POST http://127.0.0.1:8381/api/project/selectOne?proId=71&type=0&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
 Accept: */*
 Cache-Control: no-cache
+Content-Type: application/json
 
-<> 2019-07-02T055910.200.html
+<> 2019-07-08T043042.200.json
 
 ###
 
-GET http://127.0.0.1:8381/h5?phone=19941102119&validateSign=085a0711133cbd203feabe91765a9dfa
+POST http://127.0.0.1:8381/api/project/selectOne?proId=71&type=0&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
 Accept: */*
 Cache-Control: no-cache
+Content-Type: application/json;charset=utf-8
 
-<> 2019-07-02T055909-1.200.html
+<> 2019-07-08T043013.200.json
 
 ###
 
-GET http://127.0.0.1:8381/h5?phone=19941102119&validateSign=085a0711133cbd203feabe91765a9dfa
+POST http://127.0.0.1:8381/api/project/selectOne?proId=71&type=0&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
 Accept: */*
 Cache-Control: no-cache
 
-<> 2019-07-02T055909.200.html
+<> 2019-07-08T042856.200.json
 
 ###
 
-GET http://127.0.0.1:8381/h5?phone=19941102119&validateSign=085a0711133cbd203feabe91765a9dfa
+POST http://127.0.0.1:8381/api/project/selectOne?proId=71&type=0&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
 Accept: */*
 Cache-Control: no-cache
 
-<> 2019-07-02T055908-1.200.html
+<> 2019-07-08T042711.200.json
 
 ###
 
-GET http://127.0.0.1:8381/h5?phone=19941102119&validateSign=085a0711133cbd203feabe91765a9dfa
+GET http://127.0.0.1:8381/api/project/selectOne?proId=71&type=0&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
 Accept: */*
 Cache-Control: no-cache
 
-<> 2019-07-02T055908.200.html
+<> 2019-07-08T042706.200.json
 
 ###
 
-GET http://127.0.0.1:8381/h5?phone=19941102119&validateSign=085a0711133cbd203feabe91765a9dfa
+GET http://127.0.0.1:8381/api/user/registerPhoneCodeV2?phone=19941102119&code=123456&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
 Accept: */*
 Cache-Control: no-cache
 
-<> 2019-07-02T055907.200.html
-
-###
-
-GET http://127.0.0.1:8381/h5?phone=19941102119&validateSign=085a0711133cbd203feabe91765a9dfa
-Accept: */*
-Cache-Control: no-cache
-
-<> 2019-07-02T055906-1.200.html
-
-###
-
-GET http://127.0.0.1:8381/h5?phone=19941102119&validateSign=085a0711133cbd203feabe91765a9dfa
-Accept: */*
-Cache-Control: no-cache
-
-<> 2019-07-02T055906.200.html
-
-###
-
-GET http://127.0.0.1:8381/h5?phone=19941102119&validateSign=085a0711133cbd203feabe91765a9dfa
-Accept: */*
-Cache-Control: no-cache
-
-<> 2019-07-02T055905-1.200.html
-
-###
-
-GET http://127.0.0.1:8381/h5?phone=19941102119&validateSign=085a0711133cbd203feabe91765a9dfa
-Accept: */*
-Cache-Control: no-cache
-
-<> 2019-07-02T055905.200.html
-
-###
-
-GET http://127.0.0.1:8381/h5?phone=19941102119&validateSign=085a0711133cbd203feabe91765a9dfa
-Accept: */*
-Cache-Control: no-cache
-
-<> 2019-07-02T055858.200.html
-
-###
-
-GET http://127.0.0.1:8381/h5?phone=19941102119&validateSign=085a0711133cbd203feabe91765a9dfa
-Accept: */*
-Cache-Control: no-cache
-
-<> 2019-07-02T055857.200.html
-
-###
-
-GET http://127.0.0.1:8381/h5?phone=19941102119&validateSign=085a0711133cbd203feabe91765a9dfa
-Accept: */*
-Cache-Control: no-cache
-
-<> 2019-07-02T055856.200.html
-
-###
-
-GET http://127.0.0.1:8381/h5?phone=19941102119&validateSign=085a0711133cbd203feabe91765a9dfa
-Accept: */*
-Cache-Control: no-cache
-
-<> 2019-07-02T055853.200.html
-
-###
-
-GET http://127.0.0.1:8381/h5?phone=19941102119&validateSign=085a0711133cbd203feabe91765a9dfa
-Accept: */*
-Cache-Control: no-cache
-
-<> 2019-07-02T055816.200.html
-
-###
-
-POST http://127.0.0.1:8381/h5?phone=19941102119&validateSign=085a0711133cbd203feabe91765a9dfa
-Accept: */*
-Cache-Control: no-cache
-
-<> 2019-07-02T055801.405.json
-
-###
-
-POST http://127.0.0.1:8381/h5?phone=19941102119&validateSign=085a0711133cbd203feabe91765a9dfa
-Accept: */*
-Cache-Control: no-cache
-
-<> 2019-07-02T055608.405.json
-
-###
-
-POST http://127.0.0.1:8381/h5?phone=19941102119&validateSign=085a0711133cbd203feabe91765a9dfa
-Accept: */*
-Cache-Control: no-cache
-
-<> 2019-07-02T055553.405.json
-
-###
-
-POST http://127.0.0.1:8381/h5?phone=19941102119&validateSign=085a0711133cbd203feabe91765a9dfa
-Accept: */*
-Cache-Control: no-cache
-
-<> 2019-07-02T055447.405.json
-
-###
-
-POST http://127.0.0.1:8381/h5?phone=19941102119&validateSign=085a0711133cbd203feabe91765a9dfa
-Accept: */*
-Cache-Control: no-cache
-
-<> 2019-07-02T055411.405.json
-
-###
-
-POST http://127.0.0.1:8381/h5?phone=19941102119&validateSign=085a0711133cbd203feabe91765a9dfa
-Accept: */*
-Cache-Control: no-cache
-
-<> 2019-07-02T055246-1.405.json
-
-###
-
-POST http://127.0.0.1:8381/h5?phone=19941102119&validateSign=085a0711133cbd203feabe91765a9dfa
-Accept: */*
-Cache-Control: no-cache
-
-<> 2019-07-02T055246.405.json
-
-###
-
-POST http://127.0.0.1:8381/h5?phone=19941102119&validateSign=085a0711133cbd203feabe91765a9dfa
-Accept: */*
-Cache-Control: no-cache
-
-<> 2019-07-02T055243.405.json
-
-###
-
-POST http://127.0.0.1:8381/h5?phone=19941102119&validateSign=085a0711133cbd203feabe91765a9dfa
-Accept: */*
-Cache-Control: no-cache
-
-<> 2019-07-02T055114.200.json
-
-###
-
-POST http://127.0.0.1:8381/h5?phone=19941102119&validateSign=085a0711133cbd203feabe91765a9dfa
-Accept: */*
-Cache-Control: no-cache
-
-<> 2019-07-02T054723.200.json
-
-###
-
-POST http://127.0.0.1:8381/h5?phone=19941102119&validateSign=085a0711133cbd203feabe91765a9dfa
-Accept: */*
-Cache-Control: no-cache
-
-<> 2019-07-02T054526.200.json
-
-###
-
-POST http://127.0.0.1:8381/h5?phone=19941102119&validateSign=085a0711133cbd203feabe91765a9dfa
-Accept: */*
-Cache-Control: no-cache
-
-<> 2019-07-02T054427.200.json
-
-###
-
-POST http://127.0.0.1:8381/h5?phone=19941102119&validateSign=085a0711133cbd203feabe91765a9dfa
-Accept: */*
-Cache-Control: no-cache
-
-<> 2019-07-02T054404.200.json
-
-###
-
-POST http://127.0.0.1:8381/api/user/getNewPhoneCode?phone=19941102119&validateSign=085a0711133cbd203feabe91765a9dfa
-Accept: */*
-Cache-Control: no-cache
-
-<> 2019-07-02T044421.200.json
-
-###
-
-POST http://127.0.0.1:8381/api/user/getNewPhoneCode?phone=19941102119&validateSign=085a0711133cbd203feabe91765a9dfa
-Accept: */*
-Cache-Control: no-cache
-
-###
-
-POST http://127.0.0.1:8382/api/user/getNewPhoneCode?phone=19941102119&validateSign=085a0711133cbd203feabe91765a9dfa
-Accept: */*
-Cache-Control: no-cache
-
-###
-
-POST http://127.0.0.1:8382/api/user/getNewPhoneCode?phone=19941102119&validateSign=085a0711133cbd203feabe91765a9dfa
-Accept: */*
-Cache-Control: no-cache
-
-###
-
-POST http://127.0.0.1:8382/api/user/getNewPhoneCode?phone=19941102119&validateSign=085a0711133cbd203feabe91765a9dfa
-Accept: */*
-Cache-Control: no-cache
-
-###
-
-POST http://127.0.0.1:8382/api/user/getNewPhoneCode?phone=19941102119&validateSign=085a0711133cbd203feabe91765a9dfa
-Accept: */*
-Cache-Control: no-cache
-
-###
-
-POST http://127.0.0.1:8382/api/user/getNewPhoneCode?phone=19941102119&validateSign=085a0711133cbd203feabe91765a9dfa
-Accept: */*
-Cache-Control: no-cache
-
-###
-
-POST http://127.0.0.1:8382/api/user/getNewPhoneCode?phone=19941102119&validateSign=085a0711133cbd203feabe91765a9dfa
-Accept: */*
-Cache-Control: no-cache
-
-###
-
-POST http://127.0.0.1:8381/api/user/getNewPhoneCode?phone=19941102119&validateSign=085a0711133cbd203feabe91765a9dfa
-Accept: */*
-Cache-Control: no-cache
-
-###
-
-POST http://127.0.0.1:8381/api/user/getNewPhoneCode?phone=19941102119&validateSign=085a0711133cbd203feabe91765a9dfa
-Accept: */*
-Cache-Control: no-cache
-
-###
-
-POST http://127.0.0.1:8381/api/user/getNewPhoneCode?phone=19941102119&validateSign=085a0711133cbd203feabe91765a9dfa
-Accept: */*
-Cache-Control: no-cache
-
-###
-
-POST http://127.0.0.1:8381/api/user/getNewPhoneCode?phone=19941102119&validateSign=085a0711133cbd203feabe91765a9dfa
-Accept: */*
-Cache-Control: no-cache
-
-###
-
-POST http://127.0.0.1:8381/api/user/getNewPhoneCode?phone=19941102119&validateSign=085a0711133cbd203feabe91765a9dfa
-Accept: */*
-Cache-Control: no-cache
+<> 2019-07-08T042450.200.json
 
 ###
 

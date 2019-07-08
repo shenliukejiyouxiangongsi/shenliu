@@ -1,8 +1,76 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.youdai.daichao.mapper.AppUserMapper">
+    <resultMap type="AppUser" id="AppUserResult">
+                    <result property="aUid"    column="a_uid"    />
+                    <result property="aUphone"    column="a_uphone"    />
+                    <result property="password"    column="password"    />
+                    <result property="channelId"    column="channel_id"    />
+                    <result property="status"    column="status"    />
+                    <result property="createUser"    column="create_user"    />
+                    <result property="token"    column="token"    />
+                    <result property="createTime"    column="create_time"    />
+                    <result property="updateTime"    column="update_time"    />
+                    <result property="proKey"    column="pro_key"    />
+                    <result property="equipmentFlag"    column="equipment_flag"    />
+                    <result property="isShow"    column="is_show"    />
+                    <result property="channelName" column="channel_name" />
+            </resultMap>
 
-    <!-- 开启二级缓存 -->
-<!--     <cache type="org.mybatis.caches.ehcache.LoggingEhcache"/> -->
+    <sql id="selectAppUserVo">
+        select a_uid, a_uphone, password, channel_id, status, create_user, token, create_time, update_time, pro_key, equipment_flag, is_show from app_user
+    </sql>
+
+
+
+    <select id="selectAppUserList" parameterType="AppUser" resultMap="AppUserResult">
+        <include refid="selectAppUserVo"/>
+        <where>
+                        <if test="aUid != null "> and a_uid = #{aUid}</if>
+                        <if test="aUphone != null  and aUphone != '' "> and a_uphone = #{aUphone}</if>
+                        <if test="password != null  and password != '' "> and password = #{password}</if>
+                        <if test="channelId != null "> and channel_id = #{channelId}</if>
+                        <if test="status != null "> and status = #{status}</if>
+                        <if test="createUser != null  and createUser != '' "> and create_user = #{createUser}</if>
+                        <if test="token != null  and token != '' "> and token = #{token}</if>
+                        <if test="createTime != null "> and create_time = #{createTime}</if>
+                        <if test="updateTime != null "> and update_time = #{updateTime}</if>
+                        <if test="proKey != null  and proKey != '' "> and pro_key = #{proKey}</if>
+                        <if test="equipmentFlag != null "> and equipment_flag = #{equipmentFlag}</if>
+                        <if test="isShow != null "> and is_show = #{isShow}</if>
+                    </where>
+    </select>
+
+
+
+    <delete id="deleteAppUserByIds" parameterType="String">
+        delete from app_user where a_uid in
+        <foreach item="aUid" collection="array" open="(" separator="," close=")">
+            #{aUid}
+        </foreach>
+    </delete>
+
+    <select id="selectUserAndChannelNameList" parameterType="AppUser" resultMap="AppUserResult">
+        select a_uid, a_uphone, password, u.channel_id, u.status, u.create_user, token, u.create_time, u.update_time, pro_key, equipment_flag, is_show,
+        c.channel_name
+        from app_user u
+        left join channel c on u.channel_id = c.channel_id
+        <where>
+            <if test="aUid != null "> and a_uid = #{aUid}</if>
+            <if test="aUphone != null  and aUphone != '' "> and a_uphone = #{aUphone}</if>
+            <if test="password != null  and password != '' "> and password = #{password}</if>
+            <if test="channelId != null "> and u.channel_id = #{channelId}</if>
+            <if test="status != null "> and u.status = #{status}</if>
+            <if test="createUser != null  and createUser != '' "> and u.create_user = #{createUser}</if>
+            <if test="token != null  and token != '' "> and token = #{token}</if>
+            <if test="createTime != null "> and u.create_time = #{createTime}</if>
+            <if test="updateTime != null "> and u.update_time = #{updateTime}</if>
+            <if test="proKey != null  and proKey != '' "> and pro_key = #{proKey}</if>
+            <if test="equipmentFlag != null "> and u.equipment_flag = #{equipmentFlag}</if>
+            <if test="isShow != null "> and u.is_show = #{isShow}</if>
+        </where>
+    </select>
 
 </mapper>

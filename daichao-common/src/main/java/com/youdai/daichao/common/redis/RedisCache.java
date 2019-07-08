@@ -77,4 +77,5 @@ public class RedisCache {
     public boolean haveCache(String key) {
         return redisTemplate.hasKey(key);
     }
+
 }

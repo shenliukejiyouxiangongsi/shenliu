@@ -3,11 +3,16 @@ package com.youdai.daichao.config;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.baomidou.mybatisplus.mapper.Wrapper;
+import com.youdai.daichao.common.enums.ChannelStatusEnum;
+import com.youdai.daichao.common.enums.ClientType;
 import com.youdai.daichao.common.redis.RedisCache;
 import com.youdai.daichao.common.vo.JsonResp;
 import com.youdai.daichao.domain.AppUser;
+import com.youdai.daichao.domain.Channel;
 import com.youdai.daichao.domain.UserRecord;
 import com.youdai.daichao.service.IAppUserService;
+import com.youdai.daichao.service.IChannelService;
 import com.youdai.daichao.service.IUserRecordService;
 import com.youdai.daichao.util.Md5;
 import com.youdai.daichao.util.RequestUtil;
@@ -39,6 +44,8 @@ public class ApiInterceptor implements HandlerInterceptor {
     IUserRecordService userRecordService;
     @Autowired
     IAppUserService appUserService;
+    @Autowired
+    IChannelService channelService;
 
     //目标方法执行之前
     @Override
@@ -48,15 +55,23 @@ public class ApiInterceptor implements HandlerInterceptor {
         //设备唯一标识
         String  deviceFlag=request.getHeader("deviceFlag");
         String  phone=request.getHeader("userPhone");
-        String  type=request.getHeader("type");
+        String userAgent= request.getHeader("user-agent");
+        String type = RequestUtil.getClientType(request);
         String ip = RequestUtil.getIpAddr(request);
-        //有标识即为移动端设备
-        if(null!=type&&!"".equals(type)){
-            insertApp(type,deviceFlag,ip,phone);
-        }else {//web端请求
-            String userAgent= request.getHeader("user-agent");
-            insertWeb(userAgent,ip);
+        log.info("phone-------------"+phone);
+        log.info("ip-------------"+ip);
+
+        //用户来源表
+        insertUserRecord(request);
+
+        //h5放行
+        if(request.getRequestURI().indexOf("/h5") > -1) {
         }
+        if(true) {
+            return true;
+        }
+
+
         //MD5
         if(!getAllParams(request)) {
             log.error("sign 检验失败！");
@@ -80,11 +95,13 @@ public class ApiInterceptor implements HandlerInterceptor {
 
 
     //方法加锁，防止同一时刻插入信息
-    public synchronized void insertApp(String type,String deviceFlag,String ip,String phone){
+    public synchronized void insertApp(String type,String deviceFlag,String ip,String phone,String userAgent){
         EntityWrapper wrapper=new EntityWrapper();
         EntityWrapper entityWrapper=new EntityWrapper();
         wrapper.eq("type",Integer.valueOf(type));
-        wrapper.eq("udid",deviceFlag);
+        if(null != deviceFlag) {
+            wrapper.eq("udid",deviceFlag);
+        }
         wrapper.eq("ip",ip);
         UserRecord record=userRecordService.selectOne(wrapper);
         if(record==null){
@@ -92,6 +109,7 @@ public class ApiInterceptor implements HandlerInterceptor {
             userRecord.setUdid(deviceFlag);
             userRecord.setIp(ip);
             userRecord.setType(Integer.parseInt(type));
+            userRecord.setUserAgent(userAgent);
             if(StringUtil.isNotEmpty(phone)){
                 userRecord.setUserPhone(phone);
                 entityWrapper.eq("a_uphone",phone);
@@ -117,7 +135,7 @@ public class ApiInterceptor implements HandlerInterceptor {
     }
 
     //方法加锁，防止同一时刻插入信息
-    public synchronized void insertWeb(String userAgent,String ip){
+    public synchronized void insertWeb(String userAgent,String  deviceFlag,String ip){
         EntityWrapper wrapper=new EntityWrapper();
         wrapper.eq("user_agent",userAgent);
         wrapper.eq("ip",ip);
@@ -126,6 +144,7 @@ public class ApiInterceptor implements HandlerInterceptor {
             UserRecord userRecord=new UserRecord();
             userRecord.setIp(ip);
             userRecord.setUserAgent(userAgent);
+            userRecord.setUdid(deviceFlag);
             userRecordService.insert(userRecord);
             redisCache.putCache(ip+userAgent,userRecord);
         }
@@ -157,5 +176,68 @@ public class ApiInterceptor implements HandlerInterceptor {
         log.info("md5-----------"+Md5.md5Encode(sb.toString()));
         if(Md5.md5Encode(sb.toString()).equals(signValue)) return true;
         return false;
+    }
+
+    public synchronized void insertUserRecord(HttpServletRequest request) {
+        //手机唯一标示，可能没有
+        String  deviceFlag=request.getHeader("deviceFlag");
+        String  phone=request.getHeader("userPhone");
+        String userAgent= request.getHeader("user-agent");
+        //手机类型
+        String type = RequestUtil.getClientType(request);
+        String ip = RequestUtil.getIpAddr(request);
+        String channelName = request.getParameter("channelName");
+        Wrapper<UserRecord> userRecordwrapper = new EntityWrapper<>();
+        userRecordwrapper.eq("user_agent",userAgent);
+        userRecordwrapper.eq("type",type);
+        userRecordwrapper.eq("ip",ip);
+        int channelId = 0;
+        //一般只有渠道推广进h5才有channelName
+        if(!StringUtil.isEmpty(channelName)) {
+            Wrapper<Channel> channelwrapper = new EntityWrapper<>();
+            channelwrapper.eq("c_loginname", channelName);
+            channelwrapper.eq("status", ChannelStatusEnum.ONLINE.getStatus());
+            Channel channel = channelService.selectOne(channelwrapper);
+            if (channel != null) {
+                channelId = channel.getChannelId();
+                userRecordwrapper.eq("channel_id",channelId);
+            }
+        }
+        UserRecord userRecord = userRecordService.selectOne(userRecordwrapper);
+        if(null == userRecord) {
+            userRecord = new UserRecord();
+            userRecord.setUserAgent(userAgent);
+            userRecord.setIp(ip);
+            userRecord.setType(Integer.parseInt(type));
+            if(0 != channelId) {
+                userRecord.setChannelId(channelId);
+            }
+            if(StringUtil.isNotEmpty(phone)){
+                userRecord.setUserPhone(phone);
+            }
+            userRecord.setUdid(deviceFlag);
+            userRecordService.insert(userRecord);
+            // 和用户注册表关联
+            request.setAttribute("userRecordId",userRecord.getId());
+            redisCache.putCache(deviceFlag+ip,userRecord);
+        }
+        if(redisCache.haveCache(deviceFlag+ip)){
+            userRecord=redisCache.getCache(deviceFlag+ip);
+            request.setAttribute("userRecordId",userRecord.getId());
+        }
+
+    }
+
+    public void returnJson(JsonResp resp,HttpServletResponse response) {
+        try {
+            response.setCharacterEncoding("utf-8");
+            response.setContentType("application/json; charset=utf-8");
+            PrintWriter out = response.getWriter();
+            out.print(JSON.toJSONString(resp));
+            out.flush();
+            out.close();
+        } catch (Exception e) {
+            log.error("sign 检验异常",e);
+        }
     }
 }

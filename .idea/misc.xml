@@ -33,6 +33,7 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/daichao-channel/pom.xml" />
       </list>
     </option>
   </component>

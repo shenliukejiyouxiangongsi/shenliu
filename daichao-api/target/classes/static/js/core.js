@@ -2,12 +2,12 @@
 
 
 
-var urlcore = 'https://qehh.drjjdh.cn';
+var urlcore = 'http://127.0.0.1:8381'; //https://qehh.drjjdh.cn
 
 //苹果手机下载地址
-var ios = "https://fir.im/rk89"
+var ios = "https://7w2.cn/9squ"
 // 安卓下载地址
-var android = "https://fir.im/tfdq"
+var android = "https://7w2.cn/ieni"
 
 var nature = "qehh"
 

@@ -40,20 +40,20 @@ public class MessageXsendService {
     public static final String signtype = "md5";
     public static final String url = "https://api.mysubmail.com/message/xsend";
 
-//    @Value("${chuanglan.sms_url}")
-    private static String cl_sms_url = "http://smssh1.253.com/msg/send/json";
-//    @Value("${chuanglan.account}")
-    private static String cl_account = "N7419788";
-//    @Value("${chuanglan.password}")
-    private static String cl_password = "4cXwa27vV";
+    @Value("${chuanglan.sms_url}")
+    private  String cl_sms_url;
+    @Value("${chuanglan.account}")
+    private  String cl_account;
+    @Value("${chuanglan.password}")
+    private  String cl_password;
 
     private static Map<String,String> param = new HashMap<>();
-    static {
-        param.put("account",cl_account);
-        param.put("password",cl_password);
-        param.put("report","true");
-
-    }
+//    static {
+//        param.put("account",cl_account);
+//        param.put("password",cl_password);
+//        param.put("report","true");
+//
+//    }
 
 
 
@@ -173,7 +173,9 @@ public class MessageXsendService {
      */
     public Map<String, String> smsXsendCL(String phone, Map<String, String> map,String sendTime, String extend,String uid) {
         Map<String,String> result = new HashMap<>();
-        map.putAll(param);
+        map.put("account",cl_account);
+        map.put("password",cl_password);
+        map.put("report","true");
         map.put("phone",phone);
         if(!StringUtils.isEmpty(sendTime)) map.put("sendtime",sendTime);
         if(!StringUtils.isEmpty(extend)) map.put("extend",extend);
@@ -197,15 +199,21 @@ public class MessageXsendService {
 
     public static void main(String[] args) {
         Map<String,String> result = new HashMap<>();
+Map<String,String> param = new HashMap<>();
+
+        param.put("account","N6425776");
+        param.put("password","mjVkD4GgX63e15");
+        param.put("report","true");
+
         Map map = new HashMap();
         map.putAll(param);
         map.put("phone","19941102119");
-        map.put("msg","【企鹅花花】hello world");
+        map.put("msg","【企鹅花花】123456是您的验证码。验证码60秒钟内有效，请尽快完成验证。");
         String phone = "19941102119";
 
         RestTemplate restTemplate = new RestTemplate();
         try {
-            result =  restTemplate.postForObject(cl_sms_url,map,Map.class);
+            result =  restTemplate.postForObject("http://smssh1.253.com/msg/send/json",map,Map.class);
             log.debug("手机号："+phone+", 短信发送结果: "+JSONObject.toJSONString(result));
             if("0".equals(result.get("code"))) result.put("status","success");
         }catch (Exception e) {

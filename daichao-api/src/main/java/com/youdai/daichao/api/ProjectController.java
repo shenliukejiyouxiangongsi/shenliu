@@ -11,6 +11,10 @@ import com.youdai.daichao.service.*;
 import com.youdai.daichao.util.DateUtils;
 import com.youdai.daichao.util.RequestUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.mgt.SecurityManager;
+import org.apache.shiro.subject.Subject;
+import org.apache.tomcat.util.descriptor.web.SecurityCollection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -74,6 +78,8 @@ public class ProjectController {
      */
     @RequestMapping( value = "/selectOne", method = RequestMethod.POST )
     public JsonResp selectOne(@RequestBody  Map<String,Object> o, HttpServletRequest request){
+        Subject subject = SecurityUtils.getSubject();
+        Object ob = subject.getPrincipal();
         int psid=Integer.parseInt((String) o.get("proId"));
         String type= (String) o.get("type");
         String  deviceFlag=request.getHeader("deviceFlag");

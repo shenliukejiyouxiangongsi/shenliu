@@ -111,8 +111,8 @@ wx_notify_url: http://www.drjjdh.cn:8381/api/notify/wxNotify
 #创蓝短信
 chuanglan:
   sms_url: http://smssh1.253.com/msg/send/json
-  account: N7419788
-  password: 4cXwa27vV
+  account: N6425776
+  password: mjVkD4GgX63e15
   templateId:
     #注册模板
     registerMsgId: zcOWs2

@@ -1,0 +1,142 @@
+# 数据源配置
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.jdbc.Driver
+    # 主库数据源
+#    url: jdbc:mysql://rm-bp1n39j0m0r785ei1.mysql.rds.aliyuncs.com:3306/daichao?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+    url: jdbc:mysql://www.drjjdh.cn:3506/daichao?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+    username: root
+#    password: eSfPJPN09t2EVprj
+    password: shen@liu
+    # 初始连接数
+    initial-size: 10
+    # 最大连接池数量
+    max-active: 100
+    # 最小连接池数量
+    min-idle: 10
+    # 配置获取连接等待超时的时间
+    max-wait: 60000
+    # 打开PSCache，并且指定每个连接上PSCache的大小
+    pool-prepared-statements: true
+    max-pool-prepared-statement-per-connection-size: 20
+    # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+    timeBetweenEvictionRunsMillis: 60000
+    # 配置一个连接在池中最小生存的时间，单位是毫秒
+    min-evictable-idle-time-millis: 300000
+    validation-query: SELECT 1 FROM DUAL
+    test-while-idle: true
+    test-on-borrow: false
+    test-on-return: false
+    stat-view-servlet:
+      enabled: true
+      url-pattern: /monitor/druid/*
+    filter:
+      stat:
+        log-slow-sql: true
+        slow-sql-millis: 1000
+        merge-sql: false
+      wall:
+        config:
+          multi-statement-allow: true
+  redis:
+    # Redis开关/默认关闭
+    enabled: true
+    # Redis数据库索引（默认为0）
+    database: 1
+    # Redis服务器地址
+    host: 127.0.0.1
+    # Redis服务器连接端口
+    port: 6379
+    password:
+    timeout: 1000000
+  # 模板引擎
+  thymeleaf:
+    mode: HTML
+    encoding: utf-8
+    # 禁用缓存
+    cache: false
+  # 资源信息
+  messages:
+    # 国际化资源文件路径
+    basename: i18n/messages
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+
+  # 文件上传
+  servlet:
+    multipart:
+      max-file-size:  30MB
+      max-request-size:  30MB
+  # 服务模块
+  devtools:
+    restart:
+      # 热部署开关
+      enabled: true
+
+
+product_folder: daichao/product
+banner_folder:  daichao/banner
+#渠道域名前缀
+system:
+  domain:
+    channalLinkBase:  https://qehh.drjjdh.cn/h5?channelName=
+
+#支付宝回调地址
+#ali_notify_url: http://2432j322y3.qicp.vip:58469/api/notify/aliNotify
+ali_notify_url: http://www.drjjdh.cn:8381/api/notify/aliNotify
+#微信回调地址
+#wx_notify_url: http://2432j322y3.qicp.vip:58469/api/notify/wxNotify
+wx_notify_url: http://www.drjjdh.cn:8381/api/notify/wxNotify
+#检测记录请求接口
+orderUrl: http://risk.hzyoudai.com
+
+# 防止XSS攻击
+xss:
+  # 过滤开关
+  enabled: true
+  # 排除链接（多个用逗号分隔）
+  excludes: /system/notice/*
+  # 匹配链接
+  urlPatterns: /system/*,/monitor/*,/tool/*
+
+
+# 代码生成
+gen:
+  # 作者
+  author: zhankui
+  # 默认生成包路径 system 需改成自己的模块名称 如 system monitor tool
+  packageName: com.youdai.daichao.biz
+  # 自动去除表前缀，默认是true
+  autoRemovePre: false
+
+# Shiro
+shiro:
+  user:
+    # 登录地址
+    loginUrl: /login
+    # 权限认证失败地址
+    unauthorizedUrl: /unauth
+    # 首页地址
+    indexUrl: /index
+    # 验证码开关
+    captchaEnabled: true
+    # 验证码类型 math 数组计算 char 字符
+    captchaType: math
+  cookie:
+    # 设置Cookie的域名 默认空，即当前访问的域名
+    domain: 127.0.0.1
+    # 设置cookie的有效访问路径
+    path: /
+    # 设置HttpOnly属性
+    httpOnly: true
+    # 设置Cookie的过期时间，天为单位
+    maxAge: 30
+  session:
+    # Session超时时间（默认30分钟）
+    expireTime: 30
+    # 同步session到数据库的周期（默认1分钟）
+    dbSyncPeriod: 1
+    # 相隔多久检查一次session的有效性，默认就是10分钟
+    validationInterval: 10

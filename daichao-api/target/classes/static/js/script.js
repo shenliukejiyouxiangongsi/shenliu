@@ -135,12 +135,22 @@ function but(){
         mui.alert( "请输入验证码");
         return
     }
+    var u = navigator.userAgent;
+    console.log(u)
+    var equipmentFlag;
+    if (u.indexOf('Android') > -1 || u.indexOf('Linux') > -1) {
+        equipmentFlag = 1;
+    }else  if (u.indexOf('iPhone') > -1) {//苹果手机
+        equipmentFlag = 0;
+    }else {
+        equipmentFlag = 2;
+    }
 
     let queryConfig = {
         phone:phone,
         code:code,
         channelName:channelName,
-        equipmentFlag:2,
+        equipmentFlag:equipmentFlag,
     };
 
     var arr = setQueryConfig(queryConfig).split('&')
@@ -163,7 +173,7 @@ function but(){
     
 
 $.ajax({
-    url:  urlcore + "/api/user/registerPhoneCodeV2?phone="+phone+"&code="+code+"&channelName="+channelName+"&equipmentFlag=2"+"&sign="+natureStr,
+    url:  urlcore + "/api/user/registerPhoneCodeV2?phone="+phone+"&code="+code+"&channelName="+channelName+"&equipmentFlag="+equipmentFlag+"&sign="+natureStr,
     type: "get",
     // dataType: 'json',
     contentType: "application/json;charset=utf-8",

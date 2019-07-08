@@ -82,6 +82,8 @@ public class UserRecordController {
                 channelCountLog.setRecordId(userRecord.getId());
             }
         }
+        channelCountLog.setClientType(RequestUtil.getClientType(request));
+        channelCountLog.setLoadPageNum(1);
         channelCountLogService.insert(channelCountLog);
         return JsonResp.ok("成功");
     }

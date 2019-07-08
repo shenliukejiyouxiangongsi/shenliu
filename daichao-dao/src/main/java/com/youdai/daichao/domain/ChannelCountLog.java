@@ -77,6 +77,11 @@ public class ChannelCountLog extends Model<ChannelCountLog> {
      */
     @TableField("user_id")
     private Long userId;
+    /**
+     * 客户端类型
+     */
+    @TableField("client_type")
+    private String clientType;
 
     @Override
     protected Serializable pkVal() {

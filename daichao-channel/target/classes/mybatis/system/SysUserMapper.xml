@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.youdai.daichao.project.system.user.mapper.SysUserMapper">
+
+    <!-- 开启二级缓存 -->
+   <!--  <cache type="org.mybatis.caches.ehcache.LoggingEhcache"/> -->
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.youdai.daichao.project.system.user.domain.SysUser">
+        <id column="channel_id" property="userId"/>
+        <result column="c_loginname" property="userName"/>
+        <result column="c_password" property="password"/>
+    </resultMap>
+
+
+	<select id="selectUserByLoginName"  resultMap="BaseResultMap" >
+	select channel_id,c_loginname,c_password
+	from channel where c_loginname=#{loginName}
+	order by create_time limit 0,1
+	</select>
+
+    <select id="selectUserByid"  resultMap="BaseResultMap" >
+	select channel_id,c_loginname,c_password
+	from channel where channel_id=#{channelId}
+	</select>
+
+    <update id="resetUserPwd" parameterType="com.youdai.daichao.project.system.user.domain.SysUser" >
+        update  channel
+        set c_password=#{password}
+        where channel_id=#{userId}
+    </update>
+</mapper>

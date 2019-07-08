@@ -1,5 +1,7 @@
 package com.youdai.daichao.util;
 
+import com.youdai.daichao.common.enums.ClientType;
+
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -41,5 +43,20 @@ public class RequestUtil {
         }
 
         return "0:0:0:0:0:0:0:1".equals(ip) ? "127.0.0.1" : ip;
+    }
+
+    public static String getClientType(HttpServletRequest request) {
+        String type = null;
+        String userAgent= request.getHeader("user-agent");
+        if(null != userAgent) {
+            if(userAgent.indexOf("Android") > -1) {
+                type = ClientType.ANDROID.getCode();
+            }else if(userAgent.indexOf("iPhone") > -1) {
+                type = ClientType.IOS.getCode();
+            }else {
+                type = ClientType.WEB.getCode();
+            }
+        }
+        return type;
     }
 }

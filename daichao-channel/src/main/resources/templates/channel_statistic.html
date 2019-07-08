@@ -1,0 +1,120 @@
+<!DOCTYPE HTML>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+
+<div class="container-div">
+	<div class="row">
+		<div class="col-sm-12 search-collapse">
+			<form id="formId">
+				<div class="select-list">
+					<ul>
+						<li class="select-time">
+							<label>注册时间： </label>
+							<input type="text" class="time-input" id="startTime" placeholder="开始时间" name="startTime"/>
+							<span>-</span>
+							<input type="text" class="time-input" id="endTime" placeholder="结束时间" name="endTime"/>
+						</li>
+						<li>
+							<a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+							<a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
+						</li>
+					</ul>
+				</div>
+			</form>
+		</div>
+
+
+		<div class="col-sm-12 select-table table-striped">
+			<table id="bootstrap-table" data-mobile-responsive="true"></table>
+		</div>
+	</div>
+</div>
+<div th:include="include :: footer"></div>
+<script th:inline="javascript">
+
+	var prefix = ctx + "channelCountLog";
+	$(function() {
+		var options = {
+			url: prefix + "/list",
+			modalName: "渠道统计",
+			search: false,
+			showExport: true,
+			columns: [{
+				checkbox: true
+			},
+				{
+					field : 'id',
+					title : 'id',
+					visible: false
+				},
+				{
+					field : 'createTime',
+					title : '注册时间'
+				},
+				{
+					field : 'shellName',
+					title : 'app名称'
+				},
+				{
+					field : 'channelName',
+					title : '所属通道'
+				},
+				{
+					field : 'viewPageNum',
+				//	title : '落地页uv',
+					visible:false,
+				},
+				{
+					field : 'disViewPageNum',
+					//	title : '落地页uv',
+					visible:false,
+				},
+				{
+				//	field : 'viewPageNum',
+					title : '落地页uv',
+					formatter:function (value,row,index) {
+						if(row.viewPageNum<=30){
+							return row.viewPageNum;
+						}else{
+							return row.disViewPageNum;
+						}
+					}
+				},
+				{
+					field : 'loadPageNum',
+					title : '落地页pv'
+				},
+				{
+					field : 'discountNum',
+					//title : '注册数',
+					visible:false,
+				},
+				{
+					field : 'registerNum',
+					//title : '注册数',
+					visible:false,
+				},
+				{
+					//field : 'discountNum',
+					title : '注册数',
+					formatter:function (value,row,index) {
+						if(row.registerNum<=10){
+							return row.registerNum;
+						}else{
+							return row.discountNum;
+						}
+					}
+				},
+				{
+					field : 'loginNum',
+					title : '登录数'
+				}]
+		};
+		$.table.init(options);
+	});
+
+</script>
+</body>
+</html>

@@ -24,6 +24,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import javax.servlet.http.HttpServletRequest;
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * <p>
@@ -237,7 +238,8 @@ public class AppUserServiceImpl extends ServiceImpl<AppUserMapper, AppUser> impl
         return null;
     }
 
-
-
-
+    @Override
+    public List<AppUser> selectUserAndChannelNameList(AppUser appUser) {
+        return userMapper.selectUserAndChannelNameList(appUser);
+    }
 }

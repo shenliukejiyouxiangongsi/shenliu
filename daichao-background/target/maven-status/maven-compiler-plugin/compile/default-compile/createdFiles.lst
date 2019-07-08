@@ -93,6 +93,7 @@ com\youdai\daichao\framework\config\SwaggerConfig.class
 com\youdai\daichao\framework\shiro\cache\RedisCacheManager.class
 com\youdai\daichao\project\monitor\online\service\UserOnlineServiceImpl.class
 com\youdai\daichao\common\utils\IpUtils.class
+com\youdai\daichao\admin_web\AppUserController.class
 com\youdai\daichao\common\exception\user\RoleBlockedException.class
 com\youdai\daichao\common\vo\PageDto.class
 com\youdai\daichao\common\exception\user\UserNotExistsException.class

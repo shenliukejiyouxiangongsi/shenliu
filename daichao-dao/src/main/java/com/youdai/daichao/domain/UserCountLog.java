@@ -59,6 +59,9 @@ public class UserCountLog extends Model<UserCountLog> {
 
     @TableField(exist = false)
     private  Integer channelRegisterNum;
+    @TableField(exist = false)
+    private String channelName;
+    private String equipmentFlag;
 
     @Override
     protected Serializable pkVal() {

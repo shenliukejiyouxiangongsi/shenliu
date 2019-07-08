@@ -8,7 +8,9 @@ import com.youdai.daichao.framework.aspectj.lang.enums.BusinessType;
 import com.youdai.daichao.framework.web.page.TableDataInfo;
 import com.youdai.daichao.service.IChannelCountLogService;
 import com.youdai.daichao.service.IChannelService;
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -56,7 +58,8 @@ public class ChannelCountLogController  extends BaseController {
 	@PostMapping("/list")
 	@ResponseBody
 	public TableDataInfo list(@RequestParam Map<String, Object> map){
-
+		Subject subject = SecurityUtils.getSubject();
+		Object ob = subject.getPrincipal();
 		startPage();
 		List<ChannelCountLog> li = channelCountLogService.selectChannelCountList(map);
 		return getDataTable(li);

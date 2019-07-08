@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/daichao.iml" filepath="$PROJECT_DIR$/daichao.iml" />
       <module fileurl="file://$PROJECT_DIR$/daichao-api/daichao-api.iml" filepath="$PROJECT_DIR$/daichao-api/daichao-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/daichao-background/daichao-background.iml" filepath="$PROJECT_DIR$/daichao-background/daichao-background.iml" />
+      <module fileurl="file://$PROJECT_DIR$/daichao-channel/daichao-channel.iml" filepath="$PROJECT_DIR$/daichao-channel/daichao-channel.iml" />
       <module fileurl="file://$PROJECT_DIR$/daichao-common/daichao-common.iml" filepath="$PROJECT_DIR$/daichao-common/daichao-common.iml" />
       <module fileurl="file://$PROJECT_DIR$/daichao-dao/daichao-dao.iml" filepath="$PROJECT_DIR$/daichao-dao/daichao-dao.iml" />
     </modules>
