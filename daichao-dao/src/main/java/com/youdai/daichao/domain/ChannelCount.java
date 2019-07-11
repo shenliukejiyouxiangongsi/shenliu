@@ -38,4 +38,10 @@ public class ChannelCount {
 
 	    private Integer everyViewPageNum;
 
+	private Integer firstUserNum;
+
+	private Integer secondUserNum;
+
+	private String clientType;
+
 }

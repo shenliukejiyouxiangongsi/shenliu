@@ -118,4 +118,14 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
         return productMapper.changePdStatusByIds(map);
     }
 
+    public List<ProductVo> selectProducts(Page<ProductVo> page, String minMoney, String rate, String maxMoney, String moneyBegin, String moneyEnd, String outTime, String tags,String type){
+
+        Map map = getParamer(page,minMoney,rate,maxMoney,moneyBegin,moneyEnd,outTime,tags);
+        if(StringUtil.isNotEmpty(type)) {
+            map.put("type",type);
+        }
+        return productMapper.selectProducts(map);
+    }
+
+
 }

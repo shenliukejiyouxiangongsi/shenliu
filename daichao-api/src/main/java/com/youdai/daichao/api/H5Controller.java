@@ -46,7 +46,7 @@ public class H5Controller {
         if(null == channel) return "error";
 
         wrapper = new EntityWrapper<>();
-        wrapper.eq("user_agent",request.getHeader("user-agent"));
+//        wrapper.eq("user_agent",request.getHeader("user-agent"));
         wrapper.eq("ip",RequestUtil.getIpAddr(request));
         wrapper.eq("channel_id",channel.getChannelId());
         UserRecord userRecord = userRecordService.selectOne(wrapper);
@@ -54,6 +54,7 @@ public class H5Controller {
         if(null == userRecord) return "error";
         wrapper = new EntityWrapper();
         wrapper.eq("record_id",userRecord.getId());
+        wrapper.eq("view_page_num",1);
         wrapper.gt("create_time", DateUtils.getDayStartDate(new Date()));
         ChannelCountLog channelCountLog=channelCountLogService.selectOne(wrapper);
         //今天没有记录 则 uv +1

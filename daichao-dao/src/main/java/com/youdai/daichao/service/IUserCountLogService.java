@@ -17,4 +17,6 @@ import com.baomidou.mybatisplus.service.IService;
  */
 public interface IUserCountLogService extends IService<UserCountLog> {
 	List<UserCountLog> selectUserCountList(Map<String, Object> map);
+	List<UserCountLog> selectAllList(Map<String, Object> map);
+
 }

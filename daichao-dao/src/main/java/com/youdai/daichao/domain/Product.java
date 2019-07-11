@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.activerecord.Model;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
+import com.baomidou.mybatisplus.enums.IdType;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -31,7 +32,7 @@ public class Product extends Model<Product> {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId("p_id")
+    @TableId(value = "p_id", type = IdType.AUTO)
     private int pId;
     @TableField("p_name")
     private String pName;
@@ -63,7 +64,7 @@ public class Product extends Model<Product> {
     @TableField("create_user")
     private String createUser;
     @TableField("p_type")
-    private Integer pType;
+    private String pType;
     @TableField("order_num")
     private Integer orderNum;
     @TableField("clear_form")

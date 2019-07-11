@@ -18,4 +18,6 @@ import com.baomidou.mybatisplus.mapper.BaseMapper;
  */
 public interface ChannelCountLogMapper extends BaseMapper<ChannelCountLog> {
 	List<ChannelCountLog> selectChannelCountList(Map<String, Object> map);
+	List<ChannelCountLog> selectChannelCountListGroupychannel(Map<String, Object> map);
+
 }

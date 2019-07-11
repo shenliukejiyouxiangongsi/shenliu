@@ -36,5 +36,11 @@ public class ChannelCountLogServiceImpl extends ServiceImpl<ChannelCountLogMappe
 		return channelCountLogMapper.selectChannelCountList(map);
 	}
 
+	@Override
+	public List<ChannelCountLog> selectChannelCountListGroupychannel(Map<String, Object> map) {
+
+		return channelCountLogMapper.selectChannelCountListGroupychannel(map);
+	}
+
 
 }

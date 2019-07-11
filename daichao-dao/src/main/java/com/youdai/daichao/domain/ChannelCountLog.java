@@ -83,6 +83,12 @@ public class ChannelCountLog extends Model<ChannelCountLog> {
     @TableField("client_type")
     private String clientType;
 
+    @TableField(exist = false)
+    private Integer firstViewNum;
+
+    @TableField(exist = false)
+    private Integer secondViewNum;
+
     @Override
     protected Serializable pkVal() {
         return this.id;

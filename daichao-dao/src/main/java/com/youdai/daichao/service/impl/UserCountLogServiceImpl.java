@@ -25,4 +25,10 @@ public class UserCountLogServiceImpl extends ServiceImpl<BaseMapper<UserCountLog
 		return userCountLogMapper.selectUserCountList(map);
 	}
 
+	@Override
+	public List<UserCountLog> selectAllList(Map<String, Object> map) {
+
+		return userCountLogMapper.selectAllList(map);
+	}
+
 }

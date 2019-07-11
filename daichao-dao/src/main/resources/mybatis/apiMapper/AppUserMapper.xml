@@ -71,6 +71,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             <if test="equipmentFlag != null "> and u.equipment_flag = #{equipmentFlag}</if>
             <if test="isShow != null "> and u.is_show = #{isShow}</if>
         </where>
+        order by a_uid desc
     </select>
 
 </mapper>

@@ -42,4 +42,8 @@ public interface IProductService extends IService<Product> {
         Map<String,Object> getMinAndMax(int psid);
 
         int changeStatus(Map<String, Object> map);
+
+        List<ProductVo> selectProducts(Page<ProductVo> page, String minMoney, String rate, String maxMoney, String moneyBegin, String moneyEnd, String outTime, String tags,String type);
+
+
 }

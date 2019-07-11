@@ -18,4 +18,6 @@ import com.baomidou.mybatisplus.service.IService;
  */
 public interface IChannelCountLogService extends IService<ChannelCountLog> {
 	List<ChannelCountLog> selectChannelCountList(Map<String, Object> map);
+	List<ChannelCountLog> selectChannelCountListGroupychannel(Map<String, Object> map);
+
 }

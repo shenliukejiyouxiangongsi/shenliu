@@ -8,11 +8,13 @@ com\youdai\daichao\util\RequestUtil.class
 com\youdai\daichao\common\vo\OrderRes.class
 com\youdai\daichao\common\exception\BaseException.class
 com\youdai\daichao\common\redis\RedisCache.class
+com\youdai\daichao\common\enums\ProductTypeEnum.class
 com\youdai\daichao\util\HttpClientUtil.class
 com\youdai\daichao\util\CollectionUtils.class
 com\youdai\daichao\util\Md5.class
 com\youdai\daichao\util\TokenUtils.class
 com\youdai\daichao\common\constant\PayConstants.class
+com\youdai\daichao\util\AesEncryptUtil.class
 com\youdai\daichao\common\constant\Constants.class
 com\youdai\daichao\util\ServletUtils.class
 com\youdai\daichao\common\vo\ProductVo.class
@@ -27,6 +29,7 @@ com\youdai\daichao\util\DateJsonSerializer.class
 com\youdai\daichao\common\redis\RedisConfig.class
 com\youdai\daichao\common\vo\AjaxResult.class
 com\youdai\daichao\sms\SmsAPI.class
+com\youdai\daichao\common\enums\ChannelStatusEnum.class
 com\youdai\daichao\util\ArrayUtils.class
 com\youdai\daichao\common\support\Convert.class
 com\youdai\daichao\common\support\StrFormatter.class
@@ -44,6 +47,7 @@ com\youdai\daichao\common\exception\UserException.class
 com\youdai\daichao\util\StrFormatter.class
 com\youdai\daichao\util\ImageUtil.class
 com\youdai\daichao\util\RequestEncoder.class
+com\youdai\daichao\util\EncryptedString.class
 com\youdai\daichao\common\vo\CheckBody.class
 com\youdai\daichao\util\SerializerUtil.class
 com\youdai\daichao\util\HttpClientUtil$1.class

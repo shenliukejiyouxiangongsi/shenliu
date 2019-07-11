@@ -19,8 +19,10 @@ import com.youdai.daichao.util.RequestUtil;
 import com.youdai.daichao.util.StringUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -46,6 +48,8 @@ public class ApiInterceptor implements HandlerInterceptor {
     IAppUserService appUserService;
     @Autowired
     IChannelService channelService;
+    @Value("${spring.profiles.active}")
+    private String active;
 
     //目标方法执行之前
     @Override
@@ -64,13 +68,12 @@ public class ApiInterceptor implements HandlerInterceptor {
         //用户来源表
         insertUserRecord(request);
 
+        if("dev".equals(active)) return true;
+
         //h5放行
         if(request.getRequestURI().indexOf("/h5") > -1) {
-        }
-        if(true) {
             return true;
         }
-
 
         //MD5
         if(!getAllParams(request)) {
@@ -172,6 +175,9 @@ public class ApiInterceptor implements HandlerInterceptor {
             sb.append(e.getKey()).append("=").append(e.getValue()).append("&");
         }
         sb.append("serverAPI=qehh");
+        log.info("请求的url--------"+request.getRequestURI());
+        log.info("请求的user-agent--------"+request.getHeader("user-agent"));
+        log.info("请求的参数---------"+sb.toString());
         log.info("sign----------"+ signValue);
         log.info("md5-----------"+Md5.md5Encode(sb.toString()));
         if(Md5.md5Encode(sb.toString()).equals(signValue)) return true;
@@ -185,11 +191,15 @@ public class ApiInterceptor implements HandlerInterceptor {
         String userAgent= request.getHeader("user-agent");
         //手机类型
         String type = RequestUtil.getClientType(request);
+        if(null == type) {
+            type = request.getHeader("type");
+            if(null == type) type = ClientType.ANDROID.getCode();
+        }
         String ip = RequestUtil.getIpAddr(request);
         String channelName = request.getParameter("channelName");
         Wrapper<UserRecord> userRecordwrapper = new EntityWrapper<>();
-        userRecordwrapper.eq("user_agent",userAgent);
-        userRecordwrapper.eq("type",type);
+//        userRecordwrapper.eq("user_agent",userAgent);
+//        userRecordwrapper.eq("type",type);
         userRecordwrapper.eq("ip",ip);
         int channelId = 0;
         //一般只有渠道推广进h5才有channelName
@@ -219,12 +229,13 @@ public class ApiInterceptor implements HandlerInterceptor {
             userRecordService.insert(userRecord);
             // 和用户注册表关联
             request.setAttribute("userRecordId",userRecord.getId());
-            redisCache.putCache(deviceFlag+ip,userRecord);
+            redisCache.putCache(ip,userRecord);
+            return;
         }
-        if(redisCache.haveCache(deviceFlag+ip)){
-            userRecord=redisCache.getCache(deviceFlag+ip);
-            request.setAttribute("userRecordId",userRecord.getId());
+        if(!redisCache.haveCache(ip)){
+            redisCache.putCache(ip,userRecord);
         }
+        request.setAttribute("userRecordId",userRecord.getId());
 
     }
 
@@ -239,5 +250,15 @@ public class ApiInterceptor implements HandlerInterceptor {
         } catch (Exception e) {
             log.error("sign 检验异常",e);
         }
+    }
+
+    @Override
+    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
+
+    }
+
+    @Override
+    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
+
     }
 }

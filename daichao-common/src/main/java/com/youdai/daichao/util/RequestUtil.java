@@ -46,10 +46,10 @@ public class RequestUtil {
     }
 
     public static String getClientType(HttpServletRequest request) {
-        String type = null;
+        String type = ClientType.WEB.getCode();
         String userAgent= request.getHeader("user-agent");
         if(null != userAgent) {
-            if(userAgent.indexOf("Android") > -1) {
+            if(userAgent.indexOf("Android") > -1 || userAgent.indexOf("okhttp") > -1) {
                 type = ClientType.ANDROID.getCode();
             }else if(userAgent.indexOf("iPhone") > -1) {
                 type = ClientType.IOS.getCode();

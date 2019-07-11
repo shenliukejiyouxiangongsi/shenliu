@@ -31,7 +31,7 @@ public class ProductCountLog extends Model<ProductCountLog> {
      * 产品id
      */
     @TableField("p_id")
-    private Integer pId;
+    private String pId;
     /**
      * 一级页面pv
      */
@@ -67,6 +67,17 @@ public class ProductCountLog extends Model<ProductCountLog> {
      */
     @TableField("type")
     private String type;
+
+    @TableField("userRecord_id")
+    private Long userRecordId;
+
+    /**
+     * 客户端类型
+     */
+    @TableField("client_type")
+    private String clientType;
+    @TableField("user_id")
+    private String userId;
 
     @Override
     protected Serializable pkVal() {

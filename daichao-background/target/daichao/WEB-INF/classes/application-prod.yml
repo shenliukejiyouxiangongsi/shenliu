@@ -140,3 +140,12 @@ shiro:
     dbSyncPeriod: 1
     # 相隔多久检查一次session的有效性，默认就是10分钟
     validationInterval: 10
+
+#创蓝短信
+chuanglan:
+  sms_url: http://smssh1.253.com/msg/send/json
+  account: N6425776
+  password: mjVkD4GgX63e15
+  templateId:
+    #注册模板
+    registerMsgId: zcOWs2

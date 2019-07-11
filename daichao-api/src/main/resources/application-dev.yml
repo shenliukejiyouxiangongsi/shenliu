@@ -5,10 +5,10 @@ spring:
     driverClassName: com.mysql.jdbc.Driver
       # 主库数据源
 #    url: jdbc:mysql://rm-bp1n39j0m0r785ei1.mysql.rds.aliyuncs.com:3306/daichao?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true
-    url: jdbc:mysql://www.drjjdh.cn:3506/daichao?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true
+    url: jdbc:mysql://127.0.0.1:3306/daichao?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true
     username: root
     #password: eSfPJPN09t2EVprj
-    password: shen@liu
+    password: rootroot
     # 初始连接数
     initial-size: 10
     # 最大连接池数量
@@ -53,7 +53,7 @@ spring:
   mvc:
     view:
       prefix: /static/
-      suffix: .html
+      suffix: .html, .apk
     static-path-pattern: /static/**
 
 

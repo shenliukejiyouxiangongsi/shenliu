@@ -208,95 +208,24 @@
 	
 	<select id="selectAllList" parameterType="map" resultMap="selectResoult">
 
-		SELECT
-			a.createTime,
-			a.registerNum,
-			f.loginNum,
-			ccl.viewProductNum,
-			c.channelRegisterNum,
-			ifnull(ccl.uv,0) as deviceFlag,
-			a.channel_id channelId,
-			a.equipment_flag equipmentFlag,
-			ch.channel_name channelName
-		FROM
-			(
-				SELECT
-					DATE_FORMAT( uc.create_time, '%Y-%m-%d' ) AS createTime,
-					SUM( CASE WHEN  uc.register_num = 1 THEN 1 ELSE 0 END ) AS registerNum,
-					   au.channel_id,au.equipment_flag
-				FROM  user_count_log uc
-				LEFT JOIN user_record ur ON uc.device_flag=ur.id
-				left join app_user au on uc.phone = au.a_uphone
-				GROUP BY createTime,au.channel_id,  au.equipment_flag
-			) a
+		select ccl.*,pcl.secondUserNum from
+		   ( select DATE_FORMAT(ccl.create_time,'%Y-%m-%d') as createTime,
+					sum(view_page_num) viewPageNum,
+			   sum(ccl.register_num) registerNum,
+			   sum(ccl.login_num) loginNum
+			 from channel_count_log ccl
+			 group by createTime
+			) ccl,
 
-		LEFT JOIN
-				(
-					select
-						DATE_FORMAT( ccl.create_time, '%Y-%m-%d' ) AS createTime,
-						ccl.channel_id,client_type as equipment_flag,
-						sum(load_page_num) AS viewProductNum,
-						count( DISTINCT(case when load_page_num=1 then  ifnull(record_id,0)  end)) AS uv
-
-					from
-						channel_count_log ccl
-					group by createTime,ccl.channel_id,client_type
-				)ccl
-
-		on	 ccl.createTime=a.createTime and ccl.channel_id = a.channel_id and ccl.equipment_flag = a.equipment_flag
-
-		LEFT JOIN
-				(
-					SELECT
-						DATE_FORMAT( create_time, '%Y-%m-%d' ) AS createTime,
-						COUNT(0) as channelRegisterNum,
-						channel_id,equipment_flag
-					FROM
-					app_user
-					where a_uphone is not NULL AND channel_id >0
-					GROUP BY
-					createTime,channel_id,equipment_flag
-				)c
-		ON a.createTime =c.createTime and c.channel_id = a.channel_id and c.equipment_flag = a.equipment_flag
-
-		LEFT JOIN
-				(
-					SELECT
-						e.createTime as createTime,
-						SUM(case WHEN e.login_num=1 AND e.register_num =1 THEN 1 else 0 END) AS loginNum,
-						e.equipment_flag,e.channel_id
-					FROM
-						 (SELECT
-							min(d.createTime) AS createTime,
-							d.login_num ,
-							d.register_num ,
-							d.phone,
-							d.equipment_flag,d.channel_id
-						  FROM
-							 (SELECT
-									DATE_FORMAT( ucl.create_time, '%Y-%m-%d' ) AS createTime,
-									phone,
-									MAX(login_num) as login_num,
-									MAX(register_num) as  register_num,
-									 au.equipment_flag,au.channel_id
-
-								FROM
-								user_count_log ucl
-							 left join app_user au on ucl.phone = au.a_uphone
-								GROUP BY
-								createTime,phone
-							 )d
-
-							GROUP BY d.phone
-						 )e
-					GROUP BY e.createTime,e.equipment_flag,e.channel_id
-				)f
-		ON a.createTime =f.createTime and f.channel_id = a.channel_id and f.equipment_flag = a.equipment_flag
-
-		left join channel ch on a.channel_id = ch.channel_id
-
-		ORDER BY
-		a.createTime DESC;
+		   (
+			select DATE_FORMAT(pcl.create_time, '%Y-%m-%d') as createTime,
+				   sum(second_user_num) secondUserNum
+			from product_count_log pcl
+			group by DATE_FORMAT(pcl.create_time, '%Y-%m-%d')
+		   ) pcl
+		where ccl.createTime = pcl.createTime
+		order by ccl.createTime desc
 
 	</select>
+
 </mapper>

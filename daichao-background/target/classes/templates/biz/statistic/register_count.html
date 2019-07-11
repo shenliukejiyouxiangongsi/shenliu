@@ -54,7 +54,17 @@
 				},
 				{
 					field : 'createTime',
-					title : '注册时间'
+					title : '时间'
+				},
+				{
+					field : 'viewPageNum',
+					title : '渠道UV',
+					formatter:function(value,row,index){
+						if(value==0){
+							return "-";
+						}
+						return  value;
+					}
 				},
 				{
 					field : 'registerNum',
@@ -69,6 +79,7 @@
 				{
 					field : 'channelRegisterNum',
 					title : '渠道注册数',
+					visible: false,
 					formatter:function(value,row,index){
 						if(value==0){
 							return "-";
@@ -90,6 +101,7 @@
 				{
 					field : 'deviceFlag',
 					title : 'UV总数',
+					visible: false,
 					formatter:function(value,row,index){
 						if(value==0){
 							return "-";
@@ -100,13 +112,25 @@
 				{
 					field : 'viewProductNum',
 					title : 'PV总数',
+					visible: false,
 					formatter:function(value,row,index){
 						if(value==0){
 							return "-";
 						}
 						return  value;
 					}
-				},]
+				},
+				{
+					field : 'secondUserNum',
+					title : '产品申请',
+					formatter:function(value,row,index){
+						if(value==0){
+							return "-";
+						}
+						return  value;
+					}
+				},
+			]
 		};
 		$.table.init(options);
 	});

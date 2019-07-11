@@ -4,8 +4,10 @@ import org.apache.catalina.Context;
 import org.apache.catalina.connector.Connector;
 import org.apache.tomcat.util.descriptor.web.SecurityCollection;
 import org.apache.tomcat.util.descriptor.web.SecurityConstraint;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -65,6 +67,24 @@ public class ApiMvcConfig extends WebMvcConfigurerAdapter {
 //        //设置重定向到https端口
 //        connector.setRedirectPort(serverPort);
 //        return connector;
+//    }
+
+
+//    @Bean
+//    public FilterRegistrationBean someFilterRegistration() {
+//        FilterRegistrationBean registration = new FilterRegistrationBean();
+//        registration.setFilter(getApiSignFilter());// 配置一个返回值加密过滤器
+//        registration.addUrlPatterns("/*");
+//        //不拦截
+//        registration.addInitParameter("notice", "/h5,/login,/phoneCodeLogin," +
+//                "/getPass,/getVersion,/getPhoneCodeV2,/getPhoneCode");
+//        registration.setName("apiSignFilter");
+//        return registration;
+//    }
+//
+//    @Bean
+//    public ApiSignFilter getApiSignFilter() {
+//        return new ApiSignFilter();
 //    }
 
 }

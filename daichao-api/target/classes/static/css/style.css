@@ -19,6 +19,7 @@ a[target="_blank"]{
     align-items: center;
 
 }
+
 .content>div>div{
     border-radius: 28px;
     padding: 11px 20px;
@@ -29,7 +30,6 @@ a[target="_blank"]{
     background-color: #fff;
     color: #333;
     /*background-color: blue;*/
-
 
 }
 input{
@@ -56,14 +56,6 @@ input{
     /*background-color: red;*/
     margin-top: 2px;
 }
-#tiaoxiazai{
-    display: block;
-    text-align: center;
-    margin-top: 50px;
-    color: #FFFFFF;
-}
-
-
 
 .yindao{
     height: 100vh;
@@ -98,7 +90,6 @@ input{
 .content>div{
     /*background-color: red;*/
     padding-bottom:15px;
-
 }
 
 .text{
@@ -107,6 +98,4 @@ input{
     text-align: center;
     margin-top:60px;
     opacity:0.5;
-
-
 }

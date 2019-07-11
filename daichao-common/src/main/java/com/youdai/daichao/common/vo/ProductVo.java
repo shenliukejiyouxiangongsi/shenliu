@@ -24,4 +24,5 @@ public class ProductVo {
     private int sort;
     private int orderNum;
     private String hasTags;
+    private String type;
 }

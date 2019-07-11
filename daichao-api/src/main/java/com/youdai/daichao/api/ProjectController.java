@@ -1,6 +1,7 @@
 package com.youdai.daichao.api;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.youdai.daichao.common.redis.RedisCache;
 import com.youdai.daichao.common.vo.JsonResp;
@@ -8,6 +9,7 @@ import com.youdai.daichao.common.vo.PageDto;
 import com.youdai.daichao.common.vo.ProductVo;
 import com.youdai.daichao.domain.*;
 import com.youdai.daichao.service.*;
+import com.youdai.daichao.shiro.SecurityUtil;
 import com.youdai.daichao.util.DateUtils;
 import com.youdai.daichao.util.RequestUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -55,20 +57,26 @@ public class ProjectController {
     @RequestMapping(value = "list",method = RequestMethod.GET)
     public JsonResp list(Integer pageNo, Integer pageSize,String minMoney,String rate, String maxMoney, String moneyBegin,String moneyEnd, String outTime, String tags,String type){
         log.info("通过筛选条件展示产品");
-        if(null!=type&&!"".equals(type)){
-            if(type.equals("1")){
-                Page hotPage = new Page<ProductVo>(pageNo, pageSize);
-                List<ProductVo> list=productService.selectHotProduct(hotPage,minMoney,rate,maxMoney,moneyBegin,moneyEnd,outTime,tags);
-                return JsonResp.ok(new PageDto(pageNo, pageSize, list, list.size()));
-            }
-            if(type.equals("2")){
-                Page newPage = new Page<ProductVo>(pageNo, pageSize);
-                List<ProductVo> list=productService.selectNewProduct(newPage,minMoney,rate,maxMoney,moneyBegin,moneyEnd,outTime,tags);
-                return JsonResp.ok(new PageDto(pageNo, pageSize, list, list.size()));
-            }
-        }
+//        if(null!=type&&!"".equals(type)){
+//            if(type.equals("1")){
+//                Page hotPage = new Page<ProductVo>(pageNo, pageSize);
+//                List<ProductVo> list=productService.selectHotProduct(hotPage,minMoney,rate,maxMoney,moneyBegin,moneyEnd,outTime,tags);
+//                return JsonResp.ok(new PageDto(pageNo, pageSize, list, list.size()));
+//            }
+//            if(type.equals("2")){
+//                Page newPage = new Page<ProductVo>(pageNo, pageSize);
+//                List<ProductVo> list=productService.selectNewProduct(newPage,minMoney,rate,maxMoney,moneyBegin,moneyEnd,outTime,tags);
+//                return JsonResp.ok(new PageDto(pageNo, pageSize, list, list.size()));
+//            }
+//        }
         Page page = new Page<ProductVo>(pageNo, pageSize);
-        List<ProductVo> list=productService.selectAllProduct(page,minMoney,rate,maxMoney,moneyBegin,moneyEnd,outTime,tags);
+//        List<ProductVo> list=productService.selectAllProduct(page,minMoney,rate,maxMoney,moneyBegin,moneyEnd,outTime,tags);
+        List<ProductVo> list;
+        if(null == type) {
+            list =productService.selectAllProduct(page,minMoney,rate,maxMoney,moneyBegin,moneyEnd,outTime,tags);
+        }else {
+            list = productService.selectProducts(page, minMoney, rate, maxMoney, moneyBegin, moneyEnd, outTime, tags, type);
+        }
         return JsonResp.ok(new PageDto(pageNo, pageSize, list, list.size()));
     }
 
@@ -78,8 +86,7 @@ public class ProjectController {
      */
     @RequestMapping( value = "/selectOne", method = RequestMethod.POST )
     public JsonResp selectOne(@RequestBody  Map<String,Object> o, HttpServletRequest request){
-        Subject subject = SecurityUtils.getSubject();
-        Object ob = subject.getPrincipal();
+        AppUser user = userService.findLoginUser();
         int psid=Integer.parseInt((String) o.get("proId"));
         String type= (String) o.get("type");
         String  deviceFlag=request.getHeader("deviceFlag");
@@ -118,33 +125,34 @@ public class ProjectController {
                 product.setNextInt(nextId);
             }
 
-           String device=getRecordId(request);
             //插入日志表
             UserCountLog userCountLog=new UserCountLog();
             userCountLog.setViewProductNum(1);
-            userCountLog.setDeviceFlag(device);
+            if(null != user) {
+                userCountLog.setPhone(user.getAUphone());
+                userCountLog.setDeviceFlag(user.getUserRecordId().toString());
+            }
             userCountLogService.insert(userCountLog);
-
             ProductCountLog productCountLog=new ProductCountLog();
             productCountLog.setType(type);
+            productCountLog.setClientType(RequestUtil.getClientType(request));
+            productCountLog.setUserRecordId(user.getUserRecordId());
+            productCountLog.setUserId(user.getAUid().toString());
             EntityWrapper productWrapper=new EntityWrapper();
-            productWrapper.eq("device_flag",device);
+//            productWrapper.eq("device_flag",device);
             productWrapper.eq("p_id",psid);
+            productWrapper.eq("userRecord_id",user.getUserRecordId());
+            productWrapper.eq("user_id",user.getAUid());
             productWrapper.eq("first_view_num",1);
             productWrapper.gt("create_time",DateUtils.getDayStartDate(new Date()));
             ProductCountLog oldProductCountLog =  productCountLogService.selectOne(productWrapper);
+            productCountLog.setFirstViewNum(1);
+            productCountLog.setPId(product.getPId()+"");
+            productCountLog.setDeviceFlag(user.getUserRecordId().toString());
             if(null==oldProductCountLog){
-                productCountLog.setFirstViewNum(1);
                 productCountLog.setFirstUserNum(1);
-                productCountLog.setPId(product.getPId());
-                productCountLog.setDeviceFlag(device);
-                productCountLogService.insert(productCountLog);
-            }else {
-                productCountLog.setFirstViewNum(1);
-                productCountLog.setPId(product.getPId());
-                productCountLog.setDeviceFlag(device);
-                productCountLogService.insert(productCountLog);
             }
+            productCountLogService.insert(productCountLog);
 
         }
         return JsonResp.ok(product);
@@ -159,36 +167,28 @@ public class ProjectController {
         AppUser user = userService.findLoginUser();
         String  deviceFlag=request.getHeader("deviceFlag");
         log.info("立即申请");
-        int pid=Integer.parseInt(pId);
-        int result=productService.updateOrderNum(pid);
+        int result=productService.updateOrderNum(Integer.parseInt(pId));
         if(result==1){
-            EntityWrapper userRecord=new EntityWrapper();
-            userRecord.eq("udid",deviceFlag);
-            UserRecord entity=userRecordService.selectOne(userRecord);
-            String device="";
-            if(null!=entity){
-                device=String.valueOf(entity.getId());
-            }
             ProductCountLog productCountLog=new ProductCountLog();
             productCountLog.setType(type);
+            productCountLog.setClientType(RequestUtil.getClientType(request));
+            productCountLog.setUserRecordId(user.getUserRecordId());
+            productCountLog.setUserId(user.getAUid().toString());
             EntityWrapper productWrapper=new EntityWrapper();
-            productWrapper.eq("device_flag",device);
+//            productWrapper.eq("device_flag",device);
             productWrapper.eq("p_id",Integer.parseInt(pId));
+            productWrapper.eq("userRecord_id",user.getUserRecordId());
+            productWrapper.eq("user_id",user.getAUid());
             productWrapper.eq("second_user_num",1);
             productWrapper.gt("create_time",DateUtils.getDayStartDate(new Date()));
             ProductCountLog oldProductCountLog =  productCountLogService.selectOne(productWrapper);
+            productCountLog.setSecondViewNum(1);
+            productCountLog.setPId(pId);
+            productCountLog.setDeviceFlag(user.getUserRecordId().toString());
             if(null==oldProductCountLog){
-                productCountLog.setSecondViewNum(1);
                 productCountLog.setSecondUserNum(1);
-                productCountLog.setPId(pid);
-                productCountLog.setDeviceFlag(device);
-                productCountLogService.insert(productCountLog);
-            }else {
-                productCountLog.setSecondViewNum(1);
-                productCountLog.setPId(pid);
-                productCountLog.setDeviceFlag(device);
-                productCountLogService.insert(productCountLog);
             }
+            productCountLogService.insert(productCountLog);
         }
         return JsonResp.ok("成功");
     }
@@ -206,36 +206,36 @@ public class ProjectController {
     }
 
 
-    public  String getRecordId(HttpServletRequest request){
-
-        String recordId="";
-        UserRecord userRecord=new UserRecord();
-        String  deviceFlag=request.getHeader("deviceFlag");
-        String  type=request.getHeader("type");
-        String ip =RequestUtil.getIpAddr(request);
-        //移动设备
-        if(null!=type&&!"".equals(type)){
-            userRecord=redisCache.getCache(deviceFlag+ip);
-            if(userRecord==null){
-                EntityWrapper entityWrapper=new EntityWrapper();
-                entityWrapper.eq("type",type);
-                entityWrapper.eq("udid",deviceFlag);
-                entityWrapper.eq("ip",ip);
-                userRecord=userRecordService.selectOne(entityWrapper);
-            }
-        }else {
-            String userAgent= request.getHeader("user-agent");
-            userRecord=redisCache.getCache(ip+userAgent);
-            if(userRecord==null){
-                EntityWrapper entityWrapper=new EntityWrapper();
-                entityWrapper.eq("user_agent",userAgent);
-                entityWrapper.eq("ip",ip);
-                userRecord= userRecordService.selectOne(entityWrapper);
-            }
-        }
-        recordId=String.valueOf(userRecord.getId());
-        return recordId;
-    }
+//    public  String getRecordId(HttpServletRequest request){
+//
+//        String recordId="";
+//        UserRecord userRecord=new UserRecord();
+//        String  deviceFlag=request.getHeader("deviceFlag");
+//        String  type=request.getHeader("type");
+//        String ip =RequestUtil.getIpAddr(request);
+//        //移动设备
+//        if(null!=type&&!"".equals(type)){
+//            userRecord=redisCache.getCache(deviceFlag+ip);
+//            if(userRecord==null){
+//                EntityWrapper entityWrapper=new EntityWrapper();
+//                entityWrapper.eq("type",type);
+//                entityWrapper.eq("udid",deviceFlag);
+//                entityWrapper.eq("ip",ip);
+//                userRecord=userRecordService.selectOne(entityWrapper);
+//            }
+//        }else {
+//            String userAgent= request.getHeader("user-agent");
+//            userRecord=redisCache.getCache(ip+userAgent);
+//            if(userRecord==null){
+//                EntityWrapper entityWrapper=new EntityWrapper();
+//                entityWrapper.eq("user_agent",userAgent);
+//                entityWrapper.eq("ip",ip);
+//                userRecord= userRecordService.selectOne(entityWrapper);
+//            }
+//        }
+//        recordId=String.valueOf(userRecord.getId());
+//        return recordId;
+//    }
 
     /**
      * 查询最新产品

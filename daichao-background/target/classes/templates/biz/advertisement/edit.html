@@ -5,11 +5,18 @@
 <body class="white-bg">
 <div class="wrapper wrapper-content animated fadeInRight ibox-content">
     <form class="form-horizontal m" id="form-advertisement-edit" th:object="${advertisement}">
-        <input id="adId" name="adId" th:field="*{adId}"  type="hidden">
+        <input id="pId" name="pId" th:field="*{pId}"  type="hidden">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">产品名称：</label>
+            <div class="col-sm-8">
+                <input id="pName" name="pName" th:field="*{pName}" class="form-control" type="text">
+            </div>
+            <input id="beforePName" name="beforePName" th:field="*{pName}" class="form-control" style="display:none" type="text">
+        </div>
         <div class="form-group" >
             <label class="col-sm-3 control-label">广告图片预览：</label>
             <div class="col-sm-8" id="show">
-                <img th:src="@{*{adUrl}}" width="100">
+                <img th:src="@{*{logoUrl}}" width="100">
             </div>
         </div>
         <div class="form-group">
@@ -17,19 +24,19 @@
             <div class="col-sm-8">
                 <input type="button" value="重新上传" onclick="img.click()" class="btn_mouseout"/><br>
                 <input type="file" id="img" name="img" accept="image/*" onchange="sc(this);" style="display:none"/>
-                <input type="text" id="adUrl" name="adUrl"  th:field="*{adUrl}"   style="display:none"/>
+                <input type="text" id="logoUrl" name="logoUrl"  th:field="*{logoUrl}"   style="display:none"/>
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-3 control-label">产品跳转地址：</label>
             <div class="col-sm-8">
-                <input id="jumpUrl" name="jumpUrl" th:field="*{jumpUrl}" class="form-control" type="text">
+                <input id="linkUrl" name="linkUrl" th:field="*{linkUrl}" class="form-control" type="text">
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-3 control-label">广告描述：</label>
             <div class="col-sm-8">
-                <input id="describation" name="describation" th:field="*{describation}" class="form-control" type="text">
+                <input id="explaintion" name="explaintion" th:field="*{explaintion}" class="form-control" type="text">
             </div>
         </div>
         <div class="form-group">
@@ -42,7 +49,7 @@
             <label class="col-sm-3 control-label">使用状态：</label>
             <div class="col-sm-3">
                 <select id="status" name="status" class="form-control m-b">
-                    <option value="0" th:selected="*{status}==0">禁用</option>
+                    <option value="2" th:selected="*{status}==2">禁用</option>
                     <option value="1" th:selected="*{status}==1">正常</option>
                 </select>
             </div>
@@ -68,16 +75,17 @@
     }
 
     function add() {
-        var adId = $("input[name='adId']").val();
-        var adUrl = $("input[name='adUrl']").val();
-        var describation = $("input[name='describation']").val();
+        var pId = $("input[name='pId']").val();
+        var pName = $("input[name='pName']").val();
+        var logoUrl = $("input[name='logoUrl']").val();
+        var explaintion = $("input[name='explaintion']").val();
         var sort = $("input[name='sort']").val();
         var status = $("#status option:selected").val();
-        var adUrlBefore="[[${advertisement.adUrl}]]";
-        var jumpUrl = $("input[name='jumpUrl']").val();
+        var adUrlBefore="[[${advertisement.logoUrl}]]";
+        var linkUrl = $("input[name='linkUrl']").val();
 
-        if(adUrlBefore==adUrl){
-            adUrl=null;
+        if(adUrlBefore==logoUrl){
+            logoUrl=null;
         }
 
         $.ajax({
@@ -85,12 +93,13 @@
             type : "POST",
             url : prefix + "/edit",
             data : {
-                "adId": adId,
-                "adUrl": adUrl,
-                "describation": describation,
+                "pId": pId,
+                "pName": pName,
+                "logoUrl": logoUrl,
+                "explaintion": explaintion,
                 "sort": sort,
                 "status":status,
-                "jumpUrl":jumpUrl
+                "linkUrl":linkUrl
             },
             async : false,
             error : function(request) {
@@ -135,7 +144,7 @@
                     var result1 = '';
                     // $("#show").attr('value',+ ret['f'] +);
                     result += '<img src="'+fileT.filePath +'" width="100">';
-                    $("#adUrl").val(fileT.filePath);
+                    $("#logoUrl").val(fileT.filePath);
                     $('#show').html(result);
                     layer.msg('上传成功');
                 }else{

@@ -1,6 +1,7 @@
 package com.youdai.daichao.api;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.youdai.daichao.common.redis.RedisCache;
 import com.youdai.daichao.common.vo.CheckBody;
 import com.youdai.daichao.common.vo.JsonResp;
@@ -22,10 +23,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.awt.image.BufferedImage;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 
@@ -57,6 +55,7 @@ public class UserController {
     @Value("${chuanglan.templateId.registerMsgId}")
     String registerMsgId;
 
+    @Autowired
     private RedisTemplate<String, String> redisTemplate;
 
     /**登陆
@@ -125,17 +124,32 @@ public class UserController {
         UserCountLog userCountLog=new UserCountLog();
         if(isRegister) userCountLog.setRegisterNum(1);
         userCountLog.setLoginNum(1);
-        userCountLog.setDeviceFlag(getRecordId(request));
+//        Object userRecordId = request.getAttribute("userRecordId");
+//        if(userRecordId != null) {
+//            userCountLog.setDeviceFlag(userRecordId.toString());
+//            user.setUserRecordId(Long.parseLong(userRecordId.toString()));
+//        }
+        userCountLog.setDeviceFlag(user.getUserRecordId().toString());
         userCountLog.setPhone(phone);
         userCountLogService.insert(userCountLog);
         if(0!=user.getChannelId()){
-            ChannelCountLog channelCountLog=new ChannelCountLog();
-            if(isRegister) channelCountLog.setRegisterNum(1);
-            channelCountLog.setLoginNum(1);
-            channelCountLog.setChannelId(user.getChannelId());
-            channelCountLog.setUserId(user.getAUid());
-            channelCountLog.setClientType(RequestUtil.getClientType(request));
-            channelCountLogService.insert(channelCountLog);
+            Wrapper wrapper = new EntityWrapper();
+            wrapper.eq("record_id",user.getUserRecordId());
+            wrapper.eq("user_id",user.getAUid());
+            wrapper.eq("login_num",1);
+            wrapper.gt("create_time", DateUtils.getDayStartDate(new Date()));
+            ChannelCountLog channelCountLog = channelCountLogService.selectOne(wrapper);
+            //去重
+            if(null == channelCountLog) {
+                channelCountLog = new ChannelCountLog();
+                if (isRegister) channelCountLog.setRegisterNum(1);
+                channelCountLog.setLoginNum(1);
+                channelCountLog.setChannelId(user.getChannelId());
+                channelCountLog.setUserId(user.getAUid());
+                channelCountLog.setClientType(RequestUtil.getClientType(request));
+                channelCountLog.setRecordId(user.getUserRecordId());
+                channelCountLogService.insert(channelCountLog);
+            }
         }
     }
 
@@ -192,15 +206,21 @@ public class UserController {
         user.setEquipmentFlag(equipmentFlag);
         user.setStatus(1);
         user.setPassword(Md5.md5Encode(password));
+        UserCountLog userCountLog=new UserCountLog();
+        Object userRecordId = request.getAttribute("userRecordId");
+        if(userRecordId != null) {
+            userCountLog.setDeviceFlag(userRecordId.toString());
+            channelCountLog.setRecordId(Long.parseLong(userRecordId.toString()));
+            user.setUserRecordId(Long.parseLong(userRecordId.toString()));
+        }
         userService.insert(user);
         channelCountLog.setUserId(user.getAUid());
         channelCountLog.setRegisterNum(1);
         channelCountLog.setClientType(RequestUtil.getClientType(request));
         channelCountLogService.insert(channelCountLog);
         //插入日志表
-        UserCountLog userCountLog=new UserCountLog();
+
         userCountLog.setRegisterNum(1);
-        userCountLog.setDeviceFlag(getRecordId(request));
         userCountLog.setPhone(phone);
         userCountLogService.insert(userCountLog);
         return JsonResp.ok("注册成功!");
@@ -236,7 +256,7 @@ public class UserController {
         ChannelCountLog channelCountLog=new ChannelCountLog();
 
         user.setAUphone(phone);
-        user.setEquipmentFlag(equipmentFlag);
+        user.setEquipmentFlag(Integer.parseInt(RequestUtil.getClientType(request)));
         user.setStatus(1);
 
         //不是从渠道进来，防止撸贷
@@ -262,10 +282,12 @@ public class UserController {
             user.setIsShow(1);
         }
 
+        UserCountLog userCountLog=new UserCountLog();
         Object userRecordId = request.getAttribute("userRecordId");
         if(userRecordId != null) {
             user.setUserRecordId(Long.parseLong(userRecordId.toString()));
             channelCountLog.setRecordId(Long.parseLong(userRecordId.toString()));
+            userCountLog.setDeviceFlag(userRecordId.toString());
         }
         userService.insert(user);
         channelCountLog.setUserId(user.getAUid());
@@ -273,9 +295,7 @@ public class UserController {
         channelCountLog.setClientType(RequestUtil.getClientType(request));
         channelCountLogService.insert(channelCountLog);
         //插入日志表
-        UserCountLog userCountLog=new UserCountLog();
         userCountLog.setRegisterNum(1);
-        userCountLog.setDeviceFlag(getRecordId(request));
         userCountLog.setPhone(phone);
         userCountLogService.insert(userCountLog);
         return JsonResp.ok();
@@ -552,42 +572,34 @@ public class UserController {
 
 
 
-    public  String getRecordId(HttpServletRequest request){
-        String recordId="";
-        UserRecord userRecord=new UserRecord();
-        String  deviceFlag=request.getHeader("deviceFlag");
-        String ip = RequestUtil.getIpAddr(request);
-        String  type=request.getHeader("type");
-        //移动设备
-        if(null!=type&&!"".equals(type)){
-             userRecord=redisCache.getCache(deviceFlag+ip);
-            if(userRecord==null){
-                EntityWrapper entityWrapper=new EntityWrapper();
-                entityWrapper.eq("type",type);
-                entityWrapper.eq("udid",deviceFlag);
-                entityWrapper.eq("ip",ip);
-                userRecord=userRecordService.selectOne(entityWrapper);
-            }
-        }else {
-            String userAgent= request.getHeader("user-agent");
-             userRecord=redisCache.getCache(ip+userAgent);
-            if(userRecord==null){
-                EntityWrapper entityWrapper=new EntityWrapper();
-                entityWrapper.eq("user_agent",userAgent);
-                entityWrapper.eq("ip",ip);
-                userRecord= userRecordService.selectOne(entityWrapper);
-            }
-        }
-        recordId=String.valueOf(userRecord.getId());
-        return recordId;
-    }
-
-
-    @Autowired
-    public  void setRedisTemplate(RedisTemplate redisTemplate) {
-
-        redisTemplate.opsForValue().set("19941102119","123456");
-    }
-
+//    public  String getRecordId(HttpServletRequest request){
+//        String recordId="";
+//        UserRecord userRecord=new UserRecord();
+//        String  deviceFlag=request.getHeader("deviceFlag");
+//        String ip = RequestUtil.getIpAddr(request);
+//        String  type=request.getHeader("type");
+//        //移动设备
+//        if(null!=type&&!"".equals(type)){
+//             userRecord=redisCache.getCache(deviceFlag+ip);
+//            if(userRecord==null){
+//                EntityWrapper entityWrapper=new EntityWrapper();
+//                entityWrapper.eq("type",type);
+//                entityWrapper.eq("udid",deviceFlag);
+//                entityWrapper.eq("ip",ip);
+//                userRecord=userRecordService.selectOne(entityWrapper);
+//            }
+//        }else {
+//            String userAgent= request.getHeader("user-agent");
+//             userRecord=redisCache.getCache(ip+userAgent);
+//            if(userRecord==null){
+//                EntityWrapper entityWrapper=new EntityWrapper();
+//                entityWrapper.eq("user_agent",userAgent);
+//                entityWrapper.eq("ip",ip);
+//                userRecord= userRecordService.selectOne(entityWrapper);
+//            }
+//        }
+//        recordId=String.valueOf(userRecord.getId());
+//        return recordId;
+//    }
 
 }

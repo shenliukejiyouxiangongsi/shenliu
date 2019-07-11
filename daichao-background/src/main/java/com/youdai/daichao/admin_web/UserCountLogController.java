@@ -51,7 +51,7 @@ public class UserCountLogController extends BaseController {
 //		map.put("startTime", startTime);
 //		map.put("endTime",endTime );
 		startPage();
-		List<UserCountLog> li = userCountLogService.selectUserCountList(map);
+		List<UserCountLog> li = userCountLogService.selectAllList(map);
 		return getDataTable(li);
 	}
 }

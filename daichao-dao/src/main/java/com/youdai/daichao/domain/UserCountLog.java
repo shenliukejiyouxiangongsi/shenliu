@@ -63,6 +63,10 @@ public class UserCountLog extends Model<UserCountLog> {
     private String channelName;
     private String equipmentFlag;
 
+    private Integer secondUserNum;
+    private Integer viewPageNum;
+
+
     @Override
     protected Serializable pkVal() {
         return this.id;

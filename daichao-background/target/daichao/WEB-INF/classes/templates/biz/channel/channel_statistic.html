@@ -68,6 +68,19 @@
 					title : '所属通道'
 				},
 				{
+					field : 'clientType',
+					title : '设备类型',
+					formatter:function(value,row,index){
+						if(value=='0'){
+							return "ios";
+						}
+						if(value=='1'){
+							return "android";
+						}
+						return  "web";
+					}
+				},
+				{
 					field : 'everyViewPageNum',
 					title : '每日落地页uv',
 					formatter:function(value,row,index){
@@ -75,7 +88,8 @@
 							return "-";
 						}
 						return  value;
-					}
+					},
+					visible: false
 				},
 				{
 					field : 'viewPageNum',
@@ -95,7 +109,8 @@
 							return "-";
 						}
 						return  value;
-					}
+					},
+					visible: false
 				},
 				{
 					field : 'registerNum',
@@ -115,7 +130,8 @@
 							return "-";
 						}
 						return  value;
-					}
+					},
+					visible: false
 				},
 				{
 					field : 'loginNum',
@@ -126,7 +142,29 @@
 						}
 						return  value;
 					}
-				}]
+				},
+				{
+					field : 'firstUserNum',
+					title : '产品查看',
+					formatter:function(value,row,index){
+						if(value==0){
+							return "-";
+						}
+						return  value;
+					},
+					visible: false
+				},
+				{
+					field : 'secondUserNum',
+					title : '产品申请',
+					formatter:function(value,row,index){
+						if(value==0){
+							return "-";
+						}
+						return  value;
+					}
+				}
+				]
 		};
 		$.table.init(options);
 	});

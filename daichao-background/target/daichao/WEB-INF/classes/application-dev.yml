@@ -5,10 +5,10 @@ spring:
     driverClassName: com.mysql.jdbc.Driver
     # 主库数据源
 #    url: jdbc:mysql://rm-bp1n39j0m0r785ei1.mysql.rds.aliyuncs.com:3306/daichao?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
-    url: jdbc:mysql://www.drjjdh.cn:3506/daichao?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+    url: jdbc:mysql://127.0.0.1:3306/daichao?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
     username: root
 #    password: eSfPJPN09t2EVprj
-    password: shen@liu
+    password: rootroot
     # 初始连接数
     initial-size: 10
     # 最大连接池数量
@@ -140,3 +140,11 @@ shiro:
     dbSyncPeriod: 1
     # 相隔多久检查一次session的有效性，默认就是10分钟
     validationInterval: 10
+
+chuanglan:
+  sms_url: http://smssh1.253.com/msg/send/json
+  account: N6425776
+  password: mjVkD4GgX63e15
+  templateId:
+    #注册模板
+    registerMsgId: zcOWs2

@@ -1,6 +1,7 @@
 package com.youdai.daichao.shiro;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import com.youdai.daichao.config.ApiSignFilter;
 import com.youdai.daichao.domain.AppUser;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
@@ -14,6 +15,7 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.apache.shiro.web.servlet.SimpleCookie;
 import org.apache.shiro.web.session.mgt.DefaultWebSessionManager;
+import org.aspectj.lang.annotation.Around;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -70,6 +72,7 @@ public class ShiroConfiguration {
         Map<String, Filter> filtersMap = new LinkedHashMap<String, Filter>();
         //限制同一帐号同时在线的个数。
         //filtersMap.put("kickout", kickoutSessionControlFilter());
+        filtersMap.put("apiSignFilter",new ApiSignFilter());
         shiroFilterFactoryBean.setFilters(filtersMap);
 
         // 权限控制map.
@@ -88,6 +91,7 @@ public class ShiroConfiguration {
             filterChainDefinitionMap.put(sysPermissionInit.getUrl(),
                     sysPermissionInit.getPermissionInit());
         }*/
+        filterChainDefinitionMap.put("/**", "apiSignFilter");
 
         shiroFilterFactoryBean
                 .setFilterChainDefinitionMap(filterChainDefinitionMap);

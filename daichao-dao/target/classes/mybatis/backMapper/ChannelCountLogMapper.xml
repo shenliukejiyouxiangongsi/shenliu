@@ -80,4 +80,56 @@
 		ON m.createTime=n.create_time AND m.channelId=n.channel_id
 		order by  m.createTime desc
 	</select>
+
+	<select id="selectChannelCountListGroupychannel" parameterType="map" resultType="channelCount">
+
+		select m.*,t.first_user_num firstUserNum,t.second_user_num secondUserNum
+    from (
+    select sum(case when load_page_num=1 then 1 else 0 end ) as loadPageNum,
+           sum(case when view_page_num=1 then 1 else 0 end ) as viewPageNum,
+           sum(case when register_num=1 then 1 else 0 end ) as registerNum,
+           sum(case when every_view_page_num=1 then 1 else 0 end ) as everyViewPageNum,
+           cast((proportion)*0.01*sum(case when register_num =1 then 1 else 0 end) as decimal(9,1)) as discountNum,
+           DATE_FORMAT(ccl.create_time,'%Y-%m-%d') as createTime,
+           ccl.channel_id channelId, c.channel_name as channelName, client_type clientType,
+           sum(case when login_num=1 then 1 else 0 end ) loginNum
+    from channel_count_log ccl
+        left join channel c on ccl.channel_id = c.channel_id
+        left join user_record ur on ccl.record_id = ur.id
+    where ccl.channel_id is not null
+		<if test="channelName != null and channelName != ''">
+			and c.channel_name =#{channelName}
+		</if>
+		<if test="startTime =='' and endTime == ''">
+			and datediff(DATE_FORMAT(ur.create_time,'%Y-%m-%d'),SYSDATE()) =0
+		</if>
+		<if test="startTime !=null and startTime != ''">
+			and datediff(DATE_FORMAT(ur.create_time,'%Y-%m-%d'),#{startTime}) &gt;=0
+		</if>
+		<if test="endTime !=null and endTime != ''">
+			and datediff(DATE_FORMAT(ur.create_time,'%Y-%m-%d'),#{endTime}) &lt;=0
+		</if>
+    group by createTime,channelId,clientType
+    ) m
+    left join (
+        select sum(case when first_user_num = 1 then 1 else 0 end) first_user_num,
+               sum(case when second_user_num = 1 then 1 else 0 end ) second_user_num,
+               channel_id, DATE_FORMAT(pcl.create_time,'%Y-%m-%d') createTime,
+               client_type
+        from product_count_log pcl
+            left join app_user au on pcl.userRecord_id = au.userRecord_id
+		where 1 = 1
+		<if test="startTime =='' and endTime == ''">
+			and datediff(DATE_FORMAT(au.create_time,'%Y-%m-%d'),SYSDATE()) =0
+		</if>
+		<if test="startTime !=null and startTime != ''">
+			and datediff(DATE_FORMAT(au.create_time,'%Y-%m-%d'),#{startTime}) &gt;=0
+		</if>
+		<if test="endTime !=null and endTime != ''">
+			and datediff(DATE_FORMAT(au.create_time,'%Y-%m-%d'),#{endTime}) &lt;=0
+		</if>
+        group by createTime, au.channel_id, client_type) t
+        on m.channelId = t.channel_id and m.createTime = t.createTime and m.clientType = t.client_type
+
+	</select>
 </mapper>

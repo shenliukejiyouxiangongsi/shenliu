@@ -1,11 +1,159 @@
-POST http://127.0.0.1:8381/api/project/selectOne?proId=71&type=0&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
+GET http://127.0.0.1:8381/api/user/getPhoneCodeV2?phone=15527823501&validateSign=e9b7160ef94e080c8aea8dd774ac6362&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
 Accept: */*
 Cache-Control: no-cache
-Content-Type: application/json
 
-{   "proId":"71",   "type":"0" }
+<> 2019-07-09T084203.200.json
 
-<> 2019-07-08T051026.200.json
+###
+
+GET http://127.0.0.1:8381/api/user/getPhoneCodeV2?phone=15527823501&validateSign=e9b7160ef94e080c8aea8dd774ac6362&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+GET http://127.0.0.1:8381/api/user/getPhoneCodeV2?phone=15527823501&validateSign=e9b7160ef94e080c8aea8dd774ac6362&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+GET http://127.0.0.1:8381/api/user/getPhoneCodeV2?phone=19941102119&validateSign=952024060f9d8587913bb91184e0c266&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
+Accept: */*
+Cache-Control: no-cache
+
+###
+GET http://127.0.0.1:8381/api/user/getPhoneCodeV2?phone=15527823501&validateSign=e9b7160ef94e080c8aea8dd774ac6362&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+GET http://127.0.0.1:8381/api/user/getPhoneCodeV2?phone=19941102119&validateSign=952024060f9d8587913bb91184e0c266&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+GET http://127.0.0.1:8381/api/user/phoneCodeLogin?phone=19941102119&code=123456&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+GET http://127.0.0.1:8381/api/user/getPhoneCodeV2?phone=19941102119&validateSign=952024060f9d8587913bb91184e0c266&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
+Accept: */*
+Cache-Control: no-cache
+
+GET http://127.0.0.1:8381/api/user/phoneCodeLogin?phone=19941102119&code=123456&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-07-09T083059.200.json
+
+###
+
+GET http://127.0.0.1:8381/api/user/getPhoneCodeV2?phone=19941102119&validateSign=952024060f9d8587913bb91184e0c266&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
+Accept: */*
+Cache-Control: no-cache
+
+GET http://127.0.0.1:8381/api/user/phoneCodeLogin?phone=19941102119&code=123456&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-07-09T083025.200.json
+
+###
+
+GET http://127.0.0.1:8381/api/user/getPhoneCodeV2?phone=19941102119&validateSign=952024060f9d8587913bb91184e0c266&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
+Accept: */*
+Cache-Control: no-cache
+
+GET http://127.0.0.1:8381/api/user/phoneCodeLogin?phone=19941102119&code=123456&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-07-09T082849.200.json
+
+###
+
+GET http://127.0.0.1:8381/api/user/getPhoneCodeV2?phone=19941102119&validateSign=952024060f9d8587913bb91184e0c266&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
+Accept: */*
+Cache-Control: no-cache
+
+GET http://127.0.0.1:8381/api/user/phoneCodeLogin?phone=19941102119&code=123456&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-07-09T082729.200.json
+
+###
+
+GET http://127.0.0.1:8381/api/user/getPhoneCodeV2?phone=19941102119&validateSign=952024060f9d8587913bb91184e0c266&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
+Accept: */*
+Cache-Control: no-cache
+
+GET http://127.0.0.1:8381/api/user/phoneCodeLogin?phone=19941102119&code=123456&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-07-09T082137.200.json
+
+###
+
+GET http://127.0.0.1:8381/api/user/phoneCodeLogin?phone=19941102119&code=123456&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-07-09T081941.200.json
+
+###
+
+GET http://127.0.0.1:8381/api/user/phoneCodeLogin?phone=19941102119&code=123456&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-07-09T065013.500.json
+
+###
+
+GET http://127.0.0.1:8381/api/user/phoneCodeLogin?phone=19941102119&code=123456&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-07-09T064816.200.json
+
+###
+
+GET http://127.0.0.1:8381/api/user/phoneCodeLogin?phone=19941102119&code=123456&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-07-09T064541.200.json
+
+###
+
+GET http://127.0.0.1:8381/api/user/phoneCodeLogin?phone=19941102119&code=123456&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-07-09T064502.200.json
+
+###
+
+GET http://127.0.0.1:8381/api/user/phoneCodeLogin?phone=19941102119&code=123456&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-07-09T061217.200.json
+
+###
+
+GET http://127.0.0.1:8381/api/user/phoneCodeLogin?phone=19941102119&code=123456&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-07-09T060855.200.json
 
 ###
 
@@ -16,125 +164,107 @@ Content-Type: application/json
 
 {   "proId":"71",   "type":"0" }
 
-<> 2019-07-08T050729.200.json
+<> 2019-07-09T060845.200.json
 
 ###
+
+GET http://127.0.0.1:8381/api/user/phoneCodeLogin?phone=19941102119&code=123456&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-07-09T060809.200.json
+
+###
+
+GET http://127.0.0.1:8381/api/user/phoneCodeLogin?phone=19941102119&code=123456&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-07-09T060802.200.json
+
+###
+
+GET http://127.0.0.1:8381/api/user/phoneCodeLogin?phone=19941102119&code=123456&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-07-09T055100.200.json
+
+###
+
+GET http://127.0.0.1:8381/api/user/phoneCodeLogin?phone=19941102119&code=123456&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-07-09T054424.200.json
+
+###
+
+GET http://127.0.0.1:8381/api/user/phoneCodeLogin?phone=19941102119&code=123456&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-07-09T053939.200.json
+
+###
+
+GET http://127.0.0.1:8381/api/user/phoneCodeLogin?phone=19941102119&code=123456&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-07-09T053741.200.json
+
+###
+
+GET http://127.0.0.1:8381/api/user/phoneCodeLogin?phone=19941102119&code=123456&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-07-09T053454.200.json
+
+###
+
+GET http://127.0.0.1:8381/api/user/phoneCodeLogin?phone=19941102119&code=123456&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
+Accept: */*
+Cache-Control: no-cache
+
+<> 2019-07-09T045316.200.json
+
+###
+
+GET http://127.0.0.1:8381/api/user/phoneCodeLogin?phone=19941102119&code=123456&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+GET http://127.0.0.1:8381/api/user/phoneCodeLogin?phone=19941102119&code=123456&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
+Accept: */*
+Cache-Control: no-cache
+
+###
+
+POST http://127.0.0.1:8381/api/project/selectOne?proId=71&type=0&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
+Accept: */*
+Cache-Control: no-cache
+Content-Type: application/json
+
+{   "proId":"71",   "type":"0" }
+
+###
+
 
 GET http://127.0.0.1:8381/api/user/registerPhoneCodeV2?phone=19941102119&code=123456&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
 Accept: */*
 Cache-Control: no-cache
 
-<> 2019-07-08T050654.200.json
+<> 2019-07-09T044302.200.json
 
 ###
 
-POST http://127.0.0.1:8381/api/project/selectOne?proId=71&type=0&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
+GET http://127.0.0.1:8381/api/user/phoneCodeLogin?phone=19941102119&code=123456&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
 Accept: */*
 Cache-Control: no-cache
-Content-Type: application/json
-
-{   "proId":"71",   "type":"0" }
-
-<> 2019-07-08T050622.200.json
-
-###
-
-POST http://127.0.0.1:8381/api/project/selectOne?proId=71&type=0&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
-Accept: */*
-Cache-Control: no-cache
-Content-Type: application/json
-
-{   "proId":"71",   "type":"0" }
-
-<> 2019-07-08T045526.200.json
-
-###
-
-POST http://127.0.0.1:8381/api/project/selectOne?proId=71&type=0&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
-Accept: */*
-Cache-Control: no-cache
-Content-Type: application/json
-
-{   "proId":"71",   "type":"0" }
-
-<> 2019-07-08T045319.200.json
-
-###
-
-POST http://127.0.0.1:8381/api/project/selectOne?proId=71&type=0&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
-Accept: */*
-Cache-Control: no-cache
-Content-Type: application/json
-
-<> 2019-07-08T043421.200.json
-
-###
-
-POST http://127.0.0.1:8381/api/project/selectOne?proId=71&type=0&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
-Accept: */*
-Cache-Control: no-cache
-Content-Type: application/json
-
-<> 2019-07-08T043139.200.json
-
-###
-
-POST http://127.0.0.1:8381/api/project/selectOne?proId=71&type=0&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
-Accept: */*
-Cache-Control: no-cache
-Content-Type: application/json
-
-<> 2019-07-08T043113.200.json
-
-###
-
-POST http://127.0.0.1:8381/api/project/selectOne?proId=71&type=0&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
-Accept: */*
-Cache-Control: no-cache
-Content-Type: application/json
-
-<> 2019-07-08T043042.200.json
-
-###
-
-POST http://127.0.0.1:8381/api/project/selectOne?proId=71&type=0&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
-Accept: */*
-Cache-Control: no-cache
-Content-Type: application/json;charset=utf-8
-
-<> 2019-07-08T043013.200.json
-
-###
-
-POST http://127.0.0.1:8381/api/project/selectOne?proId=71&type=0&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
-Accept: */*
-Cache-Control: no-cache
-
-<> 2019-07-08T042856.200.json
-
-###
-
-POST http://127.0.0.1:8381/api/project/selectOne?proId=71&type=0&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
-Accept: */*
-Cache-Control: no-cache
-
-<> 2019-07-08T042711.200.json
-
-###
-
-GET http://127.0.0.1:8381/api/project/selectOne?proId=71&type=0&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
-Accept: */*
-Cache-Control: no-cache
-
-<> 2019-07-08T042706.200.json
-
-###
-
-GET http://127.0.0.1:8381/api/user/registerPhoneCodeV2?phone=19941102119&code=123456&sign=ec1064d7d6e3a142aeb6cb370cdd1375&channelName=tangxt&equipmentFlag=0
-Accept: */*
-Cache-Control: no-cache
-
-<> 2019-07-08T042450.200.json
 
 ###
 

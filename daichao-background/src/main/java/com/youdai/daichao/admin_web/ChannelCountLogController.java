@@ -61,7 +61,7 @@ public class ChannelCountLogController  extends BaseController {
 		Subject subject = SecurityUtils.getSubject();
 		Object ob = subject.getPrincipal();
 		startPage();
-		List<ChannelCountLog> li = channelCountLogService.selectChannelCountList(map);
+		List<ChannelCountLog> li = channelCountLogService.selectChannelCountListGroupychannel(map);
 		return getDataTable(li);
 	}
 

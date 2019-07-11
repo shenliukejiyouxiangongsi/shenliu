@@ -2,124 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f5d2f9f-53bb-4b58-af71-0affab2b2dfc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__cn_hutool_hutool_core_4_5_16.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__cn_jpush_api_jiguang_common_1_0_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__cn_jpush_api_jpush_client_3_2_17.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_classmate_1_3_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_9_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_9_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jdk8_2_9_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jsr310_2_9_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_module_jackson_module_parameter_names_2_9_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_itextpdf_itext_asian_5_2_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_itextpdf_itextpdf_5_3_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_jayway_jsonpath_json_path_2_4_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_mchange_mchange_commons_java_0_2_11.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_squareup_okhttp3_okhttp_3_3_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_squareup_okio_okio_1_8_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_vaadin_external_google_android_json_0_0_20131108_vaadin1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_zaxxer_HikariCP_2_7_9.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_io_commons_io_2_5.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_logging_commons_logging_1_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_lettuce_lettuce_core_5_0_5_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_all_4_1_29_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_buffer_4_1_29_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_codec_4_1_29_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_common_4_1_29_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_handler_4_1_29_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_resolver_4_1_29_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_transport_4_1_29_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_projectreactor_reactor_core_3_1_9_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_servlet_javax_servlet_api_3_1_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_12.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_5_1_47.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_1_7_11.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_agent_1_7_11.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_minidev_accessors_smart_1_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_minidev_json_smart_2_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_lang3_3_7.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpcore_4_4_10.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpmime_4_5_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_api_2_10_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_to_slf4j_2_10_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_pdfbox_fontbox_2_0_13.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_pdfbox_pdfbox_2_0_13.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_core_8_5_34.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_el_8_5_34.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_jasper_8_5_34.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_websocket_8_5_34.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_tomcat_annotations_api_8_5_34.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_aspectj_aspectjweaver_1_8_13.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_assertj_assertj_core_3_9_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_attoparser_attoparser_2_0_4_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_eclipse_jdt_ecj_3_12_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_freemarker_freemarker_2_3_28.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_library_1_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_validator_hibernate_validator_6_0_12_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_core_2_15_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_objenesis_objenesis_2_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_ow2_asm_asm_5_0_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_projectlombok_lombok_1_18_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_quartz_scheduler_quartz_2_3_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_skyscreamer_jsonassert_1_5_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_2_0_5_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_autoconfigure_2_0_5_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_2_0_5_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_aop_2_0_5_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_data_redis_2_0_5_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_jdbc_2_0_5_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_json_2_0_5_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_logging_2_0_5_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_test_2_0_5_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_thymeleaf_2_0_5_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_tomcat_2_0_5_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_web_2_0_5_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_2_0_5_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_autoconfigure_2_0_5_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_keyvalue_2_0_10_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_data_spring_data_redis_2_0_10_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_security_spring_security_crypto_5_0_8_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aop_5_0_9_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_beans_5_0_9_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_5_0_9_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_support_5_0_9_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_core_5_0_9_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_expression_5_0_9_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jcl_5_0_9_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jdbc_5_0_9_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_oxm_5_0_9_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_test_5_0_9_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_tx_5_0_9_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_web_5_0_9_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_webmvc_5_0_9_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_thymeleaf_extras_thymeleaf_extras_java8time_3_0_1_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_thymeleaf_thymeleaf_3_0_9_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_thymeleaf_thymeleaf_spring5_3_0_9_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_unbescape_unbescape_1_1_5_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_xmlunit_xmlunit_core_2_5_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_yaml_snakeyaml_1_19.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/daichao-background/src/main/java/com/youdai/daichao/admin_web/AppUserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/daichao-background/src/main/resources/application-dev.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/daichao-background/src/main/resources/templates/biz/appUser/add.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/daichao-background/src/main/resources/templates/biz/appUser/appUser.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/daichao-background/src/main/resources/templates/biz/appUser/edit.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/daichao-channel/daichao-channel.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/daichao-common/src/main/java/com/youdai/daichao/common/enums/ChannelStatusEnum.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/daichao-common/src/main/java/com/youdai/daichao/common/enums/ClientType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/daichao-common/src/main/java/com/youdai/daichao/util/AesEncryptUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/daichao-common/src/main/java/com/youdai/daichao/util/EncryptedString.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/daichao-api/src/main/java/com/youdai/daichao/config/ApiSignFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/daichao-api/src/main/java/com/youdai/daichao/config/ResponseWrapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/daichao-api/src/main/resources/static/appAndroid/app-release.apk" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/daichao-api/src/main/resources/static/css/weixin.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/daichao-api/src/main/resources/static/img/Android_tips.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/daichao-common/src/main/java/com/youdai/daichao/common/enums/ProductTypeEnum.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/53ba55fc-c70a-4942-a349-8b49d79f979e.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/53ba55fc-c70a-4942-a349-8b49d79f979e.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2019-07-02T044421.200.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2019-07-02T054404.200.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2019-07-02T054427.200.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2019-07-02T054526.200.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/httpRequests/2019-07-02T054723.200.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/daichao-api/daichao-api.iml" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-api/daichao-api.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/daichao-api/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-api/pom.xml" afterDir="false" />
@@ -127,52 +17,85 @@
       <change beforePath="$PROJECT_DIR$/daichao-api/src/main/java/com/youdai/daichao/api/ProjectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-api/src/main/java/com/youdai/daichao/api/ProjectController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/daichao-api/src/main/java/com/youdai/daichao/api/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-api/src/main/java/com/youdai/daichao/api/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/daichao-api/src/main/java/com/youdai/daichao/api/UserRecordController.java" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-api/src/main/java/com/youdai/daichao/api/UserRecordController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/daichao-api/src/main/java/com/youdai/daichao/api/WebController.java" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-api/src/main/java/com/youdai/daichao/api/WebController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/daichao-api/src/main/java/com/youdai/daichao/config/ApiInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-api/src/main/java/com/youdai/daichao/config/ApiInterceptor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/daichao-api/src/main/java/com/youdai/daichao/config/ApiMvcConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-api/src/main/java/com/youdai/daichao/config/ApiMvcConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/daichao-api/src/main/java/com/youdai/daichao/shiro/SecurityUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-api/src/main/java/com/youdai/daichao/shiro/SecurityUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/daichao-api/src/main/java/com/youdai/daichao/shiro/ShiroConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-api/src/main/java/com/youdai/daichao/shiro/ShiroConfiguration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/daichao-api/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-api/src/main/resources/application-dev.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/daichao-api/src/main/resources/application-prod.yml" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-api/src/main/resources/application-prod.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/daichao-api/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-api/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/daichao-api/src/main/resources/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-api/src/main/resources/static/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/daichao-api/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-api/src/main/resources/static/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/daichao-api/src/main/resources/static/indexA.html" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-api/src/main/resources/static/indexA.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/daichao-api/src/main/resources/static/indexB.html" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-api/src/main/resources/static/indexB.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/daichao-api/src/main/resources/static/js/core.js" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-api/src/main/resources/static/js/core.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/daichao-api/src/main/resources/static/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-api/src/main/resources/static/js/script.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/daichao-api/target/classes/application-prod.yml" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-api/target/classes/application-prod.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/daichao-api/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-api/target/classes/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/daichao-api/target/classes/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-api/target/classes/application-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/daichao-api/target/classes/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-api/target/classes/static/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/daichao-api/target/classes/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-api/target/classes/static/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/daichao-api/target/classes/static/indexA.html" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-api/target/classes/static/indexA.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/daichao-api/target/classes/static/indexB.html" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-api/target/classes/static/indexB.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/daichao-api/target/classes/static/js/core.js" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-api/target/classes/static/js/core.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/daichao-api/target/classes/static/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-api/target/classes/static/js/script.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/daichao-api/target/daichao-api.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-api/target/daichao-api.jar.original" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/daichao-api/target/daichao-api.jar.original" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daichao-api/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/daichao-api/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-api/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/daichao-api/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-api/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/daichao-background/src/main/java/com/youdai/daichao/admin_web/AdvertisementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-background/src/main/java/com/youdai/daichao/admin_web/AdvertisementController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/daichao-background/src/main/java/com/youdai/daichao/admin_web/ChannelCountLogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-background/src/main/java/com/youdai/daichao/admin_web/ChannelCountLogController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/daichao-background/src/main/java/com/youdai/daichao/admin_web/UserCountLogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-background/src/main/java/com/youdai/daichao/admin_web/UserCountLogController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/daichao-background/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-background/src/main/resources/application-dev.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/daichao-background/src/main/resources/application-prod.yml" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-background/src/main/resources/application-prod.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/daichao-background/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-background/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/daichao-background/src/main/resources/templates/biz/product/product_count.html" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-background/src/main/resources/templates/biz/product/product_count.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/daichao-background/src/main/resources/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-background/src/main/resources/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/daichao-background/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-background/src/main/resources/bootstrap.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/daichao-background/src/main/resources/templates/biz/advertisement/add.html" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-background/src/main/resources/templates/biz/advertisement/add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/daichao-background/src/main/resources/templates/biz/advertisement/advertisement.html" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-background/src/main/resources/templates/biz/advertisement/advertisement.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/daichao-background/src/main/resources/templates/biz/advertisement/edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-background/src/main/resources/templates/biz/advertisement/edit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/daichao-background/src/main/resources/templates/biz/appUser/appUser.html" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-background/src/main/resources/templates/biz/appUser/appUser.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/daichao-background/src/main/resources/templates/biz/channel/channel_statistic.html" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-background/src/main/resources/templates/biz/channel/channel_statistic.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/daichao-background/src/main/resources/templates/biz/statistic/register_count.html" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-background/src/main/resources/templates/biz/statistic/register_count.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/daichao-background/target/classes/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-background/target/classes/application-dev.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/daichao-background/target/classes/application-prod.yml" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-background/target/classes/application-prod.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/daichao-background/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-background/target/classes/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/daichao-background/target/classes/templates/biz/product/product_count.html" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-background/target/classes/templates/biz/product/product_count.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/daichao-background/target/classes/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-background/target/classes/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/daichao-background/target/classes/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-background/target/classes/bootstrap.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/daichao-background/target/classes/templates/biz/advertisement/advertisement.html" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-background/target/classes/templates/biz/advertisement/advertisement.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/daichao-background/target/classes/templates/biz/advertisement/edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-background/target/classes/templates/biz/advertisement/edit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/daichao-background/target/classes/templates/biz/appUser/appUser.html" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-background/target/classes/templates/biz/appUser/appUser.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/daichao-background/target/classes/templates/biz/channel/channel_statistic.html" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-background/target/classes/templates/biz/channel/channel_statistic.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/daichao-background/target/classes/templates/biz/statistic/register_count.html" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-background/target/classes/templates/biz/statistic/register_count.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/daichao-background/target/daichao.war.original" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-background/target/daichao.war.original" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/daichao-background/target/daichao/WEB-INF/classes/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-background/target/daichao/WEB-INF/classes/application-dev.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/daichao-background/target/daichao/WEB-INF/classes/application-prod.yml" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-background/target/daichao/WEB-INF/classes/application-prod.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/daichao-background/target/daichao/WEB-INF/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-background/target/daichao/WEB-INF/classes/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/daichao-background/target/daichao/WEB-INF/classes/templates/biz/product/product_count.html" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-background/target/daichao/WEB-INF/classes/templates/biz/product/product_count.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/daichao-background/target/daichao/WEB-INF/classes/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-background/target/daichao/WEB-INF/classes/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/daichao-background/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-background/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/daichao-background/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-background/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/daichao-common/daichao-common.iml" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-common/daichao-common.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/daichao-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-common/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/daichao-common/src/main/java/com/youdai/daichao/common/oss/OssUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-common/src/main/java/com/youdai/daichao/common/oss/OssUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/daichao-common/src/main/java/com/youdai/daichao/common/redis/RedisCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-common/src/main/java/com/youdai/daichao/common/redis/RedisCache.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/daichao-background/target/daichao/WEB-INF/classes/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-background/target/daichao/WEB-INF/classes/bootstrap.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/daichao-background/target/daichao/WEB-INF/classes/templates/biz/advertisement/advertisement.html" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-background/target/daichao/WEB-INF/classes/templates/biz/advertisement/advertisement.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/daichao-background/target/daichao/WEB-INF/classes/templates/biz/advertisement/edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-background/target/daichao/WEB-INF/classes/templates/biz/advertisement/edit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/daichao-background/target/daichao/WEB-INF/classes/templates/biz/appUser/appUser.html" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-background/target/daichao/WEB-INF/classes/templates/biz/appUser/appUser.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/daichao-background/target/daichao/WEB-INF/classes/templates/biz/channel/channel_statistic.html" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-background/target/daichao/WEB-INF/classes/templates/biz/channel/channel_statistic.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/daichao-background/target/daichao/WEB-INF/classes/templates/biz/statistic/register_count.html" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-background/target/daichao/WEB-INF/classes/templates/biz/statistic/register_count.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/daichao-common/src/main/java/com/youdai/daichao/common/vo/ProductVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-common/src/main/java/com/youdai/daichao/common/vo/ProductVo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/daichao-common/src/main/java/com/youdai/daichao/util/RequestUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-common/src/main/java/com/youdai/daichao/util/RequestUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/daichao-common/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-common/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/daichao-common/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-common/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/domain/AppUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/domain/AppUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/domain/ChannelCount.java" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/domain/ChannelCount.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/domain/ChannelCountLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/domain/ChannelCountLog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/domain/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/domain/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/domain/ProductCountLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/domain/ProductCountLog.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/domain/UserCountLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/domain/UserCountLog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/mapper/AppUserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/mapper/AppUserMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/service/IAppUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/service/IAppUserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/service/MessageXsendService.java" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/service/MessageXsendService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/service/impl/AppUserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/service/impl/AppUserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/mapper/ChannelCountLogMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/mapper/ChannelCountLogMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/mapper/ProductMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/mapper/ProductMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/mapper/UserCountLogMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/mapper/UserCountLogMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/service/IChannelCountLogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/service/IChannelCountLogService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/service/IProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/service/IProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/service/IUserCountLogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/service/IUserCountLogService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/service/impl/ChannelCountLogServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/service/impl/ChannelCountLogServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/service/impl/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/service/impl/ProductServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/service/impl/UserCountLogServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/service/impl/UserCountLogServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/daichao-dao/src/main/resources/mybatis/apiMapper/AppUserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-dao/src/main/resources/mybatis/apiMapper/AppUserMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/daichao-dao/src/main/resources/mybatis/backMapper/ChannelCountLogMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-dao/src/main/resources/mybatis/backMapper/ChannelCountLogMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/daichao-dao/src/main/resources/mybatis/backMapper/ProductMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-dao/src/main/resources/mybatis/backMapper/ProductMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/daichao-dao/src/main/resources/mybatis/backMapper/UserCountLogMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-dao/src/main/resources/mybatis/backMapper/UserCountLogMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/daichao-dao/target/classes/mybatis/apiMapper/AppUserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-dao/target/classes/mybatis/apiMapper/AppUserMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/daichao-dao/target/classes/mybatis/backMapper/ChannelCountLogMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-dao/target/classes/mybatis/backMapper/ChannelCountLogMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/daichao-dao/target/classes/mybatis/backMapper/ProductMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-dao/target/classes/mybatis/backMapper/ProductMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/daichao-dao/target/classes/mybatis/backMapper/UserCountLogMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/daichao-dao/target/classes/mybatis/backMapper/UserCountLogMapper.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
@@ -212,76 +135,19 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/53ba55fc-c70a-4942-a349-8b49d79f979e/console_3.sql">
+        <entry file="file://$PROJECT_DIR$/daichao-api/src/main/java/com/youdai/daichao/config/ApiInterceptor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="104">
-              <caret line="28" column="10" selection-start-line="28" selection-end-line="29" />
+            <state relative-caret-position="286">
+              <caret line="183" column="21" lean-forward="true" selection-start-line="183" selection-start-column="21" selection-end-line="183" selection-end-column="21" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/service/MessageXsendService.java">
+        <entry file="file://$PROJECT_DIR$/daichao-api/src/main/java/com/youdai/daichao/api/UserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="43" column="31" lean-forward="true" selection-start-line="43" selection-start-column="31" selection-end-line="43" selection-end-column="31" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/daichao-api/src/main/java/com/youdai/daichao/api/ProjectController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="182">
-              <caret line="80" selection-start-line="80" selection-end-line="81" selection-end-column="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/daichao-api/src/main/resources/application-prod.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="111" selection-start-line="111" selection-end-line="117" selection-end-column="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/daichao-background/src/main/java/com/youdai/daichao/admin_web/ChannelCountLogController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="383">
-              <caret line="61" column="43" lean-forward="true" selection-start-line="61" selection-start-column="43" selection-end-line="61" selection-end-column="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/daichao-background/src/main/resources/application-dev.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="149" column="25" lean-forward="true" selection-start-line="149" selection-start-column="25" selection-end-line="149" selection-end-column="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/daichao-background/src/main/resources/application-prod.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2468" />
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/daichao-background/src/main/resources/application.yml">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/daichao-common/src/main/java/com/youdai/daichao/util/AesEncryptUtil.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-995">
-              <caret line="65" column="58" lean-forward="true" selection-start-line="65" selection-start-column="58" selection-end-line="65" selection-end-column="58" />
+            <state relative-caret-position="127">
+              <caret line="238" column="40" lean-forward="true" selection-start-line="238" selection-start-column="40" selection-end-line="238" selection-end-column="40" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -290,10 +156,73 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/daichao-common/pom.xml">
+        <entry file="file://$PROJECT_DIR$/daichao-background/src/main/resources/application.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="576">
-              <caret line="124" column="37" lean-forward="true" selection-start-line="124" selection-start-column="37" selection-end-line="124" selection-end-column="37" />
+            <state relative-caret-position="78">
+              <caret line="3" column="15" selection-start-line="3" selection-start-column="15" selection-end-line="3" selection-end-column="15" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/daichao-background/src/main/java/com/youdai/daichao/project/monitor/server/controller/ServerController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="26" column="18" lean-forward="true" selection-start-line="26" selection-start-column="18" selection-end-line="26" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/daichao-background/src/main/java/com/youdai/daichao/project/monitor/server/domain/Server.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="312">
+              <caret line="162" column="47" lean-forward="true" selection-start-line="162" selection-start-column="47" selection-end-line="162" selection-end-column="47" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/daichao-background/src/main/resources/templates/biz/advertisement/advertisement.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="754">
+              <caret line="70" column="35" lean-forward="true" selection-start-line="70" selection-start-column="35" selection-end-line="70" selection-end-column="35" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/daichao-background/src/main/resources/templates/biz/advertisement/add.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="312">
+              <caret line="12" column="18" lean-forward="true" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/daichao-background/src/main/java/com/youdai/daichao/admin_web/AdvertisementController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="223">
+              <caret line="37" column="6" lean-forward="true" selection-start-line="37" selection-start-column="6" selection-end-line="37" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/daichao-background/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-2470">
+              <caret line="16" column="20" lean-forward="true" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/daichao-background/src/main/resources/templates/biz/product/add.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="338">
+              <caret line="13" column="14" lean-forward="true" selection-start-line="7" selection-start-column="8" selection-end-line="13" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -310,25 +239,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>no.delete.permission</find>
-      <find>shiro:hasPermission</find>
-      <find>toolbar</find>
-      <find>selectPermsByUserId</find>
-      <find>proportion</find>
-      <find>equipmentFlag</find>
-      <find>login_a</find>
-      <find>selectChannelList</find>
-      <find>selecltResoult</find>
-      <find>advertisement</find>
-      <find>statistic</find>
-      <find>channelCountLog</find>
-      <find>insert(channelCountLog</find>
-      <find>selectProdctCountList</find>
-      <find>api/userRecord</find>
-      <find>ip</find>
-      <find>but()</find>
-      <find>selectUserRecords</find>
-      <find>deviceFlag+ip</find>
       <find>51685</find>
       <find>jump_url</find>
       <find>wx_notify_url</find>
@@ -337,9 +247,28 @@
       <find>123456</find>
       <find>redisTemplate</find>
       <find>test</find>
-      <find>insert(channelCountLog)</find>
       <find>statis</find>
+      <find>channelCountLog</find>
+      <find>insert(channelCountLog)</find>
+      <find>channelCount</find>
       <find>selectUserCountList</find>
+      <find>selectUserRecords</find>
+      <find>kickoutSessionControlFilter</find>
+      <find>15527823501</find>
+      <find>selectNewVersionList</find>
+      <find>ids</find>
+      <find>selectHotProduct</find>
+      <find>ProductVoResult</find>
+      <find>selectProduct</find>
+      <find>selectAllProduct</find>
+      <find>selectProductList</find>
+      <find>pid</find>
+      <find>logoUrl</find>
+      <find>pname</find>
+      <find>selectChannelCountListGroupychannel</find>
+      <find>selectUserAndChannelNameList</find>
+      <find>pId</find>
+      <find>获取地理位置异常</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -348,63 +277,60 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="dummy://restClient/response26.json" root0="SKIP_INSPECTION" />
-  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/daichao-channel/src/main/java/com/youdai/daichao/DaichaoApplication.java" />
-        <option value="$PROJECT_DIR$/daichao-channel/src/main/java/com/youdai/daichao/ServletInitializer.java" />
-        <option value="$PROJECT_DIR$/daichao-channel/src/main/resources/application-prod.yml" />
-        <option value="$PROJECT_DIR$/daichao-api/src/main/resources/static/js/script.js" />
-        <option value="$PROJECT_DIR$/daichao-background/src/main/resources/templates/biz/user/appUser.html" />
-        <option value="$PROJECT_DIR$/daichao-background/src/main/resources/application-prod.yml" />
-        <option value="$PROJECT_DIR$/daichao-background/src/main/resources/templates/login.html" />
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/53ba55fc-c70a-4942-a349-8b49d79f979e/console.sql" />
-        <option value="$PROJECT_DIR$/daichao-dao/src/main/resources/mybatis/apiMapper/AppUserMapper.xml" />
-        <option value="$PROJECT_DIR$/daichao-background/src/main/java/com/youdai/daichao/admin_web/AppUserController.java" />
-        <option value="$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/service/IAppUserService.java" />
-        <option value="$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/service/impl/AppUserServiceImpl.java" />
-        <option value="$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/mapper/AppUserMapper.java" />
-        <option value="$PROJECT_DIR$/daichao-background/src/main/resources/templates/biz/appUser/appUser.html" />
-        <option value="$PROJECT_DIR$/daichao-common/src/main/java/com/youdai/daichao/common/enums/ClientType.java" />
-        <option value="$PROJECT_DIR$/daichao-common/src/main/java/com/youdai/daichao/util/RequestUtil.java" />
-        <option value="$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/domain/ChannelCountLog.java" />
-        <option value="$PROJECT_DIR$/daichao-api/src/main/java/com/youdai/daichao/config/ApiMvcConfig.java" />
-        <option value="$PROJECT_DIR$/daichao-background/src/main/java/com/youdai/daichao/admin_web/UserCountLogController.java" />
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/53ba55fc-c70a-4942-a349-8b49d79f979e/console_2.sql" />
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/53ba55fc-c70a-4942-a349-8b49d79f979e/console_1.sql" />
-        <option value="$PROJECT_DIR$/daichao-dao/src/main/resources/mybatis/backMapper/UserCountLogMapper.xml" />
         <option value="$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/domain/UserCountLog.java" />
-        <option value="$PROJECT_DIR$/daichao-api/pom.xml" />
-        <option value="$PROJECT_DIR$/daichao-common/src/main/java/com/youdai/daichao/common/redis/RedisCache.java" />
-        <option value="$PROJECT_DIR$/daichao-background/src/main/resources/templates/biz/product/product_count.html" />
-        <option value="$PROJECT_DIR$/daichao-api/src/main/resources/application-prod.yml" />
-        <option value="$PROJECT_DIR$/daichao-background/src/main/resources/application.yml" />
-        <option value="$PROJECT_DIR$/daichao-api/src/main/resources/application-dev.yml" />
-        <option value="$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/service/MessageXsendService.java" />
-        <option value="$PROJECT_DIR$/daichao-common/src/main/java/com/youdai/daichao/common/enums/ChannelStatusEnum.java" />
+        <option value="$PROJECT_DIR$/daichao-background/src/main/java/com/youdai/daichao/admin_web/UserCountLogController.java" />
+        <option value="$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/service/IUserCountLogService.java" />
+        <option value="$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/service/impl/UserCountLogServiceImpl.java" />
+        <option value="$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/mapper/UserCountLogMapper.java" />
         <option value="$PROJECT_DIR$/daichao-api/src/main/java/com/youdai/daichao/api/UserRecordController.java" />
-        <option value="$PROJECT_DIR$/daichao-api/src/main/resources/application.yml" />
-        <option value="$PROJECT_DIR$/daichao-api/src/main/java/com/youdai/daichao/api/WebController.java" />
-        <option value="$PROJECT_DIR$/daichao-api/src/main/resources/static/js/core.js" />
-        <option value="$PROJECT_DIR$/daichao-api/src/main/java/com/youdai/daichao/api/H5Controller.java" />
-        <option value="$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/domain/AppUser.java" />
-        <option value="$PROJECT_DIR$/daichao-api/src/main/java/com/youdai/daichao/api/UserController.java" />
-        <option value="$PROJECT_DIR$/daichao-api/src/main/java/com/youdai/daichao/config/ApiInterceptor.java" />
-        <option value="restClient/response15.json" />
-        <option value="$PROJECT_DIR$/daichao-background/bin/target/classes/mybatis/backMapper/UserCountLogMapper.xml" />
-        <option value="$PROJECT_DIR$/daichao-common/src/main/java/com/youdai/daichao/util/EncryptedString.java" />
-        <option value="restClient/response16.json" />
-        <option value="$PROJECT_DIR$/daichao-api/src/main/java/com/youdai/daichao/api/ProjectController.java" />
-        <option value="$PROJECT_DIR$/daichao-api/src/main/java/com/youdai/daichao/shiro/PasswordRealm.java" />
-        <option value="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" />
+        <option value="$PROJECT_DIR$/daichao-background/src/main/resources/application-prod.yml" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/53ba55fc-c70a-4942-a349-8b49d79f979e/console_3.sql" />
-        <option value="$PROJECT_DIR$/daichao-common/pom.xml" />
-        <option value="$PROJECT_DIR$/daichao-common/src/main/java/com/youdai/daichao/util/AesEncryptUtil.java" />
-        <option value="$PROJECT_DIR$/daichao-background/src/main/java/com/youdai/daichao/admin_web/ChannelCountLogController.java" />
+        <option value="$PROJECT_DIR$/daichao-api/pom.xml" />
+        <option value="$PROJECT_DIR$/daichao-api/src/main/java/com/youdai/daichao/config/ResponseWrapper.java" />
+        <option value="$PROJECT_DIR$/daichao-api/src/main/java/com/youdai/daichao/config/ApiSignAspect.java" />
+        <option value="$PROJECT_DIR$/daichao-common/src/main/java/com/youdai/daichao/util/EncryptedString.java" />
+        <option value="$PROJECT_DIR$/daichao-api/src/main/java/com/youdai/daichao/config/ApiMvcConfig.java" />
+        <option value="$PROJECT_DIR$/daichao-api/src/main/java/com/youdai/daichao/shiro/ShiroConfiguration.java" />
+        <option value="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" />
+        <option value="$PROJECT_DIR$/daichao-api/src/main/resources/static/index.html" />
+        <option value="$PROJECT_DIR$/daichao-api/src/main/resources/static/indexA.html" />
+        <option value="$PROJECT_DIR$/daichao-api/src/main/resources/static/indexB.html" />
+        <option value="$PROJECT_DIR$/daichao-api/src/main/resources/static/js/core.js" />
+        <option value="$PROJECT_DIR$/daichao-api/src/main/java/com/youdai/daichao/config/ApiSignFilter.java" />
+        <option value="$PROJECT_DIR$/daichao-dao/src/main/resources/mybatis/apiMapper/AppUserMapper.xml" />
+        <option value="$PROJECT_DIR$/daichao-background/src/main/resources/templates/biz/appUser/appUser.html" />
+        <option value="$PROJECT_DIR$/daichao-common/src/main/java/com/youdai/daichao/common/vo/ProductVo.java" />
+        <option value="$PROJECT_DIR$/daichao-common/src/main/java/com/youdai/daichao/common/enums/ProductTypeEnum.java" />
+        <option value="$PROJECT_DIR$/daichao-dao/src/main/resources/mybatis/backMapper/ChannelCountLogMapper.xml" />
+        <option value="$PROJECT_DIR$/daichao-background/src/main/resources/templates/biz/channel/channel_statistic.html" />
+        <option value="$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/mapper/ProductMapper.java" />
+        <option value="$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/service/impl/ProductServiceImpl.java" />
+        <option value="$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/service/IProductService.java" />
+        <option value="$PROJECT_DIR$/daichao-dao/src/main/resources/mybatis/backMapper/ProductMapper.xml" />
+        <option value="$PROJECT_DIR$/daichao-background/src/main/java/com/youdai/daichao/admin_web/AdvertisementController.java" />
+        <option value="$PROJECT_DIR$/daichao-background/src/main/resources/bootstrap.yml" />
+        <option value="$PROJECT_DIR$/daichao-background/src/main/resources/templates/biz/advertisement/advertisement.html" />
+        <option value="$PROJECT_DIR$/daichao-background/src/main/resources/templates/biz/advertisement/edit.html" />
+        <option value="$PROJECT_DIR$/daichao-dao/src/main/resources/mybatis/backMapper/AdvertisementMapper.xml" />
+        <option value="$PROJECT_DIR$/daichao-api/src/main/java/com/youdai/daichao/api/H5Controller.java" />
+        <option value="$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/domain/Advertisement.java" />
+        <option value="$PROJECT_DIR$/daichao-api/src/main/java/com/youdai/daichao/config/ApiInterceptor.java" />
+        <option value="$PROJECT_DIR$/daichao-dao/src/main/resources/mybatis/backMapper/UserCountLogMapper.xml" />
+        <option value="$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/domain/ProductCountLog.java" />
+        <option value="$PROJECT_DIR$/daichao-api/src/main/resources/static/js/script.js" />
+        <option value="$PROJECT_DIR$/daichao-api/src/main/java/com/youdai/daichao/api/UserController.java" />
+        <option value="$PROJECT_DIR$/daichao-common/src/main/java/com/youdai/daichao/util/RequestUtil.java" />
         <option value="$PROJECT_DIR$/daichao-background/src/main/resources/application-dev.yml" />
+        <option value="$PROJECT_DIR$/daichao-api/src/main/resources/application-dev.yml" />
+        <option value="$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/domain/Recommend.java" />
+        <option value="$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/domain/Product.java" />
+        <option value="$PROJECT_DIR$/daichao-api/src/main/java/com/youdai/daichao/api/ProjectController.java" />
+        <option value="$PROJECT_DIR$/daichao-api/src/main/resources/application.yml" />
+        <option value="$PROJECT_DIR$/daichao-background/src/main/resources/application.yml" />
+        <option value="$PROJECT_DIR$/daichao-background/src/main/resources/templates/biz/advertisement/add.html" />
       </list>
     </option>
   </component>
@@ -443,8 +369,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -513,16 +437,6 @@
               <item name="daichao-api" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="daichao" type="462c0819:PsiDirectoryNode" />
-              <item name="shiro" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="daichao" type="b2602c69:ProjectViewProjectNode" />
-              <item name="daichao" type="462c0819:PsiDirectoryNode" />
-              <item name="daichao-api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -533,6 +447,16 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="daichao" type="b2602c69:ProjectViewProjectNode" />
+              <item name="daichao" type="462c0819:PsiDirectoryNode" />
+              <item name="daichao-api" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="daichao" type="b2602c69:ProjectViewProjectNode" />
@@ -587,10 +511,133 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="daichao" type="b2602c69:ProjectViewProjectNode" />
+              <item name="daichao" type="462c0819:PsiDirectoryNode" />
+              <item name="daichao-background" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="daichao" type="b2602c69:ProjectViewProjectNode" />
+              <item name="daichao" type="462c0819:PsiDirectoryNode" />
+              <item name="daichao-background" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="biz" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="daichao" type="b2602c69:ProjectViewProjectNode" />
+              <item name="daichao" type="462c0819:PsiDirectoryNode" />
+              <item name="daichao-background" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="biz" type="462c0819:PsiDirectoryNode" />
+              <item name="advertisement" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="daichao" type="b2602c69:ProjectViewProjectNode" />
+              <item name="daichao" type="462c0819:PsiDirectoryNode" />
+              <item name="daichao-background" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="biz" type="462c0819:PsiDirectoryNode" />
+              <item name="product" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="daichao" type="b2602c69:ProjectViewProjectNode" />
+              <item name="daichao" type="462c0819:PsiDirectoryNode" />
+              <item name="daichao-background" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="sql" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="daichao" type="b2602c69:ProjectViewProjectNode" />
+              <item name="daichao" type="462c0819:PsiDirectoryNode" />
+              <item name="daichao-dao" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="daichao" type="b2602c69:ProjectViewProjectNode" />
+              <item name="daichao" type="462c0819:PsiDirectoryNode" />
+              <item name="daichao-dao" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="daichao" type="b2602c69:ProjectViewProjectNode" />
+              <item name="daichao" type="462c0819:PsiDirectoryNode" />
+              <item name="daichao-dao" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="daichao" type="b2602c69:ProjectViewProjectNode" />
+              <item name="daichao" type="462c0819:PsiDirectoryNode" />
+              <item name="daichao-dao" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="daichao" type="b2602c69:ProjectViewProjectNode" />
+              <item name="daichao" type="462c0819:PsiDirectoryNode" />
+              <item name="daichao-dao" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="daichao" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="daichao" type="b2602c69:ProjectViewProjectNode" />
+              <item name="daichao" type="462c0819:PsiDirectoryNode" />
+              <item name="daichao-dao" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="daichao" type="462c0819:PsiDirectoryNode" />
+              <item name="domain" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="daichao" type="b2602c69:ProjectViewProjectNode" />
+              <item name="daichao" type="462c0819:PsiDirectoryNode" />
+              <item name="daichao-dao" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="daichao" type="b2602c69:ProjectViewProjectNode" />
+              <item name="daichao" type="462c0819:PsiDirectoryNode" />
+              <item name="daichao-dao" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="mybatis" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="daichao" type="b2602c69:ProjectViewProjectNode" />
+              <item name="daichao" type="462c0819:PsiDirectoryNode" />
+              <item name="daichao-dao" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="mybatis" type="462c0819:PsiDirectoryNode" />
+              <item name="backMapper" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -603,7 +650,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="database.console.LAST_STATE" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/daichao-common/src/main/java/com/youdai/daichao/util" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/daichao-api/src/main/resources/appAndroid" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -614,15 +661,15 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\txt\develop\program\daichao\daichao-common\src\main\java\com\youdai\daichao\util" />
-      <recent name="D:\txt\develop\program\daichao\daichao-dao\src\main\resources\mybatis\apiMapper" />
-      <recent name="D:\txt\develop\program\daichao\daichao-background\src\main\resources" />
-      <recent name="D:\txt\develop\program\daichao\daichao-background\src\main\resources\templates\biz\user" />
-      <recent name="D:\txt\develop\program\daichao\daichao-background\src\main\java\com\youdai\daichao\admin_web" />
+      <recent name="D:\txt\develop\program\daichao\daichao-api\src\main\resources\appAndroid" />
+      <recent name="D:\txt\develop\program\daichao\daichao-api\src\main\resources\static\js" />
+      <recent name="D:\txt\develop\program\daichao\daichao-api\src\main\resources\static" />
+      <recent name="D:\txt\develop\program\daichao\daichao-api\src\main\resources\static\css" />
+      <recent name="D:\txt\develop\program\daichao\daichao-api\src\main\resources\static\img" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\txt\develop\program\daichao\daichao-background\src\main\resources\templates\biz\appUser" />
       <recent name="D:\txt\develop\program\daichao\daichao-api\src\main\resources\static" />
+      <recent name="D:\txt\develop\program\daichao\daichao-background\src\main\resources\templates\biz\appUser" />
       <recent name="D:\txt\develop\program\daichao\daichao-api\src\main\resources" />
       <recent name="D:\txt\develop\program\daichao\daichao-api\src\main\resources\cert" />
       <recent name="D:\txt\develop\program\daichao\daichao-api\src\main\resources\static\register\img" />
@@ -631,6 +678,364 @@
   <component name="RestClientSettings">
     <option name="REQUEST_HISTORY">
       <list>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://127.0.0.1:8381/api/user/getPhoneCodeV2" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="phone" />
+                <option name="value" value="15527823501" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="validateSign" />
+                <option name="value" value="e9b7160ef94e080c8aea8dd774ac6362" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="sign" />
+                <option name="value" value="ec1064d7d6e3a142aeb6cb370cdd1375" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="channelName" />
+                <option name="value" value="tangxt" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="equipmentFlag" />
+                <option name="value" value="0" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://127.0.0.1:8381/api/user/getPhoneCodeV2" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="phone" />
+                <option name="value" value="19941102119" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="validateSign" />
+                <option name="value" value="952024060f9d8587913bb91184e0c266" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="sign" />
+                <option name="value" value="ec1064d7d6e3a142aeb6cb370cdd1375" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="channelName" />
+                <option name="value" value="tangxt" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="equipmentFlag" />
+                <option name="value" value="0" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://127.0.0.1:8381/api/user/getPhoneCodeV2" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="phone" />
+                <option name="value" value="19941102119" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="validateSign" />
+                <option name="value" value="952024060f9d8587913bb91184e0c266" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="sign" />
+                <option name="value" value="ec1064d7d6e3a142aeb6cb370cdd1375" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="channelName" />
+                <option name="value" value="tangxt" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="equipmentFlag" />
+                <option name="value" value="0" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="GET http://127.0.0.1:8381/api/user/phoneCodeLogin?phone=19941102119&amp;code=123456&amp;sign=ec1064d7d6e3a142aeb6cb370cdd1375&amp;channelName=tangxt&amp;equipmentFlag=0&#10;Accept: */*&#10;Cache-Control: no-cache" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://127.0.0.1:8381/api/user/phoneCodeLogin" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="phone" />
+                <option name="value" value="19941102119" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="code" />
+                <option name="value" value="123456" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="sign" />
+                <option name="value" value="ec1064d7d6e3a142aeb6cb370cdd1375" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="channelName" />
+                <option name="value" value="tangxt" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="equipmentFlag" />
+                <option name="value" value="0" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://127.0.0.1:8381/api/project/selectOne" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="proId" />
+                <option name="value" value="71" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="type" />
+                <option name="value" value="0" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="sign" />
+                <option name="value" value="ec1064d7d6e3a142aeb6cb370cdd1375" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="channelName" />
+                <option name="value" value="tangxt" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="equipmentFlag" />
+                <option name="value" value="0" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{   &quot;proId&quot;:&quot;71&quot;,   &quot;type&quot;:&quot;0&quot; }" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://127.0.0.1:8381/api/project/selectOne" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="proId" />
+                <option name="value" value="71" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="type" />
+                <option name="value" value="0" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="sign" />
+                <option name="value" value="ec1064d7d6e3a142aeb6cb370cdd1375" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="channelName" />
+                <option name="value" value="tangxt" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="equipmentFlag" />
+                <option name="value" value="0" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://127.0.0.1:8381/api/project/selectOne" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="proId" />
+                <option name="value" value="71" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="type" />
+                <option name="value" value="0" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="sign" />
+                <option name="value" value="ec1064d7d6e3a142aeb6cb370cdd1375" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="channelName" />
+                <option name="value" value="tangxt" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="equipmentFlag" />
+                <option name="value" value="0" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://127.0.0.1:8381/api/user/registerPhoneCodeV2" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parameters">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="phone" />
+                <option name="value" value="19941102119" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="code" />
+                <option name="value" value="123456" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="sign" />
+                <option name="value" value="ec1064d7d6e3a142aeb6cb370cdd1375" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="channelName" />
+                <option name="value" value="tangxt" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="equipmentFlag" />
+                <option name="value" value="0" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
         <RestClientRequest>
           <option name="httpMethod" value="POST" />
           <option name="urlBase" value="http://127.0.0.1:8381" />
@@ -678,50 +1083,6 @@
           <option name="parametersEnabled" value="true" />
           <option name="haveTextToSend" value="true" />
           <option name="textToSend" value="{   &quot;proId&quot;:&quot;71&quot;,   &quot;type&quot;:&quot;0&quot; }" />
-          <option name="filesToSend" value="" />
-        </RestClientRequest>
-        <RestClientRequest>
-          <option name="httpMethod" value="GET" />
-          <option name="urlBase" value="http://127.0.0.1:8381/api/user/registerPhoneCodeV2" />
-          <option name="urlPath" value="" />
-          <option name="headers">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="Accept" />
-                <option name="value" value="*/*" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Cache-Control" />
-                <option name="value" value="no-cache" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parameters">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="phone" />
-                <option name="value" value="19941102119" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="code" />
-                <option name="value" value="123456" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="sign" />
-                <option name="value" value="ec1064d7d6e3a142aeb6cb370cdd1375" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="channelName" />
-                <option name="value" value="tangxt" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="equipmentFlag" />
-                <option name="value" value="0" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parametersEnabled" value="true" />
-          <option name="textToSend" value="" />
           <option name="filesToSend" value="" />
         </RestClientRequest>
         <RestClientRequest>
@@ -2144,94 +2505,6 @@
           <option name="textToSend" value="" />
           <option name="filesToSend" value="" />
         </RestClientRequest>
-        <RestClientRequest>
-          <option name="httpMethod" value="GET" />
-          <option name="urlBase" value="http://localhost:8381" />
-          <option name="urlPath" value="/api/project/list" />
-          <option name="headers">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="Accept" />
-                <option name="value" value="*/*" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Cache-Control" />
-                <option name="value" value="no-cache" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parameters">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="pageNo" />
-                <option name="value" value="1" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="pageSize" />
-                <option name="value" value="10" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="minMoney" />
-                <option name="value" value="5000" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parametersEnabled" value="true" />
-          <option name="textToSend" value="" />
-          <option name="filesToSend" value="" />
-        </RestClientRequest>
-        <RestClientRequest>
-          <option name="httpMethod" value="GET" />
-          <option name="urlBase" value="http://localhost:8381" />
-          <option name="urlPath" value="/api/project/list" />
-          <option name="headers">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="Accept" />
-                <option name="value" value="*/*" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Cache-Control" />
-                <option name="value" value="no-cache" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parameters">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="pageNo" />
-                <option name="value" value="1" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="pageSize" />
-                <option name="value" value="10" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parametersEnabled" value="true" />
-          <option name="textToSend" value="" />
-          <option name="filesToSend" value="" />
-        </RestClientRequest>
-        <RestClientRequest>
-          <option name="httpMethod" value="GET" />
-          <option name="urlBase" value="http://localhost:8381" />
-          <option name="urlPath" value="/api/project/list" />
-          <option name="headers">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="Accept" />
-                <option name="value" value="*/*" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Cache-Control" />
-                <option name="value" value="no-cache" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parametersEnabled" value="true" />
-          <option name="textToSend" value="" />
-          <option name="filesToSend" value="" />
-        </RestClientRequest>
       </list>
     </option>
   </component>
@@ -2248,53 +2521,20 @@
     </option>
   </component>
   <component name="RunManager" selected="Spring Boot.DaichaoApplication">
-    <configuration name="AesEncryptUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.youdai.daichao.util.AesEncryptUtil" />
-      <module name="daichao-common" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.youdai.daichao.util.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MessageXsendService" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.youdai.daichao.service.MessageXsendService" />
-      <module name="daichao-dao" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.youdai.daichao.service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="http-requests-log#1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http">
       <method v="2" />
     </configuration>
-    <configuration name="http-requests-log#12" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" index="12">
+    <configuration name="http-requests-log#11" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" index="11">
       <method v="2" />
     </configuration>
-    <configuration name="UserController.setcode" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="daichao-api" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.youdai.daichao.api.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.youdai.daichao.api" />
-      <option name="MAIN_CLASS_NAME" value="com.youdai.daichao.api.UserController" />
-      <option name="METHOD_NAME" value="setcode" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+    <configuration name="http-requests-log#14" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" index="14">
+      <method v="2" />
+    </configuration>
+    <configuration name="http-requests-log#2" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" index="2">
+      <method v="2" />
+    </configuration>
+    <configuration name="http-requests-log#3" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" index="3">
+      <method v="2" />
     </configuration>
     <configuration name="DaichaoApiApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="daichao-api" />
@@ -2319,22 +2559,22 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.MessageXsendService" />
+      <item itemvalue="HTTP Request.http-requests-log#3" />
+      <item itemvalue="HTTP Request.http-requests-log#1" />
+      <item itemvalue="HTTP Request.http-requests-log#11" />
+      <item itemvalue="HTTP Request.http-requests-log#14" />
+      <item itemvalue="HTTP Request.http-requests-log#2" />
       <item itemvalue="Spring Boot.DaichaoChannelApplication" />
       <item itemvalue="Spring Boot.DaichaoApiApplication" />
       <item itemvalue="Spring Boot.DaichaoApplication" />
-      <item itemvalue="JUnit.UserController.setcode" />
-      <item itemvalue="HTTP Request.http-requests-log#1" />
-      <item itemvalue="HTTP Request.http-requests-log#12" />
-      <item itemvalue="Application.AesEncryptUtil" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.AesEncryptUtil" />
-        <item itemvalue="HTTP Request.http-requests-log#12" />
         <item itemvalue="HTTP Request.http-requests-log#1" />
-        <item itemvalue="JUnit.UserController.setcode" />
-        <item itemvalue="Application.MessageXsendService" />
+        <item itemvalue="HTTP Request.http-requests-log#2" />
+        <item itemvalue="HTTP Request.http-requests-log#14" />
+        <item itemvalue="HTTP Request.http-requests-log#11" />
+        <item itemvalue="HTTP Request.http-requests-log#3" />
       </list>
     </recent_temporary>
   </component>
@@ -2366,7 +2606,10 @@
       <workItem from="1562290505850" duration="22727000" />
       <workItem from="1562376140579" duration="26338000" />
       <workItem from="1562491988020" duration="5101000" />
-      <workItem from="1562549533133" duration="25179000" />
+      <workItem from="1562549533133" duration="41742000" />
+      <workItem from="1562636381933" duration="38270000" />
+      <workItem from="1562722904316" duration="33768000" />
+      <workItem from="1562805924598" duration="28676000" />
     </task>
     <servers />
   </component>
@@ -2403,14 +2646,14 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="266382000" />
+    <option name="totallyTimeSpent" value="383659000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.78969073" visible="true" weight="0.18133333" />
-      <window_info id="Structure" order="1" sideWeight="0.21030928" side_tool="true" visible="true" weight="0.18133333" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.81724584" visible="true" weight="0.2768" />
+      <window_info id="Structure" order="1" sideWeight="0.18275419" side_tool="true" visible="true" weight="0.2768" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
       <window_info id="Favorites" order="4" side_tool="true" />
@@ -2418,29 +2661,29 @@
       <window_info id="Web" order="6" sideWeight="0.22687225" side_tool="true" weight="0.282516" />
       <window_info id="Image Layers" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4944" weight="0.35357916" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.7637333" weight="0.46095446" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.8496" visible="true" weight="0.47396964" />
+      <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49386665" weight="0.34164858" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.7424" weight="0.36984816" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.8048" visible="true" weight="0.15726681" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Spring" order="7" sideWeight="0.49973333" weight="0.329718" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.6336" weight="0.19522777" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.1504" side_tool="true" visible="true" weight="0.47396964" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.624" weight="0.39370933" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.1952" side_tool="true" visible="true" weight="0.15726681" />
       <window_info anchor="bottom" id="Java Enterprise" order="10" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
       <window_info anchor="bottom" id="Version Control" order="12" />
       <window_info anchor="bottom" id="Docker" order="13" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Messages" order="14" sideWeight="0.48" weight="0.3286334" />
+      <window_info anchor="bottom" id="Messages" order="14" sideWeight="0.46453333" weight="0.4978308" />
       <window_info anchor="bottom" id="REST Client" order="15" sideWeight="0.67786664" weight="0.39045554" />
-      <window_info anchor="bottom" id="Database Console" order="16" sideWeight="0.85973334" weight="0.6008677" />
+      <window_info anchor="bottom" id="Database Console" order="16" sideWeight="0.856" weight="0.35791758" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Maven" order="3" weight="0.2496" />
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
-      <window_info anchor="right" id="Database" order="6" sideWeight="0.49456522" visible="true" weight="0.22186667" />
+      <window_info anchor="right" id="Database" order="6" sideWeight="0.49456522" visible="true" weight="0.08106667" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Theme Preview" order="8" />
       <window_info anchor="right" id="Bean Validation" order="9" />
@@ -2451,385 +2694,343 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/daichao-api/src/main/java/com/youdai/daichao/api/H5Controller.java</url>
-          <line>36</line>
-          <properties />
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/daichao$DaichaoApiApplication.ic" NAME="DaichaoApiApplication Coverage Results" MODIFIED="1562051626468" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/53ba55fc-c70a-4942-a349-8b49d79f979e/console_1.sql">
+    <entry file="file://$PROJECT_DIR$/daichao-api/src/main/java/com/youdai/daichao/api/H5Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-679">
-          <caret line="38" selection-end-line="96" />
+        <state relative-caret-position="662">
+          <caret line="72" column="53" selection-start-line="72" selection-start-column="38" selection-end-line="72" selection-end-column="53" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/service/impl/WXUnionPay.java">
+    <entry file="file://$PROJECT_DIR$/daichao-background/src/main/java/com/youdai/daichao/admin_web/UserCountLogController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" selection-start-line="26" selection-end-line="26" />
+        <state relative-caret-position="480">
+          <caret line="53" column="71" lean-forward="true" selection-start-line="53" selection-start-column="71" selection-end-line="53" selection-end-column="71" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/daichao-api/src/main/resources/static/index.html">
+    <entry file="file://$PROJECT_DIR$/daichao-dao/src/main/resources/mybatis/backMapper/UserCountLogMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="26">
-          <caret line="31" column="39" selection-start-line="31" selection-start-column="39" selection-end-line="31" selection-end-column="39" />
+        <state relative-caret-position="258">
+          <caret line="215" column="39" lean-forward="true" selection-start-line="215" selection-start-column="39" selection-end-line="215" selection-end-column="39" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/daichao-common/src/main/java/com/youdai/daichao/util/RequestUtil.java">
+    <entry file="file://$PROJECT_DIR$/daichao-background/src/main/java/com/youdai/daichao/admin_web/AppUserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="552">
-          <caret line="57" column="13" lean-forward="true" selection-start-line="57" selection-start-column="13" selection-end-line="57" selection-end-column="13" />
+        <state relative-caret-position="316">
+          <caret line="57" column="43" selection-start-line="57" selection-start-column="29" selection-end-line="57" selection-end-column="43" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/daichao-common/src/main/java/com/youdai/daichao/util/StringUtil.java">
+    <entry file="file://$PROJECT_DIR$/daichao-dao/src/main/resources/mybatis/apiMapper/AppUserMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="305">
-          <caret line="23" column="52" lean-forward="true" selection-start-line="23" selection-start-column="52" selection-end-line="23" selection-end-column="52" />
+        <state relative-caret-position="581">
+          <caret line="73" column="22" selection-start-line="73" selection-start-column="17" selection-end-line="73" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/daichao-background/src/main/resources/templates/biz/appUser/appUser.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="416">
+          <caret line="25" column="70" selection-start-line="25" selection-start-column="70" selection-end-line="25" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/daichao-api/src/main/resources/favicon.ico">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-autoconfigure/2.1.3.RELEASE/spring-boot-autoconfigure-2.1.3.RELEASE.jar!/org/springframework/boot/autoconfigure/web/servlet/WebMvcProperties.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="539">
+          <caret line="245" column="23" selection-start-line="245" selection-start-column="17" selection-end-line="245" selection-end-column="23" />
           <folding>
-            <element signature="e#407#408#0" expanded="true" />
-            <element signature="e#466#467#0" expanded="true" />
+            <element signature="e#7253#7254#0" expanded="true" />
+            <element signature="e#7297#7298#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/daichao-common/src/main/java/com/youdai/daichao/common/enums/ClientType.java">
+    <entry file="file://$PROJECT_DIR$/daichao-api/src/main/resources/static/img/yindao.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/daichao-api/src/main/resources/static/img/xiazai_btn.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/daichao-api/src/main/resources/static/img/newBack.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/daichao-api/src/main/resources/static/img/Android_tips.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/service/IAppUserService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="7" column="12" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
+        <state relative-caret-position="242">
+          <caret line="21" column="12" selection-start-line="21" selection-start-column="12" selection-end-line="21" selection-end-column="12" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/daichao-common/src/main/java/com/youdai/daichao/common/enums/ChannelStatusEnum.java">
+    <entry file="file://$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/service/impl/AppUserServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+        <state relative-caret-position="401">
+          <caret line="211" column="27" selection-start-line="211" selection-start-column="23" selection-end-line="211" selection-end-column="27" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/domain/UserRecord.java">
+    <entry file="file://$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/domain/UserCountLog.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="419">
-          <caret line="55" column="29" lean-forward="true" selection-start-line="55" selection-start-column="29" selection-end-line="55" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/53ba55fc-c70a-4942-a349-8b49d79f979e/console_2.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="376">
-          <caret line="22" column="59" selection-start-line="22" selection-start-column="59" selection-end-line="22" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/5.1.5.RELEASE/spring-webmvc-5.1.5.RELEASE.jar!/org/springframework/web/servlet/DispatcherServlet.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="510" selection-start-line="510" selection-end-line="510" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/daichao-api/src/main/java/com/youdai/daichao/api/WebController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="160" column="7" selection-start-line="160" selection-start-column="7" selection-end-line="160" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/daichao-common/src/main/java/com/youdai/daichao/common/redis/RedisCache.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-758">
-          <caret line="12" column="25" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/daichao-api/src/main/resources/static/js/script.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="188" column="33" selection-start-line="188" selection-start-column="33" selection-end-line="188" selection-end-column="33" />
+        <state relative-caret-position="-405">
+          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/daichao-api/src/main/resources/static/js/core.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="526">
-          <caret line="22" column="20" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
-        </state>
+        <state relative-caret-position="-468" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/daichao-api/src/main/resources/application.yml">
+    <entry file="file://$PROJECT_DIR$/daichao-common/src/main/java/com/youdai/daichao/util/RequestUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="78">
-          <caret line="3" column="15" selection-start-line="3" selection-start-column="15" selection-end-line="3" selection-end-column="15" />
+        <state relative-caret-position="276">
+          <caret line="49" column="58" selection-start-line="49" selection-start-column="58" selection-end-line="49" selection-end-column="58" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/daichao-api/src/main/resources/application-dev.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="338">
-          <caret line="49" column="14" selection-start-line="49" selection-start-column="14" selection-end-line="49" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/daichao-api/src/main/java/com/youdai/daichao/api/UserRecordController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="86" column="53" selection-start-line="86" selection-start-column="38" selection-end-line="86" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/domain/ChannelCountLog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="443">
-          <caret line="68" column="16" selection-start-line="68" selection-start-column="12" selection-end-line="68" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/domain/AppUser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="54" column="30" selection-start-line="54" selection-start-column="30" selection-end-line="54" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_60/src.zip!/java/lang/String.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="2993" column="55" lean-forward="true" selection-start-line="2993" selection-start-column="55" selection-end-line="2993" selection-end-column="55" />
-          <folding>
-            <element signature="e#117893#117894#0" expanded="true" />
-            <element signature="e#117955#117956#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/daichao-dao/src/main/resources/mybatis/backMapper/ChannelCountLogMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="26" column="87" selection-start-line="26" selection-start-column="68" selection-end-line="26" selection-end-column="87" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/shiro/shiro-core/1.4.0/shiro-core-1.4.0.jar!/org/apache/shiro/realm/CachingRealm.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="46" column="18" selection-start-line="46" selection-start-column="18" selection-end-line="46" selection-end-column="18" />
-          <folding>
-            <element signature="e#1493#1494#0" expanded="true" />
-            <element signature="e#1525#1526#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/9.0.16/tomcat-embed-core-9.0.16.jar!/org/apache/tomcat/util/descriptor/web/SecurityCollection.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="14" column="31" lean-forward="true" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="41" column="45" selection-start-line="41" selection-start-column="45" selection-end-line="41" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/daichao-api/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="469">
-          <caret line="24" column="36" selection-start-line="24" selection-start-column="36" selection-end-line="24" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/5.1.5.RELEASE/spring-web-5.1.5.RELEASE.jar!/org/springframework/web/method/support/InvocableHandlerMethod.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="58" selection-start-line="58" selection-end-line="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/restClient/lib/restClient.jar!/com/intellij/ws/rest/client/requests/collection/auth-requests.http">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/restClient/lib/restClient.jar!/com/intellij/ws/rest/client/requests/collection/get-requests.http">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="14" column="33" lean-forward="true" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/daichao-api/src/main/java/com/youdai/daichao/api/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-317">
-          <caret line="214" selection-start-line="214" selection-end-line="214" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#8279#8288#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/daichao-api/src/main/java/com/youdai/daichao/api/H5Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="71" column="55" selection-start-line="71" selection-start-column="55" selection-end-line="71" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/daichao-background/src/main/java/com/youdai/daichao/admin_web/UserCountLogController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="53" column="51" selection-start-line="53" selection-start-column="32" selection-end-line="53" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/daichao-background/bin/target/classes/mybatis/backMapper/UserCountLogMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="30" column="81" selection-start-line="30" selection-start-column="81" selection-end-line="30" selection-end-column="81" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_60/src.zip!/java/util/Base64.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1071">
-          <caret line="76" column="13" selection-start-line="76" selection-start-column="13" selection-end-line="76" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/shiro/shiro-core/1.4.0/shiro-core-1.4.0.jar!/org/apache/shiro/codec/Base64.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="73" column="25" selection-start-line="73" selection-start-column="25" selection-end-line="73" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/shiro/shiro-core/1.4.0/shiro-core-1.4.0.jar!/org/apache/shiro/mgt/RealmSecurityManager.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="24" column="17" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/daichao-api/src/main/java/com/youdai/daichao/shiro/ShiroConfiguration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="100" column="46" selection-start-line="100" selection-start-column="33" selection-end-line="100" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/daichao-api/src/main/java/com/youdai/daichao/shiro/RedisSessionDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1154">
-          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/daichao-api/src/main/java/com/youdai/daichao/shiro/PasswordRealm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="710">
-          <caret line="77" column="80" selection-start-line="77" selection-start-column="72" selection-end-line="77" selection-end-column="80" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/daichao-api/src/main/java/com/youdai/daichao/config/ApiInterceptor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
-          <caret line="70" column="24" selection-start-line="70" selection-start-column="24" selection-end-line="70" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="137" selection-start-line="137" selection-end-line="137" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/53ba55fc-c70a-4942-a349-8b49d79f979e/console_3.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="28" column="10" selection-start-line="28" selection-end-line="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/daichao-common/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="576">
-          <caret line="124" column="37" lean-forward="true" selection-start-line="124" selection-start-column="37" selection-end-line="124" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/daichao-common/src/main/java/com/youdai/daichao/util/AesEncryptUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-995">
-          <caret line="65" column="58" lean-forward="true" selection-start-line="65" selection-start-column="58" selection-end-line="65" selection-end-column="58" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/daichao-common/src/main/java/com/youdai/daichao/util/EncryptedString.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="8" column="61" lean-forward="true" selection-start-line="8" selection-start-column="61" selection-end-line="8" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/daichao-api/src/main/java/com/youdai/daichao/api/ProjectController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="80" selection-start-line="80" selection-end-line="81" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/daichao-background/src/main/java/com/youdai/daichao/admin_web/ChannelCountLogController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="383">
-          <caret line="61" column="43" lean-forward="true" selection-start-line="61" selection-start-column="43" selection-end-line="61" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/daichao-background/src/main/resources/application.yml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/daichao-background/src/main/resources/application-prod.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2468" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/service/MessageXsendService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="43" column="31" lean-forward="true" selection-start-line="43" selection-start-column="31" selection-end-line="43" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/daichao-api/src/main/resources/application-prod.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="111" selection-start-line="111" selection-end-line="117" selection-end-column="25" />
+          <caret line="49" column="14" lean-forward="true" selection-start-line="49" selection-start-column="14" selection-end-line="49" selection-end-column="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/daichao-background/src/main/resources/application-dev.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="149" column="25" lean-forward="true" selection-start-line="149" selection-start-column="25" selection-end-line="149" selection-end-column="25" />
+        <state relative-caret-position="-2979">
+          <caret line="12" column="20" lean-forward="true" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/daichao-background/src/main/sql/before.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="11" column="28" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/daichao-background/src/main/sql/20190611.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/daichao-background/src/main/resources/templates/biz/product/product.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-156" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/daichao-dao/src/main/resources/mybatis/backMapper/ProductMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="6" column="49" selection-start-line="6" selection-start-column="49" selection-end-line="6" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/domain/Recommend.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="27" column="20" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/daichao-background/src/main/java/com/youdai/daichao/admin_web/RecommendController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="92" column="43" selection-start-line="92" selection-start-column="43" selection-end-line="92" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/daichao-background/src/main/resources/application-prod.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/domain/ProductCountLog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="28" column="19" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/domain/Project.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="296">
+          <caret line="26" column="4" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/daichao-background/src/main/java/com/youdai/daichao/admin_web/ProjectController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1524">
+          <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/daichao-api/src/main/java/com/youdai/daichao/api/ProjectController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="149" column="56" lean-forward="true" selection-start-line="149" selection-start-column="56" selection-end-line="149" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/daichao-api/src/main/resources/static/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="28">
+          <caret line="36" column="82" selection-start-line="36" selection-start-column="82" selection-end-line="36" selection-end-column="82" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/daichao-api/src/main/resources/static/js/script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="499">
+          <caret line="119" column="26" lean-forward="true" selection-start-line="119" selection-start-column="26" selection-end-line="119" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/daichao-common/src/main/java/com/youdai/daichao/common/oss/OssUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="424">
+          <caret line="96" column="5" lean-forward="true" selection-start-line="96" selection-start-column="5" selection-end-line="96" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/daichao-background/src/main/java/com/youdai/daichao/common/utils/AddressUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="18" column="34" selection-start-line="18" selection-start-column="25" selection-end-line="18" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/daichao-background/src/main/java/com/youdai/daichao/framework/manager/factory/AsyncFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="118" column="57" selection-start-line="118" selection-start-column="57" selection-end-line="118" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/daichao-background/src/main/java/com/youdai/daichao/admin_web/ProductController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="215" column="49" lean-forward="true" selection-start-line="215" selection-start-column="49" selection-end-line="215" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/daichao-api/src/main/resources/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="78">
+          <caret line="3" column="16" lean-forward="true" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/baomidou/mybatis-plus-support/2.2.0/mybatis-plus-support-2.2.0.jar!/com/baomidou/mybatisplus/enums/IdType.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="8" column="8" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/daichao-dao/src/main/java/com/youdai/daichao/domain/Product.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="367">
+          <caret line="34" column="48" lean-forward="true" selection-start-line="34" selection-start-column="48" selection-end-line="34" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/daichao-api/src/main/java/com/youdai/daichao/config/ApiInterceptor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="183" column="21" lean-forward="true" selection-start-line="183" selection-start-column="21" selection-end-line="183" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/daichao-api/src/main/java/com/youdai/daichao/api/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="127">
+          <caret line="238" column="40" lean-forward="true" selection-start-line="238" selection-start-column="40" selection-end-line="238" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/daichao-background/src/main/resources/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="78">
+          <caret line="3" column="15" selection-start-line="3" selection-start-column="15" selection-end-line="3" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/daichao-background/src/main/java/com/youdai/daichao/project/monitor/druid/DruidController.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/daichao-background/src/main/java/com/youdai/daichao/project/monitor/server/controller/ServerController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="26" column="18" lean-forward="true" selection-start-line="26" selection-start-column="18" selection-end-line="26" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/daichao-background/src/main/java/com/youdai/daichao/project/monitor/server/domain/Server.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="162" column="47" lean-forward="true" selection-start-line="162" selection-start-column="47" selection-end-line="162" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/daichao-background/src/main/resources/templates/biz/advertisement/advertisement.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="754">
+          <caret line="70" column="35" lean-forward="true" selection-start-line="70" selection-start-column="35" selection-end-line="70" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/daichao-background/src/main/resources/templates/monitor/server/server.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="416">
+          <caret line="250" column="25" lean-forward="true" selection-start-line="250" selection-start-column="25" selection-end-line="250" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/daichao-background/src/main/resources/templates/biz/product/add.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="13" column="14" lean-forward="true" selection-start-line="7" selection-start-column="8" selection-end-line="13" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/daichao-background/src/main/resources/templates/biz/advertisement/add.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="12" column="18" lean-forward="true" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/daichao-background/src/main/java/com/youdai/daichao/admin_web/AdvertisementController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="223">
+          <caret line="37" column="6" lean-forward="true" selection-start-line="37" selection-start-column="6" selection-end-line="37" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/daichao-background/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2470">
+          <caret line="16" column="20" lean-forward="true" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
         </state>
       </provider>
     </entry>

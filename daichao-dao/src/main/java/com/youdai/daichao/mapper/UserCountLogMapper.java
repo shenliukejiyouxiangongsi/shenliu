@@ -17,4 +17,6 @@ import com.baomidou.mybatisplus.mapper.BaseMapper;
  */
 public interface UserCountLogMapper extends BaseMapper<UserCountLog> {
 	List<UserCountLog> selectUserCountList(Map<String, Object> map);
+
+	List<UserCountLog> selectAllList(Map<String, Object> map);
 }

@@ -1,8 +1,7 @@
 
 
 
-
-var urlcore = 'http://127.0.0.1:8381'; //https://qehh.drjjdh.cn
+var urlcore = 'https://qehh.drjjdh.cn';
 
 //苹果手机下载地址
 var ios = "https://7w2.cn/9squ"
@@ -65,7 +64,6 @@ function setQueryConfig(queryConfig) {
 }
 
 
-
 function getJsonData(arr) {
 
     var theRequest = new Object();
@@ -82,8 +80,26 @@ function getJsonData(arr) {
 }
 
 
+function show(id) {
+    document.getElementById(id).style.display = "block";
+    document.body.style.overflow = "hidden";
+}
+
+function hide(id) {
+    document.getElementById(id).style.display = "none";
+    document.body.style.overflow = "auto";
+}
+
+function is_weixin() {
+    var ua = navigator.userAgent.toLowerCase();
+    if (ua.match(/MicroMessenger/i) == "micromessenger" || ua.match(/\sqq/i) == " qq" || ua.match(/Weibo/i) == "weibo") {
+        $('.weixin').show();
+    }
+}
+
 
 function is_weixn_qq(){
+
 	var ua = navigator.userAgent.toLowerCase();
 	if(ua.match(/MicroMessenger/i)=="micromessenger") {
 		return "weixin";
@@ -107,13 +123,12 @@ function is_weixn_qq(){
             }
             $.ajax({
                 type: "GET",
-                url:  url, // 这个就是不同于当前域的一个URL地址，这里单纯演示，所以同域
+                url:  url, 
                 success: function (data) {
                     //   console.log(data)
                     //   console.log(typeof(data))
                     var dad = JSON.parse(data)
                     if(dad.success==false){
-                        // $("#pop").css("display","block")
                         $("#registerBut").attr("disabled","disabled")
                         $("#registerBut").css("background","#cacaca")
                         if(e==1){
