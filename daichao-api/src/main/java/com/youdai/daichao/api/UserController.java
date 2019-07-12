@@ -129,7 +129,7 @@ public class UserController {
 //            userCountLog.setDeviceFlag(userRecordId.toString());
 //            user.setUserRecordId(Long.parseLong(userRecordId.toString()));
 //        }
-        userCountLog.setDeviceFlag(user.getUserRecordId().toString());
+        userCountLog.setDeviceFlag(String.valueOf(user.getUserRecordId()));
         userCountLog.setPhone(phone);
         userCountLogService.insert(userCountLog);
         if(0!=user.getChannelId()){

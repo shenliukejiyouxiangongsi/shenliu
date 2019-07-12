@@ -150,3 +150,6 @@ chuanglan:
   templateId:
     #注册模板
     registerMsgId: zcOWs2
+
+upload:
+  root: D:\Pictures

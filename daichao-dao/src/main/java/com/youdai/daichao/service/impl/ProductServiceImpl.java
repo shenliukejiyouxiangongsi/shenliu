@@ -124,7 +124,7 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
         if(StringUtil.isNotEmpty(type)) {
             map.put("type",type);
         }
-        return productMapper.selectProducts(map);
+        return productMapper.selectProducts(page,map);
     }
 
 

@@ -49,6 +49,10 @@ public class AdvertisementController extends BaseController {
 	private IAdvertisementService advertisementService;
 	@Autowired
 	private IProductService productService;
+	@Value("${spring.profiles.active}")
+	private String active;
+	@Value("${upload.root:/home/daichao/upload}")
+	private String root;
 	
 	
 	private final String prefix="biz/advertisement";
