@@ -33,7 +33,7 @@ public class Product extends Model<Product> {
     private static final long serialVersionUID = 1L;
 
     @TableId(value = "p_id", type = IdType.AUTO)
-    private int pId;
+    private Integer pId;
     @TableField("p_name")
     private String pName;
     private String describation;

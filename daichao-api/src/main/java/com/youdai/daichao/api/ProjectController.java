@@ -184,7 +184,7 @@ public class ProjectController {
             ProductCountLog oldProductCountLog =  productCountLogService.selectOne(productWrapper);
             productCountLog.setSecondViewNum(1);
             productCountLog.setPId(pId);
-            productCountLog.setDeviceFlag(user.getUserRecordId().toString());
+            productCountLog.setDeviceFlag(String.valueOf(user.getUserRecordId()));
             if(null==oldProductCountLog){
                 productCountLog.setSecondUserNum(1);
             }

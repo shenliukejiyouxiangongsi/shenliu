@@ -8,11 +8,13 @@ import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.youdai.daichao.common.utils.poi.ExcelUtil;
 import com.youdai.daichao.common.vo.AjaxResult;
 import com.youdai.daichao.domain.AppUser;
+import com.youdai.daichao.domain.Channel;
 import com.youdai.daichao.framework.aspectj.lang.annotation.Log;
 import com.youdai.daichao.framework.aspectj.lang.enums.BusinessType;
 import com.youdai.daichao.framework.web.controller.BaseController;
 import com.youdai.daichao.framework.web.page.TableDataInfo;
 import com.youdai.daichao.service.IAppUserService;
+import com.youdai.daichao.service.IChannelService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,12 +40,16 @@ public class AppUserController extends BaseController
 	
 	@Autowired
 	private IAppUserService appUserService;
+	@Autowired
+	private IChannelService channelService;
 	
 	@RequiresPermissions("biz:appUser:view")
 	@GetMapping()
-	public String appUser()
+	public String appUser(ModelMap mmap)
 	{
-	    return prefix + "/appUser";
+		List<Channel> channels =channelService.selectAllChannel();
+		mmap.put("channels",channels);
+		return prefix + "/appUser";
 	}
 	
 	/**

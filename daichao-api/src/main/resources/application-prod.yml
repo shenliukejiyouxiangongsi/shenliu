@@ -53,8 +53,10 @@ spring:
   mvc:
     view:
       prefix: /static/
-      suffix: .html
+      suffix: .html; .apk
     static-path-pattern: /static/**
+  resources:
+    static-locations: /home/daichao/h5
 
 
 

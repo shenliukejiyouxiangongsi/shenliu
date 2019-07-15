@@ -68,5 +68,5 @@ public interface ProductMapper extends BaseMapper<Product> {
 
     Product selectByPId(int pId);
 
-    public List<ProductVo> selectProducts(Map map);
+    public List<ProductVo> selectProducts(Page<ProductVo> page,Map map);
 }
