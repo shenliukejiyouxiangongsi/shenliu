@@ -56,7 +56,7 @@ spring:
       suffix: .html; .apk
     static-path-pattern: /static/**
   resources:
-    static-locations: /home/daichao/h5
+    static-locations: file:/home/daichao/h5
 
 
 

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../static/css/mui.min.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/weixin.css">
+
+    <script>
+        //声明_czc对象:
+        var _czc = _czc || [];
+        //绑定siteid，请用您的siteid替换下方"XXXXXXXX"部分
+        _czc.push(["_setAccount", "1277759032"]);
+
+        </script>
+    <title>企鹅花花</title>
+
+</head>
+<body>
+
+<!-- 微信QQ验证-->
+    <div class="content">
+
+        <div>
+            <div>
+                <input type="text" placeholder="请输入手机号" id="phone" style="width: 60%;-webkit-user-select:text !important" maxlength="11" onkeyup="value=value.replace(/[^\d]/g,'')">
+            </div>
+            <div>
+                <input style="width: 60%;-webkit-user-select:text !important" placeholder="请输入验证码" id="code">
+                <span class="codeBut" onclick="_czc.push(['_trackEvent', '获取验证码', '点击']);codeBut()" >发送验证码</span>
+            </div>
+            <div style="display: none">
+                <input type="password" id="password" placeholder="密码不低于6个字符" style="-webkit-user-select:text !important;">
+            </div>
+            <div class="but"  onclick="_czc.push(['_trackEvent', '立即借款', '点击']);but()">
+                立即借款
+            </div>
+        </div>
+
+         <div class="text">
+            <span ><b></b></span>点击即视为同意
+            <a href="../H5web" style="color: #FFF05F">《用户注册协议》</a>
+        </div> 
+        <div class="weixin"><p><img src="../static/img/Android_tips.png" alt=""></p></div>
+
+    </div>
+
+    <script type="text/javascript" src="https://s5.cnzz.com/z_stat.php?id=1277759032&web_id=1277759032"></script>
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1277759032'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s5.cnzz.com/z_stat.php%3Fid%3D1277759032' type='text/javascript'%3E%3C/script%3E"));</script>
+
+</body>
+</html>
+<script src="../static/js/jquery.min.js"></script>
+<script src="../static/js/core.js"></script>
+<script type="text/javascript" src="http://pv.sohu.com/cityjson?ie=utf-8"></script>  
+<script src="../static/js/md5.js"></script>
+<script src="../static/js/mui.min.js"></script>
+<script src="../static/js/script.js"></script>
+<script type="text/javascript">is_weixin()</script>
+
