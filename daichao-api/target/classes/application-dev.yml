@@ -55,8 +55,8 @@ spring:
       prefix: /static/
       suffix: .html; .apk
     static-path-pattern: /static/**
-#  resources:
-#    static-locations: file:D:\txt\register
+  resources:
+    static-locations: file:D:\txt\static
 
 
 

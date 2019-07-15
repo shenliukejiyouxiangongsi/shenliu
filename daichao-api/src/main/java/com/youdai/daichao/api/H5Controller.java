@@ -14,9 +14,11 @@ import com.youdai.daichao.util.DateUtils;
 import com.youdai.daichao.util.RequestUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 import sun.util.calendar.BaseCalendar;
 
 import javax.servlet.http.HttpServletRequest;
@@ -35,7 +37,7 @@ public class H5Controller {
     @RequestMapping(value = "/h5")
     public String h5(String channelName, HttpServletRequest request) {
         if (channelName == null || "".equals(channelName) || "null".equals(channelName) || "undefined".equals(channelName))
-            return "error";
+            return "txt";
 
         //判断是否是渠道商引流
         Wrapper wrapper = new EntityWrapper<>();
@@ -43,7 +45,7 @@ public class H5Controller {
         wrapper.eq("status", ChannelStatusEnum.ONLINE.getStatus());
         Channel channel = channelService.selectOne(wrapper);
         //错误的渠道
-        if(null == channel) return "error";
+        if(null == channel) return "txt";
 
         wrapper = new EntityWrapper<>();
 //        wrapper.eq("user_agent",request.getHeader("user-agent"));
@@ -51,7 +53,7 @@ public class H5Controller {
         wrapper.eq("channel_id",channel.getChannelId());
         UserRecord userRecord = userRecordService.selectOne(wrapper);
 
-        if(null == userRecord) return "error";
+        if(null == userRecord) return "txt";
         wrapper = new EntityWrapper();
         wrapper.eq("record_id",userRecord.getId());
         wrapper.eq("view_page_num",1);
@@ -75,7 +77,7 @@ public class H5Controller {
         //跳转不同风格h5
         if("0".equals(channel.getType())) return "indexA";
         if("1".equals(channel.getType())) return "indexB";
-        if("2".equals(channel.getType())) return "indexC";
+        if("2".equals(channel.getType())) return "index";
 
         return "index";
     }
@@ -85,5 +87,4 @@ public class H5Controller {
         map.put("","");
         return "H5web";
     }
-
 }
