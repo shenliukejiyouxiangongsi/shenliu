@@ -20,4 +20,7 @@ public interface RecommendMapper extends BaseMapper<Recommend> {
 	List<PdRecommend> selectRecommendList(@Param("pName") String pName);
 	PdRecommend selectOneByRid(int rId);
 	int  deleteReByIds(String[] ids);
+	List<PdRecommend> selectRecommendByType(@Param("rType") String rType);
+	List<PdRecommend> selectTopic(@Param("rType") String rType);
+
 }

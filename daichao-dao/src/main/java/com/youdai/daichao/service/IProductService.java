@@ -45,5 +45,5 @@ public interface IProductService extends IService<Product> {
 
         List<ProductVo> selectProducts(Page<ProductVo> page, String minMoney, String rate, String maxMoney, String moneyBegin, String moneyEnd, String outTime, String tags,String type);
 
-
+        List<Product> selectTopicProduct(Map map);
 }

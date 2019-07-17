@@ -130,7 +130,7 @@ public class ProjectController {
             userCountLog.setViewProductNum(1);
             if(null != user) {
                 userCountLog.setPhone(user.getAUphone());
-                userCountLog.setDeviceFlag(user.getUserRecordId().toString());
+                userCountLog.setDeviceFlag(String.valueOf(user.getUserRecordId()));
             }
             userCountLogService.insert(userCountLog);
             ProductCountLog productCountLog=new ProductCountLog();

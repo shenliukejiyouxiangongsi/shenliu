@@ -44,4 +44,12 @@ public class RecommendServiceImpl extends ServiceImpl<RecommendMapper, Recommend
 		return recommendMapper.deleteReByIds(idss);
 	}
 
+	@Override
+	public List<PdRecommend> selectRecommendByType(String rtype) {
+		return recommendMapper.selectRecommendByType(rtype);
+	}
+
+	public List<PdRecommend> selectTopic(String rType){
+		return recommendMapper.selectTopic(rType);
+	}
 }

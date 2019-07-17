@@ -127,5 +127,8 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> impl
         return productMapper.selectProducts(page,map);
     }
 
+    public List<Product> selectTopicProduct(Map map){
+        return productMapper.selectTopicProduct(map);
+    }
 
 }
