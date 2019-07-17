@@ -58,7 +58,7 @@
         WHEN LENGTH(max_money)>4 and LENGTH(substring_index(max_money,0,1))>1  THEN  CONCAT(round ((max_money / 10000),1),'万')
         else max_money end) as max_money,
         outTime_begin,outTime_end,rate,access_condition,materials,explaintion,status,logo_url
-        ,link_url,merchant_id,create_time,create_user,p_type,update_time,show_num,price,sort,has_tags,price,clear_form
+        ,link_url,merchant_id,create_time,create_user,p_type,update_time,order_num,show_num,price,sort,has_tags,price,clear_form
     </sql>
 
 
@@ -162,14 +162,16 @@
         <if test="tags != null  and tags != '' ">and   has_tags like concat('%', #{tags}, '%')</if>
         <if test="outTime != null "> and outTime_begin &lt;= #{outTime}</if>
         <if test="outTime != null "> and outTime_end &gt;= #{outTime}</if>
-        <if test="moneyBegin != null and null==moneyEnd ">and min_money &gt;= #{moneyBegin}</if>
-        <if test="moneyEnd != null and null== moneyBegin ">and max_money &lt;= #{moneyEnd}</if>
-        <if test="moneyEnd != null and null!= moneyBegin ">and (max_money &lt;= #{moneyEnd}  and min_money &gt;= #{moneyBegin})</if>
+        <if test="moneyBegin != null and null==moneyEnd ">and min_money &lt;= #{moneyBegin}</if>
+        <if test="moneyEnd != null and null== moneyBegin ">and max_money &gt;= #{moneyEnd}</if>
+        <if test="moneyEnd != null and null!= moneyBegin ">and (max_money &gt;= #{moneyEnd}  and min_money &lt;= #{moneyBegin})</if>
         and a.status=1
-        <if test="minMoney == null  and rate == null and  maxMoney==null"> order by a.sort ,a.show_num desc</if>
-        <if test="minMoney != null  and minMoney != '' "> order by a.outTime_begin+0, a.sort ,a.show_num desc</if>
-        <if test="rate != null  and rate != '' "> order by a.rate+0, a.sort ,a.show_num desc</if>
-        <if test="maxMoney != null  and maxMoney != '' "> order by a.max_money+0 desc, a.sort ,a.show_num desc </if>
+        order by
+        <if test="minMoney == null  and rate == null and  maxMoney==null">  a.sort ,a.show_num desc ,</if>
+        <if test="minMoney != null  and minMoney != '' ">  a.outTime_begin+0, a.sort ,a.show_num desc ,</if>
+        <if test="rate != null  and rate != '' ">  a.rate+0, a.sort ,a.show_num desc ,</if>
+        <if test="maxMoney != null  and maxMoney != '' ">  a.max_money+0 desc, a.sort ,a.show_num desc , </if>
+          a.p_id desc
     </select>
 
     <select id="selectNewProduct"  resultMap="ProductVoResult" parameterType="map">
@@ -341,13 +343,25 @@
         <if test="tags != null  and tags != '' ">and has_tags like concat('%', #{tags}, '%')</if>
         <if test="outTime != null "> and outTime_begin &lt;= #{outTime}</if>
         <if test="outTime != null "> and outTime_end &gt;= #{outTime}</if>
-        <if test="moneyBegin != null and null==moneyEnd ">and min_money &gt;= #{moneyBegin}</if>
-        <if test="moneyEnd != null and null== moneyBegin ">and max_money &lt;= #{moneyEnd}</if>
-        <if test="moneyEnd != null and null!= moneyBegin ">and (max_money &lt;= #{moneyEnd}  and min_money &gt;= #{moneyBegin})</if>
-        <if test="minMoney == null  and rate == null and  maxMoney==null"> order by b.r_sort ,a.show_num desc</if>
-        <if test="minMoney != null  and minMoney != '' "> order by a.outTime_begin+0,b.r_sort ,a.show_num desc</if>
-        <if test="rate != null  and rate != '' "> order by a.rate+0,b.r_sort ,a.show_num desc</if>
-        <if test="maxMoney != null  and maxMoney != '' "> order by a.max_money+0 desc,b.r_sort ,a.show_num desc </if>
+        <if test="moneyBegin != null and null==moneyEnd ">and min_money &lt;= #{moneyBegin}</if>
+        <if test="moneyEnd != null and null== moneyBegin ">and max_money >= #{moneyEnd}</if>
+        <if test="moneyEnd != null and null!= moneyBegin ">and (max_money >= #{moneyEnd}  and min_money &lt;= #{moneyBegin})</if>
+        order by
+        <if test="minMoney == null  and rate == null and  maxMoney==null">  b.r_sort ,a.show_num desc ,</if>
+        <if test="minMoney != null  and minMoney != '' "> a.outTime_begin+0,b.r_sort ,a.show_num desc ,</if>
+        <if test="rate != null  and rate != '' ">  a.rate+0,b.r_sort ,a.show_num desc ,</if>
+        <if test="maxMoney != null  and maxMoney != '' ">  a.max_money+0 desc,b.r_sort ,a.show_num desc ,</if>
+         a.p_id desc
+    </select>
 
+    <select id="selectTopicProduct" resultType="Product" parameterType="map">
+        select  p_id as pId,
+        p_name as pName
+        from
+        product
+        where p_id not in
+        (select P_id from recommend where r_type = #{rtype} )
+        and `status` =1
+        order by sort desc
     </select>
 </mapper>

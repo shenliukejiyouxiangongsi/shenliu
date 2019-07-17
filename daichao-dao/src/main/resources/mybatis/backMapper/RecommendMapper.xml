@@ -20,6 +20,7 @@
 				p.p_name=#{pName}
 			</if>
 		</where>
+		order by rType,rSort desc
 	</select>
 	
 	<select id="selectOneByRid" parameterType="int" resultType="pdRecommend">
@@ -43,4 +44,34 @@
 			#{rId}
 		</foreach>
 	</delete>
+
+	<select id="selectRecommendByType" parameterType="string" resultType="pdRecommend">
+		SELECT
+		r.r_id as rId,
+		r.r_type as rType,
+		r.r_sort as rSort,
+		p.p_id as pId,
+		p.p_name as pName,
+		p.`status` as pdStatus
+		FROM
+		recommend r LEFT JOIN product p ON  r.p_id=p.p_id
+		<where>
+			<if test="rType!=null and rType !=''">
+				r.r_type=#{rType}
+			</if>
+		</where>
+	</select>
+
+	<select id="selectTopic" parameterType="string" resultType="pdRecommend">
+		SELECT
+		distinct(r.r_type) as rType
+		FROM
+		recommend r
+		<where>
+			<if test="rType != null and rType != ''">
+				r.r_type = #{rType}
+			</if>
+		</where>
+		order by rType desc
+	</select>
 </mapper>

@@ -18,4 +18,8 @@ public interface IRecommendService extends IService<Recommend> {
 	List<PdRecommend> selectRecommendList(String pname);
 	PdRecommend selectOneByRid(int rId);
 	int  deleteReByIds(String ids);
+	List<PdRecommend> selectRecommendByType(String rtype);
+
+	List<PdRecommend> selectTopic(String rType);
+
 }
