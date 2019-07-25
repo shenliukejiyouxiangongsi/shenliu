@@ -68,7 +68,7 @@ public class ApiInterceptor implements HandlerInterceptor {
         //用户来源表
         insertUserRecord(request);
 
-        if("dev".equals(active)) return true;
+//        if("dev".equals(active)) return true;
 
         //h5放行
         if(request.getRequestURI().indexOf("/h5") > -1) {

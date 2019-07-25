@@ -1,0 +1,122 @@
+<!DOCTYPE HTML>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+
+<div class="container-div">
+	<div class="row">
+		<div class="col-sm-12 search-collapse">
+			<form id="formId">
+				<div class="select-list">
+					<ul>
+						<li>
+							主题名称：
+							<select name="rType" id="rType" >
+								<option value="">请选择</option>
+								<option value="1">最新</option>
+								<option value="2">最热</option>
+								<option value="3">banner</option>
+								<option value="4">小额贷</option>
+								<option value="5">大额贷</option>
+								<option value="6">急速贷</option>
+								<option value="7">新手必备</option>
+							</select>
+						</li>
+						<li>
+							<a class="btn btn-primary btn-rounded btn-sm" onclick="$.table.search()"><i class="fa fa-search"></i>&nbsp;搜索</a>
+							<a class="btn btn-warning btn-rounded btn-sm" onclick="$.form.reset()"><i class="fa fa-refresh"></i>&nbsp;重置</a>
+						</li>
+					</ul>
+				</div>
+			</form>
+		</div>
+
+		<div class="btn-group-sm hidden-xs" id="toolbar" role="group">
+			<a class="btn btn-success" onclick="$.operate.add()" shiro:hasPermission="biz:topic:add">
+				<i class="fa fa-plus"></i> 添加
+			</a>
+<!--			<a class="btn btn-primary btn-edit disabled" onclick="$.operate.edit()" shiro:hasPermission="biz:topic:edit">-->
+<!--				<i class="fa fa-edit"></i> 修改-->
+<!--			</a>-->
+<!--			<a class="btn btn-danger btn-del btn-del disabled" onclick="$.operate.removeAll()" shiro:hasPermission="biz:topic:remove">-->
+<!--				<i class="fa fa-remove"></i> 删除-->
+<!--			</a>-->
+
+		</div>
+		<div class="col-sm-12 select-table table-striped">
+			<table id="bootstrap-table" data-mobile-responsive="true"></table>
+		</div>
+	</div>
+</div>
+<div th:include="include :: footer"></div>
+<script th:inline="javascript">
+	var editFlag = [[${@permission.hasPermi('biz:topic:edit')}]];
+	var removeFlag = [[${@permission.hasPermi('biz:topic:remove')}]];
+
+	var prefix = ctx + "product/topic";
+
+	$(function() {
+		var options = {
+			url: prefix + "/list",
+			createUrl: prefix + "/add",
+			updateUrl: prefix + "/edit/{id}",
+			removeUrl: prefix + "/removeTopic",
+			exportUrl: prefix + "/export",
+			modalName: "产品主题",
+			search: false,
+			showExport: true,
+			columns: [{
+				checkbox: true
+			},
+				{
+					field : 'rid',
+					title : 'id',
+					visible: false
+				},
+				{
+					field : 'rtype',
+					title : '小标题',
+					formatter: function(value, row, index) {
+						if(value==1){
+							return "<span class='badge badge-danger'>最新</span>";
+						}else if(value==2){
+							return "<span class='badge badge-primary'>最热</span>";
+						}else if(value==3){
+							return "<span class='badge badge-success'>banner</span>";
+						}else if(value==4){
+							return "<span class='badge badge-success'>小额贷</span>";
+						}else if(value==5){
+							return "<span class='badge badge-success'>大额贷</span>";
+						}else if(value==6){
+							return "<span class='badge badge-success'>急速贷</span>";
+						}else if(value==7){
+							return "<span class='badge badge-success'>新手必备</span>";
+						}
+					}
+				},
+				{
+					title: '操作',
+					align: 'center',
+					formatter: function(value, row, index) {
+						var actions = [];
+						// actions.push('<a class="btn btn-success btn-xs ' + editFlag + '" href="#" onclick="$.operate.edit(\'' + row.rid + '\')"><i class="fa fa-edit"></i>编辑</a> ');
+						actions.push('<a class="btn btn-danger btn-xs ' + removeFlag + '" href="#" onclick="$.operate.remove(\'' + row.rtype + '\')"><i class="fa fa-remove"></i>删除</a>');
+						actions.push('<a class="btn btn-primary btn-xs ' + editFlag + '" href="#" onclick="prodList(\'' + row.rtype + '\')"><i class="fa fa-check-square-o"></i>产品列表</a> ');
+//						actions.push('<a class="btn btn-info btn-xs ' + resetPwdFlag + '" href="#" onclick="resetPwd(\'' + row.pId + '\')"><i class="fa fa-key"></i>重置</a>');
+						return actions.join('');
+					}
+				}]
+		};
+		$.table.init(options);
+	});
+
+	/*角色管理-分配数据权限*/
+	function prodList(rtype) {
+		var url = prefix + '/prodList/' + rtype;
+		$.modal.open("产品列表", url);
+	}
+
+</script>
+</body>
+</html>

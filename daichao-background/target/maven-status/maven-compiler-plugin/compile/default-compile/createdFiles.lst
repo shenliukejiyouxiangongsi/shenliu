@@ -175,6 +175,7 @@ com\youdai\daichao\project\monitor\operlog\service\OperLogServiceImpl.class
 com\youdai\daichao\project\system\user\mapper\SysUserMapper.class
 com\youdai\daichao\common\vo\JsonCodeEnum.class
 com\youdai\daichao\project\tool\swagger\TestController.class
+com\youdai\daichao\admin_web\ProductTopicController.class
 com\youdai\daichao\framework\config\FilterConfig.class
 com\youdai\daichao\project\system\config\service\ConfigServiceImpl.class
 com\youdai\daichao\common\support\Convert.class

@@ -46,7 +46,7 @@
 	$(function() {
 		var options = {
 			url: prefix + "/list",
-			modalName: "落地页统计",
+			modalName: "产品统计",
 			search: false,
 			showExport: true,
 			columns: [{
@@ -73,7 +73,8 @@
 							return "-";
 						}
 						return  value;
-					}
+					},
+					visible: false
 				},
 				{
 					field : 'secondViewNum',
@@ -83,7 +84,8 @@
 							return "-";
 						}
 						return  value;
-					}
+					},
+					visible: false
 				},{
 					field : 'firstUserNum',
 					title : '产品查看UV',
